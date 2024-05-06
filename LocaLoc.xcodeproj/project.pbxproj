@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		046C3EA32BE917E800BBFF47 /* LocaLocApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */; };
+		046C3EA52BE917E800BBFF47 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA42BE917E800BBFF47 /* ContentView.swift */; };
+		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
+		046C3EAA2BE917E900BBFF47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */; };
+		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
+		046C3EBE2BE917E900BBFF47 /* LocaLocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */; };
+		046C3EC02BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		046C3EB02BE917E900BBFF47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 046C3E972BE917E800BBFF47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 046C3E9E2BE917E800BBFF47;
+			remoteInfo = LocaLoc;
+		};
+		046C3EBA2BE917E900BBFF47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 046C3E972BE917E800BBFF47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 046C3E9E2BE917E800BBFF47;
+			remoteInfo = LocaLoc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocApp.swift; sourceTree = "<group>"; };
+		046C3EA42BE917E800BBFF47 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		046C3EAF2BE917E900BBFF47 /* LocaLocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocaLocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocTests.swift; sourceTree = "<group>"; };
+		046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocaLocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocUITests.swift; sourceTree = "<group>"; };
+		046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		046C3E9C2BE917E800BBFF47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046C3EAC2BE917E900BBFF47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046C3EB62BE917E900BBFF47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		046C3E962BE917E800BBFF47 = {
+			isa = PBXGroup;
+			children = (
+				046C3EA12BE917E800BBFF47 /* LocaLoc */,
+				046C3EB22BE917E900BBFF47 /* LocaLocTests */,
+				046C3EBC2BE917E900BBFF47 /* LocaLocUITests */,
+				046C3EA02BE917E800BBFF47 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		046C3EA02BE917E800BBFF47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				046C3E9F2BE917E800BBFF47 /* LocaLoc.app */,
+				046C3EAF2BE917E900BBFF47 /* LocaLocTests.xctest */,
+				046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		046C3EA12BE917E800BBFF47 /* LocaLoc */ = {
+			isa = PBXGroup;
+			children = (
+				046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */,
+				046C3EA42BE917E800BBFF47 /* ContentView.swift */,
+				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
+				046C3EA82BE917E900BBFF47 /* Preview Content */,
+			);
+			path = LocaLoc;
+			sourceTree = "<group>";
+		};
+		046C3EA82BE917E900BBFF47 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		046C3EB22BE917E900BBFF47 /* LocaLocTests */ = {
+			isa = PBXGroup;
+			children = (
+				046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */,
+			);
+			path = LocaLocTests;
+			sourceTree = "<group>";
+		};
+		046C3EBC2BE917E900BBFF47 /* LocaLocUITests */ = {
+			isa = PBXGroup;
+			children = (
+				046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */,
+				046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */,
+			);
+			path = LocaLocUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		046C3E9E2BE917E800BBFF47 /* LocaLoc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 046C3EC32BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLoc" */;
+			buildPhases = (
+				046C3E9B2BE917E800BBFF47 /* Sources */,
+				046C3E9C2BE917E800BBFF47 /* Frameworks */,
+				046C3E9D2BE917E800BBFF47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocaLoc;
+			productName = LocaLoc;
+			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		046C3EAE2BE917E900BBFF47 /* LocaLocTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 046C3EC62BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLocTests" */;
+			buildPhases = (
+				046C3EAB2BE917E900BBFF47 /* Sources */,
+				046C3EAC2BE917E900BBFF47 /* Frameworks */,
+				046C3EAD2BE917E900BBFF47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				046C3EB12BE917E900BBFF47 /* PBXTargetDependency */,
+			);
+			name = LocaLocTests;
+			productName = LocaLocTests;
+			productReference = 046C3EAF2BE917E900BBFF47 /* LocaLocTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		046C3EB82BE917E900BBFF47 /* LocaLocUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 046C3EC92BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLocUITests" */;
+			buildPhases = (
+				046C3EB52BE917E900BBFF47 /* Sources */,
+				046C3EB62BE917E900BBFF47 /* Frameworks */,
+				046C3EB72BE917E900BBFF47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				046C3EBB2BE917E900BBFF47 /* PBXTargetDependency */,
+			);
+			name = LocaLocUITests;
+			productName = LocaLocUITests;
+			productReference = 046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		046C3E972BE917E800BBFF47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					046C3E9E2BE917E800BBFF47 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					046C3EAE2BE917E900BBFF47 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 046C3E9E2BE917E800BBFF47;
+					};
+					046C3EB82BE917E900BBFF47 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 046C3E9E2BE917E800BBFF47;
+					};
+				};
+			};
+			buildConfigurationList = 046C3E9A2BE917E800BBFF47 /* Build configuration list for PBXProject "LocaLoc" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 046C3E962BE917E800BBFF47;
+			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				046C3E9E2BE917E800BBFF47 /* LocaLoc */,
+				046C3EAE2BE917E900BBFF47 /* LocaLocTests */,
+				046C3EB82BE917E900BBFF47 /* LocaLocUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		046C3E9D2BE917E800BBFF47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046C3EAA2BE917E900BBFF47 /* Preview Assets.xcassets in Resources */,
+				046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046C3EAD2BE917E900BBFF47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046C3EB72BE917E900BBFF47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		046C3E9B2BE917E800BBFF47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046C3EA52BE917E800BBFF47 /* ContentView.swift in Sources */,
+				046C3EA32BE917E800BBFF47 /* LocaLocApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046C3EAB2BE917E900BBFF47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046C3EB52BE917E900BBFF47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046C3EC02BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift in Sources */,
+				046C3EBE2BE917E900BBFF47 /* LocaLocUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		046C3EB12BE917E900BBFF47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 046C3E9E2BE917E800BBFF47 /* LocaLoc */;
+			targetProxy = 046C3EB02BE917E900BBFF47 /* PBXContainerItemProxy */;
+		};
+		046C3EBB2BE917E900BBFF47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 046C3E9E2BE917E800BBFF47 /* LocaLoc */;
+			targetProxy = 046C3EBA2BE917E900BBFF47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		046C3EC12BE917E900BBFF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		046C3EC22BE917E900BBFF47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		046C3EC42BE917E900BBFF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Preview Content\"";
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLoc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		046C3EC52BE917E900BBFF47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Preview Content\"";
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLoc;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		046C3EC72BE917E900BBFF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLocTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocaLoc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LocaLoc";
+			};
+			name = Debug;
+		};
+		046C3EC82BE917E900BBFF47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLocTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LocaLoc.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LocaLoc";
+			};
+			name = Release;
+		};
+		046C3ECA2BE917E900BBFF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLocUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LocaLoc;
+			};
+			name = Debug;
+		};
+		046C3ECB2BE917E900BBFF47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLocUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LocaLoc;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		046C3E9A2BE917E800BBFF47 /* Build configuration list for PBXProject "LocaLoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046C3EC12BE917E900BBFF47 /* Debug */,
+				046C3EC22BE917E900BBFF47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		046C3EC32BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046C3EC42BE917E900BBFF47 /* Debug */,
+				046C3EC52BE917E900BBFF47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		046C3EC62BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLocTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046C3EC72BE917E900BBFF47 /* Debug */,
+				046C3EC82BE917E900BBFF47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		046C3EC92BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLocUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046C3ECA2BE917E900BBFF47 /* Debug */,
+				046C3ECB2BE917E900BBFF47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 046C3E972BE917E800BBFF47 /* Project object */;
+}
