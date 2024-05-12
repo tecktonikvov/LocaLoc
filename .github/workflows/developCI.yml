@@ -24,7 +24,5 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - name: Checking Ruby Component versions
-        run: gem install fastlane
       - name: Run a one-line script
         run: bundle exec fastlane testsLane
