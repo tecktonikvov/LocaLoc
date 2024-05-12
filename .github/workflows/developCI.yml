@@ -25,4 +25,4 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: bundle exec fastlane testLane
+        run: bundle exec fastlane testsLane
