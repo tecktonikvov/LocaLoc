@@ -443,6 +443,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(LL_APP_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(LL_APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(LL_APP_NAME)";
@@ -478,6 +479,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(LL_APP_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(LL_APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(LL_APP_NAME)";
