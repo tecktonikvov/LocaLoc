@@ -1,0 +1,80 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "LocaLoc-debug.module": ["<LocaLoc-debug.module>"]
+  "LocaLocPackageTests-debug.test": ["<LocaLocPackageTests-debug.test>"]
+  "LocaLocTests-debug.module": ["<LocaLocTests-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<LocaLoc-debug.module>"]
+  "test": ["<LocaLoc-debug.module>","<LocaLocPackageTests-debug.test>","<LocaLocTests-debug.module>"]
+default: "main"
+nodes:
+  "/Users/mac/Desktop/LocaLoc/Sources/LocaLoc/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/mac/Desktop/LocaLoc/Tests/LocaLocTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "<LocaLoc-debug.module>":
+    tool: phony
+    inputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.swift.o","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.swiftmodule"]
+    outputs: ["<LocaLoc-debug.module>"]
+
+  "<LocaLocPackageTests-debug.test>":
+    tool: phony
+    inputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocPackageTests.xctest/Contents/MacOS/LocaLocPackageTests"]
+    outputs: ["<LocaLocPackageTests-debug.test>"]
+
+  "<LocaLocTests-debug.module>":
+    tool: phony
+    inputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.build/LocaLocTests.swift.o","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.swiftmodule"]
+    outputs: ["<LocaLocTests-debug.module>"]
+
+  "C.LocaLoc-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/mac/Desktop/LocaLoc/Sources/LocaLoc/LocaLoc.swift"]
+    outputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.swift.o","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "LocaLoc"
+    module-output-path: "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.swiftmodule"
+    import-paths: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug"]
+    temps-path: "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build"
+    objects: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.swift.o"]
+    other-args: ["-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-package-name","localoc"]
+    sources: ["/Users/mac/Desktop/LocaLoc/Sources/LocaLoc/LocaLoc.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "C.LocaLocPackageTests-debug.test":
+    tool: shell
+    inputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.swift.o","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.build/LocaLocTests.swift.o"]
+    outputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocPackageTests.xctest/Contents/MacOS/LocaLocPackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/LocaLocPackageTests.xctest/Contents/MacOS/LocaLocPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug","-o","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocPackageTests.xctest/Contents/MacOS/LocaLocPackageTests","-module-name","LocaLocPackageTests","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocPackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/macosx","-target","arm64-apple-macosx13.0","-Xlinker","-add_ast_path","-Xlinker","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"]
+
+  "C.LocaLocTests-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/mac/Desktop/LocaLoc/Tests/LocaLocTests/LocaLocTests.swift","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.swiftmodule"]
+    outputs: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.build/LocaLocTests.swift.o","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "LocaLocTests"
+    module-output-path: "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.swiftmodule"
+    import-paths: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug"]
+    temps-path: "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.build"
+    objects: ["/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLocTests.build/LocaLocTests.swift.o"]
+    other-args: ["-target","arm64-apple-macosx13.0","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-g","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-package-name","localoc"]
+    sources: ["/Users/mac/Desktop/LocaLoc/Tests/LocaLocTests/LocaLocTests.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 8
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/mac/Desktop/LocaLoc/Sources/LocaLoc/","/Users/mac/Desktop/LocaLoc/Tests/LocaLocTests/","/Users/mac/Desktop/LocaLoc/Package.swift","/Users/mac/Desktop/LocaLoc/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

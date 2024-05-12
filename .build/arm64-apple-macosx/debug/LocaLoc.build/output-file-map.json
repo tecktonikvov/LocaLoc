@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/master.swiftdeps"
+  },
+  "/Users/mac/Desktop/LocaLoc/Sources/LocaLoc/LocaLoc.swift": {
+    "dependencies": "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.d",
+    "object": "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.swift.o",
+    "swiftmodule": "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc~partial.swiftmodule",
+    "swift-dependencies": "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc.swiftdeps"
+  }
+}

@@ -1,0 +1,4 @@
+module LocaLoc {
+    header "/Users/mac/Desktop/LocaLoc/.build/arm64-apple-macosx/debug/LocaLoc.build/LocaLoc-Swift.h"
+    requires objc
+}
