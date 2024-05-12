@@ -9,6 +9,12 @@ open class Fastfile: LaneFile {
     override public init() {
         super.init()
     }
+    
+    func testLane() {
+        desc("Test lane description")
+        /// Makes a build and runs a tests
+        scan()
+    }
 }
 
 // Please don't remove the lines below
