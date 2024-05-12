@@ -46,7 +46,7 @@
 		C0459CAB27261886002CDFB9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = $SRCROOT/../..;
+			dstPath = "$SRCROOT/../..";
 			dstSubfolderSpec = 0;
 			files = (
 				C0459CAC27261897002CDFB9 /* FastlaneRunner in CopyFiles */,
@@ -88,8 +88,8 @@
 		D55B28C01F6C588300DC42C5 /* Scanfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scanfile.swift; path = ../Scanfile.swift; sourceTree = "<group>"; };
 		D55B28C11F6C588300DC42C5 /* Screengrabfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Screengrabfile.swift; path = ../Screengrabfile.swift; sourceTree = "<group>"; };
 		D55B28C21F6C588300DC42C5 /* Snapshotfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Snapshotfile.swift; path = ../Snapshotfile.swift; sourceTree = "<group>"; };
-		D5A7C48D1F7C4DAF00A91DE6 /* Appfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Appfile.swift; path = ../Appfile.swift; sourceTree = "<group>"; };
-		D5A7C48E1F7C4DAF00A91DE6 /* Fastfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fastfile.swift; path = ../Fastfile.swift; sourceTree = "<group>"; };
+		D5A7C48D1F7C4DAF00A91DE6 /* Appfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Appfile.swift; path = ../../Appfile.swift; sourceTree = "<group>"; };
+		D5A7C48E1F7C4DAF00A91DE6 /* Fastfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fastfile.swift; path = ../../Fastfile.swift; sourceTree = "<group>"; };
 		D5B8A5B21FFDC49D00536B24 /* ControlCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControlCommand.swift; path = ../ControlCommand.swift; sourceTree = "<group>"; };
 		D5BAFD111F7DAAFC0030B324 /* ArgumentProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ArgumentProcessor.swift; path = ../ArgumentProcessor.swift; sourceTree = "<group>"; };
 		D5D1DE981FFEE8E900502A00 /* RubyCommandable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RubyCommandable.swift; path = ../RubyCommandable.swift; sourceTree = "<group>"; };
@@ -404,7 +404,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -417,7 +416,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
