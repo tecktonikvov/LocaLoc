@@ -26,10 +26,10 @@ jobs:
       - name: install fastlane & plugins
         run: bundle install
         
-      - name: Build
-        run: swift build
+      #- name: Build
+       # run: swift build
         
-      - name: Run tests
-        run: swift test
-      #- name: Build and run tests
-       # run: bundle exec fastlane testsLane
+      #- name: Run tests
+       # run: swift test
+      - name: Build and run tests
+        run: bundle exec fastlane testsLane
