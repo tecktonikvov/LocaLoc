@@ -11,6 +11,6 @@ import Foundation
 class Fastfile: LaneFile {
 	func testsLane() {
         desc("UI and Unit tests lane")
-		scan()
+        scan(device: .fastlaneDefault("iPhone 11"), onlyTesting: true)
 	}
 }
