@@ -16,7 +16,14 @@ struct MainView: View {
                 view.tabItem()
             }
         }
+        .onAppear {
+            let standardAppearance = UITabBarAppearance()
+            standardAppearance.configureWithTransparentBackground()
+            standardAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+            UITabBar.appearance().standardAppearance = standardAppearance
+        }
         .tint(Color.ContentPrimary.Text.main)
+
     }
 }
 
