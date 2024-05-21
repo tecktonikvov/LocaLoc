@@ -1,0 +1,22 @@
+//
+//  SettingsView.swift
+//  LocaLoc
+//
+//  Created by Volodymyr Kotsiubenko on 19/5/24.
+//
+
+import SwiftUI
+
+struct SettingsView: View {
+    @EnvironmentObject var viewModel: SettingsViewModel
+    
+    var body: some View {
+        ZStack {
+            
+        }
+        .background {
+            Color.ContentPrimary.background
+                .ignoresSafeArea()
+        }
+    }
+}
