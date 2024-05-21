@@ -58,7 +58,7 @@ struct ChannelsModel {
             ),
             missedUpdatesNumber: 6,
             lastUpdateTime: Date().addingTimeInterval(
-                -25200
+                -2520000000
             ),
             isMuted: false
         ),
@@ -69,7 +69,7 @@ struct ChannelsModel {
             imageUrl: nil,
             missedUpdatesNumber: 0,
             lastUpdateTime: Date().addingTimeInterval(
-                -14400
+                -144000000
             ),
             isMuted: true
         ),
@@ -82,7 +82,7 @@ struct ChannelsModel {
             ),
             missedUpdatesNumber: 111,
             lastUpdateTime: Date().addingTimeInterval(
-                -25200
+                -25200000
             ),
             isMuted: false
         ),
@@ -93,7 +93,7 @@ struct ChannelsModel {
             imageUrl: nil,
             missedUpdatesNumber: 88,
             lastUpdateTime: Date().addingTimeInterval(
-                -14400
+                -1440000
             ),
             isMuted: true
         ),
@@ -106,7 +106,7 @@ struct ChannelsModel {
             ),
             missedUpdatesNumber: 6,
             lastUpdateTime: Date().addingTimeInterval(
-                -25200
+                -252000
             ),
             isMuted: false
         )

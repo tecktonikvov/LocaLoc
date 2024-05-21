@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */; };
+		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
 		046C3EA32BE917E800BBFF47 /* LocaLocApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EAA2BE917E900BBFF47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */; };
@@ -31,6 +33,7 @@
 		047ECA2C2BFB82520065837C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2B2BFB82520065837C /* Icons.xcassets */; };
 		047ECA2E2BFB83B90065837C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA2D2BFB83B90065837C /* Color.swift */; };
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
+		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatar.swift; sourceTree = "<group>"; };
+		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +227,9 @@
 		047ECA142BFA91DC0065837C /* Channels */ = {
 			isa = PBXGroup;
 			children = (
+				04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */,
 				047ECA192BFA92060065837C /* ChannelsComposer.swift */,
+				04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */,
 				047ECA152BFA91F40065837C /* ChannelsView.swift */,
 				047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */,
 			);
@@ -270,6 +278,9 @@
 			dependencies = (
 			);
 			name = LocaLoc;
+			packageProductDependencies = (
+				04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */,
+			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
 			productType = "com.apple.product-type.application";
@@ -342,6 +353,9 @@
 				Base,
 			);
 			mainGroup = 046C3E962BE917E800BBFF47;
+			packageReferences = (
+				04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -387,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				047ECA082BFA85E80065837C /* Coordinator.swift in Sources */,
+				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				047ECA112BFA88AC0065837C /* MainView.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
@@ -398,6 +413,7 @@
 				046C3EA32BE917E800BBFF47 /* LocaLocApp.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
 				047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */,
+				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
 				047ECA0F2BFA86DB0065837C /* MainComposer.swift in Sources */,
 				047ECA132BFA88B50065837C /* MainViewModel.swift in Sources */,
@@ -478,7 +494,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -543,7 +559,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				EXCLUDED_ARCHS = arm64;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -572,6 +588,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
@@ -608,6 +625,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Preview Content\"";
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
@@ -750,6 +768,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 046C3E972BE917E800BBFF47 /* Project object */;
 }
