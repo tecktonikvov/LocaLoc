@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //  LocaLoc
 //
 //  Created by Volodymyr Kotsiubenko on 19/5/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MainView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+struct HomeView: View {
+    @EnvironmentObject var viewModel: HomeViewModel
     
     var body: some View {
         TabView {
@@ -57,5 +57,5 @@ fileprivate extension TabScene<AnyView> {
 }
 
 #Preview {
-    MainComposer.view()
+    HomeComposer.view(authenticationService: AuthenticationService(dataRepository: DataRepository.shared))
 }

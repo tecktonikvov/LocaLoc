@@ -123,7 +123,7 @@ struct Channel: Identifiable, Equatable {
     let isMuted: Bool
 }
 
-class ChannelsViewModel: ObservableObject {
+final class ChannelsViewModel: ObservableObject {
     @Published private(set) var error: Error? = nil
 
     @Published private(set) var model: ChannelsModel

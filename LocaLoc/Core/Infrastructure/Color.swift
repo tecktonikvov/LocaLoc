@@ -13,7 +13,7 @@ extension Color {
         
         static let border = Color("text_main")
         static let background = Extra.taupe
-        static let separator = Color("separator_color")
+        static let separator = Color("separator")
       
         struct Text {
             private init() {}

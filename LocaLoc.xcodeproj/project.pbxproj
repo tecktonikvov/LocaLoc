@@ -7,19 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC02BFE4C17005E3930 /* GoogleSignIn */; };
+		040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC32BFE51DB005E3930 /* FirebaseAuth */; };
+		040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85822C008D2F000F8F52 /* AuthenticationService.swift */; };
+		040D85852C008D8E000F8F52 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* DataRepository.swift */; };
+		040D85882C008F97000F8F52 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85872C008F97000F8F52 /* Profile.swift */; };
+		040D858A2C008FA5000F8F52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85892C008FA5000F8F52 /* User.swift */; };
+		040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */; };
+		040E4EBC2C0095D100056856 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
 		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */; };
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
-		046C3EA32BE917E800BBFF47 /* LocaLocApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */; };
+		04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */; };
+		04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */; };
+		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
+		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
-		046C3EAA2BE917E900BBFF47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
 		046C3EBE2BE917E900BBFF47 /* LocaLocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */; };
 		046C3EC02BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */; };
 		047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA042BFA85C60065837C /* CoordinatorProtocol.swift */; };
 		047ECA082BFA85E80065837C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA072BFA85E80065837C /* Coordinator.swift */; };
 		047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */; };
-		047ECA0F2BFA86DB0065837C /* MainComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0E2BFA86DB0065837C /* MainComposer.swift */; };
-		047ECA112BFA88AC0065837C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA102BFA88AC0065837C /* MainView.swift */; };
+		047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0E2BFA86DB0065837C /* HomeComposer.swift */; };
+		047ECA112BFA88AC0065837C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA102BFA88AC0065837C /* HomeView.swift */; };
 		047ECA132BFA88B50065837C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA122BFA88B50065837C /* MainViewModel.swift */; };
 		047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA152BFA91F40065837C /* ChannelsView.swift */; };
 		047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */; };
@@ -33,6 +43,7 @@
 		047ECA2C2BFB82520065837C /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2B2BFB82520065837C /* Icons.xcassets */; };
 		047ECA2E2BFB83B90065837C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA2D2BFB83B90065837C /* Color.swift */; };
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
+		0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D8262BFF47C600729C34 /* UserDefaults.swift */; };
 		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
@@ -54,24 +65,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040B9EBA2BFE480B005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		040B9EBC2BFE4810005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		040D85822C008D2F000F8F52 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		040D85842C008D8E000F8F52 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		040D85872C008F97000F8F52 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		040D85892C008FA5000F8F52 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderType.swift; sourceTree = "<group>"; };
+		040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationStatus.swift; sourceTree = "<group>"; };
 		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatar.swift; sourceTree = "<group>"; };
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
+		04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocApp.swift; sourceTree = "<group>"; };
+		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		046C3EAF2BE917E900BBFF47 /* LocaLocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocaLocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocTests.swift; sourceTree = "<group>"; };
 		046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocaLocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocUITests.swift; sourceTree = "<group>"; };
 		046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		046C3ECC2BE91BDC00BBFF47 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		046C3ECD2BE91C8700BBFF47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		046C3ECD2BE91C8700BBFF47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		047ECA042BFA85C60065837C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		047ECA072BFA85E80065837C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		047ECA0E2BFA86DB0065837C /* MainComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainComposer.swift; sourceTree = "<group>"; };
-		047ECA102BFA88AC0065837C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		047ECA0E2BFA86DB0065837C /* HomeComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComposer.swift; sourceTree = "<group>"; };
+		047ECA102BFA88AC0065837C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		047ECA122BFA88B50065837C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		047ECA152BFA91F40065837C /* ChannelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
 		047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +106,7 @@
 		047ECA2B2BFB82520065837C /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		047ECA2D2BFB83B90065837C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		047ECA2F2BFB84460065837C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		0485D8262BFF47C600729C34 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +115,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */,
+				040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */,
+				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +137,118 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040B9EB72BFE47F7005E3930 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				040B9EB92BFE4802005E3930 /* Prod */,
+				040B9EB82BFE47FD005E3930 /* Dev */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		040B9EB82BFE47FD005E3930 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				040B9EBC2BFE4810005E3930 /* GoogleService-Info.plist */,
+			);
+			path = Dev;
+			sourceTree = "<group>";
+		};
+		040B9EB92BFE4802005E3930 /* Prod */ = {
+			isa = PBXGroup;
+			children = (
+				040B9EBA2BFE480B005E3930 /* GoogleService-Info.plist */,
+			);
+			path = Prod;
+			sourceTree = "<group>";
+		};
+		040B9EC72BFE6C45005E3930 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				040B9EB72BFE47F7005E3930 /* Firebase */,
+				046C3ECD2BE91C8700BBFF47 /* Info.plist */,
+				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
+				047ECA2F2BFB84460065837C /* Colors.xcassets */,
+				047ECA2B2BFB82520065837C /* Icons.xcassets */,
+				046C3ECC2BE91BDC00BBFF47 /* Config.xcconfig */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		040B9ECA2BFE6FC9005E3930 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				047ECA0E2BFA86DB0065837C /* HomeComposer.swift */,
+				047ECA102BFA88AC0065837C /* HomeView.swift */,
+				047ECA122BFA88B50065837C /* MainViewModel.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		040B9ECB2BFE6FD0005E3930 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				047ECA142BFA91DC0065837C /* Channels */,
+				047ECA1F2BFA92C00065837C /* Settings */,
+			);
+			name = Child;
+			sourceTree = "<group>";
+		};
+		040D85812C008D29000F8F52 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				040D85822C008D2F000F8F52 /* AuthenticationService.swift */,
+				040D85842C008D8E000F8F52 /* DataRepository.swift */,
+				0485D8262BFF47C600729C34 /* UserDefaults.swift */,
+				040D85862C008F8B000F8F52 /* Models */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		040D85862C008F8B000F8F52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				040D85872C008F97000F8F52 /* Profile.swift */,
+				040D85892C008FA5000F8F52 /* User.swift */,
+				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
+				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		040E4EBD2C024B1600056856 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				040D85812C008D29000F8F52 /* Service */,
+				047ECA062BFA85CB0065837C /* Infrastructure */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		040E4EBE2C024B2800056856 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		04261AE22BFCE68800FBAFC3 /* AuthenticationCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */,
+			);
+			path = AuthenticationCoordinator;
+			sourceTree = "<group>";
+		};
+		04261AE62BFCE9F000FBAFC3 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */,
+				04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		046C3E962BE917E800BBFF47 = {
 			isa = PBXGroup;
 			children = (
@@ -136,24 +272,13 @@
 		046C3EA12BE917E800BBFF47 /* LocaLoc */ = {
 			isa = PBXGroup;
 			children = (
-				047ECA032BFA85B70065837C /* Coordinators */,
-				046C3ECD2BE91C8700BBFF47 /* Info.plist */,
-				046C3EA22BE917E800BBFF47 /* LocaLocApp.swift */,
-				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
-				047ECA2F2BFB84460065837C /* Colors.xcassets */,
-				047ECA2B2BFB82520065837C /* Icons.xcassets */,
-				046C3EA82BE917E900BBFF47 /* Preview Content */,
-				046C3ECC2BE91BDC00BBFF47 /* Config.xcconfig */,
+				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
+				040E4EBD2C024B1600056856 /* Core */,
+				040E4EBE2C024B2800056856 /* Network */,
+				040B9EC72BFE6C45005E3930 /* Resources */,
+				047ECA0C2BFA86550065837C /* Scenes */,
 			);
 			path = LocaLoc;
-			sourceTree = "<group>";
-		};
-		046C3EA82BE917E900BBFF47 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				046C3EA92BE917E900BBFF47 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		046C3EB22BE917E900BBFF47 /* LocaLocTests */ = {
@@ -176,10 +301,8 @@
 		047ECA032BFA85B70065837C /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				047ECA1C2BFA92410065837C /* New Group */,
-				047ECA0C2BFA86550065837C /* Scenes */,
+				04261AE22BFCE68800FBAFC3 /* AuthenticationCoordinator */,
 				047ECA092BFA85F20065837C /* AppCoordinator */,
-				047ECA062BFA85CB0065837C /* Infrastructure */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -208,20 +331,20 @@
 		047ECA0C2BFA86550065837C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				047ECA262BFB81C20065837C /* Child */,
-				047ECA0D2BFA865D0065837C /* Main */,
+				047ECA032BFA85B70065837C /* Coordinators */,
+				04261AE62BFCE9F000FBAFC3 /* Authentication */,
+				047ECA0D2BFA865D0065837C /* Home */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		047ECA0D2BFA865D0065837C /* Main */ = {
+		047ECA0D2BFA865D0065837C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				047ECA0E2BFA86DB0065837C /* MainComposer.swift */,
-				047ECA102BFA88AC0065837C /* MainView.swift */,
-				047ECA122BFA88B50065837C /* MainViewModel.swift */,
+				040B9ECB2BFE6FD0005E3930 /* Child */,
+				040B9ECA2BFE6FC9005E3930 /* Main */,
 			);
-			name = Main;
+			name = Home;
 			sourceTree = "<group>";
 		};
 		047ECA142BFA91DC0065837C /* Channels */ = {
@@ -236,13 +359,6 @@
 			name = Channels;
 			sourceTree = "<group>";
 		};
-		047ECA1C2BFA92410065837C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		047ECA1F2BFA92C00065837C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,15 +369,6 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		047ECA262BFB81C20065837C /* Child */ = {
-			isa = PBXGroup;
-			children = (
-				047ECA1F2BFA92C00065837C /* Settings */,
-				047ECA142BFA91DC0065837C /* Channels */,
-			);
-			name = Child;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,6 +376,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 046C3EC32BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLoc" */;
 			buildPhases = (
+				040B9EBE2BFE4836005E3930 /* Firebase */,
 				046C3E9B2BE917E800BBFF47 /* Sources */,
 				046C3E9C2BE917E800BBFF47 /* Frameworks */,
 				046C3E9D2BE917E800BBFF47 /* Resources */,
@@ -280,6 +388,8 @@
 			name = LocaLoc;
 			packageProductDependencies = (
 				04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */,
+				040B9EC02BFE4C17005E3930 /* GoogleSignIn */,
+				040B9EC32BFE51DB005E3930 /* FirebaseAuth */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -355,6 +465,8 @@
 			mainGroup = 046C3E962BE917E800BBFF47;
 			packageReferences = (
 				04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				040B9EC22BFE51DB005E3930 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
@@ -372,7 +484,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046C3EAA2BE917E900BBFF47 /* Preview Assets.xcassets in Resources */,
 				047ECA302BFB84460065837C /* Colors.xcassets in Resources */,
 				047ECA2C2BFB82520065837C /* Icons.xcassets in Resources */,
 				046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */,
@@ -395,27 +506,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		040B9EBE2BFE4836005E3930 /* Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Firebase;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/${TARGET_NAME}/Resources/Firebase/Dev/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/${TARGET_NAME}/Resources/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\n    echo \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\n    echo \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\n    echo \"Using ${GOOGLESERVICE_INFO_PROD}\"\n    cp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"Using ${GOOGLESERVICE_INFO_DEV}\"\n    cp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		046C3E9B2BE917E800BBFF47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,
 				047ECA082BFA85E80065837C /* Coordinator.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
-				047ECA112BFA88AC0065837C /* MainView.swift in Sources */,
+				040D85882C008F97000F8F52 /* Profile.swift in Sources */,
+				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
+				040D858A2C008FA5000F8F52 /* User.swift in Sources */,
+				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
+				040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */,
+				040D85852C008D8E000F8F52 /* DataRepository.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
+				04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
 				047ECA1E2BFA925F0065837C /* SceneComposer.swift in Sources */,
 				047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */,
-				046C3EA32BE917E800BBFF47 /* LocaLocApp.swift in Sources */,
+				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
+				040E4EBC2C0095D100056856 /* UserAuthenticationStatus.swift in Sources */,
+				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
-				047ECA0F2BFA86DB0065837C /* MainComposer.swift in Sources */,
+				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
+				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
 				047ECA132BFA88B50065837C /* MainViewModel.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
@@ -582,15 +725,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
-				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Resources\"";
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LocaLoc/Info.plist;
+				INFOPLIST_FILE = LocaLoc/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -604,6 +749,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(LL_APP_VERSION)";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(LL_APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(LL_APP_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -619,15 +765,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
-				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Resources\"";
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LocaLoc/Info.plist;
+				INFOPLIST_FILE = LocaLoc/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -641,6 +789,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(LL_APP_VERSION)";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(LL_APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(LL_APP_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -770,6 +919,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
+		040B9EC22BFE51DB005E3930 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.26.0;
+			};
+		};
 		04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -781,6 +946,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		040B9EC02BFE4C17005E3930 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		040B9EC32BFE51DB005E3930 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040B9EC22BFE51DB005E3930 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;

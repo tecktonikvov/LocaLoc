@@ -12,7 +12,11 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
-            
+            Button {
+                viewModel.signOut()
+            } label: {
+                Text("Sign out")
+            }
         }
         .background {
             Color.ContentPrimary.background

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChannelsView: View {
     @EnvironmentObject var viewModel: ChannelsViewModel
+    
     @State var selectedChanels: [Channel] = []
     
     var body: some View {
@@ -16,7 +17,7 @@ struct ChannelsView: View {
             HStack {
                 Spacer()
                 Button {
-                    print("Button was tapped")
+                    
                 } label: {
                     Image(systemName: "plus.circle")
                         .resizable()

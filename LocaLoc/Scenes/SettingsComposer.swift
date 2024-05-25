@@ -8,10 +8,11 @@
 import SwiftUI
 
 final class SettingsComposer: SceneComposer {
-    static func compose() -> TabScene<AnyView> {
-        let viewModel = SettingsViewModel()
+    static func compose(authenticationService: AuthenticationService) -> TabScene<AnyView> {
+        let viewModel = SettingsViewModel(authenticationService: authenticationService)
         let view = SettingsView()
             .environmentObject(viewModel)
+        
         return TabScene(type: .settings) {
             AnyView(view)
         }

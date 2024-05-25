@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  HomeModel.swift
 //  LocaLoc
 //
 //  Created by Volodymyr Kotsiubenko on 19/5/24.
@@ -8,18 +8,18 @@
 import Combine
 import SwiftUI
 
-struct MainModel {
+struct HomeModel {
     let tabScenes: [TabScene<AnyView>]
 }
 
-class MainViewModel: ObservableObject {
+class HomeViewModel: ObservableObject {
     @Published private(set) var error: Error? = nil
 
-    let model: MainModel
+    let model: HomeModel
     let didNavigateBack = PassthroughSubject<Void, Never>()
     
     // MARK: - Init
-    init(model: MainModel) {
+    init(model: HomeModel) {
         self.model = model
     }
 
