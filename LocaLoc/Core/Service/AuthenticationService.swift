@@ -92,7 +92,6 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
         
         dataRepository.userAuthenticationStatus = .authorized
         
-        dataRepository.user.authenticationStatus = .authorized
         dataRepository.user.authenticationProviderType = providerType
         dataRepository.user.profile = profile
     }
@@ -100,7 +99,6 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
     private func clearUser() {
         dataRepository.user.profile = nil
         dataRepository.userAuthenticationStatus = .unauthorized
-        dataRepository.user.authenticationStatus = .unauthorized
     }
     
     func googleSignOut() {

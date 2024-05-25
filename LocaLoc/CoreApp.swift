@@ -19,7 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct CoreApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var appCoordinator = AppCoordinator(path: NavigationPath())
+    @StateObject private var appCoordinator = AppCoordinator(path: NavigationPath(), dataRepository: DataRepository.shared)
     @State private var shouldShowAuthentication = false
 
     var body: some Scene {

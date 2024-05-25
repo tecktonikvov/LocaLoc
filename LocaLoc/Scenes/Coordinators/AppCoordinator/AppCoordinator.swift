@@ -13,10 +13,10 @@ final class AppCoordinator: ObservableObject {
 
     private var authenticationService: AuthenticationService
 
-    init(path: NavigationPath) {
+    init(path: NavigationPath, dataRepository: DataRepository) {
         self.path = path
         self.authenticationService = AuthenticationService(dataRepository: DataRepository.shared)
-        self.userAuthenticationStatus = DataRepository.shared.user.authenticationStatus
+        self.userAuthenticationStatus = dataRepository.userAuthenticationStatus
         
         DataRepository.shared.$userAuthenticationStatus.assign(to: &$userAuthenticationStatus)
     }

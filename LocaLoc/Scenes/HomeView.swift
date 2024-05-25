@@ -56,6 +56,6 @@ fileprivate extension TabScene<AnyView> {
     }
 }
 
-#Preview {
-    HomeComposer.view(authenticationService: AuthenticationService(dataRepository: DataRepository.shared))
-}
+//#Preview {
+//    HomeComposer.view(authenticationService: AuthenticationService(dataRepository: DataRepository.shared))
+//}
