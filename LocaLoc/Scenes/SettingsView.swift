@@ -19,7 +19,7 @@ struct SettingsView: View {
             }
         }
         .background {
-            Color.ContentPrimary.background
+            Color.background
                 .ignoresSafeArea()
         }
     }

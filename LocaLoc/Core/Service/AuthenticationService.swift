@@ -74,6 +74,8 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
             imageUrl: firebaseSignInResult.user.photoURL?.absoluteString ?? "",
             providerType: .google
         )
+        
+        dataRepository.userAuthenticationStatus = .authorized
     }
     
     private func updateUserModel(
@@ -89,20 +91,18 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
             email: email,
             imageUrl: imageUrl ?? ""
         )
-        
-        dataRepository.userAuthenticationStatus = .authorized
-        
+                
         dataRepository.user.authenticationProviderType = providerType
         dataRepository.user.profile = profile
     }
     
     private func clearUser() {
         dataRepository.user.profile = nil
-        dataRepository.userAuthenticationStatus = .unauthorized
     }
     
     func googleSignOut() {
         GIDSignIn.sharedInstance.signOut()
         clearUser()
+        dataRepository.userAuthenticationStatus = .unauthorized
     }
 }

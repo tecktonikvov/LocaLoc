@@ -16,6 +16,9 @@
 		040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */; };
 		040E4EBC2C0095D100056856 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
 		040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */; };
+		040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC72C02633800056856 /* ChannelCreationComposer.swift */; };
+		040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC92C02633C00056856 /* ChannelCreationView.swift */; };
+		040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */; };
 		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */; };
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
 		04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */; };
@@ -75,6 +78,9 @@
 		040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderType.swift; sourceTree = "<group>"; };
 		040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationStatus.swift; sourceTree = "<group>"; };
 		040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		040E4EC72C02633800056856 /* ChannelCreationComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationComposer.swift; sourceTree = "<group>"; };
+		040E4EC92C02633C00056856 /* ChannelCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationView.swift; sourceTree = "<group>"; };
+		040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationViewModel.swift; sourceTree = "<group>"; };
 		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatar.swift; sourceTree = "<group>"; };
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
 		04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 		040B9ECB2BFE6FD0005E3930 /* Child */ = {
 			isa = PBXGroup;
 			children = (
+				040E4EC62C02631F00056856 /* ChannelCreation */,
 				047ECA142BFA91DC0065837C /* Channels */,
 				047ECA1F2BFA92C00065837C /* Settings */,
 			);
@@ -232,6 +239,16 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		040E4EC62C02631F00056856 /* ChannelCreation */ = {
+			isa = PBXGroup;
+			children = (
+				040E4EC72C02633800056856 /* ChannelCreationComposer.swift */,
+				040E4EC92C02633C00056856 /* ChannelCreationView.swift */,
+				040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */,
+			);
+			name = ChannelCreation;
 			sourceTree = "<group>";
 		};
 		04261AE22BFCE68800FBAFC3 /* AuthenticationCoordinator */ = {
@@ -545,8 +562,10 @@
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
 				040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */,
+				040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */,
 				040D85852C008D8E000F8F52 /* DataRepository.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
+				040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
 				04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
@@ -564,6 +583,7 @@
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
 				047ECA132BFA88B50065837C /* MainViewModel.swift in Sources */,
+				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
 			);
@@ -741,6 +761,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc needs access to your camera to take photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -781,6 +802,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc needs access to your camera to take photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

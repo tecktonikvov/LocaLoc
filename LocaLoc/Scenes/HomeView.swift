@@ -22,7 +22,7 @@ struct HomeView: View {
             standardAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
             UITabBar.appearance().standardAppearance = standardAppearance
         }
-        .tint(Color.ContentPrimary.Text.main)
+        .tint(Color.Text.main)
 
     }
 }

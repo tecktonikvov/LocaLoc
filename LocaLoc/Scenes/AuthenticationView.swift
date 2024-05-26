@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @ObservedObject var viewModel: AuthenticationViewModel
     
     var body: some View {
         VStack {
             Text("Authorization")
-                .foregroundStyle(Color.ContentPrimary.Text.main)
+                .foregroundStyle(Color.Text.main)
                 .font(.system(size: 32))
                 .fontWeight(.semibold)
             Spacer()
@@ -22,9 +22,9 @@ struct AuthenticationView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
-                    .foregroundStyle(Color.ContentPrimary.Text.main)
+                    .foregroundStyle(Color.Text.main)
                 Text("LocaLoc")
-                    .foregroundStyle(Color.ContentPrimary.Text.main)
+                    .foregroundStyle(Color.Text.main)
                     .font(.system(size: 28))
                     .fontWeight(.semibold)
             }
@@ -83,7 +83,7 @@ struct AuthenticationView: View {
             Spacer()
         }
         .background {
-            Color.ContentPrimary.background
+            Color.background
                 .ignoresSafeArea()
         }
     }

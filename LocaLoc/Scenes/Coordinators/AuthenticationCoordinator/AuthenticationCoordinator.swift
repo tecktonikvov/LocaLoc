@@ -35,12 +35,13 @@ final class AuthenticationCoordinator: Hashable {
 
     @ViewBuilder
     func view() -> some View {
-        switch self.page {
-            case .providers:
-                loginView()
-            case .forgotPassword:
-                loginView()
-        }
+        Rectangle()
+//        switch self.page {
+//            case .providers:
+//                loginView()
+//            case .forgotPassword:
+//                loginView()
+//        }
     }
 
     func hash(into hasher: inout Hasher) {
@@ -54,9 +55,9 @@ final class AuthenticationCoordinator: Hashable {
         lhs.id == rhs.id
     }
 
-    private func loginView() -> some View {
-        AuthenticationView()
-            .environmentObject(AuthenticationViewModel(authenticationService: AuthenticationService(dataRepository: DataRepository.shared)))
+//    private func loginView() -> some View {
+//        AuthenticationView()
+//            .environmentObject(AuthenticationViewModel(authenticationService: AuthenticationService(dataRepository: DataRepository.shared)))
 //        let loginView = LoginView(
 //            output:
 //                .init(
@@ -74,7 +75,7 @@ final class AuthenticationCoordinator: Hashable {
 //                )
 //        )
 //        return loginView
-    }
+  //  }
 
    // private func forgotPasswordView() -> some View {
       //  ChannelsComposer.compose().body

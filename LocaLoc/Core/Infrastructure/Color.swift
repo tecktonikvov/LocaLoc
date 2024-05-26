@@ -8,22 +8,18 @@
 import SwiftUI
 
 extension Color {
-    struct ContentPrimary {
+    static let border = Color("text_main")
+    static let background = Color("background")
+    static let separator = Color("separator")
+    
+    struct Text {
         private init() {}
         
-        static let border = Color("text_main")
-        static let background = Extra.taupe
-        static let separator = Color("separator")
-      
-        struct Text {
-            private init() {}
-            
-            static let main = Color("text_main")
-            static let subtitle = Color("text_main")
-            static let attention = Color("attention")
-        }
+        static let main = Color("text_main")
+        static let subtitle = Color("text_main")
+        static let attention = Color("attention")
     }
- 
+    
     struct Extra {
         private init() {}
         

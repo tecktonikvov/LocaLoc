@@ -11,23 +11,24 @@ struct ChannelsView: View {
     @EnvironmentObject var viewModel: ChannelsViewModel
     
     @State var selectedChanels: [Channel] = []
+    @State var showCreateChannel = false
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button {
-                    
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
-                        .foregroundStyle(Color.ContentPrimary.Text.main)
+                    NavigationLink() {
+                        ChannelCreationView(viewModel: ChannelCreationViewModel())
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(Color.Text.main)
+                    }
+                    .padding([.top, .trailing], 16)
+                    .padding(.bottom, 8)
                 }
-                .padding([.top, .trailing], 16)
-                .padding(.bottom, 8)
-            }
             List() {
                 ForEach(0..<viewModel.model.channels.count, id: \.self) { index in
                     let channel = viewModel.model.channels[index]
@@ -54,10 +55,9 @@ struct ChannelsView: View {
             
         }
         .background {
-            Color.ContentPrimary.background
+            Color.background
                 .ignoresSafeArea()
         }
-      
     }
 }
 

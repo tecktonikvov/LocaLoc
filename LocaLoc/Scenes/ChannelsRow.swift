@@ -26,12 +26,12 @@ struct ChannelsRow: View {
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .lineLimit(1)
-                    .foregroundStyle(Color.ContentPrimary.Text.main)
+                    .foregroundStyle(Color.Text.main)
                 
                 Text(channel.subtitle)
                     .font(.system(size: 18))
                     .lineLimit(2)
-                    .foregroundStyle(Color.ContentPrimary.Text.main)
+                    .foregroundStyle(Color.Text.main)
             }
             
             Spacer()
@@ -39,7 +39,7 @@ struct ChannelsRow: View {
             VStack(alignment: .trailing) {
                 Text(channel.lastUpdateTime.timeAgo())
                     .font(.system(size: 12))
-                    .foregroundStyle(Color.ContentPrimary.Text.main)
+                    .foregroundStyle(Color.Text.main)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
                 Spacer()
@@ -49,7 +49,7 @@ struct ChannelsRow: View {
                         Circle()
                             .fill(channel.isMuted
                                   ? Color.Extra.silver
-                                  : Color.ContentPrimary.Text.attention)
+                                  : Color.Text.attention)
                            
                         let text = channel.missedUpdatesNumber > 99 ? "99+" : String(channel.missedUpdatesNumber)
                         let size = channel.missedUpdatesNumber > 99 ? 11 : 13
