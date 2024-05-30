@@ -7,138 +7,60 @@
 
 import SwiftUI
 
-fileprivate struct ChannelSettingsView: View {
-    @ObservedObject var viewModel: ChannelCreationViewModel
-    //@Binding var showEditingPermissionPicker: Bool
-
-    var body: some View {
-//        Picker("Editing permission", selection: $viewModel.selectedEditingPermission) {
-//            ForEach(viewModel.editingPermissionAvailableOption, id: \.self) { option in
-//                Text(option.title)
-//                    .onTapGesture {
-//                        viewModel.selectedEditingPermission = option
-//                        showEditingPermissionPicker.toggle()
-//                        
-//                        switch option {
-//                        case .ownerAndUsers(ids: let ids):
-//                            break
-//                        default:
-//                            break
-//                        }
-//                    }
-//            }
-//        }
-        
-        Toggle("Request to join", isOn: $viewModel.isRequestJoinRequired)
-    }
-}
-
-fileprivate struct ImagePickerView: View {
-    @ObservedObject var viewModel: ChannelCreationViewModel
-    @State private var showSheet = false
-
-    var body: some View {
-        Button {
-            showSheet = true
-        } label: {
-            HStack {
-                Spacer()
-                if viewModel.isImageSelected {
-                    Image(uiImage: viewModel.image)
-                        .resizable()
-                        .cornerRadius(50)
-                        .padding(4)
-                        .frame(width: 180, height: 180)
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "photo.circle.fill")
-                        .resizable()
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(Color.Text.main, Color.Extra.silver)
-                        .cornerRadius(50)
-                        .padding(4)
-                        .frame(width: 180, height: 180)
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                }
-                Spacer()
-                    .sheet(isPresented: $showSheet) {
-                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.image)
-                    }
-            }
-        }
-    }
-}
-
 struct ChannelCreationView: View {
     @ObservedObject var viewModel: ChannelCreationViewModel
     
-    //@State private var showEditingPermissionPicker = false
     @State private var showIdentificatorError = false
     @State private var showIdentifierCheckingIndicator = false
     @State private var identificatorErrorText = ""
     
     var body: some View {
         NavigationStack {
-            VStack {
-                List {
-                    Section("Main information") {
-                        ImagePickerView(viewModel: viewModel)
-                        
+            List {
+                Section("Main information") {
+                    ImagePickerView(viewModel: viewModel)
+                    
+                    TextEditorWithPlaceholder(
+                        text: $viewModel.name.max(72),
+                        placeholder: "Name")
+                    
+                    TextEditorWithPlaceholder(
+                        text: $viewModel.description.max(255),
+                        placeholder: "Description")
+                    
+                    ZStack(alignment: .bottomTrailing) {
                         TextEditorWithPlaceholder(
-                            text: $viewModel.name.max(72),
-                            placeholder: "Name")
-                        
-                        TextEditorWithPlaceholder(
-                            text: $viewModel.description.max(255),
-                            placeholder: "Description")
-                        
-                        ZStack(alignment: .bottomTrailing) {
-                            TextEditorWithPlaceholder(
-                                text: $viewModel.identificator.max(72),
-                                placeholder: "@Identificator")
-                            .onChange(of: viewModel.identificator) { newValue in
-                                if newValue.first != "@" {
-                                    viewModel.identificator.insert("@", at: viewModel.identificator.startIndex)
-                                }
-                                
-                                showIdentificatorError = false
+                            text: $viewModel.identificator.max(72),
+                            placeholder: "@Identificator")
+                        .onChange(of: viewModel.identificator) { newValue in
+                            if newValue.first != "@" {
+                                viewModel.identificator.insert("@", at: viewModel.identificator.startIndex)
                             }
                             
-                            if showIdentifierCheckingIndicator {
-                                ProgressView()
-                                    .offset(x: -5, y: -12)
-                            }
-                            
-                            if showIdentificatorError {
-                                Text(identificatorErrorText)
-                                    .foregroundStyle(Color.Text.attention)
-                                    .offset(x: -5, y: -12)
-                                    .font(.system(size: 12))
-                            }
+                            showIdentificatorError = false
+                        }
+                        
+                        if showIdentifierCheckingIndicator {
+                            ProgressView()
+                                .offset(x: -5, y: -12)
+                        }
+                        
+                        if showIdentificatorError {
+                            Text(identificatorErrorText)
+                                .foregroundStyle(Color.Text.attention)
+                                .offset(x: -5, y: -12)
+                                .font(.system(size: 12))
                         }
                     }
-                    .listRowBackground(
-                        Color.background
-                            .ignoresSafeArea()
-                    )
-                    
-                    Section("Settings") {
-                        ChannelSettingsView(viewModel: viewModel)
-                    }
-                    .listRowBackground(
-                        Color.background
-                            .ignoresSafeArea()
-                    )
                 }
-              
-                .listStyle(PlainListStyle())
-                .background {
-                    Color.background
-                        .ignoresSafeArea()
+                
+                Section("Settings") {
+                    ChannelSettingsView(viewModel: viewModel)
                 }
+                
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.background)
         }
         .navigationTitle("Create new channel")
         .toolbarBackground( Color.background, for: .navigationBar)
@@ -150,7 +72,6 @@ struct ChannelCreationView: View {
                 
                 Task {
                     let validationResult = await viewModel.validateChanelIndicator()
-                    try? await Task.sleep(nanoseconds: 3_000_000_000)
                     
                     await MainActor.run {
                         switch validationResult {
@@ -165,7 +86,6 @@ struct ChannelCreationView: View {
                     }
                 }
             }
-            
         }
     }
 }
@@ -262,6 +182,70 @@ fileprivate struct TextEditorWithPlaceholder: View {
                     .opacity(text.isEmpty ? 0.85 : 1)
                     .cornerRadius(12)
                 Spacer()
+            }
+        }
+    }
+}
+
+fileprivate struct ChannelSettingsView: View {
+    @ObservedObject var viewModel: ChannelCreationViewModel
+    //@Binding var showEditingPermissionPicker: Bool
+    
+    var body: some View {
+        //        Picker("Editing permission", selection: $viewModel.selectedEditingPermission) {
+        //            ForEach(viewModel.editingPermissionAvailableOption, id: \.self) { option in
+        //                Text(option.title)
+        //                    .onTapGesture {
+        //                        viewModel.selectedEditingPermission = option
+        //                        showEditingPermissionPicker.toggle()
+        //
+        //                        switch option {
+        //                        case .ownerAndUsers(ids: let ids):
+        //                            break
+        //                        default:
+        //                            break
+        //                        }
+        //                    }
+        //            }
+        //        }
+        
+        Toggle("Request to join", isOn: $viewModel.isRequestJoinRequired)
+    }
+}
+
+fileprivate struct ImagePickerView: View {
+    @ObservedObject var viewModel: ChannelCreationViewModel
+    @State private var showSheet = false
+    
+    var body: some View {
+        Button {
+            showSheet = true
+        } label: {
+            HStack {
+                Spacer()
+                if viewModel.isImageSelected {
+                    Image(uiImage: viewModel.image)
+                        .resizable()
+                        .cornerRadius(50)
+                        .padding(4)
+                        .frame(width: 180, height: 180)
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                } else {
+                    Image(systemName: "photo.circle.fill")
+                        .resizable()
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(Color.Text.main, Color.Extra.silver)
+                        .cornerRadius(50)
+                        .padding(4)
+                        .frame(width: 180, height: 180)
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                }
+                Spacer()
+                    .sheet(isPresented: $showSheet) {
+                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.image)
+                    }
             }
         }
     }

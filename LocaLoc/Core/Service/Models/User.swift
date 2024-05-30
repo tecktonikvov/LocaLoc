@@ -13,10 +13,15 @@ class User: ObservableObject {
     
     @Published var profile: Profile? {
         didSet {
-            if let encoded = try? JSONEncoder().encode(profile) {
-                UserDefaults.standard.set(encoded, forKey: Self.profileKey)
-            } else {
-                UserDefaults.standard.removeObject(forKey: Self.profileKey)
+            do {
+                if let profile {
+                    let encoded = try JSONEncoder().encode(profile)
+                    UserDefaults.standard.set(encoded, forKey: Self.profileKey)
+                } else {
+                    UserDefaults.standard.removeObject(forKey: Self.profileKey)
+                }
+            } catch {
+                print("🔴", error)
             }
         }
     }

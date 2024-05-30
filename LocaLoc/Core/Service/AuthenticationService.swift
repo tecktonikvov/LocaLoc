@@ -6,9 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
-import FirebaseCore
-import GoogleSignIn
 import AuthenticationServices
 
 enum AuthServiceError: Error {
@@ -18,6 +15,8 @@ enum AuthServiceError: Error {
 final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationControllerDelegate {
     private let dataRepository: DataRepository
     
+    private lazy var googleProvider: AuthenticationProvider = GoogleAuthenticationProvider()
+    
     init(dataRepository: DataRepository) {
         self.dataRepository = dataRepository
     }
@@ -25,84 +24,34 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
     func signIn(providerType: AuthenticationProviderType, view: any View) async throws {
         switch providerType {
         case .google:
-            try await googleSignIn(view: view)
+            let profile = try await googleProvider.signIn(view: view)
+            updateUserData(profile: profile, providerType: .google)
         case .apple:
             break
         }
     }
     
     func signOut() {
-        guard let providerType = dataRepository.user.authenticationProviderType else {
-            return
+        if let providerType = dataRepository.user.authenticationProviderType {
+            switch providerType {
+            case .google:
+                googleProvider.signOut()
+            case .apple:
+                break
+            }
         }
         
-        switch providerType {
-        case .google:
-            googleSignOut()
-        case .apple:
-            break
-        }
+        clearUser()
+        dataRepository.userAuthenticationStatus = .unauthorized
     }
     
-    @MainActor private func googleSignIn(view: any View) async throws {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
-        
-        let rootViewController = view.rootViewController()
-        
-        let signInResult = try await GIDSignIn.sharedInstance.signIn(
-            withPresenting: rootViewController
-        )
-        
-        let accessToken = signInResult.user.accessToken
-        
-        guard let idToken = signInResult.user.idToken else {
-            throw AuthServiceError.googleIdTokenIsNil
-        }
-        
-        let credential = GoogleAuthProvider.credential(
-            withIDToken: idToken.tokenString,
-            accessToken: accessToken.tokenString
-        )
-        
-        let firebaseSignInResult = try await Auth.auth().signIn(with: credential)
-        
-        updateUserModel(
-            firstName: (firebaseSignInResult.additionalUserInfo?.profile?["given_name"] as? String) ?? "",
-            lastName: (firebaseSignInResult.additionalUserInfo?.profile?["family_name"] as? String) ?? "",
-            email: firebaseSignInResult.user.email ?? "",
-            imageUrl: firebaseSignInResult.user.photoURL?.absoluteString ?? "",
-            providerType: .google
-        )
-        
+    private func updateUserData(profile: Profile, providerType: AuthenticationProviderType) {
         dataRepository.userAuthenticationStatus = .authorized
-    }
-    
-    private func updateUserModel(
-        firstName: String,
-        lastName: String,
-        email: String,
-        imageUrl: String?,
-        providerType: AuthenticationProviderType
-    ) {
-        let profile = Profile(
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            imageUrl: imageUrl ?? ""
-        )
-                
         dataRepository.user.authenticationProviderType = providerType
         dataRepository.user.profile = profile
     }
     
     private func clearUser() {
         dataRepository.user.profile = nil
-    }
-    
-    func googleSignOut() {
-        GIDSignIn.sharedInstance.signOut()
-        clearUser()
-        dataRepository.userAuthenticationStatus = .unauthorized
     }
 }

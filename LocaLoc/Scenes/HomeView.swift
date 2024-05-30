@@ -17,25 +17,24 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            let standardAppearance = UITabBarAppearance()
-            standardAppearance.configureWithTransparentBackground()
-            standardAppearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
-            UITabBar.appearance().standardAppearance = standardAppearance
+            UITabBar.appearance().unselectedItemTintColor = .systemGray
+            UITabBar.appearance().backgroundColor = .systemGray4
         }
         .tint(Color.Text.main)
-
     }
 }
 
 fileprivate extension TabScene<AnyView> {
     @ViewBuilder
-     func tabItem() -> some View {
-         content
-             .tabItem {
-                 image.renderingMode(.template)
-                 Text(title)
-             }
-     }
+    func tabItem() -> some View {
+        NavigationView {
+            content
+        }
+            .tabItem {
+                image.renderingMode(.template)
+                Text(title)
+            }
+    }
     
     var image: Image {
         switch type {
@@ -56,6 +55,6 @@ fileprivate extension TabScene<AnyView> {
     }
 }
 
-//#Preview {
-//    HomeComposer.view(authenticationService: AuthenticationService(dataRepository: DataRepository.shared))
-//}
+#Preview {
+    HomeComposer.view(authenticationService: AuthenticationService(dataRepository: DataRepository.shared))
+}

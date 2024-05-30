@@ -8,8 +8,13 @@
 import Foundation
 
 struct Profile: Codable {
-    let firstName: String
-    let lastName: String
-    let email: String
-    let imageUrl: String
+    var firstName: String
+    var lastName: String
+    var email: String
+    var imageUrl: String
+    var username: String
+    
+    var fullName: String {
+        firstName + " " + lastName
+    }
 }

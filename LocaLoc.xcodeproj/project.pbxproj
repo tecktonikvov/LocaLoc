@@ -34,7 +34,7 @@
 		047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */; };
 		047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0E2BFA86DB0065837C /* HomeComposer.swift */; };
 		047ECA112BFA88AC0065837C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA102BFA88AC0065837C /* HomeView.swift */; };
-		047ECA132BFA88B50065837C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA122BFA88B50065837C /* MainViewModel.swift */; };
+		047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA122BFA88B50065837C /* HomeViewModel.swift */; };
 		047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA152BFA91F40065837C /* ChannelsView.swift */; };
 		047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */; };
 		047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA192BFA92060065837C /* ChannelsComposer.swift */; };
@@ -49,6 +49,13 @@
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
 		0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D8262BFF47C600729C34 /* UserDefaults.swift */; };
 		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
+		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
+		04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */; };
+		04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */; };
+		04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */; };
+		04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE42C090C99002FF3DC /* CustomError.swift */; };
+		04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */; };
+		04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +108,7 @@
 		047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		047ECA0E2BFA86DB0065837C /* HomeComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComposer.swift; sourceTree = "<group>"; };
 		047ECA102BFA88AC0065837C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		047ECA122BFA88B50065837C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		047ECA122BFA88B50065837C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		047ECA152BFA91F40065837C /* ChannelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
 		047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewModel.swift; sourceTree = "<group>"; };
 		047ECA192BFA92060065837C /* ChannelsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsComposer.swift; sourceTree = "<group>"; };
@@ -115,6 +122,13 @@
 		047ECA2D2BFB83B90065837C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		047ECA2F2BFB84460065837C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		0485D8262BFF47C600729C34 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
+		04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
+		04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderError.swift; sourceTree = "<group>"; };
+		04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationProvider.swift; sourceTree = "<group>"; };
+		04D3DDE42C090C99002FF3DC /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingView.swift; sourceTree = "<group>"; };
+		04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +202,7 @@
 			children = (
 				047ECA0E2BFA86DB0065837C /* HomeComposer.swift */,
 				047ECA102BFA88AC0065837C /* HomeView.swift */,
-				047ECA122BFA88B50065837C /* MainViewModel.swift */,
+				047ECA122BFA88B50065837C /* HomeViewModel.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -206,6 +220,7 @@
 		040D85812C008D29000F8F52 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */,
 				040D85822C008D2F000F8F52 /* AuthenticationService.swift */,
 				040D85842C008D8E000F8F52 /* DataRepository.swift */,
 				0485D8262BFF47C600729C34 /* UserDefaults.swift */,
@@ -332,6 +347,7 @@
 				047ECA2D2BFB83B90065837C /* Color.swift */,
 				047ECA072BFA85E80065837C /* Coordinator.swift */,
 				047ECA042BFA85C60065837C /* CoordinatorProtocol.swift */,
+				04D3DDE42C090C99002FF3DC /* CustomError.swift */,
 				047ECA1D2BFA925F0065837C /* SceneComposer.swift */,
 				047ECA272BFB81F00065837C /* TabScene.swift */,
 				047ECA292BFB82000065837C /* TabSceneType.swift */,
@@ -382,11 +398,40 @@
 		047ECA1F2BFA92C00065837C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				04FD11F12C03B3C10020B7EA /* ProfileEditing */,
 				047ECA242BFA92E80065837C /* SettingsComposer.swift */,
 				047ECA202BFA92CE0065837C /* SettingsView.swift */,
 				047ECA222BFA92E00065837C /* SettingsViewModel.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */ = {
+			isa = PBXGroup;
+			children = (
+				04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */,
+				04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */,
+				04D3DDE12C090C1C002FF3DC /* Infrastructure */,
+			);
+			path = AuthentificationProviders;
+			sourceTree = "<group>";
+		};
+		04D3DDE12C090C1C002FF3DC /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */,
+				04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		04FD11F12C03B3C10020B7EA /* ProfileEditing */ = {
+			isa = PBXGroup;
+			children = (
+				04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */,
+				04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */,
+			);
+			name = ProfileEditing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -566,26 +611,33 @@
 				040D85852C008D8E000F8F52 /* DataRepository.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
 				040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */,
+				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
+				04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */,
 				04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
+				04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
 				047ECA1E2BFA925F0065837C /* SceneComposer.swift in Sources */,
 				047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
 				040E4EBC2C0095D100056856 /* UserAuthenticationStatus.swift in Sources */,
+				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
+				04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */,
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
-				047ECA132BFA88B50065837C /* MainViewModel.swift in Sources */,
+				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
 				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
+				04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */,
+				04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
