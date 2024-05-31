@@ -20,7 +20,7 @@ final class AuthenticationViewModel: ObservableObject {
     private var authenticationService: AuthenticationService
     
     func signIn(providerType: AuthenticationProviderType, view: any View) {
-        Task {
+        Task { @MainActor in
             do {
                 try await authenticationService.signIn(providerType: providerType, view: view)
             } catch {
