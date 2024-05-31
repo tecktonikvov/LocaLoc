@@ -32,7 +32,7 @@ struct ChannelCreationView: View {
                         TextEditorWithPlaceholder(
                             text: $viewModel.identificator.max(72),
                             placeholder: "@Identificator")
-                        .onChange(of: viewModel.identificator) { newValue in
+                        .onChange(of: viewModel.identificator) { _, newValue in
                             if newValue.first != "@" {
                                 viewModel.identificator.insert("@", at: viewModel.identificator.startIndex)
                             }
