@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AuthenticationProviderType: String {
+enum AuthenticationProviderType: Codable {
     case google
     case apple
 }

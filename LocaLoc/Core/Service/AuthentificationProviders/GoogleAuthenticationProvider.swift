@@ -10,8 +10,10 @@ import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
 
+fileprivate typealias Error = AuthenticationServiceError
+
 final class GoogleAuthenticationProvider: AuthenticationProvider {
-    @MainActor func signIn(view: any View) async throws -> Profile {
+    @MainActor func signIn(view: any View) async throws -> User {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             throw AuthenticationProviderError.firebaseClientIdIsMissed
         }
@@ -25,8 +27,12 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         
         let accessToken = signInResult.user.accessToken
         
+        guard let userId = signInResult.user.userID else {
+            throw Error.userIdIsNil
+        }
+        
         guard let idToken = signInResult.user.idToken else {
-            throw AuthServiceError.googleIdTokenIsNil
+            throw Error.googleIdTokenIsNil
         }
         
         let credential = GoogleAuthProvider.credential(
@@ -36,14 +42,17 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         
         let firebaseSignInResult = try await Auth.auth().signIn(with: credential)
         
-        
-        return Profile(
+        let profile = Profile(
             firstName: (firebaseSignInResult.additionalUserInfo?.profile?["given_name"] as? String) ?? "",
             lastName: (firebaseSignInResult.additionalUserInfo?.profile?["family_name"] as? String) ?? "",
             email: firebaseSignInResult.user.email ?? "",
             imageUrl: firebaseSignInResult.user.photoURL?.absoluteString ?? "",
             username: ""
         )
+        
+        let user = User(id: userId, authenticationProviderType: .google, profile: profile)
+        
+        return user
     }
     
     func signOut() {

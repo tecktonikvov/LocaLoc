@@ -56,5 +56,17 @@ fileprivate extension TabScene<AnyView> {
 }
 
 #Preview {
-    HomeComposer.view(authenticationService: AuthenticationService(dataRepository: DataRepository.shared))
+    do {
+        let previewer = try Previewer()
+        let userDataRepository = UserDataRepository(modelContext: previewer.container.mainContext)
+        
+        return HomeComposer.view(
+            authenticationService: AuthenticationService(
+                userDataRepository: userDataRepository
+            ),
+            userDataRepository: userDataRepository
+        )
+    } catch {
+        return Text(error.localizedDescription)
+    }
 }

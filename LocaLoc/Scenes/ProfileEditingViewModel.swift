@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-class ProfileEditingViewModel: ObservableObject {
+@Observable final class ProfileEditingViewModel {
     var profile: Profile
     
     // MARK: - Init
-    init(dataRepository: DataRepository) {
-        self.profile = dataRepository.user.profile ?? Profile(firstName: "", lastName: "", email: "", imageUrl: "", username: "")
+    init(userDataRepository: UserDataRepository) {
+        let emptyModel = Profile(firstName: "", lastName: "", email: "", imageUrl: "", username: "")
+        self.profile = userDataRepository.currentUser?.profile ?? emptyModel
     }
     
     func isUserNameFree() async -> Bool {

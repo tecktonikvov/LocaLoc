@@ -10,7 +10,7 @@
 		040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC02BFE4C17005E3930 /* GoogleSignIn */; };
 		040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC32BFE51DB005E3930 /* FirebaseAuth */; };
 		040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85822C008D2F000F8F52 /* AuthenticationService.swift */; };
-		040D85852C008D8E000F8F52 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* DataRepository.swift */; };
+		040D85852C008D8E000F8F52 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* UserDataRepository.swift */; };
 		040D85882C008F97000F8F52 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85872C008F97000F8F52 /* Profile.swift */; };
 		040D858A2C008FA5000F8F52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85892C008FA5000F8F52 /* User.swift */; };
 		040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */; };
@@ -49,6 +49,9 @@
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
 		0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D8262BFF47C600729C34 /* UserDefaults.swift */; };
 		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
+		04BA84E02C0B0AC8004F76B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */; };
+		04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */; };
+		04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E42C0B0EAC004F76B3 /* Previewer.swift */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
 		04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */; };
 		04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */; };
@@ -79,7 +82,7 @@
 		040B9EBA2BFE480B005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040B9EBC2BFE4810005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040D85822C008D2F000F8F52 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		040D85842C008D8E000F8F52 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		040D85842C008D8E000F8F52 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
 		040D85872C008F97000F8F52 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		040D85892C008FA5000F8F52 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderType.swift; sourceTree = "<group>"; };
@@ -122,6 +125,9 @@
 		047ECA2D2BFB83B90065837C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		047ECA2F2BFB84460065837C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		0485D8262BFF47C600729C34 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
+		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderError.swift; sourceTree = "<group>"; };
@@ -217,10 +223,11 @@
 		040D85812C008D29000F8F52 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */,
-				040D85822C008D2F000F8F52 /* AuthenticationService.swift */,
-				040D85842C008D8E000F8F52 /* DataRepository.swift */,
+				04BA84E42C0B0EAC004F76B3 /* Previewer.swift */,
+				040D85842C008D8E000F8F52 /* UserDataRepository.swift */,
 				0485D8262BFF47C600729C34 /* UserDefaults.swift */,
+				04BA84E12C0B0CF8004F76B3 /* AuthenticationService */,
+				04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */,
 				040D85862C008F8B000F8F52 /* Models */,
 			);
 			path = Service;
@@ -231,7 +238,6 @@
 			children = (
 				040D85872C008F97000F8F52 /* Profile.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
-				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
 				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
 			);
 			path = Models;
@@ -304,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
+				04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
 				040E4EBD2C024B1600056856 /* Core */,
 				040E4EBE2C024B2800056856 /* Network */,
@@ -412,6 +419,16 @@
 				040B9EB72BFE47F7005E3930 /* Firebase */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		04BA84E12C0B0CF8004F76B3 /* AuthenticationService */ = {
+			isa = PBXGroup;
+			children = (
+				040D85822C008D2F000F8F52 /* AuthenticationService.swift */,
+				04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */,
+				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
+			);
+			path = AuthenticationService;
 			sourceTree = "<group>";
 		};
 		04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */ = {
@@ -610,13 +627,14 @@
 				047ECA082BFA85E80065837C /* Coordinator.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				040D85882C008F97000F8F52 /* Profile.swift in Sources */,
+				04BA84E02C0B0AC8004F76B3 /* AppDelegate.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				040D858A2C008FA5000F8F52 /* User.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
 				040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */,
 				040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */,
-				040D85852C008D8E000F8F52 /* DataRepository.swift in Sources */,
+				040D85852C008D8E000F8F52 /* UserDataRepository.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
 				040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */,
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
@@ -627,6 +645,7 @@
 				04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
 				047ECA1E2BFA925F0065837C /* SceneComposer.swift in Sources */,
+				04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */,
 				047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
@@ -641,6 +660,7 @@
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
 				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
+				04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */,
 				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,

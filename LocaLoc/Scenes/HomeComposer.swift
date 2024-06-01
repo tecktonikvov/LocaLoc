@@ -8,14 +8,28 @@
 import SwiftUI
 
 final class HomeComposer: SceneComposer {
-    @ViewBuilder static func view(authenticationService: AuthenticationService) -> some View {
+    @ViewBuilder static func view(authenticationService: AuthenticationService, userDataRepository: UserDataRepository) -> some View {
         let channelsScene = ChannelsComposer.compose()
-        let settingsScene = SettingsComposer.compose(authenticationService: authenticationService)
+        let settingsScene = settingsScene(userDataRepository: userDataRepository, authenticationService: authenticationService)
 
-        let model = HomeModel(tabScenes: [channelsScene, settingsScene])
+        let scenes = [channelsScene, settingsScene].compactMap { $0 }
+        let model = HomeModel(tabScenes: scenes)
+        
         let viewModel = HomeViewModel(model: model)
         
         HomeView()
             .environmentObject(viewModel)
+    }
+    
+    private static func settingsScene(userDataRepository: UserDataRepository, authenticationService: AuthenticationService) -> TabScene<AnyView>? {
+        if let currentUser = userDataRepository.currentUser {
+            return SettingsComposer.compose(
+                authenticationService: authenticationService,
+                user: currentUser,
+                userDataRepository: userDataRepository
+            )
+        } else {
+            return nil
+        }
     }
 }

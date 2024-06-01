@@ -7,30 +7,22 @@
 
 import SwiftUI
 
-final class AppCoordinator: ObservableObject {
-    @Published var path: NavigationPath
-    @Published var userAuthenticationStatus: UserAuthenticationStatus
-    
-    @ObservedObject var dataRepository: DataRepository
+@Observable final class AppCoordinator {
+    private let userDataRepository: UserDataRepository
+    private let authenticationService: AuthenticationService
 
-    private var authenticationService: AuthenticationService
-
-    init(path: NavigationPath, dataRepository: DataRepository) {
-        self.path = path
-        self.authenticationService = AuthenticationService(dataRepository: dataRepository)
-        self.userAuthenticationStatus = dataRepository.userAuthenticationStatus
-        self.dataRepository = dataRepository
-
-        DataRepository.shared.$userAuthenticationStatus.assign(to: &$userAuthenticationStatus)
+    init(userDataRepository: UserDataRepository) {
+        self.authenticationService = AuthenticationService(userDataRepository: userDataRepository)
+        self.userDataRepository = userDataRepository
     }
 
     @ViewBuilder
     func view() -> some View {
-        switch dataRepository.userAuthenticationStatus {
+        switch userDataRepository.userAuthenticationStatus {
         case .unauthorized:
             AuthenticationView(viewModel: AuthenticationViewModel(authenticationService: authenticationService))
         case .authorized:
-            HomeComposer.view(authenticationService: authenticationService)
+            HomeComposer.view(authenticationService: authenticationService, userDataRepository: userDataRepository)
         }
     }
 }

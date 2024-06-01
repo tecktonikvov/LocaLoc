@@ -63,12 +63,11 @@ struct ChannelsView: View {
                 Color.background
                     .ignoresSafeArea()
             }
-           
-        }
-        .navigationDestination(for: NavigationState.self) { state in
-            switch state {
-            case .createNewChannel:
-                ChannelCreationView(viewModel: ChannelCreationViewModel())
+            .navigationDestination(for: NavigationState.self) { state in
+                switch state {
+                case .createNewChannel:
+                    ChannelCreationView(viewModel: ChannelCreationViewModel())
+                }
             }
         }
     }

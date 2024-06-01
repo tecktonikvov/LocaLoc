@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-class SettingsViewModel: ObservableObject {
-    @Published var user: User
+@Observable class SettingsViewModel {
+    var user: User
+    
     private let authenticationService: AuthenticationService
         
     // MARK: - Init
-    init(authenticationService: AuthenticationService, dataRepository: DataRepository) {
+    init(user: User, authenticationService: AuthenticationService) {
+        self.user = user
         self.authenticationService = authenticationService
-        self.user = dataRepository.user
     }
     
     func signOut() {

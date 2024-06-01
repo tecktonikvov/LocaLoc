@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileEditingView: View {
-    @ObservedObject var viewModel: ProfileEditingViewModel
+    @Bindable var viewModel: ProfileEditingViewModel
     
     var body: some View {
         NavigationView {
@@ -68,5 +68,14 @@ struct ProfileEditingView: View {
 }
 
 #Preview {
-    ProfileEditingView(viewModel: ProfileEditingViewModel(dataRepository: .shared))
+    do {
+        let previewer = try Previewer()
+        let userDataRepository = UserDataRepository(modelContext: previewer.container.mainContext)
+        
+        return ProfileEditingView(
+            viewModel: ProfileEditingViewModel(userDataRepository: userDataRepository)
+        )
+    } catch {
+        return Text(error.localizedDescription)
+    }
 }

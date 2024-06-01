@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var viewModel: SettingsViewModel
+    @Bindable var viewModel: SettingsViewModel
+    
+    private var userDataRepository: UserDataRepository
+    
+    init(viewModel: SettingsViewModel, userDataRepository: UserDataRepository) {
+        self.viewModel = viewModel
+        self.userDataRepository = userDataRepository
+    }
     
     var body: some View {
         NavigationStack {
@@ -16,10 +23,10 @@ struct SettingsView: View {
                 List {
                     Section {
                         NavigationLink() {
-                            ProfileEditingView(viewModel: ProfileEditingViewModel(dataRepository: .shared))
+                            ProfileEditingView(viewModel: ProfileEditingViewModel(userDataRepository: userDataRepository))
                         } label: {
                             HStack(alignment: .center) {
-                                if let url = URL(string: viewModel.user.profile?.imageUrl ?? "") {
+                                if let url = URL(string: viewModel.user.profile.imageUrl) {
                                     AsyncImage(url: url)
                                         .frame(width: 80, height: 80)
                                         .aspectRatio(contentMode: .fill)
@@ -32,12 +39,12 @@ struct SettingsView: View {
                                 }
                                 
                                 VStack(alignment: .leading) {
-                                    Text(viewModel.user.profile?.fullName ?? " ")
+                                    Text(viewModel.user.profile.fullName)
                                         .font(.system(size: 18))
                                         .fontWeight(.bold)
                                         .lineLimit(2)
                                         .foregroundStyle(Color.Text.main)
-                                    Text("@" + (viewModel.user.profile?.username ?? ""))
+                                    Text("@" + (viewModel.user.profile.username))
                                         .font(.system(size: 16))
                                         .lineLimit(2)
                                         .foregroundStyle(Color.Text.main)
@@ -72,6 +79,12 @@ struct SettingsView: View {
     }
 }
 
-#Preview {
-    SettingsView(viewModel: SettingsViewModel(authenticationService: AuthenticationService(dataRepository: .shared), dataRepository: .shared))
+fileprivate extension Profile {
+    var fullName: String {
+        firstName + " " + lastName
+    }
 }
+//
+//#Preview {
+//    SettingsView(viewModel: SettingsViewModel(user: <#User#>, authenticationService: AuthenticationService(userDataRepository: .shared), userDataRepository: .shared))
+//}

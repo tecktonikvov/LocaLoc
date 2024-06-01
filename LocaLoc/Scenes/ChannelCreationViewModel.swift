@@ -13,8 +13,8 @@ enum ChanelIndicatorValidationResult {
     case error(text: String)
 }
 
-final class ChannelCreationViewModel: ObservableObject {
-    @Published var image = UIImage() {
+@Observable final class ChannelCreationViewModel {
+    var image = UIImage() {
         didSet {
             DispatchQueue.main.async {
                 self.isImageSelected = true
@@ -22,17 +22,17 @@ final class ChannelCreationViewModel: ObservableObject {
         }
     }
         
-    @Published var isImageSelected: Bool = false
+    var isImageSelected: Bool = false
     
     let editingPermissionAvailableOption: [ChannelSettings.EditingPermissionType] = [.onlyOwner, .ownerAndUsers(ids: []), .everyone]
 
-    @Published var isRequestJoinRequired = false
+    var isRequestJoinRequired = false
 
-    @Published var name: String = ""
-    @Published var description: String = ""
-    @Published var identificator: String = ""
+    var name: String = ""
+    var description: String = ""
+    var identificator: String = ""
 
-    @Published var selectedEditingPermission: ChannelSettings.EditingPermissionType = .onlyOwner
+    var selectedEditingPermission: ChannelSettings.EditingPermissionType = .onlyOwner
     
     private func isIdentifierBusy() async -> Bool {
         true

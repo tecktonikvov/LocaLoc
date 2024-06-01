@@ -9,7 +9,7 @@ import SwiftUI
 
 final class AppleAuthenticationProvider: AuthenticationProvider {
     // TODO: Implement
-    @MainActor func signIn(view: any View) async throws -> Profile {
+    @MainActor func signIn(view: any View) async throws -> User {
         throw CustomError(title: "Not implemented", description: "Not implemented")
     }
     

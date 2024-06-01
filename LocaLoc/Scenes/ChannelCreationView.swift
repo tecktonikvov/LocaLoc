@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ChannelCreationView: View {
-    @ObservedObject var viewModel: ChannelCreationViewModel
+    @Bindable var viewModel: ChannelCreationViewModel
     
     @State private var showIdentificatorError = false
     @State private var showIdentifierCheckingIndicator = false
     @State private var identificatorErrorText = ""
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 Section("Main information") {
                     ImagePickerView(viewModel: viewModel)
@@ -188,7 +188,7 @@ fileprivate struct TextEditorWithPlaceholder: View {
 }
 
 fileprivate struct ChannelSettingsView: View {
-    @ObservedObject var viewModel: ChannelCreationViewModel
+    @State var viewModel: ChannelCreationViewModel
     //@Binding var showEditingPermissionPicker: Bool
     
     var body: some View {
@@ -214,7 +214,7 @@ fileprivate struct ChannelSettingsView: View {
 }
 
 fileprivate struct ImagePickerView: View {
-    @ObservedObject var viewModel: ChannelCreationViewModel
+    @State var viewModel: ChannelCreationViewModel
     @State private var showSheet = false
     
     var body: some View {

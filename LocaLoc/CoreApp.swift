@@ -6,35 +6,38 @@
 //
 
 import SwiftUI
-import FirebaseCore
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-    return true
-  }
-}
+import SwiftData
 
 @main
 struct CoreApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var appCoordinator = AppCoordinator(path: NavigationPath(), dataRepository: DataRepository.shared)
-    @State private var shouldShowAuthentication = false
-
+    
+    private let appCoordinator: AppCoordinator
+    private let modelContainer: ModelContainer
+    private let userDataRepository: UserDataRepository
+    
+    init() {
+        do {
+            let config = ModelConfiguration()
+            let modelContainer = try ModelContainer(for: User.self, Profile.self, configurations: config)
+            let modelContext = ModelContext(modelContainer)
+            let userDataRepository = UserDataRepository(modelContext: modelContext)
+            let appCoordinator = AppCoordinator(userDataRepository: userDataRepository)
+            
+            self.modelContainer = modelContainer
+            self.userDataRepository = userDataRepository
+            self.appCoordinator = appCoordinator
+        } catch {
+            print("🔴", error)
+            fatalError("Could not initialize ModelContainer")
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $appCoordinator.path) {
+            NavigationStack {
                 appCoordinator.view()
-                    .fullScreenCover(isPresented: $shouldShowAuthentication) {
-                        let authenticationCoordinator = AuthenticationCoordinator(
-                            page: .providers,
-                            navigationPath: $appCoordinator.path
-                        )
-                        authenticationCoordinator.view()
-                    }
             }
-            .environmentObject(appCoordinator)
         }
     }
 }
