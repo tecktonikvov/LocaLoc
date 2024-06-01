@@ -47,24 +47,27 @@
 		04BA84E02C0B0AC8004F76B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */; };
 		04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */; };
 		04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E42C0B0EAC004F76B3 /* Previewer.swift */; };
-		04BA85072C0B65CF004F76B3 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85062C0B65CF004F76B3 /* DataRepository.swift */; };
-		04BA85092C0B67B1004F76B3 /* UserDataRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* UserDataRepositoryImpl.swift */; };
-		04BA853E2C0B6D55004F76B3 /* libDataRepository.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */; };
 		04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85042C0B6590004F76B3 /* UserDataRepository.swift */; };
-		04BA85442C0B7190004F76B3 /* UserPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */; };
-		04BA85472C0B71AE004F76B3 /* ProfilePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */; };
-		04BA85492C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */; };
 		04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85872C008F97000F8F52 /* Profile.swift */; };
 		04BA854B2C0B7274004F76B3 /* AuthenticationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */; };
 		04BA854C2C0B7274004F76B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85892C008FA5000F8F52 /* User.swift */; };
 		04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
 		04BA854F2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA854E2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift */; };
 		04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04BA85522C0B83E1004F76B3 /* K-Logger */; };
+		04BA85562C0BB118004F76B3 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04BA85552C0BB118004F76B3 /* FirebaseCrashlytics */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
 		04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */; };
 		04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */; };
 		04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */; };
 		04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE42C090C99002FF3DC /* CustomError.swift */; };
+		04FAE8F42C0BB36D00200ADC /* LocaLocDataRepository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */; };
+		04FAE8F52C0BB36D00200ADC /* LocaLocDataRepository.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04FAE8FA2C0BB38B00200ADC /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85062C0B65CF004F76B3 /* DataRepository.swift */; };
+		04FAE8FB2C0BB3EE00200ADC /* UserPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */; };
+		04FAE8FC2C0BB3F300200ADC /* ProfilePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */; };
+		04FAE8FD2C0BB3F500200ADC /* AuthenticationProviderTypePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */; };
+		04FAE8FE2C0BB3F700200ADC /* UserDataRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* UserDataRepositoryImpl.swift */; };
+		04FAE9002C0BB46100200ADC /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04FAE8FF2C0BB46100200ADC /* K-Logger */; };
 		04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */; };
 		04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -84,23 +87,25 @@
 			remoteGlobalIDString = 046C3E9E2BE917E800BBFF47;
 			remoteInfo = LocaLoc;
 		};
-		04BA853F2C0B6D55004F76B3 /* PBXContainerItemProxy */ = {
+		04FAE8F22C0BB36D00200ADC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 046C3E972BE917E800BBFF47 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 04BA84E92C0B24A7004F76B3;
-			remoteInfo = DataRepository;
+			remoteGlobalIDString = 04FAE8ED2C0BB36D00200ADC;
+			remoteInfo = LocaLocDataRepository;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		04BA84E82C0B24A7004F76B3 /* CopyFiles */ = {
+		04FAE8F62C0BB36D00200ADC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
+			dstPath = "";
+			dstSubfolderSpec = 10;
 			files = (
+				04FAE8F52C0BB36D00200ADC /* LocaLocDataRepository.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -155,7 +160,6 @@
 		04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
 		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
-		04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDataRepository.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BA85042C0B6590004F76B3 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
 		04BA85062C0B65CF004F76B3 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPersistencyModel.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 		04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderError.swift; sourceTree = "<group>"; };
 		04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDE42C090C99002FF3DC /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocaLocDataRepository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingView.swift; sourceTree = "<group>"; };
 		04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,9 +183,10 @@
 			files = (
 				04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */,
 				040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */,
+				04FAE8F42C0BB36D00200ADC /* LocaLocDataRepository.framework in Frameworks */,
 				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
+				04BA85562C0BB118004F76B3 /* FirebaseCrashlytics in Frameworks */,
 				04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */,
-				04BA853E2C0B6D55004F76B3 /* libDataRepository.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,10 +204,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04BA84E72C0B24A7004F76B3 /* Frameworks */ = {
+		04FAE8EB2C0BB36D00200ADC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FAE9002C0BB46100200ADC /* K-Logger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +343,7 @@
 				046C3EA12BE917E800BBFF47 /* LocaLoc */,
 				046C3EB22BE917E900BBFF47 /* LocaLocTests */,
 				046C3EBC2BE917E900BBFF47 /* LocaLocUITests */,
-				04BA84EB2C0B24A8004F76B3 /* DataRepository */,
+				04FAE8EF2C0BB36D00200ADC /* LocaLocDataRepository */,
 				046C3EA02BE917E800BBFF47 /* Products */,
 				04BA850A2C0B6920004F76B3 /* Frameworks */,
 			);
@@ -348,7 +355,7 @@
 				046C3E9F2BE917E800BBFF47 /* LocaLoc.app */,
 				046C3EAF2BE917E900BBFF47 /* LocaLocTests.xctest */,
 				046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */,
-				04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */,
+				04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -477,15 +484,6 @@
 			path = AuthenticationService;
 			sourceTree = "<group>";
 		};
-		04BA84EB2C0B24A8004F76B3 /* DataRepository */ = {
-			isa = PBXGroup;
-			children = (
-				04BA85062C0B65CF004F76B3 /* DataRepository.swift */,
-				04BA85502C0B7E39004F76B3 /* UserDataRepository */,
-			);
-			path = DataRepository;
-			sourceTree = "<group>";
-		};
 		04BA85032C0B6567004F76B3 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +538,15 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		04FAE8EF2C0BB36D00200ADC /* LocaLocDataRepository */ = {
+			isa = PBXGroup;
+			children = (
+				04BA85062C0B65CF004F76B3 /* DataRepository.swift */,
+				04BA85502C0B7E39004F76B3 /* UserDataRepository */,
+			);
+			path = LocaLocDataRepository;
+			sourceTree = "<group>";
+		};
 		04FD11F12C03B3C10020B7EA /* ProfileEditing */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,20 +558,32 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		04FAE8E92C0BB36D00200ADC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		046C3E9E2BE917E800BBFF47 /* LocaLoc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 046C3EC32BE917E900BBFF47 /* Build configuration list for PBXNativeTarget "LocaLoc" */;
 			buildPhases = (
-				040B9EBE2BFE4836005E3930 /* Firebase */,
+				040B9EBE2BFE4836005E3930 /* Firebase configuration */,
+				04BA85542C0B8B7E004F76B3 /* Firebase Crashlytics */,
 				046C3E9B2BE917E800BBFF47 /* Sources */,
 				046C3E9C2BE917E800BBFF47 /* Frameworks */,
 				046C3E9D2BE917E800BBFF47 /* Resources */,
+				04FAE8F62C0BB36D00200ADC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				04BA85402C0B6D55004F76B3 /* PBXTargetDependency */,
+				04FAE8F32C0BB36D00200ADC /* PBXTargetDependency */,
 			);
 			name = LocaLoc;
 			packageProductDependencies = (
@@ -572,6 +591,7 @@
 				040B9EC02BFE4C17005E3930 /* GoogleSignIn */,
 				040B9EC32BFE51DB005E3930 /* FirebaseAuth */,
 				04BA85522C0B83E1004F76B3 /* K-Logger */,
+				04BA85552C0BB118004F76B3 /* FirebaseCrashlytics */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -613,22 +633,26 @@
 			productReference = 046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		04BA84E92C0B24A7004F76B3 /* DataRepository */ = {
+		04FAE8ED2C0BB36D00200ADC /* LocaLocDataRepository */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04BA84EE2C0B24A8004F76B3 /* Build configuration list for PBXNativeTarget "DataRepository" */;
+			buildConfigurationList = 04FAE8F92C0BB36D00200ADC /* Build configuration list for PBXNativeTarget "LocaLocDataRepository" */;
 			buildPhases = (
-				04BA84E62C0B24A7004F76B3 /* Sources */,
-				04BA84E72C0B24A7004F76B3 /* Frameworks */,
-				04BA84E82C0B24A7004F76B3 /* CopyFiles */,
+				04FAE8E92C0BB36D00200ADC /* Headers */,
+				04FAE8EA2C0BB36D00200ADC /* Sources */,
+				04FAE8EB2C0BB36D00200ADC /* Frameworks */,
+				04FAE8EC2C0BB36D00200ADC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DataRepository;
-			productName = Storage;
-			productReference = 04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */;
-			productType = "com.apple.product-type.library.static";
+			name = LocaLocDataRepository;
+			packageProductDependencies = (
+				04FAE8FF2C0BB46100200ADC /* K-Logger */,
+			);
+			productName = LocaLocDataRepository;
+			productReference = 04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -651,7 +675,7 @@
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = 046C3E9E2BE917E800BBFF47;
 					};
-					04BA84E92C0B24A7004F76B3 = {
+					04FAE8ED2C0BB36D00200ADC = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -678,7 +702,7 @@
 				046C3E9E2BE917E800BBFF47 /* LocaLoc */,
 				046C3EAE2BE917E900BBFF47 /* LocaLocTests */,
 				046C3EB82BE917E900BBFF47 /* LocaLocUITests */,
-				04BA84E92C0B24A7004F76B3 /* DataRepository */,
+				04FAE8ED2C0BB36D00200ADC /* LocaLocDataRepository */,
 			);
 		};
 /* End PBXProject section */
@@ -708,10 +732,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04FAE8EC2C0BB36D00200ADC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		040B9EBE2BFE4836005E3930 /* Firebase */ = {
+		040B9EBE2BFE4836005E3930 /* Firebase configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -721,7 +752,7 @@
 			);
 			inputPaths = (
 			);
-			name = Firebase;
+			name = "Firebase configuration";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -729,6 +760,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/${TARGET_NAME}/Configs/Firebase/Dev/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/${TARGET_NAME}/Configs/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\n    echo \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\n    echo \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\n    echo \"Using ${GOOGLESERVICE_INFO_PROD}\"\n    cp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"Using ${GOOGLESERVICE_INFO_DEV}\"\n    cp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi\n";
+		};
+		04BA85542C0B8B7E004F76B3 /* Firebase Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}\n",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\n",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist\n",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)\n",
+			);
+			name = "Firebase Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -801,15 +855,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04BA84E62C0B24A7004F76B3 /* Sources */ = {
+		04FAE8EA2C0BB36D00200ADC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04BA85492C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift in Sources */,
-				04BA85092C0B67B1004F76B3 /* UserDataRepositoryImpl.swift in Sources */,
-				04BA85442C0B7190004F76B3 /* UserPersistencyModel.swift in Sources */,
-				04BA85072C0B65CF004F76B3 /* DataRepository.swift in Sources */,
-				04BA85472C0B71AE004F76B3 /* ProfilePersistencyModel.swift in Sources */,
+				04FAE8FC2C0BB3F300200ADC /* ProfilePersistencyModel.swift in Sources */,
+				04FAE8FB2C0BB3EE00200ADC /* UserPersistencyModel.swift in Sources */,
+				04FAE8FD2C0BB3F500200ADC /* AuthenticationProviderTypePersistencyModel.swift in Sources */,
+				04FAE8FE2C0BB3F700200ADC /* UserDataRepositoryImpl.swift in Sources */,
+				04FAE8FA2C0BB38B00200ADC /* DataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,10 +880,10 @@
 			target = 046C3E9E2BE917E800BBFF47 /* LocaLoc */;
 			targetProxy = 046C3EBA2BE917E900BBFF47 /* PBXContainerItemProxy */;
 		};
-		04BA85402C0B6D55004F76B3 /* PBXTargetDependency */ = {
+		04FAE8F32C0BB36D00200ADC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04BA84E92C0B24A7004F76B3 /* DataRepository */;
-			targetProxy = 04BA853F2C0B6D55004F76B3 /* PBXContainerItemProxy */;
+			target = 04FAE8ED2C0BB36D00200ADC /* LocaLocDataRepository */;
+			targetProxy = 04FAE8F22C0BB36D00200ADC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -960,11 +1014,13 @@
 		046C3EC42BE917E900BBFF47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Resources\"";
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
 				ENABLE_PREVIEWS = YES;
@@ -992,6 +1048,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1001,6 +1058,7 @@
 		046C3EC52BE917E900BBFF47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1033,6 +1091,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1115,35 +1174,83 @@
 			};
 			name = Release;
 		};
-		04BA84EF2C0B24A8004F76B3 /* Debug */ = {
+		04FAE8F72C0BB36D00200ADC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET = 17.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLocDataRepository;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 17.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		04BA84F02C0B24A8004F76B3 /* Release */ = {
+		04FAE8F82C0BB36D00200ADC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET = 17.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = VolodymyrKotsiubenko.LocaLocDataRepository;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TVOS_DEPLOYMENT_TARGET = 17.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1186,11 +1293,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04BA84EE2C0B24A8004F76B3 /* Build configuration list for PBXNativeTarget "DataRepository" */ = {
+		04FAE8F92C0BB36D00200ADC /* Build configuration list for PBXNativeTarget "LocaLocDataRepository" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				04BA84EF2C0B24A8004F76B3 /* Debug */,
-				04BA84F02C0B24A8004F76B3 /* Release */,
+				04FAE8F72C0BB36D00200ADC /* Debug */,
+				04FAE8F82C0BB36D00200ADC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1249,6 +1356,16 @@
 			productName = CachedAsyncImage;
 		};
 		04BA85522C0B83E1004F76B3 /* K-Logger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */;
+			productName = "K-Logger";
+		};
+		04BA85552C0BB118004F76B3 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040B9EC22BFE51DB005E3930 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		04FAE8FF2C0BB46100200ADC /* K-Logger */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */;
 			productName = "K-Logger";

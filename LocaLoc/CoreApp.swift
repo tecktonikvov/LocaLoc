@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import DataRepository
+import LocaLocDataRepository
 import K_Logger
 
 @main
@@ -23,7 +23,7 @@ struct CoreApp: App {
             self.appCoordinator = appCoordinator
         } catch {
             Log.error("Application initialization error: \(error)", module: "CoreApp")
-            fatalError("Could not initialize ModelContainer")
+            fatalError("Could not initialize application")
         }
     }
     

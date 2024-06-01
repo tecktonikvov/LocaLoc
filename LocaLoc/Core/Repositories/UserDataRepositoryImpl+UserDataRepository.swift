@@ -5,7 +5,7 @@
 //  Created by Volodymyr Kotsiubenko on 1/6/24.
 //
 
-import DataRepository
+import LocaLocDataRepository
 
 extension UserDataRepositoryImpl: UserDataRepository {
     var currentUser: User? {
