@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @ObservedObject var viewModel: AuthenticationViewModel
+    var viewModel: AuthenticationViewModel
     
     var body: some View {
         VStack {

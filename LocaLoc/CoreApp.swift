@@ -7,6 +7,7 @@
 
 import SwiftUI
 import DataRepository
+import K_Logger
 
 @main
 struct CoreApp: App {
@@ -21,7 +22,7 @@ struct CoreApp: App {
             
             self.appCoordinator = appCoordinator
         } catch {
-            print("🔴", error)
+            Log.error("Application initialization error: \(error)", module: "CoreApp")
             fatalError("Could not initialize ModelContainer")
         }
     }

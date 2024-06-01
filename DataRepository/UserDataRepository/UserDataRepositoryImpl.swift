@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import K_Logger
 
 @Observable open class UserDataRepositoryImpl: DataRepository {
     private(set) public var _currentUser: UserPersistencyModel?
@@ -48,7 +49,7 @@ import SwiftData
                 modelContext.delete(existingUser)
             }
         } catch {
-            print("🔴", error)
+            Log.error("Authorization user setup error: \(error)", module: "UserDataRepositoryImpl")
         }
     
         modelContext.insert(user)

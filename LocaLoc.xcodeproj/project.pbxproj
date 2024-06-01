@@ -59,6 +59,7 @@
 		04BA854C2C0B7274004F76B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85892C008FA5000F8F52 /* User.swift */; };
 		04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
 		04BA854F2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA854E2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift */; };
+		04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04BA85522C0B83E1004F76B3 /* K-Logger */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
 		04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */; };
 		04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */; };
@@ -178,6 +179,7 @@
 				04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */,
 				040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */,
 				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
+				04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */,
 				04BA853E2C0B6D55004F76B3 /* libDataRepository.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +571,7 @@
 				04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */,
 				040B9EC02BFE4C17005E3930 /* GoogleSignIn */,
 				040B9EC32BFE51DB005E3930 /* FirebaseAuth */,
+				04BA85522C0B83E1004F76B3 /* K-Logger */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -666,6 +669,7 @@
 				04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				040B9EC22BFE51DB005E3930 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */,
 			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
@@ -1218,6 +1222,14 @@
 				minimumVersion = 2.1.1;
 			};
 		};
+		04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tecktonikvov/K-Logger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1235,6 +1247,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
+		};
+		04BA85522C0B83E1004F76B3 /* K-Logger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */;
+			productName = "K-Logger";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

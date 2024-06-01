@@ -5,26 +5,24 @@
 //  Created by Volodymyr Kotsiubenko on 21/5/24.
 //
 
-import FirebaseAuth
-import AuthenticationServices
-import FirebaseCore
-import GoogleSignIn
 import SwiftUI
-import Combine
+import K_Logger
 
-final class AuthenticationViewModel: ObservableObject {
+final class AuthenticationViewModel {
+    private var authenticationService: AuthenticationService
+
+    // MARK: - Init
     init(authenticationService: AuthenticationService) {
         self.authenticationService = authenticationService
     }
     
-    private var authenticationService: AuthenticationService
-    
+    // MARK: - Public
     func signIn(providerType: AuthenticationProviderType, view: any View) {
         Task { @MainActor in
             do {
                 try await authenticationService.signIn(providerType: providerType, view: view)
             } catch {
-                print(error)
+                Log.error("Sign in failed, provider: \(providerType) error: \(error)", module: #file)
             }
         }
     }
