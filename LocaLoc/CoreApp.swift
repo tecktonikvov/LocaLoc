@@ -6,26 +6,19 @@
 //
 
 import SwiftUI
-import SwiftData
+import DataRepository
 
 @main
 struct CoreApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     private let appCoordinator: AppCoordinator
-    private let modelContainer: ModelContainer
-    private let userDataRepository: UserDataRepository
     
     init() {
         do {
-            let config = ModelConfiguration()
-            let modelContainer = try ModelContainer(for: User.self, Profile.self, configurations: config)
-            let modelContext = ModelContext(modelContainer)
-            let userDataRepository = UserDataRepository(modelContext: modelContext)
+            let userDataRepository = try UserDataRepositoryImpl()
             let appCoordinator = AppCoordinator(userDataRepository: userDataRepository)
             
-            self.modelContainer = modelContainer
-            self.userDataRepository = userDataRepository
             self.appCoordinator = appCoordinator
         } catch {
             print("🔴", error)

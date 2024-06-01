@@ -5,10 +5,15 @@
 //  Created by Volodymyr Kotsiubenko on 24/5/24.
 //
 
-import SwiftData
+import Observation
 
-@Model
-final class Profile {
+@Observable final class Profile {
+    var firstName: String
+    var lastName: String
+    var email: String
+    var imageUrl: String
+    var username: String
+    
     init(firstName: String, lastName: String, email: String, imageUrl: String, username: String) {
         self.firstName = firstName
         self.lastName = lastName
@@ -16,10 +21,4 @@ final class Profile {
         self.imageUrl = imageUrl
         self.username = username
     }
-    
-    var firstName: String
-    var lastName: String
-    var email: String
-    var imageUrl: String
-    var username: String
 }

@@ -56,17 +56,12 @@ fileprivate extension TabScene<AnyView> {
 }
 
 #Preview {
-    do {
-        let previewer = try Previewer()
-        let userDataRepository = UserDataRepository(modelContext: previewer.container.mainContext)
-        
-        return HomeComposer.view(
-            authenticationService: AuthenticationService(
-                userDataRepository: userDataRepository
-            ),
-            userDataRepository: userDataRepository
-        )
-    } catch {
-        return Text(error.localizedDescription)
-    }
+    let previewer = Previewer()
+    
+    return HomeComposer.view(
+        authenticationService: AuthenticationService(
+            userDataRepository: previewer.userDataRepository
+        ),
+        userDataRepository: previewer.userDataRepository
+    )
 }

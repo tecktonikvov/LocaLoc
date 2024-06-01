@@ -10,11 +10,6 @@
 		040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC02BFE4C17005E3930 /* GoogleSignIn */; };
 		040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC32BFE51DB005E3930 /* FirebaseAuth */; };
 		040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85822C008D2F000F8F52 /* AuthenticationService.swift */; };
-		040D85852C008D8E000F8F52 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* UserDataRepository.swift */; };
-		040D85882C008F97000F8F52 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85872C008F97000F8F52 /* Profile.swift */; };
-		040D858A2C008FA5000F8F52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85892C008FA5000F8F52 /* User.swift */; };
-		040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */; };
-		040E4EBC2C0095D100056856 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
 		040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */; };
 		040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC72C02633800056856 /* ChannelCreationComposer.swift */; };
 		040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC92C02633C00056856 /* ChannelCreationView.swift */; };
@@ -52,6 +47,18 @@
 		04BA84E02C0B0AC8004F76B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */; };
 		04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */; };
 		04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E42C0B0EAC004F76B3 /* Previewer.swift */; };
+		04BA85072C0B65CF004F76B3 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85062C0B65CF004F76B3 /* DataRepository.swift */; };
+		04BA85092C0B67B1004F76B3 /* UserDataRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85842C008D8E000F8F52 /* UserDataRepositoryImpl.swift */; };
+		04BA853E2C0B6D55004F76B3 /* libDataRepository.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */; };
+		04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85042C0B6590004F76B3 /* UserDataRepository.swift */; };
+		04BA85442C0B7190004F76B3 /* UserPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */; };
+		04BA85472C0B71AE004F76B3 /* ProfilePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */; };
+		04BA85492C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */; };
+		04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85872C008F97000F8F52 /* Profile.swift */; };
+		04BA854B2C0B7274004F76B3 /* AuthenticationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */; };
+		04BA854C2C0B7274004F76B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85892C008FA5000F8F52 /* User.swift */; };
+		04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
+		04BA854F2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA854E2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
 		04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */; };
 		04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */; };
@@ -76,13 +83,32 @@
 			remoteGlobalIDString = 046C3E9E2BE917E800BBFF47;
 			remoteInfo = LocaLoc;
 		};
+		04BA853F2C0B6D55004F76B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 046C3E972BE917E800BBFF47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04BA84E92C0B24A7004F76B3;
+			remoteInfo = DataRepository;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04BA84E82C0B24A7004F76B3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		040B9EBA2BFE480B005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040B9EBC2BFE4810005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040D85822C008D2F000F8F52 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		040D85842C008D8E000F8F52 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
+		040D85842C008D8E000F8F52 /* UserDataRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepositoryImpl.swift; sourceTree = "<group>"; };
 		040D85872C008F97000F8F52 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		040D85892C008FA5000F8F52 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderType.swift; sourceTree = "<group>"; };
@@ -128,6 +154,13 @@
 		04BA84DF2C0B0AC8004F76B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
 		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDataRepository.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		04BA85042C0B6590004F76B3 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
+		04BA85062C0B65CF004F76B3 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPersistencyModel.swift; sourceTree = "<group>"; };
+		04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistencyModel.swift; sourceTree = "<group>"; };
+		04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderTypePersistencyModel.swift; sourceTree = "<group>"; };
+		04BA854E2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataRepositoryImpl+UserDataRepository.swift"; sourceTree = "<group>"; };
 		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderError.swift; sourceTree = "<group>"; };
@@ -145,6 +178,7 @@
 				04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */,
 				040B9EC42BFE51DB005E3930 /* FirebaseAuth in Frameworks */,
 				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
+				04BA853E2C0B6D55004F76B3 /* libDataRepository.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +190,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		046C3EB62BE917E900BBFF47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BA84E72C0B24A7004F76B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				04BA84E42C0B0EAC004F76B3 /* Previewer.swift */,
-				040D85842C008D8E000F8F52 /* UserDataRepository.swift */,
 				0485D8262BFF47C600729C34 /* UserDefaults.swift */,
 				04BA84E12C0B0CF8004F76B3 /* AuthenticationService */,
 				04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */,
@@ -236,9 +276,10 @@
 		040D85862C008F8B000F8F52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
+				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
 				040D85872C008F97000F8F52 /* Profile.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
-				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -246,8 +287,9 @@
 		040E4EBD2C024B1600056856 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				040D85812C008D29000F8F52 /* Service */,
 				047ECA062BFA85CB0065837C /* Infrastructure */,
+				04BA85032C0B6567004F76B3 /* Repositories */,
+				040D85812C008D29000F8F52 /* Service */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -292,7 +334,9 @@
 				046C3EA12BE917E800BBFF47 /* LocaLoc */,
 				046C3EB22BE917E900BBFF47 /* LocaLocTests */,
 				046C3EBC2BE917E900BBFF47 /* LocaLocUITests */,
+				04BA84EB2C0B24A8004F76B3 /* DataRepository */,
 				046C3EA02BE917E800BBFF47 /* Products */,
+				04BA850A2C0B6920004F76B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,6 +346,7 @@
 				046C3E9F2BE917E800BBFF47 /* LocaLoc.app */,
 				046C3EAF2BE917E900BBFF47 /* LocaLocTests.xctest */,
 				046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */,
+				04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -426,9 +471,52 @@
 			children = (
 				040D85822C008D2F000F8F52 /* AuthenticationService.swift */,
 				04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */,
-				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
 			);
 			path = AuthenticationService;
+			sourceTree = "<group>";
+		};
+		04BA84EB2C0B24A8004F76B3 /* DataRepository */ = {
+			isa = PBXGroup;
+			children = (
+				04BA85062C0B65CF004F76B3 /* DataRepository.swift */,
+				04BA85502C0B7E39004F76B3 /* UserDataRepository */,
+			);
+			path = DataRepository;
+			sourceTree = "<group>";
+		};
+		04BA85032C0B6567004F76B3 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
+				04BA854E2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		04BA850A2C0B6920004F76B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04BA85452C0B719B004F76B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */,
+				04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */,
+				04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04BA85502C0B7E39004F76B3 /* UserDataRepository */ = {
+			isa = PBXGroup;
+			children = (
+				040D85842C008D8E000F8F52 /* UserDataRepositoryImpl.swift */,
+				04BA85452C0B719B004F76B3 /* Models */,
+			);
+			path = UserDataRepository;
 			sourceTree = "<group>";
 		};
 		04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */ = {
@@ -474,6 +562,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				04BA85402C0B6D55004F76B3 /* PBXTargetDependency */,
 			);
 			name = LocaLoc;
 			packageProductDependencies = (
@@ -521,6 +610,23 @@
 			productReference = 046C3EB92BE917E900BBFF47 /* LocaLocUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		04BA84E92C0B24A7004F76B3 /* DataRepository */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04BA84EE2C0B24A8004F76B3 /* Build configuration list for PBXNativeTarget "DataRepository" */;
+			buildPhases = (
+				04BA84E62C0B24A7004F76B3 /* Sources */,
+				04BA84E72C0B24A7004F76B3 /* Frameworks */,
+				04BA84E82C0B24A7004F76B3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataRepository;
+			productName = Storage;
+			productReference = 04BA84EA2C0B24A7004F76B3 /* libDataRepository.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -528,7 +634,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					046C3E9E2BE917E800BBFF47 = {
@@ -541,6 +647,9 @@
 					046C3EB82BE917E900BBFF47 = {
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = 046C3E9E2BE917E800BBFF47;
+					};
+					04BA84E92C0B24A7004F76B3 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -565,6 +674,7 @@
 				046C3E9E2BE917E800BBFF47 /* LocaLoc */,
 				046C3EAE2BE917E900BBFF47 /* LocaLocTests */,
 				046C3EB82BE917E900BBFF47 /* LocaLocUITests */,
+				04BA84E92C0B24A7004F76B3 /* DataRepository */,
 			);
 		};
 /* End PBXProject section */
@@ -626,15 +736,12 @@
 				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,
 				047ECA082BFA85E80065837C /* Coordinator.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
-				040D85882C008F97000F8F52 /* Profile.swift in Sources */,
 				04BA84E02C0B0AC8004F76B3 /* AppDelegate.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
-				040D858A2C008FA5000F8F52 /* User.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
-				040D858C2C008FD1000F8F52 /* AuthenticationProviderType.swift in Sources */,
 				040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */,
-				040D85852C008D8E000F8F52 /* UserDataRepository.swift in Sources */,
+				04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
 				040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */,
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
@@ -649,13 +756,17 @@
 				047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
-				040E4EBC2C0095D100056856 /* UserAuthenticationStatus.swift in Sources */,
 				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
+				04BA854F2C0B7DB6004F76B3 /* UserDataRepositoryImpl+UserDataRepository.swift in Sources */,
 				047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
+				04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */,
 				04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */,
+				04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */,
+				04BA854B2C0B7274004F76B3 /* AuthenticationProviderType.swift in Sources */,
+				04BA854C2C0B7274004F76B3 /* User.swift in Sources */,
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
@@ -686,6 +797,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04BA84E62C0B24A7004F76B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04BA85492C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift in Sources */,
+				04BA85092C0B67B1004F76B3 /* UserDataRepositoryImpl.swift in Sources */,
+				04BA85442C0B7190004F76B3 /* UserPersistencyModel.swift in Sources */,
+				04BA85072C0B65CF004F76B3 /* DataRepository.swift in Sources */,
+				04BA85472C0B71AE004F76B3 /* ProfilePersistencyModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -698,6 +821,11 @@
 			isa = PBXTargetDependency;
 			target = 046C3E9E2BE917E800BBFF47 /* LocaLoc */;
 			targetProxy = 046C3EBA2BE917E900BBFF47 /* PBXContainerItemProxy */;
+		};
+		04BA85402C0B6D55004F76B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04BA84E92C0B24A7004F76B3 /* DataRepository */;
+			targetProxy = 04BA853F2C0B6D55004F76B3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -983,6 +1111,38 @@
 			};
 			name = Release;
 		};
+		04BA84EF2C0B24A8004F76B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET = 17.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		04BA84F02C0B24A8004F76B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2Z4SAY5W6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET = 17.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1018,6 +1178,15 @@
 			buildConfigurations = (
 				046C3ECA2BE917E900BBFF47 /* Debug */,
 				046C3ECB2BE917E900BBFF47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04BA84EE2C0B24A8004F76B3 /* Build configuration list for PBXNativeTarget "DataRepository" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BA84EF2C0B24A8004F76B3 /* Debug */,
+				04BA84F02C0B24A8004F76B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
