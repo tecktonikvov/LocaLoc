@@ -6,25 +6,40 @@
 //
 
 import SwiftUI
-import LocaLocDataRepository
 import K_Logger
+import FirebaseCore
+import LocaLocDataRepository
 
 @main
 struct CoreApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     private let appCoordinator: AppCoordinator
     
+    // MARK: - Init
     init() {
         do {
+            FirebaseApp.configure()
+
             let userDataRepository = try UserDataRepositoryImpl()
             let appCoordinator = AppCoordinator(userDataRepository: userDataRepository)
             
             self.appCoordinator = appCoordinator
+            
+            if let user = userDataRepository.currentUser {
+                setCrashlyticsData(user: user)
+            }
         } catch {
             Log.error("Application initialization error: \(error)", module: "CoreApp")
             fatalError("Could not initialize application")
         }
+    }
+    
+    // MARK: - Private
+    private func setCrashlyticsData(user: User) {
+        CrashlyticsService.shared.set(userId: user.id)
+        CrashlyticsService.shared.set(username: user.profile.username)
+        CrashlyticsService.shared.set(userEmail: user.profile.email)
     }
     
     var body: some Scene {

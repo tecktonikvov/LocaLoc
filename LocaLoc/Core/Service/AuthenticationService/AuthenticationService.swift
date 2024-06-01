@@ -13,15 +13,25 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
     
     private lazy var googleProvider: AuthenticationProvider = GoogleAuthenticationProvider()
     
+    // MARK: - Init
     init(userDataRepository: UserDataRepository) {
         self.userDataRepository = userDataRepository
     }
     
+    // MARK: - Private
+    private func setCrashlyticsData(user: User) {
+        CrashlyticsService.shared.set(userId: user.id)
+        CrashlyticsService.shared.set(username: user.profile.username)
+        CrashlyticsService.shared.set(userEmail: user.profile.email)
+    }
+    
+    // MARK: - Public
     func signIn(providerType: AuthenticationProviderType, view: any View) async throws {
         switch providerType {
         case .google:
             let user = try await googleProvider.signIn(view: view)
             userDataRepository.setAuthorizedUser(user)
+            setCrashlyticsData(user: user)
         case .apple:
             break
         }

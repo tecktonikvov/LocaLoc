@@ -27,10 +27,6 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         
         let accessToken = signInResult.user.accessToken
         
-        guard let userId = signInResult.user.userID else {
-            throw Error.userIdIsNil
-        }
-        
         guard let idToken = signInResult.user.idToken else {
             throw Error.googleIdTokenIsNil
         }
@@ -42,6 +38,10 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         
         let firebaseSignInResult = try await Auth.auth().signIn(with: credential)
         
+        guard let userID = Auth.auth().currentUser?.uid else {
+            throw Error.userIdIsNil
+        }
+        
         let profile = Profile(
             firstName: (firebaseSignInResult.additionalUserInfo?.profile?["given_name"] as? String) ?? "",
             lastName: (firebaseSignInResult.additionalUserInfo?.profile?["family_name"] as? String) ?? "",
@@ -50,7 +50,7 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
             username: ""
         )
         
-        let user = User(id: userId, authenticationProviderType: .google, profile: profile)
+        let user = User(id: userID, authenticationProviderType: .google, profile: profile)
         
         return user
     }
