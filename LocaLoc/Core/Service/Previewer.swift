@@ -11,6 +11,15 @@ import LocaLocDataRepository
 @MainActor
 struct Previewer {
     class UserDataRepositoryPreviewHelper: UserDataRepository {
+        func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) {
+        }
+        
+        func updateCurrentUser(_ user: User) {
+        }
+        
+        func updateUserProfile(_ profile: Profile, userId: String) {
+        }
+        
         var currentUser: User? {
             let profile = Profile(firstName: "Test first name", lastName: "Test Last name", email: "example@email.com", imageUrl: "", username: "testUsername")
             return User(id: "testUserId", authenticationProviderType: .google, profile: profile)
@@ -19,9 +28,6 @@ struct Previewer {
         var userAuthenticationStatus: UserAuthenticationStatus = .authorized
         
         func clearCurrentUserData() {
-        }
-        
-        func setAuthorizedUser(_ user: User) {
         }
     }
     

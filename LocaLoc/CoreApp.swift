@@ -11,9 +11,7 @@ import FirebaseCore
 import LocaLocDataRepository
 
 @main
-struct CoreApp: App {
-    //@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+struct CoreApp: App {    
     private let appCoordinator: AppCoordinator
     
     // MARK: - Init

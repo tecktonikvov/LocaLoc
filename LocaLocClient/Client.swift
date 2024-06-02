@@ -7,13 +7,12 @@
 
 import FirebaseCore
 import FirebaseFirestore
-
-fileprivate extension String {
-    static let usersCollection = "users"
-}
+import K_Logger
 
 public final class Client {
     private let database: Firestore
+    
+    private let usersCollection = CollectionsKeys.usersCollection
     
     // MARK: - Init
     public init() {
@@ -22,27 +21,59 @@ public final class Client {
     }
     
     // MARK: - Private
-    public func setUserData(userId: String, data: Encodable) {
+    private func log(message: String, dictionary: [String: Any]) {
         Task {
-            do {
-                let data = try data.asDictionary()
-                
-                try await database
-                    .collection(.usersCollection)
-                    .document(userId)
-                    .setData(data)
-                print("Document added with ID: \(data)")
-            } catch {
-                print("Error adding document: \(error)")
-            }
+            let jsonData = (try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)) ?? Data()
+            let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+            let message = message + "\n" + jsonString
+            Log.info(message, module: "Client")
         }
+    }
+    
+    // MARK: - Private
+    public func setUserData(userId: String, data: Encodable) throws {
+        Task {
+            let data = try JSONEncoder().encode(data)
+            let dictionary = try data.asDictionary()
+            
+            try await database
+                .collection(usersCollection)
+                .document(userId)
+                .setData(dictionary)
+            log(message: "User data has set to client", dictionary: dictionary)
+//            let dicc = String(data: data, encoding: .utf8) ?? ""
+//            print("Document added with ID: \(dicc)")
+        }
+    }
+    
+    public func userData<T: Decodable>(userId: String, type: T.Type) async throws -> T? {
+        let docRef = database.collection(usersCollection).document(userId)
+        let document = try await docRef.getDocument()
+        
+        if document.exists {
+            guard let dictionary = document.data() else { 
+                log(message: "Requested user data does not exist", dictionary: ["userId": userId])
+                return nil
+            }
+            
+            log(message: "Got user data", dictionary: dictionary)
+
+            let json = try JSONSerialization.data(withJSONObject: dictionary)
+            let object = try JSONDecoder().decode(type.self, from: json)
+
+//            let dataDescription = dictionary.map(String.init(describing:))
+//            print("Document data: \(dataDescription)")
+            
+            return object
+        }
+        
+        return nil
     }
 }
 
-extension Encodable {
+fileprivate extension Data {
     func asDictionary() throws -> [String: Any] {
-        let data = try JSONEncoder().encode(self)
-        let serialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        let serialized = try JSONSerialization.jsonObject(with: self, options: .allowFragments)
         
         guard let dictionary = serialized as? [String: Any] else {
             throw NSError()

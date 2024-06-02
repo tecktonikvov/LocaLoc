@@ -28,13 +28,15 @@ public class LocalStorage {
         return fetchResult
     }
     
-    
-    /// Replaces or adds model to local storage
     public func addModel(model: any PersistentModel) {
         modelContext.insert(model)
     }
     
     public func delete(model: any PersistentModel) {
         modelContext.delete(model)
+    }
+    
+    public func save() throws {
+        try modelContext.save()
     }
 }

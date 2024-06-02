@@ -13,7 +13,7 @@ import GoogleSignIn
 fileprivate typealias Error = AuthenticationServiceError
 
 final class GoogleAuthenticationProvider: AuthenticationProvider {
-    @MainActor func signIn(view: any View) async throws -> User {
+    @MainActor func signIn(view: any View) async throws -> AuthorizationUserData {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             throw AuthenticationProviderError.firebaseClientIdIsMissed
         }
@@ -51,8 +51,10 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         )
         
         let user = User(id: userID, authenticationProviderType: .google, profile: profile)
+        let isNewUser = (firebaseSignInResult.additionalUserInfo?.isNewUser as? Bool) ?? true
+        let data = AuthorizationUserData(isNewUser: isNewUser, user: user)
         
-        return user
+        return data
     }
     
     func signOut() {

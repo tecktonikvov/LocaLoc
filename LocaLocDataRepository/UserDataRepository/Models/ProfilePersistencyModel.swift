@@ -37,8 +37,7 @@ extension ProfilePersistencyModel: Codable {
         let email = try container.decode(String.self, forKey: .email)
         let imageUrl = try container.decode(String.self, forKey: .imageUrl)
         let username = try container.decode(String.self, forKey: .username)
-        
-        
+
         self.init(
             firstName: firstName,
             lastName: lastName,

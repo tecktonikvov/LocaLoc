@@ -9,27 +9,33 @@ import LocaLocDataRepository
 
 extension UserDataRepositoryImpl: UserDataRepository {
     var currentUser: User? {
-        User(repositoryUserModel: _currentUser)
+        User(persistencyUserModel: _currentUser)
     }
     
     var userAuthenticationStatus: UserAuthenticationStatus {
         isUserAuthorized ? .authorized : .unauthorized
     }
     
-    func setAuthorizedUser(_ user: User) {
-        setAuthorizedUser(UserPersistencyModel(user: user))
+    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) {
+        let persistencyModel = UserPersistencyModel(user: authorizationUserData.user)
+        setAuthorizedUser(persistencyModel, isNewUser: authorizationUserData.isNewUser)
+    }
+    
+    func updateCurrentUser(_ user: User) {
+        let persistencyModel = UserPersistencyModel(user: user)
+        updateUserData(persistencyModel)
     }
 }
 
 // MARK: - Models bridges
 fileprivate extension User {
-    convenience init?(repositoryUserModel: UserPersistencyModel?) {
-        guard let repositoryUserModel else { return nil }
+    convenience init?(persistencyUserModel: UserPersistencyModel?) {
+        guard let persistencyUserModel else { return nil }
         
         self.init(
-            id: repositoryUserModel.id,
-            authenticationProviderType: AuthenticationProviderType(repositoryTypeModel: repositoryUserModel.authenticationProviderType),
-            profile: Profile(repositoryProfileModel: repositoryUserModel.profile)
+            id: persistencyUserModel.id,
+            authenticationProviderType: AuthenticationProviderType(persistencyTypeModel: persistencyUserModel.authenticationProviderType),
+            profile: Profile(persistencyProfileModel: persistencyUserModel.profile)
         )
     }
 }
@@ -45,13 +51,13 @@ fileprivate extension UserPersistencyModel {
 }
 
 fileprivate extension Profile {
-    convenience init(repositoryProfileModel: ProfilePersistencyModel) {
+    convenience init(persistencyProfileModel: ProfilePersistencyModel) {
         self.init(
-            firstName: repositoryProfileModel.firstName,
-            lastName: repositoryProfileModel.lastName,
-            email: repositoryProfileModel.email,
-            imageUrl: repositoryProfileModel.imageUrl,
-            username: repositoryProfileModel.username
+            firstName: persistencyProfileModel.firstName,
+            lastName: persistencyProfileModel.lastName,
+            email: persistencyProfileModel.email,
+            imageUrl: persistencyProfileModel.imageUrl,
+            username: persistencyProfileModel.username
         )
     }
 }
@@ -69,12 +75,12 @@ fileprivate extension ProfilePersistencyModel {
 }
 
 fileprivate extension AuthenticationProviderType {
-    init?(repositoryTypeModel: AuthenticationProviderTypePersistencyModel?) {
-        guard let repositoryTypeModel else {
+    init?(persistencyTypeModel: AuthenticationProviderTypePersistencyModel?) {
+        guard let persistencyTypeModel else {
             return nil
         }
         
-        switch repositoryTypeModel {
+        switch persistencyTypeModel {
         case .google:
             self = .google
         case .apple:

@@ -8,6 +8,6 @@
 import SwiftUI
 
 protocol AuthenticationProvider {
-    func signIn(view: any View) async throws -> User
+    func signIn(view: any View) async throws -> AuthorizationUserData
     func signOut()
 }

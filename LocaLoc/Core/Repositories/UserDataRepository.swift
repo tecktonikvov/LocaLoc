@@ -11,5 +11,6 @@ protocol UserDataRepository: Observable {
     var currentUser: User? { get }
     var userAuthenticationStatus: UserAuthenticationStatus { get }
     func clearCurrentUserData()
-    func setAuthorizedUser(_ user: User)
+    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData)
+    func updateCurrentUser(_ user: User)
 }

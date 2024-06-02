@@ -10,6 +10,7 @@ import CachedAsyncImage
 
 struct ProfileEditingView: View {
     @Bindable var viewModel: ProfileEditingViewModel
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -29,10 +30,10 @@ struct ProfileEditingView: View {
                         }
                         
                         VStack {
-                            TextField("First name", text: $viewModel.profile.firstName)
+                            TextField("First name", text: $viewModel.profile.firstName.max(50))
                             Rectangle()
                                 .frame(height: 0.5)
-                            TextField("Last name", text: $viewModel.profile.lastName)
+                            TextField("Last name", text: $viewModel.profile.lastName.max(50))
                         }
                         .padding(.leading)
                         
@@ -43,7 +44,7 @@ struct ProfileEditingView: View {
                     HStack {
                         Text("@")
                             .padding(.trailing, -4)
-                        TextField("Username", text: $viewModel.profile.username)
+                        TextField("Username", text: $viewModel.profile.username.max(40))
                     }
                 }
             }
@@ -59,11 +60,17 @@ struct ProfileEditingView: View {
                     
                     await MainActor.run {
                         if isUserNameFree {
-                            
+                            viewModel.saveChanges()
+                            dismiss()
+                        } else {
+                            print("BUSY")
                         }
                     }
                 }
             }
+        }
+        .onDisappear {
+            viewModel.onDisappear()
         }
     }
 }

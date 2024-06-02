@@ -43,6 +43,9 @@
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
 		0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D8262BFF47C600729C34 /* UserDefaults.swift */; };
 		04AA618F2C0C90CD00AD6D93 /* FirebaseBinaries in Frameworks */ = {isa = PBXBuildFile; productRef = 04AA618E2C0C90CD00AD6D93 /* FirebaseBinaries */; };
+		04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */; };
+		04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */; };
+		04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04AA61942C0CE45A00AD6D93 /* K-Logger */; };
 		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
 		04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */; };
 		04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E42C0B0EAC004F76B3 /* Previewer.swift */; };
@@ -209,6 +212,8 @@
 		047ECA2D2BFB83B90065837C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		047ECA2F2BFB84460065837C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		0485D8262BFF47C600729C34 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationUserData.swift; sourceTree = "<group>"; };
+		04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsKeys.swift; sourceTree = "<group>"; };
 		04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
 		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		04BA85042C0B6590004F76B3 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
@@ -277,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */,
 				04AA618F2C0C90CD00AD6D93 /* FirebaseBinaries in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +623,7 @@
 			children = (
 				04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */,
 				04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */,
+				04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -659,6 +666,7 @@
 			children = (
 				04FAE9522C0C704A00200ADC /* Configs */,
 				04FAE90F2C0C5A0700200ADC /* Client.swift */,
+				04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */,
 			);
 			path = LocaLocClient;
 			sourceTree = "<group>";
@@ -845,6 +853,7 @@
 			name = LocaLocClient;
 			packageProductDependencies = (
 				04AA618E2C0C90CD00AD6D93 /* FirebaseBinaries */,
+				04AA61942C0CE45A00AD6D93 /* K-Logger */,
 			);
 			productName = LocaLocClient;
 			productReference = 04FAE91C2C0C5BFC00200ADC /* LocaLocClient.framework */;
@@ -1071,6 +1080,7 @@
 				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
 				04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */,
 				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
+				04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */,
 				04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
@@ -1113,6 +1123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FAE92D2C0C5C2600200ADC /* Client.swift in Sources */,
+				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1813,6 +1824,11 @@
 		04AA618E2C0C90CD00AD6D93 /* FirebaseBinaries */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseBinaries;
+		};
+		04AA61942C0CE45A00AD6D93 /* K-Logger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */;
+			productName = "K-Logger";
 		};
 		04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
