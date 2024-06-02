@@ -82,10 +82,7 @@ struct AuthenticationView: View {
            
             Spacer()
         }
-        .background {
-            Color.background
-                .ignoresSafeArea()
-        }
+        .backgroundDefault()
     }
 }
 

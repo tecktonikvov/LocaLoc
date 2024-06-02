@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct ProfileEditingView: View {
     @Bindable var viewModel: ProfileEditingViewModel
@@ -16,7 +17,7 @@ struct ProfileEditingView: View {
                 Section {
                     HStack(alignment: .center) {
                         if let url = URL(string: viewModel.profile.imageUrl) {
-                            AsyncImage(url: url)
+                            CachedAsyncImage(url: url)
                                 .frame(width: 80, height: 80)
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -48,7 +49,7 @@ struct ProfileEditingView: View {
             }
             .listStyle(InsetGroupedListStyle())
             .scrollContentBackground(.hidden)
-            .background(Color.background)
+            .backgroundDefault()
         }
         .navigationTitle("Edit profile")
         .toolbar {

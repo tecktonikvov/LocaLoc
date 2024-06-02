@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct SettingsView: View {
     @Bindable var viewModel: SettingsViewModel
@@ -27,7 +28,7 @@ struct SettingsView: View {
                         } label: {
                             HStack(alignment: .center) {
                                 if let url = URL(string: viewModel.user.profile.imageUrl) {
-                                    AsyncImage(url: url)
+                                    CachedAsyncImage(url: url)
                                         .frame(width: 80, height: 80)
                                         .aspectRatio(contentMode: .fill)
                                         .clipShape(Circle())
@@ -60,8 +61,7 @@ struct SettingsView: View {
                             viewModel.signOut()
                         } label: {
                             Text("Sign out")
-                                .font(.system(size: 22))
-                                .fontWeight(.semibold)
+                                .font(.system(size: 18))
                                 .foregroundStyle(Color.Text.attention)
                                 .padding(.vertical, 6)
                         }
@@ -71,10 +71,7 @@ struct SettingsView: View {
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Settings")
-            .background {
-                Color.background
-                    .ignoresSafeArea()
-            }
+            .backgroundDefault()
         }
     }
 }

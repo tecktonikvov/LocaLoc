@@ -154,10 +154,10 @@ struct Channel: Identifiable, Equatable {
     let settings: ChannelSettings
 }
 
-final class ChannelsViewModel: ObservableObject {
-    @Published private(set) var error: Error? = nil
+@Observable final class ChannelsViewModel {
+    private(set) var error: Error? = nil
 
-    @Published private(set) var model: ChannelsModel
+    private(set) var model: ChannelsModel
     let didNavigateBack = PassthroughSubject<Void, Never>()
     
     // MARK: - Init

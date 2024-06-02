@@ -12,7 +12,7 @@ fileprivate enum NavigationState {
 }
 
 struct ChannelsView: View {
-    @EnvironmentObject var viewModel: ChannelsViewModel
+    var viewModel: ChannelsViewModel
     
     @State private var path = NavigationPath()
     @State private var selectedChanels: [Channel] = []
@@ -59,10 +59,7 @@ struct ChannelsView: View {
                     }
                 }
             }
-            .background {
-                Color.background
-                    .ignoresSafeArea()
-            }
+            .backgroundDefault()
             .navigationDestination(for: NavigationState.self) { state in
                 switch state {
                 case .createNewChannel:
@@ -74,6 +71,5 @@ struct ChannelsView: View {
 }
 
 #Preview {
-    ChannelsView()
-        .environmentObject(ChannelsViewModel())
+    ChannelsView(viewModel: ChannelsViewModel())
 }

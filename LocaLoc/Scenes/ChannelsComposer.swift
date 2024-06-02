@@ -10,8 +10,7 @@ import SwiftUI
 final class ChannelsComposer: SceneComposer {
     static func compose() -> TabScene<AnyView> {
         let viewModel = ChannelsViewModel()
-        let view = ChannelsView()
-            .environmentObject(viewModel)
+        let view = ChannelsView(viewModel: viewModel)
         
         return TabScene(type: .channels) {
             AnyView(view)

@@ -60,10 +60,10 @@ struct ChannelCreationView: View {
                 
             }
             .scrollContentBackground(.hidden)
-            .background(Color.background)
+            .backgroundDefault()
         }
         .navigationTitle("Create new channel")
-        .toolbarBackground( Color.background, for: .navigationBar)
+        .toolbarBackground(                                                     Color.background, for: .navigationBar)
         .disabled(showIdentifierCheckingIndicator)
         .toolbar {
             Button("Create") {
