@@ -1,5 +1,5 @@
 //
-//  UserDataRepositoryImpl.swift
+//  UserDataDataRepository.swift
 //  LocaLoc
 //
 //  Created by Volodymyr Kotsiubenko on 24/5/24.
@@ -10,17 +10,17 @@ import K_Logger
 import LocaLocLocalStore
 import LocaLocClient
 
-@Observable open class UserDataRepositoryImpl {
+@Observable open class UserDataDataRepository {
     private(set) public var isUserAuthorized: Bool = false
     private(set) public var _currentUser: UserPersistencyModel?
     
-    private let client: Client
+    private let client: UserDataClient
     private let localStorage: LocalStorage
     
     // MARK: - Init
     public init() throws {
         self.localStorage = try LocalStorage(with: UserPersistencyModel.self, ProfilePersistencyModel.self)
-        self.client = Client()
+        self.client = UserDataClient()
                 
         try retrieveUser()
     }

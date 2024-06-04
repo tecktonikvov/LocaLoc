@@ -7,7 +7,7 @@
 
 import LocaLocDataRepository
 
-extension UserDataRepositoryImpl: UserDataRepository {
+extension UserDataDataRepository: UserDataRepository {
     var currentUser: User? {
         User(persistencyUserModel: _currentUser)
     }

@@ -19,7 +19,7 @@ struct CoreApp: App {
         do {
             FirebaseApp.configure()
 
-            let userDataRepository = try UserDataRepositoryImpl()
+            let userDataRepository = try UserDataDataRepository()
             let appCoordinator = AppCoordinator(userDataRepository: userDataRepository)
             
             self.appCoordinator = appCoordinator
