@@ -93,15 +93,16 @@ import LocaLocClient
         isUserAuthorized = false
     }
 
-    public func updateUserData(_ user: UserPersistencyModel) {
+    public func updateUserData(_ user: UserPersistencyModel) throws {
         do {
             try updateUserData(user, shouldUpdateClient: true)
         } catch  {
             Log.error("User data update error: \(error)", module: "UserDataRepositoryImpl")
+            throw error
         }
     }
 
-    public func setAuthorizedUser(_ user: UserPersistencyModel, isNewUser: Bool) {
+    public func setAuthorizedUser(_ user: UserPersistencyModel, isNewUser: Bool) throws {
         UserDefaults.standard.set(user.id, forKey: .currentUserIdKey)
                 
         do {
@@ -119,6 +120,7 @@ import LocaLocClient
                         
         } catch {
             Log.error("Authorized user data setting failed", module: "UserDataRepositoryImpl")
+            throw error
         }
     }
 }

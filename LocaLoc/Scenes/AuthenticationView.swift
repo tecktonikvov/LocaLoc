@@ -12,23 +12,22 @@ struct AuthenticationView: View {
     
     var body: some View {
         VStack {
-            Text("Authorization")
-                .foregroundStyle(Color.Text.main)
-                .font(.system(size: 32))
-                .fontWeight(.semibold)
             Spacer()
             VStack {
-                Image(systemName: "location.north.circle.fill")
+                Image("point")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .foregroundStyle(Color.Text.main)
+                    .foregroundStyle(Color.brand)
+                    .padding(.bottom)
+                    .containerRelativeFrame(.horizontal) { size, _ in
+                        size * 0.3
+                    }
                 Text("LocaLoc")
-                    .foregroundStyle(Color.Text.main)
-                    .font(.system(size: 28))
+                    .font(.system(size: 32))
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color.Text.main)
             }
-          
+            
             Spacer()
 
             VStack {

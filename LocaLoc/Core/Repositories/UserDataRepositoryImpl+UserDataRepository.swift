@@ -18,12 +18,12 @@ extension UserDataRepositoryImpl: UserDataRepository {
     
     func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) {
         let persistencyModel = UserPersistencyModel(user: authorizationUserData.user)
-        setAuthorizedUser(persistencyModel, isNewUser: authorizationUserData.isNewUser)
+        try? setAuthorizedUser(persistencyModel, isNewUser: authorizationUserData.isNewUser)
     }
     
     func updateCurrentUser(_ user: User) {
         let persistencyModel = UserPersistencyModel(user: user)
-        updateUserData(persistencyModel)
+        try? updateUserData(persistencyModel)
     }
 }
 

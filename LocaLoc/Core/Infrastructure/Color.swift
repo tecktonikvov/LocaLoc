@@ -12,9 +12,10 @@ extension Color {
     static let background = Color("background")
     static let separator = Color("separator")
     
-    
     static let backgroundGradientTop = Color("background_gradient_top")
     static let backgroundGradientBottom = Color("background_gradient_bottom")
+    
+    static let brand = Color("brand")
 
     struct Text {
         private init() {}
