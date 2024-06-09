@@ -17,8 +17,7 @@ final class HomeComposer: SceneComposer {
         
         let viewModel = HomeViewModel(model: model)
         
-        HomeView()
-            .environmentObject(viewModel)
+        HomeView(viewModel: viewModel)
     }
     
     private static func settingsScene(userDataRepository: UserDataRepository, authenticationService: AuthenticationService) -> TabScene<AnyView>? {

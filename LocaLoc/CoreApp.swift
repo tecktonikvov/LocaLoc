@@ -12,7 +12,7 @@ import LocaLocDataRepository
 
 @main
 struct CoreApp: App {    
-    private let appCoordinator: AppCoordinator
+    private let appComposer: AppComposer
     
     // MARK: - Init
     init() {
@@ -20,9 +20,13 @@ struct CoreApp: App {
             FirebaseApp.configure()
 
             let userDataRepository = try UserDataDataRepository()
-            let appCoordinator = AppCoordinator(userDataRepository: userDataRepository)
             
-            self.appCoordinator = appCoordinator
+            let appComposer = AppComposer(
+                userDataRepository: userDataRepository,
+                usernameManager: userDataRepository
+            )
+            
+            self.appComposer = appComposer
             
             if let user = userDataRepository.currentUser {
                 setCrashlyticsData(user: user)
@@ -43,7 +47,7 @@ struct CoreApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                appCoordinator.view()
+                appComposer.view()
             }
         }
     }

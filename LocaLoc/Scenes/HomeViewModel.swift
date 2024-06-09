@@ -11,8 +11,8 @@ struct HomeModel {
     let tabScenes: [TabScene<AnyView>]
 }
 
-class HomeViewModel: ObservableObject {
-    @Published private(set) var error: Error? = nil
+@Observable class HomeViewModel {
+    private(set) var error: Error? = nil
 
     let model: HomeModel
     

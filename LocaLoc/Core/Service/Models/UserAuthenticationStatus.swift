@@ -10,4 +10,5 @@ import Foundation
 enum UserAuthenticationStatus: String, Codable {
     case unauthorized
     case authorized
+    case noUsername
 }

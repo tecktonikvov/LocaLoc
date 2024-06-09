@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AuthenticationProviderTypePersistencyModel: Codable {
+public enum AuthenticationProviderTypePersistencyModel: String, Codable {
     case google
     case apple
 }

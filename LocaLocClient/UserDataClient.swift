@@ -7,17 +7,24 @@
 
 import Foundation
 
-public final class UserDataClient: Client {
+public final class UserDataClient {
     private let usersCollection = CollectionsKeys.usersCollection
     
+    private let client: Client
+    
+    // MARK: - Init
+    public init(client: Client) {
+        self.client = client
+    }
+    
     // MARK: - Private
-    public func setUserData(userId: String, data: Encodable) throws {
+    public func setUserData(userId: String, data: UserClientModel) throws {
         Task {
-            try await setData(documentId: userId, collectionName: usersCollection, data: data)
+            try await client.setData(documentId: userId, collectionName: usersCollection, data: data)
         }
     }
     
-    public func userData<T: Decodable>(userId: String, type: T.Type) async throws -> T? {
-       try await data(documentId: userId, collectionName: usersCollection, type: type)
+    public func userData(userId: String) async throws -> UserClientModel? {
+        try await client.data(documentId: userId, collectionName: usersCollection, type: UserClientModel.self)
     }
 }

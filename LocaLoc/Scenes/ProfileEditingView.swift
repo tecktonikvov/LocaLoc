@@ -30,13 +30,12 @@ struct ProfileEditingView: View {
                         }
                         
                         VStack {
-                            TextField("First name", text: $viewModel.profile.firstName.max(50))
+                            TextField("First name", text: $viewModel.profile.firstName.max(Constants.firstNameCharactersLimit))
                             Rectangle()
                                 .frame(height: 0.5)
-                            TextField("Last name", text: $viewModel.profile.lastName.max(50))
+                            TextField("Last name", text: $viewModel.profile.lastName.max(Constants.lastNameCharactersLimit))
                         }
                         .padding(.leading)
-                        
                     }
                 }
                 
@@ -54,23 +53,23 @@ struct ProfileEditingView: View {
         }
         .navigationTitle("Edit profile")
         .toolbar {
-            Button("Done") {
-                Task {
-                    let isUserNameFree = await viewModel.isUserNameFree()
-                    
-                    await MainActor.run {
-                        if isUserNameFree {
-                            viewModel.saveChanges()
-                            dismiss()
-                        } else {
-                            print("BUSY")
-                        }
-                    }
-                }
-            }
+            Button("Done", action: doneButtonAction)
         }
         .onDisappear {
             viewModel.onDisappear()
+        }
+    }
+    
+    private func doneButtonAction() {
+        Task {
+            let isUserNameFree = await viewModel.isUserNameFree()
+            
+            await MainActor.run {
+                if isUserNameFree {
+                    viewModel.saveChanges()
+                    dismiss()
+                }
+            }
         }
     }
 }

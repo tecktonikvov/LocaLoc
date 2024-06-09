@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var viewModel: HomeViewModel
+    private let viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         TabView {

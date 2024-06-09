@@ -15,17 +15,18 @@
 		040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */; };
 		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */; };
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
-		04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */; };
 		04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */; };
 		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
+		0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BF9D2C0F490B00D7CAE7 /* UsernameCreationView.swift */; };
+		0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BF9F2C0F492A00D7CAE7 /* Constants.swift */; };
+		0443BFA22C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */; };
+		0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
 		046C3EBE2BE917E900BBFF47 /* LocaLocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */; };
 		046C3EC02BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */; };
-		047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA042BFA85C60065837C /* CoordinatorProtocol.swift */; };
-		047ECA082BFA85E80065837C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA072BFA85E80065837C /* Coordinator.swift */; };
-		047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */; };
+		047ECA0B2BFA85FD0065837C /* AppComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0A2BFA85FD0065837C /* AppComposer.swift */; };
 		047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0E2BFA86DB0065837C /* HomeComposer.swift */; };
 		047ECA112BFA88AC0065837C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA102BFA88AC0065837C /* HomeView.swift */; };
 		047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA122BFA88B50065837C /* HomeViewModel.swift */; };
@@ -46,6 +47,9 @@
 		04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */; };
 		04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */; };
 		04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04AA61942C0CE45A00AD6D93 /* K-Logger */; };
+		04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */; };
+		04AA9BFD2C15CBEB00459E00 /* UserDataDataRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA9BFC2C15CBEB00459E00 /* UserDataDataRepositoryError.swift */; };
+		04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA9BFF2C15D68300459E00 /* UserClientModel.swift */; };
 		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
 		04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */; };
 		04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E42C0B0EAC004F76B3 /* Previewer.swift */; };
@@ -82,6 +86,7 @@
 		04FAE9472C0C634800200ADC /* LocaLocLocalStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE9382C0C608D00200ADC /* LocaLocLocalStore.framework */; };
 		04FAE9482C0C634900200ADC /* LocaLocLocalStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE9382C0C608D00200ADC /* LocaLocLocalStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04FAE95D2C0C7B4B00200ADC /* FirebaseBinaries in Frameworks */ = {isa = PBXBuildFile; productRef = 04FAE95C2C0C7B4B00200ADC /* FirebaseBinaries */; };
+		04FCC0332C0F2ED70008880F /* UserNameClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCC0322C0F2ED70008880F /* UserNameClient.swift */; };
 		04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */; };
 		04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -181,9 +186,12 @@
 		040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationViewModel.swift; sourceTree = "<group>"; };
 		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatar.swift; sourceTree = "<group>"; };
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
-		04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
 		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		0443BF9D2C0F490B00D7CAE7 /* UsernameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationView.swift; sourceTree = "<group>"; };
+		0443BF9F2C0F492A00D7CAE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationViewViewModel.swift; sourceTree = "<group>"; };
+		0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UsernameManager.swift"; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -194,9 +202,7 @@
 		046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		046C3ECC2BE91BDC00BBFF47 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		046C3ECD2BE91C8700BBFF47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		047ECA042BFA85C60065837C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
-		047ECA072BFA85E80065837C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		047ECA0A2BFA85FD0065837C /* AppComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComposer.swift; sourceTree = "<group>"; };
 		047ECA0E2BFA86DB0065837C /* HomeComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComposer.swift; sourceTree = "<group>"; };
 		047ECA102BFA88AC0065837C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		047ECA122BFA88B50065837C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -215,6 +221,9 @@
 		0485D8262BFF47C600729C34 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationUserData.swift; sourceTree = "<group>"; };
 		04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsKeys.swift; sourceTree = "<group>"; };
+		04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameManager.swift; sourceTree = "<group>"; };
+		04AA9BFC2C15CBEB00459E00 /* UserDataDataRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDataRepositoryError.swift; sourceTree = "<group>"; };
+		04AA9BFF2C15D68300459E00 /* UserClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClientModel.swift; sourceTree = "<group>"; };
 		04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
 		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		04BA85042C0B6590004F76B3 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
@@ -239,6 +248,7 @@
 		04FAE9552C0C709A00200ADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04FAE9572C0C710600200ADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04FAE95B2C0C7AD900200ADC /* FirebaseBinaries */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FirebaseBinaries; sourceTree = "<group>"; };
+		04FCC0322C0F2ED70008880F /* UserNameClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameClient.swift; sourceTree = "<group>"; };
 		04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingView.swift; sourceTree = "<group>"; };
 		04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -385,15 +395,9 @@
 				047ECA062BFA85CB0065837C /* Infrastructure */,
 				04BA85032C0B6567004F76B3 /* Repositories */,
 				040D85812C008D29000F8F52 /* Service */,
+				0443BF9F2C0F492A00D7CAE7 /* Constants.swift */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		040E4EBE2C024B2800056856 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		040E4EC62C02631F00056856 /* ChannelCreation */ = {
@@ -406,21 +410,31 @@
 			name = ChannelCreation;
 			sourceTree = "<group>";
 		};
-		04261AE22BFCE68800FBAFC3 /* AuthenticationCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-				04261AE32BFCE69600FBAFC3 /* AuthenticationCoordinator.swift */,
-			);
-			path = AuthenticationCoordinator;
-			sourceTree = "<group>";
-		};
 		04261AE62BFCE9F000FBAFC3 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				0443BF9B2C0F48FC00D7CAE7 /* Child */,
 				04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */,
 				04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */,
 			);
 			name = Authentication;
+			sourceTree = "<group>";
+		};
+		0443BF9B2C0F48FC00D7CAE7 /* Child */ = {
+			isa = PBXGroup;
+			children = (
+				0443BF9C2C0F490300D7CAE7 /* UsernameCreation */,
+			);
+			name = Child;
+			sourceTree = "<group>";
+		};
+		0443BF9C2C0F490300D7CAE7 /* UsernameCreation */ = {
+			isa = PBXGroup;
+			children = (
+				0443BF9D2C0F490B00D7CAE7 /* UsernameCreationView.swift */,
+				0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */,
+			);
+			name = UsernameCreation;
 			sourceTree = "<group>";
 		};
 		046C3E962BE917E800BBFF47 = {
@@ -455,9 +469,9 @@
 			isa = PBXGroup;
 			children = (
 				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
+				047ECA0A2BFA85FD0065837C /* AppComposer.swift */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
 				040E4EBD2C024B1600056856 /* Core */,
-				040E4EBE2C024B2800056856 /* Network */,
 				040B9EC72BFE6C45005E3930 /* Resources */,
 				047ECA0C2BFA86550065837C /* Scenes */,
 			);
@@ -481,21 +495,10 @@
 			path = LocaLocUITests;
 			sourceTree = "<group>";
 		};
-		047ECA032BFA85B70065837C /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				04261AE22BFCE68800FBAFC3 /* AuthenticationCoordinator */,
-				047ECA092BFA85F20065837C /* AppCoordinator */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
 		047ECA062BFA85CB0065837C /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				047ECA2D2BFB83B90065837C /* Color.swift */,
-				047ECA072BFA85E80065837C /* Coordinator.swift */,
-				047ECA042BFA85C60065837C /* CoordinatorProtocol.swift */,
 				04D3DDE42C090C99002FF3DC /* CustomError.swift */,
 				047ECA1D2BFA925F0065837C /* SceneComposer.swift */,
 				047ECA272BFB81F00065837C /* TabScene.swift */,
@@ -505,19 +508,10 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
-		047ECA092BFA85F20065837C /* AppCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-				047ECA0A2BFA85FD0065837C /* AppCoordinator.swift */,
-			);
-			path = AppCoordinator;
-			sourceTree = "<group>";
-		};
 		047ECA0C2BFA86550065837C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				04261AE62BFCE9F000FBAFC3 /* Authentication */,
-				047ECA032BFA85B70065837C /* Coordinators */,
 				04FAE9052C0C557D00200ADC /* GenericUI */,
 				047ECA0D2BFA865D0065837C /* Home */,
 			);
@@ -556,6 +550,14 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		04AA9BFE2C15D67E00459E00 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04AA9BFF2C15D68300459E00 /* UserClientModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		04BA84DC2C0A0FC6004F76B3 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,8 +580,10 @@
 		04BA85032C0B6567004F76B3 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
 				04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */,
+				0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */,
+				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
+				04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -605,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				040D85842C008D8E000F8F52 /* UserDataDataRepository.swift */,
+				04AA9BFC2C15CBEB00459E00 /* UserDataDataRepositoryError.swift */,
 				04BA85452C0B719B004F76B3 /* Models */,
 			);
 			path = UserDataDataRepository;
@@ -666,8 +671,10 @@
 		04FAE90E2C0C5A0700200ADC /* LocaLocClient */ = {
 			isa = PBXGroup;
 			children = (
+				04AA9BFE2C15D67E00459E00 /* Models */,
 				04FAE9522C0C704A00200ADC /* Configs */,
 				04FAE90F2C0C5A0700200ADC /* Client.swift */,
+				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
 				04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */,
 				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
 			);
@@ -1044,7 +1051,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,
-				047ECA082BFA85E80065837C /* Coordinator.swift in Sources */,
+				04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
@@ -1055,21 +1062,22 @@
 				040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */,
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
+				0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */,
 				04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */,
 				04FAE9082C0C55A200200ADC /* BackgroundDefault.swift in Sources */,
-				04261AE42BFCE69600FBAFC3 /* AuthenticationCoordinator.swift in Sources */,
+				0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
 				04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
 				047ECA1E2BFA925F0065837C /* SceneComposer.swift in Sources */,
 				04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */,
-				047ECA0B2BFA85FD0065837C /* AppCoordinator.swift in Sources */,
+				047ECA0B2BFA85FD0065837C /* AppComposer.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
+				0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
 				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */,
-				047ECA052BFA85C60065837C /* CoordinatorProtocol.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
 				04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */,
@@ -1080,6 +1088,7 @@
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
+				0443BFA22C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift in Sources */,
 				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
 				04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */,
 				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
@@ -1114,6 +1123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FAE8FC2C0BB3F300200ADC /* ProfilePersistencyModel.swift in Sources */,
+				04AA9BFD2C15CBEB00459E00 /* UserDataDataRepositoryError.swift in Sources */,
 				04FAE8FB2C0BB3EE00200ADC /* UserPersistencyModel.swift in Sources */,
 				04FAE8FD2C0BB3F500200ADC /* AuthenticationProviderTypePersistencyModel.swift in Sources */,
 				04FAE8FE2C0BB3F700200ADC /* UserDataDataRepository.swift in Sources */,
@@ -1127,6 +1137,8 @@
 			files = (
 				04FAE92D2C0C5C2600200ADC /* Client.swift in Sources */,
 				04CDAF812C0F152800A28C93 /* UserDataClient.swift in Sources */,
+				04FCC0332C0F2ED70008880F /* UserNameClient.swift in Sources */,
+				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
 				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

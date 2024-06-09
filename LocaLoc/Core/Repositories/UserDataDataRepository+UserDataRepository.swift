@@ -13,7 +13,16 @@ extension UserDataDataRepository: UserDataRepository {
     }
     
     var userAuthenticationStatus: UserAuthenticationStatus {
-        isUserAuthorized ? .authorized : .unauthorized
+        if isUserAuthorized {
+            if let currentUser = _currentUser,
+                currentUser.profile.username.isEmpty {
+                return .noUsername
+            } else {
+                return .authorized
+            }
+        }
+        
+        return .unauthorized
     }
     
     func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) {

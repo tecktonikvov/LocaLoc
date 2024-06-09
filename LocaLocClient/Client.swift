@@ -13,7 +13,7 @@ enum ClientError: Error {
     case dataIsMissed
 }
 
-public class Client {
+public final class Client {
     private let database: Firestore
         
     // MARK: - Init
@@ -32,6 +32,15 @@ public class Client {
         }
     }
     
+    private func log(message: String, arrayOfDictionaries: Array<[String: Any]>) {
+        Task {
+            let jsonData = (try? JSONSerialization.data(withJSONObject: arrayOfDictionaries, options: .prettyPrinted)) ?? Data()
+            let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+            let message = message + "\n" + jsonString
+            Log.info(message, module: "Client")
+        }
+    }
+    
     // MARK: - Private
     func setData(documentId: String, collectionName: String, data: Encodable) async throws {
         let data = try JSONEncoder().encode(data)
@@ -42,6 +51,14 @@ public class Client {
             .document(documentId)
             .setData(dictionary)
         log(message: "Data saved to collection: \"\(collectionName)\"", dictionary: dictionary)
+    }
+    
+    func updateData(in collectionName: String, for documentId: String, data: [String: Any]) async throws {
+        try await database
+            .collection(collectionName)
+            .document(documentId)
+            .updateData(data)
+        log(message: "Field(s) updated in collection: \"\(collectionName)\"", dictionary: data)
     }
     
     func data<T: Decodable>(documentId: String, collectionName: String, type: T.Type) async throws -> T? {
@@ -63,6 +80,20 @@ public class Client {
         }
         
         return nil
+    }
+    
+    func filteredData(filter: Filter, collectionName: String) async throws -> [[String: Any]] {
+        let querySnapshot = try await database
+            .collection(collectionName)
+            .whereFilter(filter)
+            .getDocuments()
+        
+        let documents = querySnapshot.documents
+        let dictionaries = documents.map { $0.data() }
+        
+        log(message: "Data fetched from collection: \"\(collectionName)\"", arrayOfDictionaries: dictionaries)
+        
+        return dictionaries
     }
 }
 
