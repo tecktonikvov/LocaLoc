@@ -36,7 +36,11 @@ import SwiftUI
         guard let user = userDataRepository.currentUser else { return }
         user.profile = profile
         
-        userDataRepository.updateCurrentUser(user)
+        do {
+            try userDataRepository.updateCurrentUser(user)
+        } catch {
+            // TODO: Pass to error presenter
+        }
     }
     
     func onDisappear() {

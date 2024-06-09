@@ -25,14 +25,14 @@ extension UserDataDataRepository: UserDataRepository {
         return .unauthorized
     }
     
-    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) {
+    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) throws {
         let persistencyModel = UserPersistencyModel(user: authorizationUserData.user)
-        try? setAuthorizedUser(persistencyModel, isNewUser: authorizationUserData.isNewUser)
+        try setAuthorizedUser(persistencyModel, isNewUser: authorizationUserData.isNewUser)
     }
     
-    func updateCurrentUser(_ user: User) {
+    func updateCurrentUser(_ user: User) throws {
         let persistencyModel = UserPersistencyModel(user: user)
-        try? updateUserData(persistencyModel)
+        try updateUserData(persistencyModel)
     }
 }
 

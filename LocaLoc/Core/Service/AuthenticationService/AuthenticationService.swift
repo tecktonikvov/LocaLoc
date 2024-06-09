@@ -30,8 +30,9 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
         switch providerType {
         case .google:
             let data = try await googleProvider.signIn(view: view)
-            userDataRepository.setAuthorizedUser(data)
             setCrashlyticsData(user: data.user)
+            
+            try userDataRepository.setAuthorizedUser(data)
         case .apple:
             break
         }
