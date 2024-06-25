@@ -29,7 +29,8 @@ import SwiftUI
         case .authorized:
             HomeComposer.view(
                 authenticationService: authenticationService,
-                userDataRepository: userDataRepository
+                userDataRepository: userDataRepository, 
+                usernameManager: usernameManager
             )
         case .noUsername:
             UsernameCreationView(

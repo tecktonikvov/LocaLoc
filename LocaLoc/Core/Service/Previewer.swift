@@ -32,4 +32,15 @@ struct Previewer {
     }
     
     let userDataRepository: UserDataRepository = UserDataRepositoryPreviewHelper()
+    let usernameManager: UsernameManager = UserDataRepositoryPreviewHelper()
+}
+
+extension Previewer.UserDataRepositoryPreviewHelper: UsernameManager {
+    func setUserName(_ username: String) async throws {
+        
+    }
+    
+    func isUsernameFree(_ username: String) async throws -> Bool {
+        false
+    }
 }

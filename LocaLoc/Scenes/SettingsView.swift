@@ -11,10 +11,12 @@ import CachedAsyncImage
 struct SettingsView: View {
     @Bindable var viewModel: SettingsViewModel
     
+    private var usernameManager: UsernameManager
     private var userDataRepository: UserDataRepository
-    
-    init(viewModel: SettingsViewModel, userDataRepository: UserDataRepository) {
+
+    init(viewModel: SettingsViewModel, userDataRepository: UserDataRepository, usernameManager: UsernameManager) {
         self.viewModel = viewModel
+        self.usernameManager = usernameManager
         self.userDataRepository = userDataRepository
     }
     
@@ -24,7 +26,12 @@ struct SettingsView: View {
                 List {
                     Section {
                         NavigationLink() {
-                            ProfileEditingView(viewModel: ProfileEditingViewModel(userDataRepository: userDataRepository))
+                            ProfileEditingView(
+                                viewModel: ProfileEditingViewModel(
+                                    userDataRepository: userDataRepository,
+                                    usernameManager: usernameManager
+                                )
+                            )
                         } label: {
                             HStack(alignment: .center) {
                                 if let url = URL(string: viewModel.user.profile.imageUrl) {

@@ -9,8 +9,13 @@ import SwiftUI
 import CachedAsyncImage
 
 struct ProfileEditingView: View {
-    @Bindable var viewModel: ProfileEditingViewModel
+    @Bindable private var viewModel: ProfileEditingViewModel
     @Environment(\.dismiss) var dismiss
+    @State private var showUsernameTipsView = false
+    
+    init(viewModel: ProfileEditingViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationView {
@@ -39,11 +44,32 @@ struct ProfileEditingView: View {
                     }
                 }
                 
-                Section() {
+                VStack {
                     HStack {
                         Text("@")
-                            .padding(.trailing, -4)
-                        TextField("Username", text: $viewModel.profile.username.max(40))
+                            .padding(.trailing, -6)
+                        TextField("Username",
+                                  text: $viewModel.profile.username.max(Constants.usernameCharactersLimit)) { isEditing in
+                            showUsernameTipsView = isEditing || viewModel.errorText != nil
+                        }
+                    }
+                    .onChange(of: viewModel.profile.username) { _, _ in
+                        viewModel.errorText = nil
+                    }
+                    
+                    if showUsernameTipsView || viewModel.errorText != nil {
+                        if let errorText = viewModel.errorText {
+                            Text(errorText)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .font(.footnote)
+                                .foregroundColor(Color.Text.attention)
+                        } else {
+                            let amount = symbolsLeft()
+                            Text("\(amount) symbols left")
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .font(.footnote)
+                                .foregroundColor(amount <= 0 ? Color.Text.attention : Color.Text.main)
+                        }
                     }
                 }
             }
@@ -53,24 +79,27 @@ struct ProfileEditingView: View {
         }
         .navigationTitle("Edit profile")
         .toolbar {
-            Button("Done", action: doneButtonAction)
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                Button("Done", action: viewModel.saveChanges)
+            }
         }
         .onDisappear {
             viewModel.onDisappear()
         }
-    }
-    
-    private func doneButtonAction() {
-        Task {
-            let isUserNameFree = await viewModel.isUserNameFree()
-            
-            await MainActor.run {
-                if isUserNameFree {
-                    viewModel.saveChanges()
-                    dismiss()
-                }
+        .onChange(of: viewModel.dismiss) { _, shouldDismiss in
+            if shouldDismiss {
+                dismiss()
             }
         }
+        .disabled(viewModel.isLoading)
+    }
+    
+    // MARK: - Private
+    private func symbolsLeft() -> Int {
+        let amount = Constants.usernameCharactersLimit - viewModel.profile.username.count
+        return max(0, amount)
     }
 }
 
@@ -78,6 +107,6 @@ struct ProfileEditingView: View {
     let previewer = Previewer()
     
     return ProfileEditingView(
-        viewModel: ProfileEditingViewModel(userDataRepository: previewer.userDataRepository)
+        viewModel: ProfileEditingViewModel(userDataRepository: previewer.userDataRepository, usernameManager: previewer.usernameManager)
     )
 }

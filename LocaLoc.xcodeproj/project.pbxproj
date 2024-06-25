@@ -468,10 +468,11 @@
 		046C3EA12BE917E800BBFF47 /* LocaLoc */ = {
 			isa = PBXGroup;
 			children = (
-				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
 				047ECA0A2BFA85FD0065837C /* AppComposer.swift */,
+				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
 				040E4EBD2C024B1600056856 /* Core */,
+				04FAE9052C0C557D00200ADC /* GenericUI */,
 				040B9EC72BFE6C45005E3930 /* Resources */,
 				047ECA0C2BFA86550065837C /* Scenes */,
 			);
@@ -512,7 +513,6 @@
 			isa = PBXGroup;
 			children = (
 				04261AE62BFCE9F000FBAFC3 /* Authentication */,
-				04FAE9052C0C557D00200ADC /* GenericUI */,
 				047ECA0D2BFA865D0065837C /* Home */,
 			);
 			path = Scenes;
@@ -658,6 +658,7 @@
 				04FAE9062C0C559100200ADC /* Modifiers */,
 			);
 			name = GenericUI;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		04FAE9062C0C559100200ADC /* Modifiers */ = {

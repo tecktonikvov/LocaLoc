@@ -66,6 +66,7 @@ fileprivate extension TabScene<AnyView> {
         authenticationService: AuthenticationService(
             userDataRepository: previewer.userDataRepository
         ),
-        userDataRepository: previewer.userDataRepository
+        userDataRepository: previewer.userDataRepository, 
+        usernameManager: previewer.usernameManager
     )
 }
