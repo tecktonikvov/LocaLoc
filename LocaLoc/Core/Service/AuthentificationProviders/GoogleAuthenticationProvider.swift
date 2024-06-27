@@ -9,13 +9,16 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
+import Foundation
 
-fileprivate typealias Error = AuthenticationServiceError
+enum GoogleAuthenticationProviderError: Error {
+    case firebaseClientIdIsMissed
+}
 
-final class GoogleAuthenticationProvider: AuthenticationProvider {
+final class GoogleAuthenticationProvider {
     @MainActor func signIn(view: any View) async throws -> AuthorizationUserData {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
-            throw AuthenticationProviderError.firebaseClientIdIsMissed
+            throw GoogleAuthenticationProviderError.firebaseClientIdIsMissed
         }
         
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
@@ -29,7 +32,7 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         let accessToken = signInResult.user.accessToken
         
         guard let idToken = signInResult.user.idToken else {
-            throw Error.googleIdTokenIsNil
+            throw AuthenticationServiceError.googleIdTokenIsNil
         }
         
         let credential = GoogleAuthProvider.credential(
@@ -40,7 +43,7 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         let firebaseSignInResult = try await Auth.auth().signIn(with: credential)
         
         guard let userID = Auth.auth().currentUser?.uid else {
-            throw Error.userIdIsNil
+            throw AuthenticationServiceError.userIdIsNil
         }
         
         let profile = Profile(

@@ -11,8 +11,9 @@ import AuthenticationServices
 final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationControllerDelegate {
     private let userDataRepository: UserDataRepository
     
-    private lazy var googleProvider: AuthenticationProvider = GoogleAuthenticationProvider()
-    
+    private lazy var appleProvider = AppleAuthenticationProvider()
+    private lazy var googleProvider = GoogleAuthenticationProvider()
+
     // MARK: - Init
     init(userDataRepository: UserDataRepository) {
         self.userDataRepository = userDataRepository
@@ -26,15 +27,39 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
     }
     
     // MARK: - Public
-    func signIn(providerType: AuthenticationProviderType, view: any View) async throws {
+    func signIn(providerType: AuthenticationProviderType, view: any View, completion: @escaping (Error?) -> Void) {
         switch providerType {
         case .google:
-            let data = try await googleProvider.signIn(view: view)
-            setCrashlyticsData(user: data.user)
-            
-            try userDataRepository.setAuthorizedUser(data)
+            Task {
+                do {
+                    let authorizationData = try await googleProvider.signIn(view: view)
+                    
+                    #warning("FIX")
+                    setCrashlyticsData(user: authorizationData.user)
+                    
+                    try userDataRepository.setAuthorizedUser(authorizationData)
+                    completion(nil)
+                } catch {
+                    completion(error)
+                }
+            }
+           
         case .apple:
-            break
+            appleProvider.completion = { [weak self] result in
+                switch result {
+                case .failure(let error):
+                    completion(error)
+                case .success(let authorizationData):
+                    do {
+                        self?.setCrashlyticsData(user: authorizationData.user)
+                        try self?.userDataRepository.setAuthorizedUser(authorizationData)
+                    } catch {
+                        completion(error)
+                    }
+                }
+            }
+            
+            appleProvider.signIn(view: view)
         }
     }
     
@@ -43,10 +68,11 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
             switch providerType {
             case .google:
                 googleProvider.signOut()
-                userDataRepository.clearCurrentUserData()
             case .apple:
                 break
             }
+            
+            userDataRepository.clearCurrentUserData()
         }
     }
 }

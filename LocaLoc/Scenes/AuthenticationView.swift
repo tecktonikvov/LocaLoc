@@ -55,7 +55,7 @@ struct AuthenticationView: View {
                 }
                 
                 Button {
-                    print("Button was tapped")
+                    viewModel.signIn(providerType: .apple, view: self)
                 } label: {
                     HStack {
                         Spacer()

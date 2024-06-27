@@ -60,7 +60,7 @@ fileprivate extension TabScene<AnyView> {
 }
 
 #Preview {
-    var previewer = Previewer()
+    let previewer = Previewer()
     
     return HomeComposer.view(
         authenticationService: AuthenticationService(

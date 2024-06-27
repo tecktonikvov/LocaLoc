@@ -74,8 +74,6 @@
 		04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04BA85522C0B83E1004F76B3 /* K-Logger */; };
 		04CDAF812C0F152800A28C93 /* UserDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAF802C0F152800A28C93 /* UserDataClient.swift */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
-		04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */; };
-		04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */; };
 		04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */; };
 		04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE42C090C99002FF3DC /* CustomError.swift */; };
 		04FAE8F42C0BB36D00200ADC /* LocaLocDataRepository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */; };
@@ -223,6 +221,7 @@
 		0443BF9F2C0F492A00D7CAE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationViewViewModel.swift; sourceTree = "<group>"; };
 		0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UsernameManager.swift"; sourceTree = "<group>"; };
+		044D62012C2DC2EE00D130FA /* LocaLoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocaLoc.entitlements; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -265,8 +264,6 @@
 		04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UserDataRepository.swift"; sourceTree = "<group>"; };
 		04CDAF802C0F152800A28C93 /* UserDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClient.swift; sourceTree = "<group>"; };
 		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
-		04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
-		04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderError.swift; sourceTree = "<group>"; };
 		04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDE42C090C99002FF3DC /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocaLocDataRepository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,15 +397,15 @@
 		040D85812C008D29000F8F52 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */,
 				04BA84E42C0B0EAC004F76B3 /* Previewer.swift */,
+				0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */,
 				0485D8262BFF47C600729C34 /* UserDefaults.swift */,
 				04BA84E12C0B0CF8004F76B3 /* AuthenticationService */,
 				04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */,
 				04FAE9012C0BB75D00200ADC /* Crashlytics */,
 				0438C46B2C2C5B4F000665D0 /* FilesUploadingService */,
 				040D85862C008F8B000F8F52 /* Models */,
-				0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */,
-				0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -549,6 +546,7 @@
 		046C3EA12BE917E800BBFF47 /* LocaLoc */ = {
 			isa = PBXGroup;
 			children = (
+				044D62012C2DC2EE00D130FA /* LocaLoc.entitlements */,
 				047ECA0A2BFA85FD0065837C /* AppComposer.swift */,
 				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
@@ -707,8 +705,6 @@
 		04D3DDE12C090C1C002FF3DC /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				04D3DDDD2C0909E6002FF3DC /* AuthenticationProvider.swift */,
-				04D3DDDF2C090B87002FF3DC /* AuthenticationProviderError.swift */,
 				04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */,
 			);
 			path = Infrastructure;
@@ -1152,12 +1148,10 @@
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
 				0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */,
-				04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */,
 				04FAE9082C0C55A200200ADC /* BackgroundDefault.swift in Sources */,
 				0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */,
 				0438C4A72C2C7129000665D0 /* TokenSecureStorage.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
-				04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
 				047ECA1E2BFA925F0065837C /* SceneComposer.swift in Sources */,
 				04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */,
@@ -1417,6 +1411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LocaLoc/LocaLoc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1461,6 +1456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LocaLoc/LocaLoc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
 				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Resources\"";

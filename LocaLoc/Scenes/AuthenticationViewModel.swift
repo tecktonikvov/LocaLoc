@@ -18,11 +18,10 @@ final class AuthenticationViewModel {
     
     // MARK: - Public
     func signIn(providerType: AuthenticationProviderType, view: any View) {
-        Task { @MainActor in
-            do {
-                try await authenticationService.signIn(providerType: providerType, view: view)
-            } catch {
+        authenticationService.signIn(providerType: providerType, view: view) { error in
+            if let error {
                 Log.error("Sign in failed, provider: \(providerType) error: \(error)", module: #file)
+
             }
         }
     }
