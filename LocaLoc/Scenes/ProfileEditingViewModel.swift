@@ -6,27 +6,39 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 @Observable final class ProfileEditingViewModel {
     private let usernameManager: UsernameManager
     private let userDataRepository: UserDataRepository
+    private let userPhotoUploader: UserPhotoUploader
     
     var profile: Profile
     var errorText: String?
     var isLoading: Bool = false
     var dismiss: Bool = false
     
+    var selectedUIImage: UIImage?
+    var selectedPickerImage: PhotosPickerItem?
+    
+    private var doesUserNameWasChanged: Bool {
+        profile.username != initialUserName
+    }
+    
+    private let initialUserName: String
     private var saveRequest: Task<(), Never>?
-        
+    
     // MARK: - Init
-    init(userDataRepository: UserDataRepository, usernameManager: UsernameManager) {
+    init(userDataRepository: UserDataRepository, usernameManager: UsernameManager, userPhotoUploader: UserPhotoUploader) {
         self.usernameManager = usernameManager
+        self.userPhotoUploader = userPhotoUploader
         self.userDataRepository = userDataRepository
 
         let emptyModel = Profile(firstName: "", lastName: "", email: "", imageUrl: "", username: "")
         let profile = userDataRepository.currentUser?.profile ?? emptyModel
         
         self.profile = profile
+        self.initialUserName = profile.username
     }
     
     // MARK: - Private
@@ -50,7 +62,6 @@ import SwiftUI
                     return .alreadyExist
                 }
             } catch {
-                // TODO: Pass to error presenter
                 return .requestError(error)
             }
         }
@@ -63,6 +74,43 @@ import SwiftUI
         try userDataRepository.updateCurrentUser(user)
     }
     
+    private func uploadImage(_ image: UIImage) async throws -> URL {
+        let fileUrl = try await userPhotoUploader.uploadUserPhoto(image)
+        return fileUrl
+    }
+    
+    @MainActor
+    private func setErrorText(_ text: String?) {
+        errorText = text
+    }
+    
+    private func usernameError() async -> String? {
+        guard doesUserNameWasChanged else {
+            return nil
+        }
+        
+        let usernameValidationResult = await validateUsername()
+        
+        guard !Task.isCancelled else { return nil }
+        
+        switch usernameValidationResult {
+        case .requestError(let error):
+            return ("Something wrong")
+            // TODO: Pass to error presenter
+        case .tooShort:
+            return ("Should be more than \(Constants.usernameCharactersMin) symbols")
+        case .alreadyExist:
+            return ("Already exist")
+        case .ok:
+            return nil
+        }
+    }
+    
+    private func updateUserImage(_ image: UIImage) async throws {
+        let userAvatarUrl = try await uploadImage(image)
+        profile.imageUrl = userAvatarUrl.absoluteString
+    }
+    
     // MARK: - Public
     func saveChanges() {
         saveRequest?.cancel()
@@ -70,31 +118,30 @@ import SwiftUI
         isLoading = true
         
         saveRequest = Task {
-            let usernameValidationResult = await validateUsername()
+            let userNameError = await usernameError()
             
             guard !Task.isCancelled else { return }
             
-            await MainActor.run {
-                switch usernameValidationResult {
-                case .requestError(let error):
-                    errorText = "Something wrong"
-                    // TODO: Pass to error presenter
-                case .tooShort:
-                    errorText = "Should be more than \(Constants.usernameCharactersMin) symbols"
-                case .alreadyExist:
-                    errorText = "Already exist"
-                case .ok:
-                    errorText = nil
-                    
-                    do {
-                        try saveUser()
-                        dismiss = true
-                    } catch {
-                        print(error)
-                        // TODO: Pass to error presenter
-                    }
+            guard userNameError == nil else {
+                await setErrorText(userNameError!)
+                return
+            }
+            
+            do {
+                if let selectedUIImage {
+                    try await updateUserImage(selectedUIImage)
                 }
                 
+                try await MainActor.run {
+                    try saveUser()
+                    dismiss = true
+                }
+            } catch {
+                print("🔴Error", error)
+                // TODO: Pass to error presenter
+            }
+            
+            await MainActor.run {
                 isLoading = false
             }
         }
@@ -105,5 +152,18 @@ import SwiftUI
         
         saveRequest?.cancel()
         saveRequest = nil
+    }
+    
+    func setSelectedUIImage() {
+        Task {
+            do {
+                guard let selectedPickerImage else { return }
+                let data = try await selectedPickerImage.loadTransferable(type: Data.self)
+                selectedUIImage = UIImage(data: data ?? Data())
+            } catch {
+                print(error)
+                // TODO: Handle error
+            }
+        }
     }
 }

@@ -6,18 +6,12 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
 
 struct SettingsView: View {
     @Bindable var viewModel: SettingsViewModel
     
-    private var usernameManager: UsernameManager
-    private var userDataRepository: UserDataRepository
-
-    init(viewModel: SettingsViewModel, userDataRepository: UserDataRepository, usernameManager: UsernameManager) {
+    init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
-        self.usernameManager = usernameManager
-        self.userDataRepository = userDataRepository
     }
     
     var body: some View {
@@ -26,25 +20,14 @@ struct SettingsView: View {
                 List {
                     Section {
                         NavigationLink() {
-                            ProfileEditingView(
-                                viewModel: ProfileEditingViewModel(
-                                    userDataRepository: userDataRepository,
-                                    usernameManager: usernameManager
-                                )
-                            )
+                            ProfileEditingView(viewModel: viewModel.profileEditingViewModel)
                         } label: {
                             HStack(alignment: .center) {
-                                if let url = URL(string: viewModel.user.profile.imageUrl) {
-                                    CachedAsyncImage(url: url)
-                                        .frame(width: 80, height: 80)
-                                        .aspectRatio(contentMode: .fill)
-                                        .clipShape(Circle())
-                                } else {
-                                    Image(systemName: "person.circle.fill")
-                                        .resizable()
-                                        .frame(width: 80, height: 80)
-                                        .clipShape(Circle())
-                                }
+                                CachedCenteredImage(
+                                    url: URL(string: viewModel.user.profile.imageUrl),
+                                    placeholderImageName: "person.circle.fill")
+                                    .frame(width: 80, height: 80)
+                                    .clipShape(Circle())
                                 
                                 VStack(alignment: .leading) {
                                     Text(viewModel.user.profile.fullName)

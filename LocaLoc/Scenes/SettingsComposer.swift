@@ -16,14 +16,12 @@ final class SettingsComposer: SceneComposer {
     ) -> TabScene<AnyView> {
         let viewModel = SettingsViewModel(
             user: user,
-            authenticationService: authenticationService
-        )
-        
-        let view = SettingsView(
-            viewModel: viewModel,
+            authenticationService: authenticationService,
             userDataRepository: userDataRepository,
             usernameManager: usernameManager
         )
+        
+        let view = SettingsView(viewModel: viewModel)
         
         return TabScene(type: .settings) {
             AnyView(view)

@@ -8,10 +8,10 @@
 import SwiftUI
 
 @Observable final class AppComposer {
+    private let usernameManager: UsernameManager
     private let userDataRepository: UserDataRepository
     private let authenticationService: AuthenticationService
-    private let usernameManager: UsernameManager
-    
+
     init(userDataRepository: UserDataRepository, usernameManager: UsernameManager) {
         self.authenticationService = AuthenticationService(userDataRepository: userDataRepository)
         self.userDataRepository = userDataRepository

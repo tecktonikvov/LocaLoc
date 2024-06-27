@@ -33,6 +33,7 @@ struct Previewer {
     
     let userDataRepository: UserDataRepository = UserDataRepositoryPreviewHelper()
     let usernameManager: UsernameManager = UserDataRepositoryPreviewHelper()
+    lazy var userPhotoUploader: UserPhotoUploader = FilesUploadingService(userDataRepository: userDataRepository)
 }
 
 extension Previewer.UserDataRepositoryPreviewHelper: UsernameManager {

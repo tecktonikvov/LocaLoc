@@ -8,6 +8,8 @@
 import K_Logger
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
 
 enum ClientError: Error {
     case dataIsMissed
@@ -15,11 +17,12 @@ enum ClientError: Error {
 
 public final class Client {
     private let database: Firestore
+    private let storage: Storage
         
     // MARK: - Init
     public init() {
-        FirebaseApp.configure()
         database = Firestore.firestore()
+        storage = Storage.storage()
     }
     
     // MARK: - Private
@@ -94,6 +97,21 @@ public final class Client {
         log(message: "Data fetched from collection: \"\(collectionName)\"", arrayOfDictionaries: dictionaries)
         
         return dictionaries
+    }
+    
+    func uploadData(_ data: Data, folderName: String, fileName: String) async throws -> URL {
+        let filePath = folderName + "/" + fileName
+        let reference = storage.reference(withPath: filePath)
+        
+        //let token = try await Auth.auth().currentUser?.getIDToken() ?? ""
+        
+        //try await Auth.auth().signIn(
+                
+        _ = try await reference.putDataAsync(data)
+        
+        let url = try await reference.downloadURL()
+
+        return url
     }
 }
 

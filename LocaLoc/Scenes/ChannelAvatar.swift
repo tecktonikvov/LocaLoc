@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
 
 struct ChannelAvatar: View {
     private let url: URL?
@@ -16,12 +15,10 @@ struct ChannelAvatar: View {
     }
     
     var body: some View {
-        if let url {
-            CachedAsyncImage(url: url)
-        } else {
-            Image(systemName: "location.circle.fill")
-                .resizable()
-                .foregroundStyle(Color.Extra.battleshipGray)
-        }
+        CachedCenteredImage(
+            url: url,
+            placeholderImageName: "location.circle.fill")
+            .frame(width: 80, height: 80)
+            .clipShape(Circle())
     }
 }

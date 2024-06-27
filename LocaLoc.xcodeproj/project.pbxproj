@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040255DB2C2B565B00DC8130 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 040255DA2C2B565B00DC8130 /* PopupView */; };
 		040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC02BFE4C17005E3930 /* GoogleSignIn */; };
 		040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85822C008D2F000F8F52 /* AuthenticationService.swift */; };
 		040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */; };
@@ -17,6 +18,18 @@
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
 		04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */; };
 		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
+		0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */; };
+		0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */; };
+		0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */; };
+		0438C4682C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */; };
+		0438C46D2C2C5B78000665D0 /* FilesUploadingServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C46C2C2C5B78000665D0 /* FilesUploadingServiceError.swift */; };
+		0438C49F2C2C65A9000665D0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0438C49E2C2C65A9000665D0 /* FirebaseAuth */; };
+		0438C4A12C2C65A9000665D0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0438C4A02C2C65A9000665D0 /* FirebaseFirestore */; };
+		0438C4A32C2C65A9000665D0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0438C4A22C2C65A9000665D0 /* FirebaseStorage */; };
+		0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */; };
+		0438C4A72C2C7129000665D0 /* TokenSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */; };
+		0438C4A92C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */; };
+		0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4AB2C2D6907000665D0 /* CachedCenteredImage.swift */; };
 		0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BF9D2C0F490B00D7CAE7 /* UsernameCreationView.swift */; };
 		0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BF9F2C0F492A00D7CAE7 /* Constants.swift */; };
 		0443BFA22C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */; };
@@ -43,14 +56,12 @@
 		047ECA2E2BFB83B90065837C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA2D2BFB83B90065837C /* Color.swift */; };
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
 		0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D8262BFF47C600729C34 /* UserDefaults.swift */; };
-		04AA618F2C0C90CD00AD6D93 /* FirebaseBinaries in Frameworks */ = {isa = PBXBuildFile; productRef = 04AA618E2C0C90CD00AD6D93 /* FirebaseBinaries */; };
 		04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */; };
 		04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */; };
 		04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04AA61942C0CE45A00AD6D93 /* K-Logger */; };
 		04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */; };
 		04AA9BFD2C15CBEB00459E00 /* UserDataDataRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA9BFC2C15CBEB00459E00 /* UserDataDataRepositoryError.swift */; };
 		04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA9BFF2C15D68300459E00 /* UserClientModel.swift */; };
-		04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */; };
 		04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */; };
 		04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA84E42C0B0EAC004F76B3 /* Previewer.swift */; };
 		04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85042C0B6590004F76B3 /* UserDataRepository.swift */; };
@@ -85,7 +96,6 @@
 		04FAE9462C0C60EA00200ADC /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAE9452C0C60EA00200ADC /* LocalStorage.swift */; };
 		04FAE9472C0C634800200ADC /* LocaLocLocalStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE9382C0C608D00200ADC /* LocaLocLocalStore.framework */; };
 		04FAE9482C0C634900200ADC /* LocaLocLocalStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE9382C0C608D00200ADC /* LocaLocLocalStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		04FAE95D2C0C7B4B00200ADC /* FirebaseBinaries in Frameworks */ = {isa = PBXBuildFile; productRef = 04FAE95C2C0C7B4B00200ADC /* FirebaseBinaries */; };
 		04FCC0332C0F2ED70008880F /* UserNameClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCC0322C0F2ED70008880F /* UserNameClient.swift */; };
 		04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */; };
 		04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */; };
@@ -144,6 +154,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0438C49B2C2C63BD000665D0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04FAE8F62C0BB36D00200ADC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +208,16 @@
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
 		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploaderClient.swift; sourceTree = "<group>"; };
+		0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingService.swift; sourceTree = "<group>"; };
+		0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoUploader.swift; sourceTree = "<group>"; };
+		0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesUploadingService+UserPhotoUploader.swift"; sourceTree = "<group>"; };
+		0438C46C2C2C5B78000665D0 /* FilesUploadingServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingServiceError.swift; sourceTree = "<group>"; };
+		0438C4802C2C6388000665D0 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDataStore.swift; sourceTree = "<group>"; };
+		0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSecureStorage.swift; sourceTree = "<group>"; };
+		0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainDataStore+TokenSecureStorage.swift"; sourceTree = "<group>"; };
+		0438C4AB2C2D6907000665D0 /* CachedCenteredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedCenteredImage.swift; sourceTree = "<group>"; };
 		0443BF9D2C0F490B00D7CAE7 /* UsernameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationView.swift; sourceTree = "<group>"; };
 		0443BF9F2C0F492A00D7CAE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationViewViewModel.swift; sourceTree = "<group>"; };
@@ -247,7 +277,6 @@
 		04FAE9452C0C60EA00200ADC /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		04FAE9552C0C709A00200ADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04FAE9572C0C710600200ADC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		04FAE95B2C0C7AD900200ADC /* FirebaseBinaries */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FirebaseBinaries; sourceTree = "<group>"; };
 		04FCC0322C0F2ED70008880F /* UserNameClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameClient.swift; sourceTree = "<group>"; };
 		04FD11F22C03B3D10020B7EA /* ProfileEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingView.swift; sourceTree = "<group>"; };
 		04FD11F42C03B3DA0020B7EA /* ProfileEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingViewModel.swift; sourceTree = "<group>"; };
@@ -258,9 +287,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04ABD30C2BFCBB84008FB984 /* CachedAsyncImage in Frameworks */,
+				040255DB2C2B565B00DC8130 /* PopupView in Frameworks */,
 				04FAE8F42C0BB36D00200ADC /* LocaLocDataRepository.framework in Frameworks */,
-				04FAE95D2C0C7B4B00200ADC /* FirebaseBinaries in Frameworks */,
 				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
 				04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */,
 			);
@@ -295,7 +323,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */,
-				04AA618F2C0C90CD00AD6D93 /* FirebaseBinaries in Frameworks */,
+				0438C4A32C2C65A9000665D0 /* FirebaseStorage in Frameworks */,
+				0438C49F2C2C65A9000665D0 /* FirebaseAuth in Frameworks */,
+				0438C4A12C2C65A9000665D0 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +403,10 @@
 				04BA84E12C0B0CF8004F76B3 /* AuthenticationService */,
 				04D3DDDA2C09091C002FF3DC /* AuthentificationProviders */,
 				04FAE9012C0BB75D00200ADC /* Crashlytics */,
+				0438C46B2C2C5B4F000665D0 /* FilesUploadingService */,
 				040D85862C008F8B000F8F52 /* Models */,
+				0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */,
+				0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -420,6 +453,52 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
+		0438C4612C2C3E2F000665D0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
+				04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */,
+				0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0438C4622C2C3E39000665D0 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */,
+				0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */,
+				04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */,
+				0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		0438C46B2C2C5B4F000665D0 /* FilesUploadingService */ = {
+			isa = PBXGroup;
+			children = (
+				0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */,
+				0438C46C2C2C5B78000665D0 /* FilesUploadingServiceError.swift */,
+			);
+			path = FilesUploadingService;
+			sourceTree = "<group>";
+		};
+		0438C47F2C2C6388000665D0 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				0438C4802C2C6388000665D0 /* Firebase.h */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		0438C4AA2C2D6901000665D0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0438C4AB2C2D6907000665D0 /* CachedCenteredImage.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		0443BF9B2C0F48FC00D7CAE7 /* Child */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,13 +519,13 @@
 		046C3E962BE917E800BBFF47 = {
 			isa = PBXGroup;
 			children = (
-				04FAE95B2C0C7AD900200ADC /* FirebaseBinaries */,
 				046C3EA12BE917E800BBFF47 /* LocaLoc */,
 				046C3EB22BE917E900BBFF47 /* LocaLocTests */,
 				046C3EBC2BE917E900BBFF47 /* LocaLocUITests */,
 				04FAE8EF2C0BB36D00200ADC /* LocaLocDataRepository */,
 				04FAE90E2C0C5A0700200ADC /* LocaLocClient */,
 				04FAE9392C0C608D00200ADC /* LocaLocLocalStorage */,
+				0438C47F2C2C6388000665D0 /* Firebase */,
 				046C3EA02BE917E800BBFF47 /* Products */,
 				04BA850A2C0B6920004F76B3 /* Frameworks */,
 			);
@@ -580,10 +659,8 @@
 		04BA85032C0B6567004F76B3 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */,
-				0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */,
-				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
-				04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */,
+				0438C4622C2C3E39000665D0 /* Implementations */,
+				0438C4612C2C3E2F000665D0 /* Protocols */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -655,6 +732,7 @@
 		04FAE9052C0C557D00200ADC /* GenericUI */ = {
 			isa = PBXGroup;
 			children = (
+				0438C4AA2C2D6901000665D0 /* Views */,
 				04FAE9062C0C559100200ADC /* Modifiers */,
 			);
 			name = GenericUI;
@@ -678,6 +756,7 @@
 				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
 				04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */,
 				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
+				0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */,
 			);
 			path = LocaLocClient;
 			sourceTree = "<group>";
@@ -779,10 +858,9 @@
 			);
 			name = LocaLoc;
 			packageProductDependencies = (
-				04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */,
 				040B9EC02BFE4C17005E3930 /* GoogleSignIn */,
 				04BA85522C0B83E1004F76B3 /* K-Logger */,
-				04FAE95C2C0C7B4B00200ADC /* FirebaseBinaries */,
+				040255DA2C2B565B00DC8130 /* PopupView */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -856,6 +934,7 @@
 				04FAE9182C0C5BFC00200ADC /* Sources */,
 				04FAE9192C0C5BFC00200ADC /* Frameworks */,
 				04FAE91A2C0C5BFC00200ADC /* Resources */,
+				0438C49B2C2C63BD000665D0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -863,8 +942,10 @@
 			);
 			name = LocaLocClient;
 			packageProductDependencies = (
-				04AA618E2C0C90CD00AD6D93 /* FirebaseBinaries */,
 				04AA61942C0CE45A00AD6D93 /* K-Logger */,
+				0438C49E2C2C65A9000665D0 /* FirebaseAuth */,
+				0438C4A02C2C65A9000665D0 /* FirebaseFirestore */,
+				0438C4A22C2C65A9000665D0 /* FirebaseStorage */,
 			);
 			productName = LocaLocClient;
 			productReference = 04FAE91C2C0C5BFC00200ADC /* LocaLocClient.framework */;
@@ -934,9 +1015,10 @@
 			);
 			mainGroup = 046C3E962BE917E800BBFF47;
 			packageReferences = (
-				04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */,
+				040255D92C2B561400DC8130 /* XCRemoteSwiftPackageReference "PopupView" */,
+				040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
@@ -1042,7 +1124,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/FirebaseBinaries/Sources/FirebaseBinaries/FirebaseCrashlytics/run\"\n\n";
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1051,8 +1133,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0438C4A92C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift in Sources */,
+				0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */,
 				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,
 				04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */,
+				0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
@@ -1067,6 +1152,7 @@
 				04D3DDE02C090B87002FF3DC /* AuthenticationProviderError.swift in Sources */,
 				04FAE9082C0C55A200200ADC /* BackgroundDefault.swift in Sources */,
 				0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */,
+				0438C4A72C2C7129000665D0 /* TokenSecureStorage.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
 				04D3DDDE2C0909E6002FF3DC /* AuthenticationProvider.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
@@ -1077,9 +1163,12 @@
 				0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
 				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
+				0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */,
+				0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
+				0438C4682C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
 				04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */,
 				04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */,
@@ -1088,6 +1177,7 @@
 				04BA854C2C0B7274004F76B3 /* User.swift in Sources */,
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
+				0438C46D2C2C5B78000665D0 /* FilesUploadingServiceError.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
 				0443BFA22C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift in Sources */,
 				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
@@ -1140,6 +1230,7 @@
 				04CDAF812C0F152800A28C93 /* UserDataClient.swift in Sources */,
 				04FCC0332C0F2ED70008880F /* UserNameClient.swift in Sources */,
 				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
+				0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */,
 				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1334,10 +1425,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Configs/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc needs access to your camera to take photo";
+				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc requires access to your phone’s camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = "$(LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET)";
@@ -1378,10 +1468,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Configs/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc needs access to your camera to take photo";
+				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc requires access to your phone’s camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = "$(LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET)";
@@ -1806,20 +1895,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		040255D92C2B561400DC8130 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
 		040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.1.0;
-			};
-		};
-		04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.1;
 			};
 		};
 		04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */ = {
@@ -1833,24 +1930,35 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		040255DA2C2B565B00DC8130 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040255D92C2B561400DC8130 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
 		040B9EC02BFE4C17005E3930 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
 		};
-		04AA618E2C0C90CD00AD6D93 /* FirebaseBinaries */ = {
+		0438C49E2C2C65A9000665D0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = FirebaseBinaries;
+			package = 040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0438C4A02C2C65A9000665D0 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0438C4A22C2C65A9000665D0 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		04AA61942C0CE45A00AD6D93 /* K-Logger */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */;
 			productName = "K-Logger";
-		};
-		04ABD30B2BFCBB84008FB984 /* CachedAsyncImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04ABD30A2BFCBB84008FB984 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
-			productName = CachedAsyncImage;
 		};
 		04BA85522C0B83E1004F76B3 /* K-Logger */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1866,10 +1974,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */;
 			productName = "K-Logger";
-		};
-		04FAE95C2C0C7B4B00200ADC /* FirebaseBinaries */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FirebaseBinaries;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

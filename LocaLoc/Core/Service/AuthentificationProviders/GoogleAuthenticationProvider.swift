@@ -52,7 +52,7 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         
         let user = User(id: userID, authenticationProviderType: .google, profile: profile)
         let isNewUser = (firebaseSignInResult.additionalUserInfo?.isNewUser as? Bool) ?? true
-        let data = AuthorizationUserData(isNewUser: isNewUser, user: user)
+        let data = AuthorizationUserData(isNewUser: isNewUser, user: user, token: "")
         
         return data
     }

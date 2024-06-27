@@ -9,18 +9,18 @@ import SwiftUI
 import K_Logger
 import FirebaseCore
 import LocaLocDataRepository
-
+ 
 @main
 struct CoreApp: App {    
     private let appComposer: AppComposer
     
     // MARK: - Init
     init() {
-        do {
-            FirebaseApp.configure()
+        FirebaseApp.configure()
 
+        do {
             let userDataRepository = try UserDataDataRepository()
-            
+
             let appComposer = AppComposer(
                 userDataRepository: userDataRepository,
                 usernameManager: userDataRepository
