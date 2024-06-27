@@ -34,6 +34,7 @@
 		0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BF9F2C0F492A00D7CAE7 /* Constants.swift */; };
 		0443BFA22C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */; };
 		0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */; };
+		044D62002C2DBC9C00D130FA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 044D61FF2C2DBC9C00D130FA /* GoogleSignIn */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -322,6 +323,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044D62002C2DBC9C00D130FA /* GoogleSignIn in Frameworks */,
 				04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */,
 				0438C4A32C2C65A9000665D0 /* FirebaseStorage in Frameworks */,
 				0438C49F2C2C65A9000665D0 /* FirebaseAuth in Frameworks */,
@@ -946,6 +948,7 @@
 				0438C49E2C2C65A9000665D0 /* FirebaseAuth */,
 				0438C4A02C2C65A9000665D0 /* FirebaseFirestore */,
 				0438C4A22C2C65A9000665D0 /* FirebaseStorage */,
+				044D61FF2C2DBC9C00D130FA /* GoogleSignIn */,
 			);
 			productName = LocaLocClient;
 			productReference = 04FAE91C2C0C5BFC00200ADC /* LocaLocClient.framework */;
@@ -1954,6 +1957,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		044D61FF2C2DBC9C00D130FA /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 		04AA61942C0CE45A00AD6D93 /* K-Logger */ = {
 			isa = XCSwiftPackageProductDependency;

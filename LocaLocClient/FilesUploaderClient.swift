@@ -7,12 +7,16 @@
 
 import Foundation
 
+enum FileContentType: String {
+    case jpeg = "image/jpeg"
+}
+
+enum Folder: String {
+    case userAvatars
+    case channelsAvatars
+}
+
 public class FilesUploaderClient {
-    public enum Folder: String {
-        case userAvatars
-        case channelsAvatars
-    }
-    
     private let client: Client
     
     // MARK: - Init
@@ -22,6 +26,11 @@ public class FilesUploaderClient {
 
     // MARK: - Public
     public func uploadUserAvatar(_ data: Data, fileName: String) async throws -> URL {
-        try await client.uploadData(data, folderName: Folder.userAvatars.rawValue, fileName: fileName)
+        try await client.uploadData(
+            data,
+            folderName: Folder.userAvatars.rawValue,
+            fileName: fileName,
+            contentType: FileContentType.jpeg
+        )
     }
 }

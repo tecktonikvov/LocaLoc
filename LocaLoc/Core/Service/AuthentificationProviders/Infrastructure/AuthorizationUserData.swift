@@ -10,5 +10,4 @@ import Foundation
 struct AuthorizationUserData {
     let isNewUser: Bool
     let user: User
-    let token: String
 }

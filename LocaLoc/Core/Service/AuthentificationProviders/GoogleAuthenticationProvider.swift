@@ -17,6 +17,7 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             throw AuthenticationProviderError.firebaseClientIdIsMissed
         }
+        
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
         
         let rootViewController = view.rootViewController()
@@ -52,7 +53,7 @@ final class GoogleAuthenticationProvider: AuthenticationProvider {
         
         let user = User(id: userID, authenticationProviderType: .google, profile: profile)
         let isNewUser = (firebaseSignInResult.additionalUserInfo?.isNewUser as? Bool) ?? true
-        let data = AuthorizationUserData(isNewUser: isNewUser, user: user, token: "")
+        let data = AuthorizationUserData(isNewUser: isNewUser, user: user)
         
         return data
     }

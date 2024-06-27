@@ -10,6 +10,7 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseAuth
+import GoogleSignIn
 
 enum ClientError: Error {
     case dataIsMissed
@@ -99,16 +100,15 @@ public final class Client {
         return dictionaries
     }
     
-    func uploadData(_ data: Data, folderName: String, fileName: String) async throws -> URL {
+    func uploadData(_ data: Data, folderName: String, fileName: String, contentType: FileContentType) async throws -> URL {
         let filePath = folderName + "/" + fileName
         let reference = storage.reference(withPath: filePath)
         
-        //let token = try await Auth.auth().currentUser?.getIDToken() ?? ""
+        let metadata = StorageMetadata()
+        metadata.contentType = contentType.rawValue
         
-        //try await Auth.auth().signIn(
-                
-        _ = try await reference.putDataAsync(data)
-        
+        _ = try await reference.putDataAsync(data, metadata: metadata)
+
         let url = try await reference.downloadURL()
 
         return url
