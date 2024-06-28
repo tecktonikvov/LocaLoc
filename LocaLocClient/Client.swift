@@ -22,6 +22,8 @@ public final class Client {
         
     // MARK: - Init
     public init() {
+        FirebaseApp.configure()
+        
         database = Firestore.firestore()
         storage = Storage.storage()
     }

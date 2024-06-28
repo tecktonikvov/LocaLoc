@@ -34,7 +34,6 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
                 do {
                     let authorizationData = try await googleProvider.signIn(view: view)
                     
-                    #warning("FIX")
                     setCrashlyticsData(user: authorizationData.user)
                     
                     try userDataRepository.setAuthorizedUser(authorizationData)
