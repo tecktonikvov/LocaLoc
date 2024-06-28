@@ -44,7 +44,10 @@ struct ProfileEditingView: View {
         .fullScreenCover(isPresented: $showCamera) {
             AccessCameraView(selectedImage: $viewModel.selectedUIImage)
         }
-        .photosPicker(isPresented: $showPhotosPicker, selection: $viewModel.selectedPickerImage)
+        .photosPicker(
+            isPresented: $showPhotosPicker,
+            selection: $viewModel.selectedPickerImage,
+            matching: .any(of: [.images, .not(.videos)]))
         
         // Actions
         .onChange(of: viewModel.selectedPickerImage) { _, _ in
