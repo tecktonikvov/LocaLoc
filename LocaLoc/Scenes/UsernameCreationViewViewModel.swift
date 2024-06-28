@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import K_Logger
 
 enum UsernameValidationResult {
     case requestError(Error)
@@ -53,6 +54,7 @@ enum UsernameValidationResult {
             do {
                 try await usernameManager.setUserName(username)
             } catch {
+                Log.error("Username set request error: \(error)", module: "UsernameCreationViewViewModel")
                 // TODO: Pass to error presenter
             }
         }

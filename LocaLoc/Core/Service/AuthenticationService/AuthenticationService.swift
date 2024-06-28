@@ -40,10 +40,11 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
                     try userDataRepository.setAuthorizedUser(authorizationData)
                     completion(nil)
                 } catch {
+                    signOut()
                     completion(error)
                 }
             }
-           
+            
         case .apple:
             appleProvider.completion = { [weak self] result in
                 switch result {
@@ -54,6 +55,7 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
                         self?.setCrashlyticsData(user: authorizationData.user)
                         try self?.userDataRepository.setAuthorizedUser(authorizationData)
                     } catch {
+                        self?.signOut()
                         completion(error)
                     }
                 }

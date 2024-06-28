@@ -78,7 +78,6 @@
 		04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE42C090C99002FF3DC /* CustomError.swift */; };
 		04FAE8F42C0BB36D00200ADC /* LocaLocDataRepository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */; };
 		04FAE8F52C0BB36D00200ADC /* LocaLocDataRepository.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE8EE2C0BB36D00200ADC /* LocaLocDataRepository.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		04FAE8FA2C0BB38B00200ADC /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85062C0B65CF004F76B3 /* DataRepository.swift */; };
 		04FAE8FB2C0BB3EE00200ADC /* UserPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */; };
 		04FAE8FC2C0BB3F300200ADC /* ProfilePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */; };
 		04FAE8FD2C0BB3F500200ADC /* AuthenticationProviderTypePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */; };
@@ -257,7 +256,6 @@
 		04BA84E22C0B0D09004F76B3 /* AuthenticationServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceError.swift; sourceTree = "<group>"; };
 		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		04BA85042C0B6590004F76B3 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
-		04BA85062C0B65CF004F76B3 /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
 		04BA85432C0B7190004F76B3 /* UserPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPersistencyModel.swift; sourceTree = "<group>"; };
 		04BA85462C0B71AE004F76B3 /* ProfilePersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistencyModel.swift; sourceTree = "<group>"; };
 		04BA85482C0B7254004F76B3 /* AuthenticationProviderTypePersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderTypePersistencyModel.swift; sourceTree = "<group>"; };
@@ -713,7 +711,6 @@
 		04FAE8EF2C0BB36D00200ADC /* LocaLocDataRepository */ = {
 			isa = PBXGroup;
 			children = (
-				04BA85062C0B65CF004F76B3 /* DataRepository.swift */,
 				04BA85502C0B7E39004F76B3 /* UserDataDataRepository */,
 			);
 			path = LocaLocDataRepository;
@@ -1215,7 +1212,6 @@
 				04FAE8FB2C0BB3EE00200ADC /* UserPersistencyModel.swift in Sources */,
 				04FAE8FD2C0BB3F500200ADC /* AuthenticationProviderTypePersistencyModel.swift in Sources */,
 				04FAE8FE2C0BB3F700200ADC /* UserDataDataRepository.swift in Sources */,
-				04FAE8FA2C0BB38B00200ADC /* DataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

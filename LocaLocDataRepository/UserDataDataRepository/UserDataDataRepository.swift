@@ -64,7 +64,6 @@ import LocaLocLocalStore
         do {
             let userClientModel = UserClientModel(persistencyModel: user)
             try userDataClient.setUserData(userId: user.id, data: userClientModel)
-
         } catch {
             Log.error("Client setting user data error: \(error)", module: "UserDataDataRepository")
             throw error
@@ -84,7 +83,7 @@ import LocaLocLocalStore
         return UserPersistencyModel(clientModel: userClientModel)
     }
     
-    private func updateUserData(_ user: UserPersistencyModel, shouldUpdateClient: Bool) throws {
+    private func setUserData(_ user: UserPersistencyModel, shouldUpdateClient: Bool) throws {
         try setUserToLocalStorage(user)
         
         if shouldUpdateClient {
@@ -108,32 +107,31 @@ import LocaLocLocalStore
 
     public func updateUserData(_ user: UserPersistencyModel) throws {
         do {
-            try updateUserData(user, shouldUpdateClient: true)
+            try setUserData(user, shouldUpdateClient: true)
         } catch  {
             Log.error("User data update error: \(error)", module: "UserDataDataRepository")
             throw error
         }
     }
-
+    
     public func setAuthorizedUser(_ user: UserPersistencyModel, isNewUser: Bool) throws {
         UserDefaults.standard.set(user.id, forKey: .currentUserIdKey)
-                
-        do {
-            if isNewUser {
-                try updateUserData(user, shouldUpdateClient: true)
-            } else {
-                Task { @MainActor in
+        
+        Task { @MainActor in
+            do {
+                if isNewUser {
+                    try setUserData(user, shouldUpdateClient: true)
+                } else {
                     if let existingUser = try await getClientUserData(userId: user.id) {
-                        try updateUserData(existingUser, shouldUpdateClient: false)
+                        try setUserData(existingUser, shouldUpdateClient: false)
                     } else {
-                        try updateUserData(user, shouldUpdateClient: true)
+                        try setUserData(user, shouldUpdateClient: true)
                     }
                 }
+            } catch {
+                Log.error("Authorized user data setting up failed, error: \(error)", module: "UserDataDataRepository")
+                throw error
             }
-                        
-        } catch {
-            Log.error("Authorized user data setting up failed, error: \(error)", module: "UserDataDataRepository")
-            throw error
         }
     }
     
@@ -158,6 +156,7 @@ import LocaLocLocalStore
             triggerUIUpdate()
         } catch {
             Log.error("User name set request error: \(error)", module: "UserDataDataRepository")
+            throw error
         }
     }
 }
