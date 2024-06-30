@@ -16,7 +16,9 @@ struct CoreApp: App {
     
     // MARK: - Init
     init() {
-        FirebaseApp.configure()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
 
         do {
             let userDataRepository = try UserDataDataRepository()

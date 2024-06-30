@@ -47,7 +47,7 @@ struct ChannelsRow: View {
                 if channel.missedUpdatesNumber > 0 {
                     ZStack {
                         Circle()
-                            .fill(channel.isMuted
+                            .fill(channel.userSettings.isMuted
                                   ? Color.Extra.silver
                                   : Color.Text.attention)
                            

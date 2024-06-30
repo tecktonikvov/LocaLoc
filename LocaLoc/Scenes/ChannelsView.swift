@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LocaLocClient
 
 fileprivate enum NavigationState {
     case createNewChannel
@@ -63,7 +64,9 @@ struct ChannelsView: View {
             .navigationDestination(for: NavigationState.self) { state in
                 switch state {
                 case .createNewChannel:
-                    ChannelCreationView(viewModel: ChannelCreationViewModel())
+                    let channelIdentifierChecker = ChannelIdentifierClient()
+                    let viewModel = ChannelCreationViewModel(channelIdentifierChecker: channelIdentifierChecker)
+                    ChannelCreationView(viewModel: viewModel)
                 }
             }
         }

@@ -22,7 +22,9 @@ public final class Client {
         
     // MARK: - Init
     public init() {
-        FirebaseApp.configure()
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
         
         database = Firestore.firestore()
         storage = Storage.storage()

@@ -33,4 +33,13 @@ public class FilesUploaderClient {
             contentType: FileContentType.jpeg
         )
     }
+    
+    public func uploadChannelAvatar(_ data: Data, fileName: String) async throws -> URL {
+        try await client.uploadData(
+            data,
+            folderName: Folder.channelsAvatars.rawValue,
+            fileName: fileName,
+            contentType: FileContentType.jpeg
+        )
+    }
 }

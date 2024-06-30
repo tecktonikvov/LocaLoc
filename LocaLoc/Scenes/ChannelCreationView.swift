@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ChannelCreationView: View {
-    @Bindable var viewModel: ChannelCreationViewModel
+    @Bindable private var viewModel: ChannelCreationViewModel
     
-    @State private var showIdentificatorError = false
-    @State private var showIdentifierCheckingIndicator = false
-    @State private var identificatorErrorText = ""
-    
+    // MARK: - Init
+    init(viewModel: ChannelCreationViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
         NavigationView {
             List {
@@ -21,100 +22,66 @@ struct ChannelCreationView: View {
                     ImagePickerView(viewModel: viewModel)
                     
                     TextEditorWithPlaceholder(
-                        text: $viewModel.name.max(72),
+                        text: $viewModel.name.max(Constants.channelNameCharactersLimit),
                         placeholder: "Name")
                     
                     TextEditorWithPlaceholder(
-                        text: $viewModel.description.max(255),
+                        text: $viewModel.description.max(Constants.channelDescriptionCharactersLimit),
                         placeholder: "Description")
                     
-                    ZStack(alignment: .bottomTrailing) {
-                        TextEditorWithPlaceholder(
-                            text: $viewModel.identificator.max(72),
-                            placeholder: "@Identificator")
-                        .onChange(of: viewModel.identificator) { _, newValue in
-                            if newValue.first != "@" {
-                                viewModel.identificator.insert("@", at: viewModel.identificator.startIndex)
-                            }
-                            
-                            showIdentificatorError = false
-                        }
+                    HStack(alignment: .top) {
+                        Text("@")
+                            .opacity(0.6)
                         
-                        if showIdentifierCheckingIndicator {
-                            ProgressView()
-                                .offset(x: -5, y: -12)
-                        }
-                        
-                        if showIdentificatorError {
-                            Text(identificatorErrorText)
-                                .foregroundStyle(Color.Text.attention)
-                                .offset(x: -5, y: -12)
-                                .font(.system(size: 12))
-                        }
+                        LimitedTextField(
+                            max: Constants.channelIdentifierMaxCharactersLimit,
+                            min: Constants.channelIdentifierMinCharactersLimit,
+                            title: "Identifier",
+                            output: $viewModel.identifier)
+                        .padding(.leading, -4)
                     }
                 }
                 
                 Section("Settings") {
                     ChannelSettingsView(viewModel: viewModel)
                 }
-                
             }
             .scrollContentBackground(.hidden)
             .backgroundDefault()
         }
         .navigationTitle("Create new channel")
-        .toolbarBackground(                                                     Color.background, for: .navigationBar)
-        .disabled(showIdentifierCheckingIndicator)
+        .toolbarBackground(Color.background, for: .navigationBar)
         .toolbar {
-            Button("Create") {
-                showIdentificatorError = false
-                showIdentifierCheckingIndicator = true
-                
-                Task {
-                    let validationResult = await viewModel.validateChanelIndicator()
-                    
-                    await MainActor.run {
-                        switch validationResult {
-                        case .ok:
-                            print("CREATED")
-                        case .error(text: let text):
-                            identificatorErrorText = text
-                            showIdentificatorError = true
-                        }
-                        
-                        showIdentifierCheckingIndicator = false
-                    }
-                }
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                Button("Create", action: viewModel.createChannel)
+                    .disabled(viewModel.identifier.count < Constants.channelIdentifierMinCharactersLimit)
             }
+        }
+        .disabled(viewModel.isLoading)
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(
+                title: Text(viewModel.identifierErrorText),
+                message: Text("Try another one"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }
 
-#Preview {
-    ChannelCreationView(viewModel: ChannelCreationViewModel())
-}
+//#Preview {
+//    ChannelCreationView(viewModel: ChannelCreationViewModel(channelIdentifierClient: ChannelIdentifierClient))
+//}
 
-fileprivate extension ChannelSettings.EditingPermissionType {
+fileprivate extension ChannelInvitationMode {
     var title: String {
         switch self {
-        case .onlyOwner:
-            return "Owner"
-        case .ownerAndUsers:
-            return "List of users"
-        case .everyone:
-            return "Everyone"
+        case .open:
+            return "Open"
+        case .byInvitation:
+            return "By invitation"
         }
-    }
-}
-
-extension Binding where Value == String {
-    func max(_ limit: Int) -> Self {
-        if self.wrappedValue.count > limit {
-            DispatchQueue.main.async {
-                self.wrappedValue = String(self.wrappedValue.prefix(limit))
-            }
-        }
-        return self
     }
 }
 
@@ -179,9 +146,7 @@ fileprivate struct TextEditorWithPlaceholder: View {
             
             VStack {
                 TextEditor(text: $text)
-                    .opacity(text.isEmpty ? 0.85 : 1)
                     .cornerRadius(12)
-                Spacer()
             }
         }
     }
@@ -189,27 +154,13 @@ fileprivate struct TextEditorWithPlaceholder: View {
 
 fileprivate struct ChannelSettingsView: View {
     @State var viewModel: ChannelCreationViewModel
-    //@Binding var showEditingPermissionPicker: Bool
     
     var body: some View {
-        //        Picker("Editing permission", selection: $viewModel.selectedEditingPermission) {
-        //            ForEach(viewModel.editingPermissionAvailableOption, id: \.self) { option in
-        //                Text(option.title)
-        //                    .onTapGesture {
-        //                        viewModel.selectedEditingPermission = option
-        //                        showEditingPermissionPicker.toggle()
-        //
-        //                        switch option {
-        //                        case .ownerAndUsers(ids: let ids):
-        //                            break
-        //                        default:
-        //                            break
-        //                        }
-        //                    }
-        //            }
-        //        }
-        
-        Toggle("Request to join", isOn: $viewModel.isRequestJoinRequired)
+        Picker("Channel type", selection: $viewModel.invitationMode) {
+            ForEach(viewModel.availableInvitationModes, id: \.self) { option in
+                Text(option.title)
+            }
+        }
     }
 }
 
@@ -224,13 +175,9 @@ fileprivate struct ImagePickerView: View {
             HStack {
                 Spacer()
                 if viewModel.isImageSelected {
-                    Image(uiImage: viewModel.image)
-                        .resizable()
-                        .cornerRadius(50)
-                        .padding(4)
-                        .frame(width: 180, height: 180)
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
+                    CachedCenteredImage(uiImage: viewModel.image)
+                    .frame(width: 180, height: 180)
+                    .clipShape(Circle())
                 } else {
                     Image(systemName: "photo.circle.fill")
                         .resizable()
@@ -243,9 +190,9 @@ fileprivate struct ImagePickerView: View {
                         .clipShape(Circle())
                 }
                 Spacer()
-                    .sheet(isPresented: $showSheet) {
-                        ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.image)
-                    }
+            }
+            .sheet(isPresented: $showSheet) {
+                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.image)
             }
         }
     }

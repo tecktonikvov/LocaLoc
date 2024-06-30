@@ -7,11 +7,8 @@
 
 import UIKit
 import Foundation
-
-enum ChanelIndicatorValidationResult {
-    case ok
-    case error(text: String)
-}
+import LocaLocClient
+import K_Logger
 
 @Observable final class ChannelCreationViewModel {
     var image = UIImage() {
@@ -21,30 +18,81 @@ enum ChanelIndicatorValidationResult {
             }
         }
     }
-        
-    var isImageSelected: Bool = false
     
-    let editingPermissionAvailableOption: [ChannelSettings.EditingPermissionType] = [.onlyOwner, .ownerAndUsers(ids: []), .everyone]
+    var isLoading = false
+    var showAlert = false
+    var isImageSelected: Bool = false
+    var identifierErrorText = ""
 
-    var isRequestJoinRequired = false
-
+    // Chanel data
     var name: String = ""
     var description: String = ""
-    var identificator: String = ""
-
-    var selectedEditingPermission: ChannelSettings.EditingPermissionType = .onlyOwner
+    var identifier: String = ""
+    var invitationMode: ChannelInvitationMode = .open
     
-    private func isIdentifierBusy() async -> Bool {
-        true
+    let availableInvitationModes: [ChannelInvitationMode] = [.open, .byInvitation]
+    
+    private var channelCreationTask: Task<(), Never>?
+    
+    private let channelPhotoUploader: ChannelPhotoUploader
+    private let channelIdentifierChecker: ChannelIdentifierChecker
+    
+    // MARK: - Init
+    init(channelIdentifierChecker: ChannelIdentifierClient, channelPhotoUploader: ChannelPhotoUploader) {
+        self.channelPhotoUploader = channelPhotoUploader
+        self.channelIdentifierChecker = channelIdentifierChecker
     }
     
-    func validateChanelIndicator() async -> ChanelIndicatorValidationResult {
-        if identificator.count < 4 {
-            return .error(text: "At least 3 character")
-        } else if await isIdentifierBusy() {
-            return .error(text: "ID is busy")
-        } else {
-            return .ok
+    // MARK: - Private
+    private func isIdentifierFree() async throws -> Bool {
+        let isFree = try await channelIdentifierChecker.isIdentifierFree(identifier)
+        return isFree
+    }
+    
+    private func uploadChannelPhoto(_ photo: UIImage) async throws -> URL {
+        let fileUrl = try await channelPhotoUploader.uploadChannelPhoto(photo)
+        return fileUrl
+    }
+    
+    
+    private func saveChannel(photoUrl: URL?) async throws {
+        // ...
+    }
+    
+    // MARK: - Public
+    func createChannel() {
+        isLoading = true
+        
+        channelCreationTask = Task {
+            do {
+                guard try await isIdentifierFree() else {
+                    await MainActor.run {
+                        isLoading = false
+                        identifierErrorText = "Identifier is busy"
+                        showAlert = true
+                    }
+                    return
+                }
+                
+                guard !Task.isCancelled else { return }
+                
+                var photoUrl: URL?
+                
+                if isImageSelected {
+                    photoUrl = try await uploadChannelPhoto(image)
+                }
+                
+                // TODO: Remove image if cancelled
+                guard !Task.isCancelled else { return }
+                
+                try await saveChannel(photoUrl: photoUrl)
+            } catch {
+                Log.error("Channel creation request error: \(error)", module: "ChannelCreationViewModel")
+            }
+            
+            await MainActor.run {
+                isLoading = false
+            }
         }
     }
 }

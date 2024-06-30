@@ -7,7 +7,7 @@
 
 import FirebaseFirestore
 
-public class UserNameClient {
+public final class UserNameClient {
     private let usersCollection = CollectionsKeys.usersCollection
     private let usernameFieldName = "username"
     private let client: Client
@@ -18,7 +18,7 @@ public class UserNameClient {
     }
 
     public func isUsernameFree(username: String) async throws -> Bool {
-        let filter: Filter =  .whereField(usernameFieldName, isEqualTo: username)
+        let filter: Filter = .whereField(usernameFieldName, isEqualTo: username)
         
         let matches = try await client.filteredData(
             filter: filter,

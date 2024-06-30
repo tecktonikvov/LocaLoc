@@ -36,6 +36,17 @@
 		0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */; };
 		044D62002C2DBC9C00D130FA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 044D61FF2C2DBC9C00D130FA /* GoogleSignIn */; };
 		044D62032C2EAC3C00D130FA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 044D62022C2EAC3C00D130FA /* FirebaseCrashlytics */; };
+		044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62042C2F12A500D130FA /* LimitedTextField.swift */; };
+		044D62082C2F1D6900D130FA /* ChannelIdentifierClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62072C2F1D6900D130FA /* ChannelIdentifierClient.swift */; };
+		044D620A2C31BC8600D130FA /* ChannelInvitationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62092C31BC8600D130FA /* ChannelInvitationMode.swift */; };
+		044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D620B2C31BC9A00D130FA /* ChannelIdentifierChecker.swift */; };
+		044D620E2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D620D2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift */; };
+		044D62112C31BEC800D130FA /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62102C31BEC800D130FA /* Binding+Extension.swift */; };
+		044D62132C31BEEC00D130FA /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62122C31BEEC00D130FA /* UIImage+Extension.swift */; };
+		044D62182C31C0FB00D130FA /* PhotoPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62172C31C0FB00D130FA /* PhotoPreparer.swift */; };
+		044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D62192C31C16F00D130FA /* ChannelPhotoUploader.swift */; };
+		044D621C2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D621B2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift */; };
+		044D621E2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D621D2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -222,6 +233,17 @@
 		0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationViewViewModel.swift; sourceTree = "<group>"; };
 		0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UsernameManager.swift"; sourceTree = "<group>"; };
 		044D62012C2DC2EE00D130FA /* LocaLoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocaLoc.entitlements; sourceTree = "<group>"; };
+		044D62042C2F12A500D130FA /* LimitedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedTextField.swift; sourceTree = "<group>"; };
+		044D62072C2F1D6900D130FA /* ChannelIdentifierClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelIdentifierClient.swift; sourceTree = "<group>"; };
+		044D62092C31BC8600D130FA /* ChannelInvitationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelInvitationMode.swift; sourceTree = "<group>"; };
+		044D620B2C31BC9A00D130FA /* ChannelIdentifierChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelIdentifierChecker.swift; sourceTree = "<group>"; };
+		044D620D2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelIdentifierClient+ChannelIdentifierChecker.swift"; sourceTree = "<group>"; };
+		044D62102C31BEC800D130FA /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
+		044D62122C31BEEC00D130FA /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		044D62172C31C0FB00D130FA /* PhotoPreparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreparer.swift; sourceTree = "<group>"; };
+		044D62192C31C16F00D130FA /* ChannelPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPhotoUploader.swift; sourceTree = "<group>"; };
+		044D621B2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesUploadingService+ChannelPhotoUploader.swift"; sourceTree = "<group>"; };
+		044D621D2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesUploadingService+PhotoPreparer.swift"; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -406,6 +428,7 @@
 				04FAE9012C0BB75D00200ADC /* Crashlytics */,
 				0438C46B2C2C5B4F000665D0 /* FilesUploadingService */,
 				040D85862C008F8B000F8F52 /* Models */,
+				044D62162C31C0F200D130FA /* PhotoPreparer */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -438,6 +461,9 @@
 				040E4EC72C02633800056856 /* ChannelCreationComposer.swift */,
 				040E4EC92C02633C00056856 /* ChannelCreationView.swift */,
 				040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */,
+				044D62092C31BC8600D130FA /* ChannelInvitationMode.swift */,
+				044D620B2C31BC9A00D130FA /* ChannelIdentifierChecker.swift */,
+				044D620D2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift */,
 			);
 			name = ChannelCreation;
 			sourceTree = "<group>";
@@ -455,6 +481,7 @@
 		0438C4612C2C3E2F000665D0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				044D62192C31C16F00D130FA /* ChannelPhotoUploader.swift */,
 				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
 				04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */,
 				0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */,
@@ -465,6 +492,7 @@
 		0438C4622C2C3E39000665D0 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				044D621B2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift */,
 				0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */,
 				0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */,
 				04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */,
@@ -494,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				0438C4AB2C2D6907000665D0 /* CachedCenteredImage.swift */,
+				044D62042C2F12A500D130FA /* LimitedTextField.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -513,6 +542,32 @@
 				0443BFA12C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift */,
 			);
 			name = UsernameCreation;
+			sourceTree = "<group>";
+		};
+		044D62062C2F1D3000D130FA /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		044D620F2C31BEB600D130FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				044D62102C31BEC800D130FA /* Binding+Extension.swift */,
+				044D621D2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift */,
+				044D62122C31BEEC00D130FA /* UIImage+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		044D62162C31C0F200D130FA /* PhotoPreparer */ = {
+			isa = PBXGroup;
+			children = (
+				044D62172C31C0FB00D130FA /* PhotoPreparer.swift */,
+			);
+			path = PhotoPreparer;
 			sourceTree = "<group>";
 		};
 		046C3E962BE917E800BBFF47 = {
@@ -551,6 +606,7 @@
 				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
 				040E4EBD2C024B1600056856 /* Core */,
+				044D620F2C31BEB600D130FA /* Extensions */,
 				04FAE9052C0C557D00200ADC /* GenericUI */,
 				040B9EC72BFE6C45005E3930 /* Resources */,
 				047ECA0C2BFA86550065837C /* Scenes */,
@@ -747,13 +803,14 @@
 		04FAE90E2C0C5A0700200ADC /* LocaLocClient */ = {
 			isa = PBXGroup;
 			children = (
-				04AA9BFE2C15D67E00459E00 /* Models */,
-				04FAE9522C0C704A00200ADC /* Configs */,
 				04FAE90F2C0C5A0700200ADC /* Client.swift */,
-				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
-				04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */,
-				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
+				044D62072C2F1D6900D130FA /* ChannelIdentifierClient.swift */,
 				0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */,
+				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
+				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
+				04FAE9522C0C704A00200ADC /* Configs */,
+				044D62062C2F1D3000D130FA /* Infrastructure */,
+				04AA9BFE2C15D67E00459E00 /* Models */,
 			);
 			path = LocaLocClient;
 			sourceTree = "<group>";
@@ -1141,6 +1198,8 @@
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
+				044D621E2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift in Sources */,
+				044D620E2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift in Sources */,
 				040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */,
 				04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
@@ -1149,6 +1208,7 @@
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
 				0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */,
 				04FAE9082C0C55A200200ADC /* BackgroundDefault.swift in Sources */,
+				044D620A2C31BC8600D130FA /* ChannelInvitationMode.swift in Sources */,
 				0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */,
 				0438C4A72C2C7129000665D0 /* TokenSecureStorage.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
@@ -1157,13 +1217,19 @@
 				04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */,
 				047ECA0B2BFA85FD0065837C /* AppComposer.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
+				044D62132C31BEEC00D130FA /* UIImage+Extension.swift in Sources */,
 				0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */,
 				047ECA282BFB81F00065837C /* TabScene.swift in Sources */,
 				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
+				044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */,
+				044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */,
+				044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */,
 				0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */,
+				044D62182C31C0FB00D130FA /* PhotoPreparer.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */,
 				0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */,
+				044D62112C31BEC800D130FA /* Binding+Extension.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
 				0438C4682C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
@@ -1173,6 +1239,7 @@
 				04BA854B2C0B7274004F76B3 /* AuthenticationProviderType.swift in Sources */,
 				04BA854C2C0B7274004F76B3 /* User.swift in Sources */,
 				047ECA1A2BFA92060065837C /* ChannelsComposer.swift in Sources */,
+				044D621C2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift in Sources */,
 				047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */,
 				0438C46D2C2C5B78000665D0 /* FilesUploadingServiceError.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
@@ -1224,6 +1291,7 @@
 			files = (
 				04FAE92D2C0C5C2600200ADC /* Client.swift in Sources */,
 				04CDAF812C0F152800A28C93 /* UserDataClient.swift in Sources */,
+				044D62082C2F1D6900D130FA /* ChannelIdentifierClient.swift in Sources */,
 				04FCC0332C0F2ED70008880F /* UserNameClient.swift in Sources */,
 				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
 				0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */,

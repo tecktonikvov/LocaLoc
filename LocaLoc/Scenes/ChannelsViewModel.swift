@@ -23,8 +23,8 @@ struct ChannelsModel {
             ),
             missedUpdatesNumber: 5,
             lastUpdateTime: Date(),
-            isMuted: true,
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -37,8 +37,8 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -3600
             ),
-            isMuted: false,
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -49,8 +49,8 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -14400
             ),
-            isMuted: true,
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -63,8 +63,8 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -2520000000
             ),
-            isMuted: false,
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -75,8 +75,8 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -144000000
             ),
-            isMuted: true,
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -89,8 +89,8 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -25200000
             ),
-            isMuted: false, 
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -101,8 +101,8 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -1440000
             ),
-            isMuted: true,
-            settings: .default
+            channelSettings: .default,
+            userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
             id: UUID().uuidString,
@@ -115,28 +115,20 @@ struct ChannelsModel {
             lastUpdateTime: Date().addingTimeInterval(
                 -252000
             ),
-            isMuted: false,
-            settings: .default
+            channelSettings: .default, 
+            userSettings: ChannelUserSettings(isMuted: true)
         )
         ]
 }
 
 struct ChannelSettings {
-    enum EditingPermissionType: Hashable {
-        case onlyOwner
-        case ownerAndUsers(ids: [String])
-        case everyone
-    }
-    
-    enum AccessibilityType {
-        case freeForAll
-        case approvingRequired
-    }
-    
-    let accessibility: AccessibilityType
-    let editingAllowed: EditingPermissionType
+    let invitationMode: ChannelInvitationMode
 
-    static let `default` = ChannelSettings(accessibility: .freeForAll, editingAllowed: .onlyOwner)
+    static let `default` = ChannelSettings(invitationMode: .open)
+}
+
+struct ChannelUserSettings {
+    let isMuted: Bool
 }
 
 struct Channel: Identifiable, Equatable {
@@ -150,8 +142,8 @@ struct Channel: Identifiable, Equatable {
     let imageUrl: URL?
     let missedUpdatesNumber: Int
     let lastUpdateTime: Date
-    let isMuted: Bool
-    let settings: ChannelSettings
+    let channelSettings: ChannelSettings
+    let userSettings: ChannelUserSettings
 }
 
 @Observable final class ChannelsViewModel {
