@@ -18,14 +18,17 @@ public final class UserNameClient {
     }
 
     public func isUsernameFree(username: String) async throws -> Bool {
-        let filter: Filter = .whereField(usernameFieldName, isEqualTo: username)
+        let lowercased = username.lowercased()
+        let filter: Filter = .whereField(usernameFieldName, isEqualTo: lowercased)
         
         let matches = try await client.filteredData(
             filter: filter,
             collectionName: usersCollection
         )
         
-        return matches.isEmpty
+        let fondIdentifiers = matches.compactMap { ($0[usernameFieldName] as? String)?.lowercased() }
+        
+        return !fondIdentifiers.contains(lowercased)
     }
     
     public func set(username: String, userId: String) async throws {

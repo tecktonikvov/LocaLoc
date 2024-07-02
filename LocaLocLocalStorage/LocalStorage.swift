@@ -6,9 +6,15 @@
 //
 
 import SwiftData
-import SwiftUI
+import Foundation
 
-public class LocalStorage {
+public protocol LocalStorage {
+    func fetchModelsWith<T>(model: T.Type) throws -> [T] where T: PersistentModel
+    func addModel(model: any PersistentModel)
+    func delete(model: any PersistentModel)
+}
+
+public class AppLocalStorage {
     private let modelContext: ModelContext
     
     // MARK: - Init
@@ -26,10 +32,12 @@ public class LocalStorage {
             fatalError("SwiftData transactions should be performed on main thread, line: \(line)")
         }
     }
-    
-    // MARK: - Public
+}
+
+// MARK: - AppLocalStorage
+extension AppLocalStorage: LocalStorage {
     public func fetchModelsWith<T>(model: T.Type) throws -> [T] where T: PersistentModel {
-        checkIsMainThread()
+       // checkIsMainThread()
         let descriptor = FetchDescriptor<T>()
                 
         let fetchResult = try modelContext.fetch(descriptor)
@@ -37,17 +45,12 @@ public class LocalStorage {
     }
     
     public func addModel(model: any PersistentModel) {
-        checkIsMainThread()
+        //checkIsMainThread()
         modelContext.insert(model)
     }
     
     public func delete(model: any PersistentModel) {
-        checkIsMainThread()
+       // checkIsMainThread()
         modelContext.delete(model)
-    }
-    
-    public func save() throws {
-        checkIsMainThread()
-        try modelContext.save()
     }
 }

@@ -117,13 +117,14 @@ import PhotosUI
         
         isLoading = true
         
-        saveRequest = Task {
+        saveRequest = Task { @MainActor in
             let userNameError = await usernameError()
             
             guard !Task.isCancelled else { return }
             
             guard userNameError == nil else {
-                await setErrorText(userNameError!)
+                setErrorText(userNameError!)
+                isLoading = false
                 return
             }
             
@@ -132,18 +133,14 @@ import PhotosUI
                     try await updateUserImage(selectedUIImage)
                 }
                 
-                try await MainActor.run {
-                    try saveUser()
-                    dismiss = true
-                }
+                try saveUser()
+                dismiss = true
             } catch {
                 print("🔴Error", error)
                 // TODO: Pass to error presenter
             }
             
-            await MainActor.run {
-                isLoading = false
-            }
+            isLoading = false
         }
     }
         

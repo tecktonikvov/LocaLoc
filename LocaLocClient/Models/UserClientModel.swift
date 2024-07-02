@@ -15,7 +15,7 @@ public struct UserClientModel: Codable {
         self.lastName = lastName
         self.email = email
         self.imageUrl = imageUrl
-        self.username = username
+        self.username = username.lowercased()
     }
     
     public let id: String
@@ -26,3 +26,4 @@ public struct UserClientModel: Codable {
     public let imageUrl: String
     public let username: String
 }
+

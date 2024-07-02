@@ -11,8 +11,12 @@ final class HomeComposer: SceneComposer {
     @ViewBuilder static func view(
         authenticationService: AuthenticationService,
         userDataRepository: UserDataRepository,
-        usernameManager: UsernameManager) -> some View {
-            let channelsScene = ChannelsComposer.compose()
+        usernameManager: UsernameManager,
+        channelsRepository: ChannelsRepository) -> some View {
+            let channelsScene = ChannelsComposer.compose(
+                userDataRepository: userDataRepository,
+                channelsRepository: channelsRepository
+            )
             
             let settingsScene = settingsScene(
                 userDataRepository: userDataRepository,

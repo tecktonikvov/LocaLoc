@@ -7,6 +7,7 @@
 
 import SwiftData
 import LocaLocDataRepository
+import LocaLocLocalStore
 
 @MainActor
 struct Previewer {
@@ -31,9 +32,26 @@ struct Previewer {
         }
     }
     
+    class FakeLocalStorage: LocalStorage {
+        func fetchModelsWith<T>(model: T.Type) throws -> [T] where T : PersistentModel {
+            return [T]()
+        }
+        
+        func addModel(model: any PersistentModel) {
+        }
+        
+        func delete(model: any PersistentModel) {
+        }
+        
+        func save() throws {
+        }
+    }
+    
+    let localStorage = FakeLocalStorage()
     let userDataRepository: UserDataRepository = UserDataRepositoryPreviewHelper()
     let usernameManager: UsernameManager = UserDataRepositoryPreviewHelper()
     lazy var userPhotoUploader: UserPhotoUploader = FilesUploadingService(userDataRepository: userDataRepository)
+    lazy var channelsRepository: ChannelsRepository = try! ChannelsDataRepository(localStorage: localStorage)
 }
 
 extension Previewer.UserDataRepositoryPreviewHelper: UsernameManager {

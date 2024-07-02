@@ -9,6 +9,7 @@ import SwiftUI
 import K_Logger
 import FirebaseCore
 import LocaLocDataRepository
+import LocaLocLocalStore
  
 @main
 struct CoreApp: App {    
@@ -19,13 +20,21 @@ struct CoreApp: App {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
-
+                
         do {
-            let userDataRepository = try UserDataDataRepository()
-
+            let localStorage = try AppLocalStorage(with: UserPersistencyModel.self,
+                                                   ProfilePersistencyModel.self,
+                                                   ChannelPersistencyModel.self,
+                                                   ChannelUserSettingsPersistencyModel.self,
+                                                   ChannelSettingsPersistencyModel.self)
+            
+            let userDataRepository = try UserDataDataRepository(localStorage: localStorage)
+            let channelsRepository = try ChannelsDataRepository(localStorage: localStorage)
+            
             let appComposer = AppComposer(
                 userDataRepository: userDataRepository,
-                usernameManager: userDataRepository
+                usernameManager: userDataRepository,
+                channelsRepository: channelsRepository
             )
             
             self.appComposer = appComposer
@@ -34,8 +43,10 @@ struct CoreApp: App {
                 setCrashlyticsData(user: user)
             }
         } catch {
-            Log.error("Application initialization error: \(error)", module: "CoreApp")
-            fatalError("Could not initialize application")
+            let errorString = "App initialization error: \(error)"
+            
+            Log.error(errorString, module: "CoreApp")
+            fatalError(errorString)
         }
     }
     

@@ -22,13 +22,13 @@ struct ChannelsRow: View {
                 .padding(.trailing, 8)
             
             VStack(alignment: .leading) {
-                Text(channel.title)
+                Text(channel.name)
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .lineLimit(1)
                     .foregroundStyle(Color.Text.main)
                 
-                Text(channel.subtitle)
+                Text(channel.description)
                     .font(.system(size: 18))
                     .lineLimit(2)
                     .foregroundStyle(Color.Text.main)
@@ -37,11 +37,14 @@ struct ChannelsRow: View {
             Spacer()
             
             VStack(alignment: .trailing) {
-                Text(channel.lastUpdateTime.timeAgo())
-                    .font(.system(size: 12))
-                    .foregroundStyle(Color.Text.main)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.center)
+                if let lastUpdateTime = channel.lastUpdateDate {
+                    Text(lastUpdateTime.timeAgo())
+                        .font(.system(size: 12))
+                        .foregroundStyle(Color.Text.main)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                }
+               
                 Spacer()
                 
                 if channel.missedUpdatesNumber > 0 {

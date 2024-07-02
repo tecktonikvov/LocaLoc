@@ -8,9 +8,9 @@
 import FirebaseFirestore
 
 public final class ChannelIdentifierClient {
-    private let channelsCollection = CollectionsKeys.channelsCollection
-    private let identifierFieldName = "identifier"
     private let client: Client
+    private let identifierFieldName = "identifier"
+    private let channelsCollection = CollectionsKeys.channelsCollection
     
     // MARK: - Init
     public init() {
@@ -18,13 +18,15 @@ public final class ChannelIdentifierClient {
     }
 
     public func isIdentifierFree(identifier: String) async throws -> Bool {
-        let filter: Filter = .whereField(identifierFieldName, isEqualTo: identifier)
+        let filter: Filter = .whereField(identifierFieldName, isEqualTo: identifier.lowercased())
         
         let matches = try await client.filteredData(
             filter: filter,
             collectionName: channelsCollection
         )
         
-        return matches.isEmpty
+        let fondIdentifiers = matches.compactMap { ($0[identifierFieldName] as? String)?.lowercased() }
+        
+        return !fondIdentifiers.contains(identifier.lowercased())
     }
 }

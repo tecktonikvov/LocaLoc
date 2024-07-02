@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ChannelCreationView: View {
     @Bindable private var viewModel: ChannelCreationViewModel
-    
+    @Environment(\.dismiss) var dismiss
+
     // MARK: - Init
     init(viewModel: ChannelCreationViewModel) {
         self.viewModel = viewModel
@@ -66,6 +67,11 @@ struct ChannelCreationView: View {
                 message: Text("Try another one"),
                 dismissButton: .default(Text("OK"))
             )
+        }
+        .onChange(of: viewModel.dismiss) { _, shouldDismiss in
+            if shouldDismiss {
+                dismiss()
+            }
         }
     }
 }
@@ -137,18 +143,15 @@ fileprivate struct TextEditorWithPlaceholder: View {
                 VStack {
                     Text(placeholder)
                         .padding(.top, 10)
-                        .padding(.leading, 6)
                         .opacity(0.6)
-                        .cornerRadius(12)
                     Spacer()
                 }
+                .padding(.leading, 4)
             }
             
-            VStack {
-                TextEditor(text: $text)
-                    .cornerRadius(12)
-            }
+            TextEditor(text: $text)
         }
+        .cornerRadius(12)
     }
 }
 

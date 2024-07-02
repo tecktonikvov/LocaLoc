@@ -8,8 +8,12 @@
 import SwiftUI
 
 final class ChannelsComposer: SceneComposer {
-    static func compose() -> TabScene<AnyView> {
-        let viewModel = ChannelsViewModel()
+    static func compose(userDataRepository: UserDataRepository, channelsRepository: ChannelsRepository) -> TabScene<AnyView> {
+        let viewModel = ChannelsViewModel(
+            userDataRepository: userDataRepository,
+            channelsRepository: channelsRepository
+        )
+        
         let view = ChannelsView(viewModel: viewModel)
         
         return TabScene(type: .channels) {

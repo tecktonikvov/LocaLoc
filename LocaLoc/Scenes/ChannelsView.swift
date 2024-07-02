@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import LocaLocClient
 
 fileprivate enum NavigationState {
     case createNewChannel
@@ -23,8 +22,8 @@ struct ChannelsView: View {
         NavigationStack(path: $path) {
             ZStack {
                 List {
-                    ForEach(0..<viewModel.model.channels.count, id: \.self) { index in
-                        let channel = viewModel.model.channels[index]
+                    ForEach(0..<viewModel.channels.count, id: \.self) { index in
+                        let channel = viewModel.channels[index]
                         let isSelected = selectedChanels.first(where: { $0 == channel }) != nil
                         
                         ChannelsRow(channel: channel)
@@ -64,15 +63,14 @@ struct ChannelsView: View {
             .navigationDestination(for: NavigationState.self) { state in
                 switch state {
                 case .createNewChannel:
-                    let channelIdentifierChecker = ChannelIdentifierClient()
-                    let viewModel = ChannelCreationViewModel(channelIdentifierChecker: channelIdentifierChecker)
-                    ChannelCreationView(viewModel: viewModel)
+                    ChannelCreationView(viewModel: viewModel.channelCreationViewModel)
                 }
             }
         }
     }
 }
 
-#Preview {
-    ChannelsView(viewModel: ChannelsViewModel())
-}
+//#Preview {
+//    let helper = Previewer()
+//    return ChannelsView(viewModel: ChannelsViewModel(userDataRepository: helper.userDataRepository))
+//}

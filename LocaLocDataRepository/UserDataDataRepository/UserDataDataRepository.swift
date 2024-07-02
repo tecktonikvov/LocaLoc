@@ -19,18 +19,19 @@ import LocaLocLocalStore
     private let localStorage: LocalStorage
     
     // MARK: - Init
-    public init() throws {
+    public init(localStorage: LocalStorage) throws {
+        self.localStorage = localStorage
+        
         let client = Client()
         
-        self.localStorage = try LocalStorage(with: UserPersistencyModel.self, ProfilePersistencyModel.self)
         self.userDataClient = UserDataClient(client: client)
         self.userNameClient = UserNameClient(client: client)
-
-        try retrieveUser()
+        
+        try loadUser()
     }
     
     // MARK: - Private
-    private func retrieveUser() throws {
+    private func loadUser() throws {
         if let currentUserId = UserDefaults.standard.string(forKey: .currentUserIdKey),
            let currentUser = try storedUser(with: currentUserId) {
             self._currentUser = currentUser

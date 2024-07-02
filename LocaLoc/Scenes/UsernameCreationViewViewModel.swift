@@ -52,7 +52,7 @@ enum UsernameValidationResult {
     private func sendUsername() {
         Task {
             do {
-                try await usernameManager.setUserName(username)
+                try await usernameManager.setUserName(username.lowercased())
             } catch {
                 Log.error("Username set request error: \(error)", module: "UsernameCreationViewViewModel")
                 // TODO: Pass to error presenter
@@ -63,26 +63,24 @@ enum UsernameValidationResult {
     // MARK: - Public
     func setUsername() {
         isLoading = true
-
-        Task {
+        
+        Task { @MainActor in
             let validationResult = await validateUsername()
             
-            await MainActor.run {
-                switch validationResult {
-                case .requestError(let error):
-                    errorText = "Something wrong"
-                    // TODO: Pass to error presenter
-                case .tooShort:
-                    errorText = "Should be more than \(Constants.usernameCharactersMin) symbols"
-                case .alreadyExist:
-                    errorText = "Already exist"
-                case .ok:
-                    errorText = nil
-                    sendUsername()
-                }
-                
-                isLoading = false
+            switch validationResult {
+            case .requestError(let error):
+                errorText = "Something wrong"
+                // TODO: Pass to error presenter
+            case .tooShort:
+                errorText = "Should be more than \(Constants.usernameCharactersMin) symbols"
+            case .alreadyExist:
+                errorText = "Already exist"
+            case .ok:
+                errorText = nil
+                sendUsername()
             }
+            
+            isLoading = false
         }
     }
 }

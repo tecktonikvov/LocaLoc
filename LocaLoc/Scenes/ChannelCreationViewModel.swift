@@ -21,7 +21,8 @@ import K_Logger
     
     var isLoading = false
     var showAlert = false
-    var isImageSelected: Bool = false
+    var dismiss = false
+    var isImageSelected = false
     var identifierErrorText = ""
 
     // Chanel data
@@ -34,11 +35,14 @@ import K_Logger
     
     private var channelCreationTask: Task<(), Never>?
     
+    // Dependencies
+    private let channelsRepository: ChannelsRepository
     private let channelPhotoUploader: ChannelPhotoUploader
     private let channelIdentifierChecker: ChannelIdentifierChecker
-    
+
     // MARK: - Init
-    init(channelIdentifierChecker: ChannelIdentifierClient, channelPhotoUploader: ChannelPhotoUploader) {
+    init(channelIdentifierChecker: ChannelIdentifierClient, channelPhotoUploader: ChannelPhotoUploader, channelsRepository: ChannelsRepository) {
+        self.channelsRepository = channelsRepository
         self.channelPhotoUploader = channelPhotoUploader
         self.channelIdentifierChecker = channelIdentifierChecker
     }
@@ -54,23 +58,35 @@ import K_Logger
         return fileUrl
     }
     
+    private func makeChannel(photoUrl: URL?) -> Channel {
+        Channel(
+            identifier: identifier,
+            name: name,
+            description: description,
+            imageUrl: photoUrl,
+            missedUpdatesNumber: 0, 
+            creationDate: nil,
+            lastUpdateDate: nil,
+            channelSettings: ChannelSettings(invitationMode: invitationMode),
+            userSettings: .default
+        )
+    }
     
     private func saveChannel(photoUrl: URL?) async throws {
-        // ...
+        let channel = makeChannel(photoUrl: photoUrl)
+        try await channelsRepository.saveChannel(channel)
     }
     
     // MARK: - Public
     func createChannel() {
         isLoading = true
         
-        channelCreationTask = Task {
+        channelCreationTask = Task { @MainActor in
             do {
                 guard try await isIdentifierFree() else {
-                    await MainActor.run {
-                        isLoading = false
-                        identifierErrorText = "Identifier is busy"
-                        showAlert = true
-                    }
+                    isLoading = false
+                    identifierErrorText = "Identifier is busy"
+                    showAlert = true
                     return
                 }
                 
@@ -82,17 +98,19 @@ import K_Logger
                     photoUrl = try await uploadChannelPhoto(image)
                 }
                 
-                // TODO: Remove image if cancelled
-                guard !Task.isCancelled else { return }
+                guard !Task.isCancelled else {
+                    // TODO: Delete uploaded image if cancelled
+                    return
+                }
                 
                 try await saveChannel(photoUrl: photoUrl)
+                
+                dismiss = true
             } catch {
                 Log.error("Channel creation request error: \(error)", module: "ChannelCreationViewModel")
             }
             
-            await MainActor.run {
-                isLoading = false
-            }
+            isLoading = false
         }
     }
 }
