@@ -50,6 +50,18 @@ public final class Client {
     }
     
     // MARK: - Private
+    func setData(collectionName: String, data: Encodable) async throws -> String {
+        let data = try JSONEncoder().encode(data)
+        let dictionary = try data.asDictionary()
+        
+        let ref = try await database
+            .collection(collectionName)
+            .addDocument(data: dictionary)
+        log(message: "Created document in collection: \"\(collectionName)\", id: \(ref.documentID)", dictionary: dictionary)
+        
+        return ref.documentID
+    }
+    
     func setData(documentId: String, collectionName: String, data: Encodable) async throws {
         let data = try JSONEncoder().encode(data)
         let dictionary = try data.asDictionary()

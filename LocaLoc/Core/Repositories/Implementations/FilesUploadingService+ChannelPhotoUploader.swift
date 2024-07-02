@@ -8,14 +8,10 @@
 import UIKit
 
 extension FilesUploadingService: ChannelPhotoUploader {
-    func uploadChannelPhoto(_ photo: UIImage) async throws -> URL {
+    func uploadChannelPhoto(_ photo: UIImage, channelId: String) async throws -> URL {
         let data = try await resizedAndCompressedImage(photo)
         
-        guard let userId = userDataRepository.currentUser?.id else {
-            throw FilesUploadingServiceError.currentUserIsMissed
-        }
-        
-        let fileName = userId + Constants.channelAvatarImageFormat
+        let fileName = channelId + Constants.channelAvatarImageFormat
             
         let fileUrl = try await filesUploadingClient.uploadChannelAvatar(data, fileName: fileName)
         

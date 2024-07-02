@@ -18,6 +18,7 @@ extension Channel {
         let userSettings = ChannelUserSettings(persistencyModel: persistencyModel.channelUserSettings) ?? .default
         
         self.init(
+            id: persistencyModel.channelId,
             identifier: persistencyModel.identifier,
             name: persistencyModel.name,
             description: persistencyModel.channelDescription,
@@ -53,8 +54,10 @@ extension ChannelUserSettings {
 }
 
 extension ChannelPersistencyModel {
+    /// Waring: channelSettings and channelUserSettings will be always nil
     convenience init(channelModel: Channel) {
         self.init(
+            channelId: channelModel.id,
             identifier: channelModel.identifier,
             name: channelModel.name,
             channelDescription: channelModel.description, 

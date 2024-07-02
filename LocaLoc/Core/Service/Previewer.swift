@@ -33,7 +33,7 @@ struct Previewer {
     }
     
     class FakeLocalStorage: LocalStorage {
-        func fetchModelsWith<T>(model: T.Type) throws -> [T] where T : PersistentModel {
+        func fetchModelsWith<T>(model: T.Type, descriptor: FetchDescriptor<T>?) throws -> [T] where T: PersistentModel {
             return [T]()
         }
         

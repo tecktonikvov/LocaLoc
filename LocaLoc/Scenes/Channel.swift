@@ -28,7 +28,8 @@ import Foundation
 }
 
 @Observable final class Channel: Equatable {
-    init(identifier: String, name: String, description: String, imageUrl: URL? = nil, missedUpdatesNumber: Int, creationDate: Date? = nil, lastUpdateDate: Date? = nil, channelSettings: ChannelSettings, userSettings: ChannelUserSettings) {
+    init(id: String, identifier: String, name: String, description: String, imageUrl: URL?, missedUpdatesNumber: Int, creationDate: Date?, lastUpdateDate: Date?, channelSettings: ChannelSettings, userSettings: ChannelUserSettings) {
+        self.id = id
         self.identifier = identifier
         self.name = name
         self.description = description
@@ -44,10 +45,11 @@ import Foundation
         lhs.identifier == rhs.identifier
     }
     
+    var id: String
     let identifier: String
     let name: String
     let description: String
-    let imageUrl: URL?
+    var imageUrl: URL?
     let missedUpdatesNumber: Int
     let creationDate: Date?
     let lastUpdateDate: Date?
@@ -58,6 +60,7 @@ import Foundation
 extension Channel {
     static let mock: [Channel] = [
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Tech News",
             description: "Latest updates in tech",
@@ -71,6 +74,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Daily Sports",
             description: "Sports highlights",
@@ -86,6 +90,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Movie Reviews",
             description: "Latest movie reviews",
@@ -99,6 +104,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Gaming World",
             description: "Gaming news and reviews",
@@ -114,6 +120,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Movie Reviews Movie ReviewsMovie Reviews Movie Reviews Movie Reviews",
             description: "Latest movie reviews, Latest movie reviews Latest movie reviewsLatest movie reviews",
@@ -127,6 +134,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Gaming World",
             description: "Gaming news and reviews",
@@ -142,6 +150,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Movie Reviews",
             description: "Latest movie reviews",
@@ -155,6 +164,7 @@ extension Channel {
             userSettings: ChannelUserSettings(isMuted: true)
         ),
         Channel(
+            id: UUID().uuidString,
             identifier: UUID().uuidString,
             name: "Gaming World",
             description: "Gaming news and reviews",

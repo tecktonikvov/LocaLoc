@@ -10,6 +10,7 @@ import Foundation
 
 @Model
 public final class ChannelPersistencyModel {
+    public var channelId: String
     public var identifier: String
     public var name: String
     public var channelDescription: String
@@ -25,6 +26,7 @@ public final class ChannelPersistencyModel {
     public var channelUserSettings: ChannelUserSettingsPersistencyModel?
     
     public init(
+        channelId: String,
         identifier: String,
         name: String,
         channelDescription: String,
@@ -35,6 +37,7 @@ public final class ChannelPersistencyModel {
         channelSettings: ChannelSettingsPersistencyModel?,
         channelUserSettings: ChannelUserSettingsPersistencyModel?
     ) {
+        self.channelId = channelId
         self.identifier = identifier
         self.name = name
         self.channelDescription = channelDescription

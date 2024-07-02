@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ChannelPhotoUploader {
-    func uploadChannelPhoto(_ photo: UIImage) async throws -> URL
+    func uploadChannelPhoto(_ photo: UIImage, channelId: String) async throws -> URL
 }

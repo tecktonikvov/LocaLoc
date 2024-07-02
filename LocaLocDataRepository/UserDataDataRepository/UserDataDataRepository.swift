@@ -40,7 +40,7 @@ import LocaLocLocalStore
     }
     
     private func storedUser(with id: String) throws -> UserPersistencyModel? {
-        let users = try localStorage.fetchModelsWith(model: UserPersistencyModel.self)
+        let users = try localStorage.fetchModelsWith(model: UserPersistencyModel.self, descriptor: nil)
         return users.first(where: { $0.id == id })
     }
     

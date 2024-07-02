@@ -41,7 +41,9 @@ import K_Logger
     private let channelIdentifierChecker: ChannelIdentifierChecker
 
     // MARK: - Init
-    init(channelIdentifierChecker: ChannelIdentifierClient, channelPhotoUploader: ChannelPhotoUploader, channelsRepository: ChannelsRepository) {
+    init(channelIdentifierChecker: ChannelIdentifierClient, 
+         channelPhotoUploader: ChannelPhotoUploader,
+         channelsRepository: ChannelsRepository) {
         self.channelsRepository = channelsRepository
         self.channelPhotoUploader = channelPhotoUploader
         self.channelIdentifierChecker = channelIdentifierChecker
@@ -53,18 +55,19 @@ import K_Logger
         return isFree
     }
     
-    private func uploadChannelPhoto(_ photo: UIImage) async throws -> URL {
-        let fileUrl = try await channelPhotoUploader.uploadChannelPhoto(photo)
+    private func uploadChannelPhoto(_ photo: UIImage, channelId: String) async throws -> URL {
+        let fileUrl = try await channelPhotoUploader.uploadChannelPhoto(photo, channelId: channelId)
         return fileUrl
     }
     
-    private func makeChannel(photoUrl: URL?) -> Channel {
+    private func makeChannelEmpty() -> Channel {
         Channel(
+            id: "",
             identifier: identifier,
             name: name,
             description: description,
-            imageUrl: photoUrl,
-            missedUpdatesNumber: 0, 
+            imageUrl: nil,
+            missedUpdatesNumber: 0,
             creationDate: nil,
             lastUpdateDate: nil,
             channelSettings: ChannelSettings(invitationMode: invitationMode),
@@ -72,9 +75,9 @@ import K_Logger
         )
     }
     
-    private func saveChannel(photoUrl: URL?) async throws {
-        let channel = makeChannel(photoUrl: photoUrl)
-        try await channelsRepository.saveChannel(channel)
+    private func createEmptyChannelAndSave() async throws -> Channel {
+        let channel = makeChannelEmpty()
+        return try await channelsRepository.saveChannel(channel)
     }
     
     // MARK: - Public
@@ -92,18 +95,20 @@ import K_Logger
                 
                 guard !Task.isCancelled else { return }
                 
-                var photoUrl: URL?
+                let newChannel = try await createEmptyChannelAndSave()
                 
-                if isImageSelected {
-                    photoUrl = try await uploadChannelPhoto(image)
-                }
-                
-                guard !Task.isCancelled else {
+                guard !Task.isCancelled else { 
                     // TODO: Delete uploaded image if cancelled
                     return
                 }
+                                                
+                if isImageSelected {
+                    let imageUrl = try await uploadChannelPhoto(image, channelId: newChannel.id)
+                    newChannel.imageUrl = imageUrl
+                    
+                }
                 
-                try await saveChannel(photoUrl: photoUrl)
+                try await channelsRepository.saveChannel(newChannel)
                 
                 dismiss = true
             } catch {
