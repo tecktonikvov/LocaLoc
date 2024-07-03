@@ -23,7 +23,8 @@ import LocaLocDataRepository
         return ChannelCreationViewModel(
             channelIdentifierChecker: channelIdentifierChecker,
             channelPhotoUploader: channelPhotoUploader, 
-            channelsRepository: channelsRepository)
+            channelsRepository: channelsRepository,
+            userDataRepository: userDataRepository)
     }()
     
     // MARK: - Init

@@ -20,7 +20,7 @@ struct CoreApp: App {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
-                
+        
         do {
             let localStorage = try AppLocalStorage(with: UserPersistencyModel.self,
                                                    ProfilePersistencyModel.self,

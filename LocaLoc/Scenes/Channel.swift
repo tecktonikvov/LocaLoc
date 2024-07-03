@@ -28,9 +28,10 @@ import Foundation
 }
 
 @Observable final class Channel: Equatable {
-    init(id: String, identifier: String, name: String, description: String, imageUrl: URL?, missedUpdatesNumber: Int, creationDate: Date?, lastUpdateDate: Date?, channelSettings: ChannelSettings, userSettings: ChannelUserSettings) {
+    init(id: String, identifier: String, ownerId: String, name: String, description: String, imageUrl: URL?, missedUpdatesNumber: Int, creationDate: Date?, lastUpdateDate: Date?, channelSettings: ChannelSettings, userSettings: ChannelUserSettings) {
         self.id = id
         self.identifier = identifier
+        self.ownerId = ownerId
         self.name = name
         self.description = description
         self.imageUrl = imageUrl
@@ -47,6 +48,7 @@ import Foundation
     
     var id: String
     let identifier: String
+    let ownerId: String
     let name: String
     let description: String
     var imageUrl: URL?
@@ -61,7 +63,8 @@ extension Channel {
     static let mock: [Channel] = [
         Channel(
             id: UUID().uuidString,
-            identifier: UUID().uuidString,
+            identifier: UUID().uuidString, 
+            ownerId: UUID().uuidString,
             name: "Tech News",
             description: "Latest updates in tech",
             imageUrl: URL(
@@ -76,6 +79,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Daily Sports",
             description: "Sports highlights",
             imageUrl: URL(
@@ -92,6 +96,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Movie Reviews",
             description: "Latest movie reviews",
             imageUrl: nil,
@@ -106,6 +111,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Gaming World",
             description: "Gaming news and reviews",
             imageUrl: URL(
@@ -122,6 +128,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Movie Reviews Movie ReviewsMovie Reviews Movie Reviews Movie Reviews",
             description: "Latest movie reviews, Latest movie reviews Latest movie reviewsLatest movie reviews",
             imageUrl: nil,
@@ -136,6 +143,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Gaming World",
             description: "Gaming news and reviews",
             imageUrl: URL(
@@ -152,6 +160,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Movie Reviews",
             description: "Latest movie reviews",
             imageUrl: nil,
@@ -166,6 +175,7 @@ extension Channel {
         Channel(
             id: UUID().uuidString,
             identifier: UUID().uuidString,
+            ownerId: UUID().uuidString,
             name: "Gaming World",
             description: "Gaming news and reviews",
             imageUrl: URL(

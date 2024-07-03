@@ -19,7 +19,8 @@ extension Channel {
         
         self.init(
             id: persistencyModel.channelId,
-            identifier: persistencyModel.identifier,
+            identifier: persistencyModel.identifier, 
+            ownerId: persistencyModel.ownerId,
             name: persistencyModel.name,
             description: persistencyModel.channelDescription,
             imageUrl: persistencyModel.imageUrl,
@@ -59,6 +60,7 @@ extension ChannelPersistencyModel {
         self.init(
             channelId: channelModel.id,
             identifier: channelModel.identifier,
+            ownerId: channelModel.ownerId,
             name: channelModel.name,
             channelDescription: channelModel.description, 
             imageUrl: channelModel.imageUrl,
@@ -87,7 +89,8 @@ extension ChannelUserSettingsPersistencyModel {
 extension ChannelClientModel {
     init(channelModel: Channel) {
         self.init(
-            identifier: channelModel.identifier,
+            identifier: channelModel.identifier, 
+            ownerId: channelModel.ownerId,
             name: channelModel.name,
             description: channelModel.description,
             imageUrl: channelModel.imageUrl,

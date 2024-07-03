@@ -37,13 +37,16 @@ import K_Logger
     
     // Dependencies
     private let channelsRepository: ChannelsRepository
+    private let userDataRepository: UserDataRepository
     private let channelPhotoUploader: ChannelPhotoUploader
     private let channelIdentifierChecker: ChannelIdentifierChecker
 
     // MARK: - Init
     init(channelIdentifierChecker: ChannelIdentifierClient, 
          channelPhotoUploader: ChannelPhotoUploader,
-         channelsRepository: ChannelsRepository) {
+         channelsRepository: ChannelsRepository,
+         userDataRepository: UserDataRepository) {
+        self.userDataRepository = userDataRepository
         self.channelsRepository = channelsRepository
         self.channelPhotoUploader = channelPhotoUploader
         self.channelIdentifierChecker = channelIdentifierChecker
@@ -63,7 +66,8 @@ import K_Logger
     private func makeChannelEmpty() -> Channel {
         Channel(
             id: "",
-            identifier: identifier,
+            identifier: identifier, 
+            ownerId: userDataRepository.currentUser?.id ?? "",
             name: name,
             description: description,
             imageUrl: nil,

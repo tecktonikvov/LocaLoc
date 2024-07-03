@@ -66,6 +66,7 @@ enum ChannelsDataRepositoryError: Error {
         let channelPersistencyModel = ChannelPersistencyModel(
             channelId: channel.id,
             identifier: channel.identifier,
+            ownerId: channel.ownerId,
             name: channel.name,
             channelDescription: channel.description, 
             imageUrl: channel.imageUrl,
