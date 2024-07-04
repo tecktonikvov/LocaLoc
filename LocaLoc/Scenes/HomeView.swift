@@ -61,13 +61,5 @@ fileprivate extension TabScene<AnyView> {
 
 #Preview {
     var previewer = Previewer()
-    
-    return HomeComposer.view(
-        authenticationService: AuthenticationService(
-            userDataRepository: previewer.userDataRepository
-        ),
-        userDataRepository: previewer.userDataRepository, 
-        usernameManager: previewer.usernameManager,
-        channelsRepository: previewer.channelsRepository
-    )
+    return HomeComposer.view(userDataRepository: previewer.userDataRepository)
 }

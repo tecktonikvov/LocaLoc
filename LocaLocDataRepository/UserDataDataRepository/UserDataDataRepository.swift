@@ -94,10 +94,6 @@ import LocaLocLocalStore
         setCurrentUser(user)
     }
     
-    private func triggerUIUpdate() {
-        isUserAuthorized = isUserAuthorized
-    }
-
     // MARK: - Public
     public func clearCurrentUserData() {
         UserDefaults.standard.removeObject(forKey: .currentUserIdKey)
@@ -153,8 +149,6 @@ import LocaLocLocalStore
             
             try await userNameClient.set(username: username, userId: _currentUser.id)
             _currentUser.profile.username = username
-            
-            triggerUIUpdate()
         } catch {
             Log.error("User name set request error: \(error)", module: "UserDataDataRepository")
             throw error

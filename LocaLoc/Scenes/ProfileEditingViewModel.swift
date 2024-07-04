@@ -7,13 +7,17 @@
 
 import SwiftUI
 import PhotosUI
+import Factory
 
 @Observable final class ProfileEditingViewModel {
-    private let usernameManager: UsernameManager
-    private let userDataRepository: UserDataRepository
-    private let userPhotoUploader: UserPhotoUploader
+    @ObservationIgnored
+    @Injected(\.usernameManager) private var usernameManager
+    @ObservationIgnored
+    @Injected(\.userDataRepository) private var userDataRepository
+    @ObservationIgnored
+    @Injected(\.userPhotoUploader) private var userPhotoUploader
     
-    var profile: Profile
+    var profile = Profile(firstName: "", lastName: "", email: "", imageUrl: "", username: "")
     var errorText: String?
     var isLoading: Bool = false
     var dismiss: Bool = false
@@ -25,20 +29,15 @@ import PhotosUI
         profile.username != initialUserName
     }
     
-    private let initialUserName: String
+    private var initialUserName: String = ""
     private var saveRequest: Task<(), Never>?
     
     // MARK: - Init
-    init(userDataRepository: UserDataRepository, usernameManager: UsernameManager, userPhotoUploader: UserPhotoUploader) {
-        self.usernameManager = usernameManager
-        self.userPhotoUploader = userPhotoUploader
-        self.userDataRepository = userDataRepository
-
-        let emptyModel = Profile(firstName: "", lastName: "", email: "", imageUrl: "", username: "")
-        let profile = userDataRepository.currentUser?.profile ?? emptyModel
-        
-        self.profile = profile
-        self.initialUserName = profile.username
+    init() {
+        if let profile = userDataRepository.currentUser?.profile {
+            self.profile = profile
+            self.initialUserName = profile.username
+        }
     }
     
     // MARK: - Private

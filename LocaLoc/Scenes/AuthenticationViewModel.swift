@@ -7,15 +7,11 @@
 
 import SwiftUI
 import K_Logger
+import Factory
 
 final class AuthenticationViewModel {
-    private var authenticationService: AuthenticationService
+    @Injected(\.authenticationService) private var authenticationService
 
-    // MARK: - Init
-    init(authenticationService: AuthenticationService) {
-        self.authenticationService = authenticationService
-    }
-    
     // MARK: - Public
     func signIn(providerType: AuthenticationProviderType, view: any View) {
         authenticationService.signIn(providerType: providerType, view: view) { error in

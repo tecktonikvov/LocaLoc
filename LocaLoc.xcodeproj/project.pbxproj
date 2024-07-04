@@ -11,13 +11,14 @@
 		040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 040B9EC02BFE4C17005E3930 /* GoogleSignIn */; };
 		040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D85822C008D2F000F8F52 /* AuthenticationService.swift */; };
 		040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */; };
-		040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC72C02633800056856 /* ChannelCreationComposer.swift */; };
 		040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC92C02633C00056856 /* ChannelCreationView.swift */; };
 		040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */; };
 		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */; };
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
 		04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */; };
 		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
+		042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */; };
+		042B9B1E2C35D7FC00DE7CB0 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 042B9B1D2C35D7FC00DE7CB0 /* Factory */; };
 		0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */; };
 		0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */; };
 		0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */; };
@@ -218,19 +219,18 @@
 		040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderType.swift; sourceTree = "<group>"; };
 		040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationStatus.swift; sourceTree = "<group>"; };
 		040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
-		040E4EC72C02633800056856 /* ChannelCreationComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationComposer.swift; sourceTree = "<group>"; };
 		040E4EC92C02633C00056856 /* ChannelCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationView.swift; sourceTree = "<group>"; };
 		040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationViewModel.swift; sourceTree = "<group>"; };
 		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatar.swift; sourceTree = "<group>"; };
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
 		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploaderClient.swift; sourceTree = "<group>"; };
 		0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingService.swift; sourceTree = "<group>"; };
 		0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoUploader.swift; sourceTree = "<group>"; };
 		0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilesUploadingService+UserPhotoUploader.swift"; sourceTree = "<group>"; };
 		0438C46C2C2C5B78000665D0 /* FilesUploadingServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingServiceError.swift; sourceTree = "<group>"; };
-		0438C4802C2C6388000665D0 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDataStore.swift; sourceTree = "<group>"; };
 		0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenSecureStorage.swift; sourceTree = "<group>"; };
 		0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeychainDataStore+TokenSecureStorage.swift"; sourceTree = "<group>"; };
@@ -323,6 +323,7 @@
 				040255DB2C2B565B00DC8130 /* PopupView in Frameworks */,
 				04FAE8F42C0BB36D00200ADC /* LocaLocDataRepository.framework in Frameworks */,
 				044D62032C2EAC3C00D130FA /* FirebaseCrashlytics in Frameworks */,
+				042B9B1E2C35D7FC00DE7CB0 /* Factory in Frameworks */,
 				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
 				04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */,
 			);
@@ -443,6 +444,7 @@
 				0438C46B2C2C5B4F000665D0 /* FilesUploadingService */,
 				040D85862C008F8B000F8F52 /* Models */,
 				044D62162C31C0F200D130FA /* PhotoPreparer */,
+				042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -472,7 +474,6 @@
 		040E4EC62C02631F00056856 /* ChannelCreation */ = {
 			isa = PBXGroup;
 			children = (
-				040E4EC72C02633800056856 /* ChannelCreationComposer.swift */,
 				040E4EC92C02633C00056856 /* ChannelCreationView.swift */,
 				040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */,
 				044D62092C31BC8600D130FA /* ChannelInvitationMode.swift */,
@@ -524,14 +525,6 @@
 				0438C46C2C2C5B78000665D0 /* FilesUploadingServiceError.swift */,
 			);
 			path = FilesUploadingService;
-			sourceTree = "<group>";
-		};
-		0438C47F2C2C6388000665D0 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				0438C4802C2C6388000665D0 /* Firebase.h */,
-			);
-			path = Firebase;
 			sourceTree = "<group>";
 		};
 		0438C4AA2C2D6901000665D0 /* Views */ = {
@@ -618,7 +611,6 @@
 				04FAE8EF2C0BB36D00200ADC /* LocaLocDataRepository */,
 				04FAE90E2C0C5A0700200ADC /* LocaLocClient */,
 				04FAE9392C0C608D00200ADC /* LocaLocLocalStorage */,
-				0438C47F2C2C6388000665D0 /* Firebase */,
 				046C3EA02BE917E800BBFF47 /* Products */,
 				04BA850A2C0B6920004F76B3 /* Frameworks */,
 			);
@@ -961,6 +953,7 @@
 				04BA85522C0B83E1004F76B3 /* K-Logger */,
 				040255DA2C2B565B00DC8130 /* PopupView */,
 				044D62022C2EAC3C00D130FA /* FirebaseCrashlytics */,
+				042B9B1D2C35D7FC00DE7CB0 /* Factory */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -1120,6 +1113,7 @@
 				04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */,
 				040255D92C2B561400DC8130 /* XCRemoteSwiftPackageReference "PopupView" */,
 				040255DF2C2C3ADA00DC8130 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				042B9B1A2C35D77400DE7CB0 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
@@ -1250,7 +1244,6 @@
 				04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */,
 				044D62222C31C60300D130FA /* Channel.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
-				040E4EC82C02633800056856 /* ChannelCreationComposer.swift in Sources */,
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
 				0443BFA42C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift in Sources */,
@@ -1300,6 +1293,7 @@
 				04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
+				042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */,
 				04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */,
 				04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */,
 			);
@@ -2037,6 +2031,14 @@
 				minimumVersion = 7.1.0;
 			};
 		};
+		042B9B1A2C35D77400DE7CB0 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 		04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tecktonikvov/K-Logger";
@@ -2057,6 +2059,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 040B9EBF2BFE4BBB005E3930 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		042B9B1D2C35D7FC00DE7CB0 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 042B9B1A2C35D77400DE7CB0 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 		0438C49E2C2C65A9000665D0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

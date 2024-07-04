@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Foundation
-import LocaLocClient
 import K_Logger
+import Factory
 
 @Observable final class ChannelCreationViewModel {
     var image = UIImage() {
@@ -36,21 +35,14 @@ import K_Logger
     private var channelCreationTask: Task<(), Never>?
     
     // Dependencies
-    private let channelsRepository: ChannelsRepository
-    private let userDataRepository: UserDataRepository
-    private let channelPhotoUploader: ChannelPhotoUploader
-    private let channelIdentifierChecker: ChannelIdentifierChecker
-
-    // MARK: - Init
-    init(channelIdentifierChecker: ChannelIdentifierClient, 
-         channelPhotoUploader: ChannelPhotoUploader,
-         channelsRepository: ChannelsRepository,
-         userDataRepository: UserDataRepository) {
-        self.userDataRepository = userDataRepository
-        self.channelsRepository = channelsRepository
-        self.channelPhotoUploader = channelPhotoUploader
-        self.channelIdentifierChecker = channelIdentifierChecker
-    }
+    @ObservationIgnored
+    @Injected(\.channelsRepository) private var channelsRepository
+    @ObservationIgnored
+    @Injected(\.userDataRepository) private var userDataRepository
+    @ObservationIgnored
+    @Injected(\.channelPhotoUploader) private var channelPhotoUploader
+    @ObservationIgnored
+    @Injected(\.channelIdentifierChecker) private var channelIdentifierChecker
     
     // MARK: - Private
     private func isIdentifierFree() async throws -> Bool {

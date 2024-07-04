@@ -6,18 +6,14 @@
 //
 
 import SwiftUI
+import Factory
 import AuthenticationServices
 
 final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationControllerDelegate {
-    private let userDataRepository: UserDataRepository
+    @Injected(\.userDataRepository) private var userDataRepository
     
     private lazy var appleProvider = AppleAuthenticationProvider()
     private lazy var googleProvider = GoogleAuthenticationProvider()
-
-    // MARK: - Init
-    init(userDataRepository: UserDataRepository) {
-        self.userDataRepository = userDataRepository
-    }
     
     // MARK: - Private
     private func setCrashlyticsData(user: User) {

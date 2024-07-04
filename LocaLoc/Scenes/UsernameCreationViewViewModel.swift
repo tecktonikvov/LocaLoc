@@ -7,6 +7,7 @@
 
 import Foundation
 import K_Logger
+import Factory
 
 enum UsernameValidationResult {
     case requestError(Error)
@@ -16,18 +17,14 @@ enum UsernameValidationResult {
 }
 
 @Observable final class UsernameCreationViewViewModel {
-    private let userDataRepository: UserDataRepository
-    private let usernameManager: UsernameManager
+    @ObservationIgnored
+    @Injected(\.userDataRepository) private var userDataRepository
+    @ObservationIgnored
+    @Injected(\.usernameManager) private var usernameManager
     
     var username = ""
     var errorText: String?
     var isLoading: Bool = false
-    
-    // MARK: - Init
-    init(userDataRepository: UserDataRepository, usernameManager: UsernameManager) {
-        self.usernameManager = usernameManager
-        self.userDataRepository = userDataRepository
-    }
     
     // MARK: - Private
     private func validateUsername() async -> UsernameValidationResult {

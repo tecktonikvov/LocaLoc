@@ -6,31 +6,23 @@
 //
 
 import SwiftUI
-import LocaLocClient
+import Factory
 
 @Observable class SettingsViewModel {
     var user: User
     
-    private let authenticationService: AuthenticationService
-    private let usernameManager: UsernameManager
-    private let userDataRepository: UserDataRepository
-    
     @ObservationIgnored
-    lazy var profileEditingViewModel = ProfileEditingViewModel(
-        userDataRepository: userDataRepository,
-        usernameManager: usernameManager,
-        userPhotoUploader: FilesUploadingService(userDataRepository: userDataRepository)
-    )
-        
+    @Injected(\.authenticationService) private var authenticationService
+    @ObservationIgnored
+    @Injected(\.usernameManager) private var usernameManager
+    @ObservationIgnored
+    @Injected(\.userDataRepository) private var userDataRepository
+    
+    let profileEditingViewModel = ProfileEditingViewModel()
+    
     // MARK: - Init
-    init(user: User,
-         authenticationService: AuthenticationService,
-         userDataRepository: UserDataRepository,
-         usernameManager: UsernameManager) {
+    init(user: User) {
         self.user = user
-        self.authenticationService = authenticationService
-        self.userDataRepository = userDataRepository
-        self.usernameManager = usernameManager
     }
     
     func signOut() {

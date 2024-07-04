@@ -6,23 +6,12 @@
 //
 
 import SwiftUI
+import Factory
 
 final class HomeComposer: SceneComposer {
-    @ViewBuilder static func view(
-        authenticationService: AuthenticationService,
-        userDataRepository: UserDataRepository,
-        usernameManager: UsernameManager,
-        channelsRepository: ChannelsRepository) -> some View {
-            let channelsScene = ChannelsComposer.compose(
-                userDataRepository: userDataRepository,
-                channelsRepository: channelsRepository
-            )
-            
-            let settingsScene = settingsScene(
-                userDataRepository: userDataRepository,
-                authenticationService: authenticationService,
-                usernameManager: usernameManager
-            )
+    @ViewBuilder static func view(userDataRepository: UserDataRepository) -> some View {
+            let channelsScene = ChannelsComposer.compose()
+            let settingsScene = settingsScene(userDataRepository: userDataRepository)
             
             let scenes = [channelsScene, settingsScene].compactMap { $0 }
             let model = HomeModel(tabScenes: scenes)
@@ -32,19 +21,11 @@ final class HomeComposer: SceneComposer {
             HomeView(viewModel: viewModel)
         }
     
-    private static func settingsScene(
-        userDataRepository: UserDataRepository,
-        authenticationService: AuthenticationService,
-        usernameManager: UsernameManager) -> TabScene<AnyView>? {
-            if let currentUser = userDataRepository.currentUser {
-                return SettingsComposer.compose(
-                    authenticationService: authenticationService,
-                    user: currentUser,
-                    userDataRepository: userDataRepository,
-                    usernameManager: usernameManager
-                )
-            } else {
-                return nil
-            }
+    private static func settingsScene(userDataRepository: UserDataRepository) -> TabScene<AnyView>? {
+        if let currentUser = userDataRepository.currentUser {
+            return SettingsComposer.compose(user: currentUser)
+        } else {
+            return nil
         }
+    }
 }

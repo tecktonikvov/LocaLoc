@@ -5,7 +5,7 @@
 //  Created by Volodymyr Kotsiubenko on 1/6/24.
 //
 
-import Observation
+import SwiftUI
 
 protocol UserDataRepository: Observable {
     var currentUser: User? { get }

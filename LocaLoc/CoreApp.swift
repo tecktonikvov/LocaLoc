@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import K_Logger
+import Factory
 import FirebaseCore
-import LocaLocDataRepository
-import LocaLocLocalStore
  
 @main
 struct CoreApp: App {    
     private let appComposer: AppComposer
+    @Injected(\.userDataRepository) private var userDataRepository
     
     // MARK: - Init
     init() {
@@ -21,32 +20,11 @@ struct CoreApp: App {
             FirebaseApp.configure()
         }
         
-        do {
-            let localStorage = try AppLocalStorage(with: UserPersistencyModel.self,
-                                                   ProfilePersistencyModel.self,
-                                                   ChannelPersistencyModel.self,
-                                                   ChannelUserSettingsPersistencyModel.self,
-                                                   ChannelSettingsPersistencyModel.self)
-            
-            let userDataRepository = try UserDataDataRepository(localStorage: localStorage)
-            let channelsRepository = try ChannelsDataRepository(localStorage: localStorage)
-            
-            let appComposer = AppComposer(
-                userDataRepository: userDataRepository,
-                usernameManager: userDataRepository,
-                channelsRepository: channelsRepository
-            )
-            
-            self.appComposer = appComposer
-            
-            if let user = userDataRepository.currentUser {
-                setCrashlyticsData(user: user)
-            }
-        } catch {
-            let errorString = "App initialization error: \(error)"
-            
-            Log.error(errorString, module: "CoreApp")
-            fatalError(errorString)
+        let appComposer = AppComposer()
+        self.appComposer = appComposer
+        
+        if let user = userDataRepository.currentUser {
+            setCrashlyticsData(user: user)
         }
     }
     
