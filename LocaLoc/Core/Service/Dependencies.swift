@@ -101,6 +101,11 @@ extension Container {
             .singleton
     }
     
+    var userIdProvider: Factory<UserIdProvider> {
+        Factory(self) { self.userDataDataRepository() }
+            .singleton
+    }
+    
     var channelsRepository: Factory<ChannelsRepository> {
         Factory(self) { self.channelsDataRepository() }
     }

@@ -36,9 +36,9 @@ import Factory
     
     // Dependencies
     @ObservationIgnored
-    @Injected(\.channelsRepository) private var channelsRepository
+    @Injected(\.userIdProvider) private var userIdProvider
     @ObservationIgnored
-    @Injected(\.userDataRepository) private var userDataRepository
+    @Injected(\.channelsRepository) private var channelsRepository
     @ObservationIgnored
     @Injected(\.channelPhotoUploader) private var channelPhotoUploader
     @ObservationIgnored
@@ -55,11 +55,11 @@ import Factory
         return fileUrl
     }
     
-    private func makeChannelEmpty() -> Channel {
+    private func makeChannelEmpty() throws -> Channel {
         Channel(
             id: "",
             identifier: identifier, 
-            ownerId: userDataRepository.currentUser?.id ?? "",
+            ownerId: try userIdProvider.userId(),
             name: name,
             description: description,
             imageUrl: nil,
@@ -72,7 +72,7 @@ import Factory
     }
     
     private func createEmptyChannelAndSave() async throws -> Channel {
-        let channel = makeChannelEmpty()
+        let channel = try makeChannelEmpty()
         return try await channelsRepository.saveChannel(channel)
     }
     

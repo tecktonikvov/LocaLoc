@@ -19,6 +19,8 @@
 		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
 		042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */; };
 		042B9B1E2C35D7FC00DE7CB0 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 042B9B1D2C35D7FC00DE7CB0 /* Factory */; };
+		042B9B202C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B1F2C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift */; };
+		042B9B222C36AAE700DE7CB0 /* UserIdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */; };
 		0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */; };
 		0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */; };
 		0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */; };
@@ -226,6 +228,8 @@
 		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		042B9B1F2C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UserIdProvider.swift"; sourceTree = "<group>"; };
+		042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdProvider.swift; sourceTree = "<group>"; };
 		0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploaderClient.swift; sourceTree = "<group>"; };
 		0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingService.swift; sourceTree = "<group>"; };
 		0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoUploader.swift; sourceTree = "<group>"; };
@@ -500,6 +504,7 @@
 				044D62192C31C16F00D130FA /* ChannelPhotoUploader.swift */,
 				044D621F2C31C56600D130FA /* ChannelsRepository.swift */,
 				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
+				042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */,
 				04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */,
 				0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */,
 			);
@@ -514,6 +519,7 @@
 				0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */,
 				04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */,
 				0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */,
+				042B9B1F2C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift */,
 				044D62242C31CB7000D130FA /* ChannelsDataRepository+ChannelsRepository.swift */,
 			);
 			path = Implementations;
@@ -1263,6 +1269,7 @@
 				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
 				044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */,
 				044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */,
+				042B9B202C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift in Sources */,
 				044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */,
 				0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */,
 				044D62182C31C0FB00D130FA /* PhotoPreparer.swift in Sources */,
@@ -1295,6 +1302,7 @@
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
 				042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */,
 				04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */,
+				042B9B222C36AAE700DE7CB0 /* UserIdProvider.swift in Sources */,
 				04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
