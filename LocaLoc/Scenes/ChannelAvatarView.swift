@@ -1,5 +1,5 @@
 //
-//  ChannelAvatar.swift
+//  ChannelAvatarView.swift
 //  LocaLoc
 //
 //  Created by Volodymyr Kotsiubenko on 21/5/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChannelAvatar: View {
+struct ChannelAvatarView: View {
     private let url: URL?
   
     init(url: URL?) {

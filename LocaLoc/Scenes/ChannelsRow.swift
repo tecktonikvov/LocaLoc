@@ -16,7 +16,7 @@ struct ChannelsRow: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            ChannelAvatar(url: channel.imageUrl)
+            ChannelAvatarView(url: channel.imageUrl)
                 .frame(width: 60.0, height: 60.0)
                 .clipShape(Circle())
                 .padding(.trailing, 8)

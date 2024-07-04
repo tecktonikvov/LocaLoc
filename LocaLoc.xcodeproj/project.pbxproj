@@ -13,7 +13,7 @@
 		040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */; };
 		040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EC92C02633C00056856 /* ChannelCreationView.swift */; };
 		040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */; };
-		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */; };
+		04261ADF2BFCD9A200FBAFC3 /* ChannelAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261ADE2BFCD9A200FBAFC3 /* ChannelAvatarView.swift */; };
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
 		04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */; };
 		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
@@ -221,7 +221,7 @@
 		040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		040E4EC92C02633C00056856 /* ChannelCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationView.swift; sourceTree = "<group>"; };
 		040E4ECB2C02634300056856 /* ChannelCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationViewModel.swift; sourceTree = "<group>"; };
-		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatar.swift; sourceTree = "<group>"; };
+		04261ADE2BFCD9A200FBAFC3 /* ChannelAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAvatarView.swift; sourceTree = "<group>"; };
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
 		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -453,9 +453,10 @@
 			isa = PBXGroup;
 			children = (
 				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
-				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
+				044D62212C31C60300D130FA /* Channel.swift */,
 				040D85872C008F97000F8F52 /* Profile.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
+				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -696,12 +697,11 @@
 		047ECA142BFA91DC0065837C /* Channels */ = {
 			isa = PBXGroup;
 			children = (
-				04261ADE2BFCD9A200FBAFC3 /* ChannelAvatar.swift */,
+				04261ADE2BFCD9A200FBAFC3 /* ChannelAvatarView.swift */,
 				047ECA192BFA92060065837C /* ChannelsComposer.swift */,
 				04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */,
 				047ECA152BFA91F40065837C /* ChannelsView.swift */,
 				047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */,
-				044D62212C31C60300D130FA /* Channel.swift */,
 			);
 			name = Channels;
 			sourceTree = "<group>";
@@ -1273,7 +1273,7 @@
 				044D62112C31BEC800D130FA /* Binding+Extension.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
 				0438C4682C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift in Sources */,
-				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatar.swift in Sources */,
+				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatarView.swift in Sources */,
 				04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */,
 				04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */,
 				04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */,
