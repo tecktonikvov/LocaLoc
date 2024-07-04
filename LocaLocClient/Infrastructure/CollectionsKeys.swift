@@ -12,4 +12,5 @@ struct CollectionsKeys {
     
     static let usersCollection = "users"
     static let channelsCollection = "channels"
+    static let channelsParticipants = "channelsParticipants"
 }

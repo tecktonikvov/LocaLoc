@@ -21,6 +21,7 @@
 		042B9B1E2C35D7FC00DE7CB0 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 042B9B1D2C35D7FC00DE7CB0 /* Factory */; };
 		042B9B202C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B1F2C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift */; };
 		042B9B222C36AAE700DE7CB0 /* UserIdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */; };
+		042B9B2F2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */; };
 		0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */; };
 		0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */; };
 		0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */; };
@@ -230,6 +231,7 @@
 		042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		042B9B1F2C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UserIdProvider.swift"; sourceTree = "<group>"; };
 		042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdProvider.swift; sourceTree = "<group>"; };
+		042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelParticipantModel.swift; sourceTree = "<group>"; };
 		0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploaderClient.swift; sourceTree = "<group>"; };
 		0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingService.swift; sourceTree = "<group>"; };
 		0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoUploader.swift; sourceTree = "<group>"; };
@@ -514,13 +516,13 @@
 		0438C4622C2C3E39000665D0 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				044D62242C31CB7000D130FA /* ChannelsDataRepository+ChannelsRepository.swift */,
 				044D621B2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift */,
 				0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */,
 				0438C4A82C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift */,
 				04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */,
-				0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */,
 				042B9B1F2C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift */,
-				044D62242C31CB7000D130FA /* ChannelsDataRepository+ChannelsRepository.swift */,
+				0443BFA32C0FA2AA00D7CAE7 /* UserDataDataRepository+UsernameManager.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -727,6 +729,7 @@
 			isa = PBXGroup;
 			children = (
 				044D62462C33404800D130FA /* ChannelClientModel.swift */,
+				042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */,
 				04AA9BFF2C15D68300459E00 /* UserClientModel.swift */,
 			);
 			path = Models;
@@ -1349,6 +1352,7 @@
 				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
 				0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */,
 				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
+				042B9B2F2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

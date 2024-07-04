@@ -10,6 +10,7 @@ import K_Logger
 import LocaLocClient
 import LocaLocLocalStore
 import SwiftData
+import Factory
 
 enum ChannelsDataRepositoryError: Error {
     case attemptToUpdateChannelWithEmptyId
@@ -17,44 +18,39 @@ enum ChannelsDataRepositoryError: Error {
 
 @Observable class ChannelsDataRepository {
     var channels: [Channel] = []
-    
+        
     let localStorage: LocalStorage
     let channelsClient: ChannelsClient
+    
+    @ObservationIgnored
+    @Injected(\.userIdProvider) private var userIdProvider
     
     // MARK: - Init
     init(localStorage: LocalStorage) throws {
         self.channelsClient = ChannelsClient()
         self.localStorage = localStorage
         
-        try loadLocalChannels()
-        
+        try loadLocalStoreChannels()
         #warning("Debug code")
         //deleteAllLocalCachedChannels()
     }
     
-    private func deleteAllLocalCachedChannels() {
-        let channelsLocalStoreModels = try! localStorage.fetchModelsWith(
-            model: ChannelPersistencyModel.self,
-            descriptor: nil
-        )
-        
-        channelsLocalStoreModels.forEach {
-            localStorage.delete(model: $0)
-        }
-        
-        try? reloadChannels()
-    }
     
     // MARK: - Private
-    private func loadLocalChannels() throws {
+    private func deleteAllLocalCachedChannels() {
+        try? localStorage.deleteAllModels(withTypes: ChannelPersistencyModel.self)
+        try? reloadLocalStoreChannels()
+    }
+    
+    private func loadLocalStoreChannels() throws {
         let channelsLocalModels = try localStorage.fetchModelsWith(model: ChannelPersistencyModel.self, descriptor: nil)
         let channels = channelsLocalModels.compactMap { Channel(persistencyModel: $0) }
         self.channels = channels
-        Log.info("Loaded \(channels.count) from local storage", module: "ChannelsDataRepository")
+        Log.info("Loaded \(channels.count) channels from local storage", module: "ChannelsDataRepository")
     }
     
-    private func reloadChannels() throws {
-        try loadLocalChannels()
+    private func reloadLocalStoreChannels() throws {
+        try loadLocalStoreChannels()
     }
     
     private func saveChannelToClient(_ channel: Channel) async throws -> String {
@@ -68,7 +64,7 @@ enum ChannelsDataRepositoryError: Error {
             identifier: channel.identifier,
             ownerId: channel.ownerId,
             name: channel.name,
-            channelDescription: channel.description, 
+            channelDescription: channel.description,
             imageUrl: channel.imageUrl,
             missedUpdatesNumber: channel.missedUpdatesNumber,
             creationDate: channel.creationDate,
@@ -131,17 +127,70 @@ enum ChannelsDataRepositoryError: Error {
         .first
     }
     
+    private func createChannelParticipantsList(channel: Channel) async throws {
+        let ownerModel = ChannelParticipantModel(id: channel.ownerId)
+        try await channelsClient.createChannelParticipantsList(channelId: channel.id, owner: ownerModel)
+    }
+    
     private func createAndSaveChannel(_ channel: Channel) async throws -> Channel {
         let channelClientId = try await saveChannelToClient(channel)
         channel.id = channelClientId
+        
+        try await createChannelParticipantsList(channel: channel)
         
         try saveChannelToLocalStorage(channel)
                         
         return channel
     }
+    
+    private func fetchChannelClientModelAndReturnChanelLocalStoreModel(id: String) async throws -> ChannelPersistencyModel? {
+        guard let clientModel = try await channelsClient.channel(with: id) else {
+            return nil
+        }
+        
+        let channelLocalStorageModel = ChannelPersistencyModel(
+            channelId: id,
+            identifier: clientModel.identifier,
+            ownerId: clientModel.ownerId,
+            name: clientModel.name,
+            channelDescription: clientModel.description,
+            imageUrl: clientModel.imageUrl,
+            missedUpdatesNumber: clientModel.missedUpdatesNumber,
+            creationDate: clientModel.creationDate,
+            lastUpdateDate: clientModel.lastUpdateDate,
+            channelSettings: nil,
+            channelUserSettings: nil
+        )
+        
+        let channelSettingsLocalStoreModel = ChannelSettingsPersistencyModel(
+            invitationMode: clientModel.channelInvitationMode,
+            channel: channelLocalStorageModel
+        )
+
+        channelLocalStorageModel.channelSettings = channelSettingsLocalStoreModel
+        
+        return channelLocalStorageModel
+    }
+    
+    private func channels(withIds ids: [String]) async throws -> [ChannelPersistencyModel] {
+        let channels = try await withThrowingTaskGroup(of: ChannelPersistencyModel?.self, returning: [ChannelPersistencyModel?].self) { taskGroup in
+            for id in ids {
+                taskGroup.addTask { try await self.fetchChannelClientModelAndReturnChanelLocalStoreModel(id: id) }
+            }
+
+            var channels = [ChannelPersistencyModel?]()
+
+            while let fetchedChannel = try await taskGroup.next() {
+                channels.append(fetchedChannel)
+            }
+            
+            return channels
+        }
+        
+        return channels.compactMap { $0 }
+    }
 }
 
-// MARK: - ChannelsRepository
 extension ChannelsDataRepository: ChannelsRepository {
     func saveChannel(_ channel: Channel) async throws -> Channel {
         let result: Channel
@@ -156,11 +205,25 @@ extension ChannelsDataRepository: ChannelsRepository {
             result = try await createAndSaveChannel(channel)
         }
         
-        try reloadChannels()
+        try await synchronizeUserChannelsList()
         return result
     }
     
-    func synchronizeChannelsList() async throws {
-        // TODO: ...
+    func synchronizeUserChannelsList() async throws {
+        Log.info("Channels list synchronization started", module: "ChannelsDataRepository")
+        
+        let userId = try userIdProvider.userId()
+        let channelsIds = try await channelsClient.userChannelsIds(userId: userId)
+        let channelsLocalStoreModels = try await channels(withIds: channelsIds)
+        
+        try localStorage.deleteAllModels(withTypes: ChannelPersistencyModel.self)
+        
+        for channelLocalStoreModel in channelsLocalStoreModels {
+            localStorage.addModel(model: channelLocalStoreModel)
+        }
+        
+        try reloadLocalStoreChannels()
+        
+        Log.info("Channels list synchronization finished. Fetched \(channels.count) channels", module: "ChannelsDataRepository")
     }
 }

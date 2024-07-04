@@ -93,15 +93,16 @@ import Factory
                 
                 let newChannel = try await createEmptyChannelAndSave()
                 
-                guard !Task.isCancelled else { 
-                    // TODO: Delete uploaded image if cancelled
-                    return
-                }
+                guard !Task.isCancelled else { return }
                                                 
                 if isImageSelected {
                     let imageUrl = try await uploadChannelPhoto(image, channelId: newChannel.id)
                     newChannel.imageUrl = imageUrl
-                    
+                }
+                
+                guard !Task.isCancelled else {
+                    // TODO: Delete uploaded image if cancelled
+                    return
                 }
                 
                 try await channelsRepository.saveChannel(newChannel)

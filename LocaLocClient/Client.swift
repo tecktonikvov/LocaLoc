@@ -116,6 +116,18 @@ public final class Client {
         return dictionaries
     }
     
+    func documents(filter: Filter, collectionName: String) async throws -> [QueryDocumentSnapshot] {
+        let querySnapshot = try await database
+            .collection(collectionName)
+            .whereFilter(filter)
+            .getDocuments()
+        
+        let documents = querySnapshot.documents
+        Log.info("Fetched \(documents.count) documents from collection: \"\(collectionName)\"", module: "Client")
+        
+        return documents
+    }
+    
     func uploadData(_ data: Data, folderName: String, fileName: String, contentType: FileContentType) async throws -> URL {
         let filePath = folderName + "/" + fileName
         let reference = storage.reference(withPath: filePath)

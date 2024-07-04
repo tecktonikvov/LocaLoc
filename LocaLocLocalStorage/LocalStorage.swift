@@ -12,6 +12,7 @@ public protocol LocalStorage {
     func fetchModelsWith<T>(model: T.Type, descriptor: FetchDescriptor<T>?) throws -> [T] where T: PersistentModel
     func addModel(model: any PersistentModel)
     func delete(model: any PersistentModel)
+    func deleteAllModels(withTypes types: any PersistentModel.Type...) throws
 }
 
 public class AppLocalStorage {
@@ -25,19 +26,11 @@ public class AppLocalStorage {
         
         self.modelContext = modelContext
     }
-    
-    // MARK: - Private
-//    private func checkIsMainThread(line: Int = #line) {
-//        if !Thread.current.isMainThread {
-//            fatalError("SwiftData transactions should be performed on main thread, line: \(line)")
-//        }
-//    }
 }
 
 // MARK: - AppLocalStorage
 extension AppLocalStorage: LocalStorage {
     public func fetchModelsWith<T>(model: T.Type, descriptor: FetchDescriptor<T>?) throws -> [T] where T: PersistentModel {
-       // checkIsMainThread()
         let descriptor = descriptor ?? FetchDescriptor<T>()
                 
         let fetchResult = try modelContext.fetch(descriptor)
@@ -45,12 +38,16 @@ extension AppLocalStorage: LocalStorage {
     }
     
     public func addModel(model: any PersistentModel) {
-        //checkIsMainThread()
         modelContext.insert(model)
     }
     
     public func delete(model: any PersistentModel) {
-       // checkIsMainThread()
         modelContext.delete(model)
+    }
+    
+    public func deleteAllModels(withTypes types: any PersistentModel.Type...) throws {
+        for type in types {
+            try modelContext.delete(model: type)
+        }
     }
 }

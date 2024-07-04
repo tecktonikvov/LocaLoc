@@ -16,14 +16,14 @@ struct ChannelsView: View {
     
     @State private var path = NavigationPath()
     @State private var selectedChanels: [Channel] = []
-    @State private var showCreateChannel = false
+    @State private var animationAmount = 0.0
     
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
                 List {
-                    ForEach(0..<viewModel.channels.count, id: \.self) { index in
-                        let channel = viewModel.channels[index]
+                    ForEach(0..<viewModel.channelsRepository.channels.count, id: \.self) { index in
+                        let channel = viewModel.channelsRepository.channels[index]
                         let isSelected = selectedChanels.first(where: { $0 == channel }) != nil
                         
                         ChannelsRow(channel: channel)
@@ -44,10 +44,13 @@ struct ChannelsView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
+                .refreshable {
+                    viewModel.synchronizeUserChannelsList()
+                }
             }
             .navigationTitle("Channels")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         path.append(NavigationState.createNewChannel)
                     } label: {
@@ -58,6 +61,22 @@ struct ChannelsView: View {
                             .foregroundStyle(Color.Text.main)
                     }
                 }
+                
+                if viewModel.isDataSynchronizationRunning {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Image("point")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(Color.brand)
+                            .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+                            .onAppear {
+                                withAnimation(.easeInOut(duration: 1).repeatForever()) {
+                                    animationAmount += 360
+                                }
+                            }
+                    }
+                }
             }
             .backgroundDefault()
             .navigationDestination(for: NavigationState.self) { state in
@@ -65,6 +84,9 @@ struct ChannelsView: View {
                 case .createNewChannel:
                     ChannelCreationView(viewModel: viewModel.channelCreationViewModel)
                 }
+            }
+            .onAppear {
+                viewModel.synchronizeUserChannelsList()
             }
         }
     }
