@@ -18,8 +18,6 @@ enum UsernameValidationResult {
 
 @Observable final class UsernameCreationViewViewModel {
     @ObservationIgnored
-    @Injected(\.userDataRepository) private var userDataRepository
-    @ObservationIgnored
     @Injected(\.usernameManager) private var usernameManager
     
     var username = ""

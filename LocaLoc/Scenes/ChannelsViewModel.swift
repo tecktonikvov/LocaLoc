@@ -12,8 +12,6 @@ import Foundation
     private(set) var channels: [Channel] = []
     
     @ObservationIgnored
-    @Injected(\.userDataRepository) private var userDataRepository
-    @ObservationIgnored
     @Injected(\.channelsRepository) private var channelsRepository
     
     let channelCreationViewModel = ChannelCreationViewModel()

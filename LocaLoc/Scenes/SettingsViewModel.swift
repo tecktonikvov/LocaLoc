@@ -13,10 +13,6 @@ import Factory
     
     @ObservationIgnored
     @Injected(\.authenticationService) private var authenticationService
-    @ObservationIgnored
-    @Injected(\.usernameManager) private var usernameManager
-    @ObservationIgnored
-    @Injected(\.userDataRepository) private var userDataRepository
     
     let profileEditingViewModel = ProfileEditingViewModel()
     
