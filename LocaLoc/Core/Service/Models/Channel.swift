@@ -59,6 +59,12 @@ import Foundation
     let userSettings: ChannelUserSettings
 }
 
+extension Channel: Identifiable, Hashable {
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(identifier)
+    }
+}
+
 extension Channel {
     static let mock: [Channel] = [
         Channel(

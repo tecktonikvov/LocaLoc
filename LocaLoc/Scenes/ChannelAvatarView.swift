@@ -17,8 +17,7 @@ struct ChannelAvatarView: View {
     var body: some View {
         CachedCenteredImage(
             url: url,
-            placeholderImageName: "location.circle.fill")
-            .frame(width: 80, height: 80)
+            placeholderImageName: "channel_placeholder")
             .clipShape(Circle())
     }
 }

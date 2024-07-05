@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-fileprivate enum NavigationState {
+fileprivate enum NavigationState: Hashable {
     case createNewChannel
+    case map(channelId: Channel)
 }
 
 struct ChannelsView: View {
     var viewModel: ChannelsViewModel
     
     @State private var path = NavigationPath()
-    @State private var selectedChanels: [Channel] = []
     @State private var animationAmount = 0.0
     
     var body: some View {
@@ -24,23 +24,16 @@ struct ChannelsView: View {
                 List {
                     ForEach(0..<viewModel.channelsRepository.channels.count, id: \.self) { index in
                         let channel = viewModel.channelsRepository.channels[index]
-                        let isSelected = selectedChanels.first(where: { $0 == channel }) != nil
                         
-                        ChannelsRow(channel: channel)
-                            .listRowBackground(
-                                Color(isSelected
-                                      ? UIColor.lightGray
-                                      : UIColor.clear).animation(.easeIn(duration: 0.1))
-                            )
-                        
-                            .frame(height: 70)
-                            .onTapGesture {
-                                selectedChanels.append(channel)
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    selectedChanels.removeAll(where: { $0 == channel })
-                                }
-                            }
+                        Button {
+                            path.append(NavigationState.map(channelId: channel))
+                        } label: {
+                            ChannelsRow(channel: channel)
+                        }
+                        .frame(height: 70)
+                        .listRowBackground(
+                            Color(UIColor.clear)
+                        )
                     }
                 }
                 .listStyle(PlainListStyle())
@@ -57,7 +50,7 @@ struct ChannelsView: View {
                         Image(systemName: "plus.circle")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 24, height: 24)
+                            .frame(width: 32, height: 32)
                             .foregroundStyle(Color.Text.main)
                     }
                 }
@@ -67,7 +60,7 @@ struct ChannelsView: View {
                         Image("point")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 24, height: 24)
+                            .frame(width: 32, height: 32)
                             .foregroundStyle(Color.brand)
                             .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
                             .onAppear {
@@ -83,6 +76,8 @@ struct ChannelsView: View {
                 switch state {
                 case .createNewChannel:
                     ChannelCreationView(viewModel: viewModel.channelCreationViewModel)
+                case .map(let channel):
+                    MapContainerView(viewModel: MapContainerViewModel(channel: channel))
                 }
             }
             .onAppear {

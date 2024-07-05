@@ -100,7 +100,7 @@ struct CachedCenteredImage: View {
                        Rectangle()
                     }
                 } else {
-                    Image(systemName: placeholderImageName)
+                    Image(placeholderImageName)
                         .resizable()
                 }
             }

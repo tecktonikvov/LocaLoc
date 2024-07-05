@@ -8,6 +8,7 @@
 import SwiftUI
 import Factory
 import FirebaseCore
+import GoogleMaps
  
 @main
 struct CoreApp: App {    
@@ -16,9 +17,8 @@ struct CoreApp: App {
     
     // MARK: - Init
     init() {
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-        }
+        CoreApp.setupFirebaseApp()
+        CoreApp.setupGmaps()
         
         let appComposer = AppComposer()
         self.appComposer = appComposer
@@ -33,6 +33,16 @@ struct CoreApp: App {
         CrashlyticsService.shared.set(userId: user.id)
         CrashlyticsService.shared.set(username: user.profile.username)
         CrashlyticsService.shared.set(userEmail: user.profile.email)
+    }
+    
+    private static func setupFirebaseApp() {
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+    }
+    
+    private static func setupGmaps() {
+        GMSServices.provideAPIKey("AIzaSyAtazBNVQVn-DE7QPmojFf7ClPiR9gEfbI")
     }
     
     var body: some Scene {
