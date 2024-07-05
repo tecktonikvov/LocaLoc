@@ -16,7 +16,6 @@ struct ChannelsView: View {
     var viewModel: ChannelsViewModel
     
     @State private var path = NavigationPath()
-    @State private var animationAmount = 0.0
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -57,17 +56,8 @@ struct ChannelsView: View {
                 
                 if viewModel.isDataSynchronizationRunning {
                     ToolbarItem(placement: .topBarLeading) {
-                        Image("point")
-                            .resizable()
-                            .scaledToFit()
+                        PointAnimationView()
                             .frame(width: 32, height: 32)
-                            .foregroundStyle(Color.brand)
-                            .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
-                            .onAppear {
-                                withAnimation(.easeInOut(duration: 1).repeatForever()) {
-                                    animationAmount += 360
-                                }
-                            }
                     }
                 }
             }

@@ -116,5 +116,9 @@ extension Container {
     
     var authenticationService: Factory<AuthenticationService> {
         Factory(self) { AuthenticationService() }
-    }    
+    }
+    
+    var addressProvider: Factory<AddressProvider> {
+        Factory(self) { AddressProvider() }
+    }
 }

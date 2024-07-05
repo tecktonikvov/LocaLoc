@@ -16,6 +16,9 @@ import Foundation
     private(set) var channel: Channel
 
     var dismiss = false
+    var showAddPointView = false
+    
+    var selectedCoordinates: Coordinates?
 
     // MARK: - Init
     init(channel: Channel) {
@@ -26,6 +29,8 @@ import Foundation
         
         let mapViewController = MapViewController(mapView: mapController.mapView)
         self.mapView = mapViewController
+        
+        mapController.delegate = self
     }
 
     // MARK: - Public
@@ -41,7 +46,19 @@ import Foundation
         mapController.goToMyLocation()
     }
     
-    func addNewPointButtonTapped() {
-        
+    func newPointApproved() {
+        mapController.setNewSelectedLocationSteady()
+    }
+    
+    func newPointCanceled() {
+        mapController.removeNewSelectedLocation()
+    }
+}
+
+// MARK: - MapControllerDelegate
+extension MapContainerViewModel: MapControllerDelegate {
+    func didAddNewMarker(coordinates: Coordinates) {
+        selectedCoordinates = coordinates
+        showAddPointView = true
     }
 }

@@ -29,6 +29,12 @@
 		042B9B3B2C37D9C700DE7CB0 /* MapContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B3A2C37D9C600DE7CB0 /* MapContainerViewModel.swift */; };
 		042B9B3E2C37E72A00DE7CB0 /* MapViewControllerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B3D2C37E72A00DE7CB0 /* MapViewControllerBridge.swift */; };
 		042B9B412C38001E00DE7CB0 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B402C38001E00DE7CB0 /* MapController.swift */; };
+		042B9B432C38312B00DE7CB0 /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B422C38312B00DE7CB0 /* AddressProvider.swift */; };
+		042B9B452C383BBD00DE7CB0 /* PointAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B442C383BBD00DE7CB0 /* PointAnimationView.swift */; };
+		042B9B472C38403700DE7CB0 /* PointAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B462C38403700DE7CB0 /* PointAddView.swift */; };
+		042B9B492C38408200DE7CB0 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B482C38408200DE7CB0 /* Coordinates.swift */; };
+		042B9B4B2C384C1E00DE7CB0 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4A2C384C1E00DE7CB0 /* Marker.swift */; };
+		042B9B4D2C384C7F00DE7CB0 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4C2C384C7F00DE7CB0 /* Address.swift */; };
 		0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */; };
 		0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */; };
 		0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */; };
@@ -245,6 +251,12 @@
 		042B9B3A2C37D9C600DE7CB0 /* MapContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContainerViewModel.swift; sourceTree = "<group>"; };
 		042B9B3D2C37E72A00DE7CB0 /* MapViewControllerBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerBridge.swift; sourceTree = "<group>"; };
 		042B9B402C38001E00DE7CB0 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		042B9B422C38312B00DE7CB0 /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
+		042B9B442C383BBD00DE7CB0 /* PointAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnimationView.swift; sourceTree = "<group>"; };
+		042B9B462C38403700DE7CB0 /* PointAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAddView.swift; sourceTree = "<group>"; };
+		042B9B482C38408200DE7CB0 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		042B9B4A2C384C1E00DE7CB0 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		042B9B4C2C384C7F00DE7CB0 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploaderClient.swift; sourceTree = "<group>"; };
 		0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingService.swift; sourceTree = "<group>"; };
 		0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoUploader.swift; sourceTree = "<group>"; };
@@ -455,6 +467,8 @@
 		040D85812C008D29000F8F52 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				042B9B422C38312B00DE7CB0 /* AddressProvider.swift */,
+				042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */,
 				0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */,
 				04BA84E42C0B0EAC004F76B3 /* Previewer.swift */,
 				0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */,
@@ -465,7 +479,6 @@
 				0438C46B2C2C5B4F000665D0 /* FilesUploadingService */,
 				040D85862C008F8B000F8F52 /* Models */,
 				044D62162C31C0F200D130FA /* PhotoPreparer */,
-				042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -478,6 +491,7 @@
 				040D85872C008F97000F8F52 /* Profile.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
 				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
+				042B9B4C2C384C7F00DE7CB0 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -520,6 +534,7 @@
 			children = (
 				042B9B362C372D7000DE7CB0 /* MapContainerView.swift */,
 				042B9B3A2C37D9C600DE7CB0 /* MapContainerViewModel.swift */,
+				042B9B462C38403700DE7CB0 /* PointAddView.swift */,
 				042B9B3F2C37E77900DE7CB0 /* Adaptation */,
 				042B9B3C2C37E71C00DE7CB0 /* Styles */,
 			);
@@ -540,6 +555,8 @@
 				042B9B402C38001E00DE7CB0 /* MapController.swift */,
 				042B9B332C372CF600DE7CB0 /* MapViewController.swift */,
 				042B9B3D2C37E72A00DE7CB0 /* MapViewControllerBridge.swift */,
+				042B9B482C38408200DE7CB0 /* Coordinates.swift */,
+				042B9B4A2C384C1E00DE7CB0 /* Marker.swift */,
 			);
 			name = Adaptation;
 			sourceTree = "<group>";
@@ -585,6 +602,7 @@
 			children = (
 				0438C4AB2C2D6907000665D0 /* CachedCenteredImage.swift */,
 				044D62042C2F12A500D130FA /* LimitedTextField.swift */,
+				042B9B442C383BBD00DE7CB0 /* PointAnimationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1293,6 +1311,7 @@
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
+				042B9B4B2C384C1E00DE7CB0 /* Marker.swift in Sources */,
 				044D62482C3342AF00D130FA /* ChannelsDataRepository+ChannelsRepository.swift in Sources */,
 				044D621E2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift in Sources */,
 				044D620E2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift in Sources */,
@@ -1312,6 +1331,7 @@
 				047ECA1E2BFA925F0065837C /* SceneComposer.swift in Sources */,
 				04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */,
 				047ECA0B2BFA85FD0065837C /* AppComposer.swift in Sources */,
+				042B9B492C38408200DE7CB0 /* Coordinates.swift in Sources */,
 				042B9B3E2C37E72A00DE7CB0 /* MapViewControllerBridge.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				044D62132C31BEEC00D130FA /* UIImage+Extension.swift in Sources */,
@@ -1321,6 +1341,7 @@
 				044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */,
 				044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */,
 				042B9B202C36AAAD00DE7CB0 /* UserDataDataRepository+UserIdProvider.swift in Sources */,
+				042B9B472C38403700DE7CB0 /* PointAddView.swift in Sources */,
 				044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */,
 				0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */,
 				044D62182C31C0FB00D130FA /* PhotoPreparer.swift in Sources */,
@@ -1328,6 +1349,8 @@
 				044D62202C31C56600D130FA /* ChannelsRepository.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */,
+				042B9B432C38312B00DE7CB0 /* AddressProvider.swift in Sources */,
+				042B9B452C383BBD00DE7CB0 /* PointAnimationView.swift in Sources */,
 				0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */,
 				044D62112C31BEC800D130FA /* Binding+Extension.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,
@@ -1351,6 +1374,7 @@
 				04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */,
 				04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
+				042B9B4D2C384C7F00DE7CB0 /* Address.swift in Sources */,
 				047ECA232BFA92E00065837C /* SettingsViewModel.swift in Sources */,
 				042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */,
 				04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */,

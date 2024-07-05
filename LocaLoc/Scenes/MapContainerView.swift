@@ -12,8 +12,9 @@ struct MapContainerView: View {
     //  @Binding var selectedMarker: GMSMarker?
     @Environment(\.dismiss) var dismiss
 
-    private let viewModel: MapContainerViewModel
+    @State private var viewModel: MapContainerViewModel
     
+    // MARK: - Init
     init(viewModel: MapContainerViewModel) {
         self.viewModel = viewModel
     }
@@ -36,28 +37,21 @@ struct MapContainerView: View {
                             CachedCenteredImage(url: viewModel.channel.imageUrl, placeholderImageName: "channel_placeholder")
                                 .frame(width: 50, height: 50)
                                 .clipShape(Circle())
+                                .shadow(color: .black.opacity(0.5), radius: 10, y: 4)
                             VStack(alignment: .leading) {
                                 Text(viewModel.channel.name)
                                 Text("222 Members, 23 points")
                                     .foregroundStyle(Color.Text.subtitle)
                             }
+                            .shadow(color: .black, radius: 10, y: 4)
                         }
-                        .shadow(color: .black, radius: 10, y: 4)
                     }
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack {
-                            Button(action: viewModel.addNewPointButtonTapped) {
-                                Image("point_add")
-                                    .resizable()
-                                    .navBarStyled()
-                            }
-                            
-                            Button(action: viewModel.settingsButtonTapped) {
-                                Image(systemName: "gearshape")
-                                    .resizable()
-                                    .navBarStyled()
-                            }
+                        Button(action: viewModel.settingsButtonTapped) {
+                            Image(systemName: "gearshape")
+                                .resizable()
+                                .navBarStyled()
                         }
                     }
                 }
@@ -74,6 +68,20 @@ struct MapContainerView: View {
                 }
             }
             .padding(.trailing, 20)
+            .popup(isPresented: $viewModel.showAddPointView ) {
+                if let selectedCoordinates = viewModel.selectedCoordinates {
+                    PointAddView(coordinates: selectedCoordinates) {
+                        self.viewModel.newPointApproved()
+                    } onClose: {
+                        self.viewModel.newPointCanceled()
+                    }
+                }
+            } customize: {
+                $0
+                    .type(.toast)
+                    .appearFrom(.bottomSlide)
+                    .isOpaque(false)
+            }
         }
         .onChange(of: viewModel.dismiss) { _, shouldDismiss in
             if shouldDismiss {

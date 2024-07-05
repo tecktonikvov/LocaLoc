@@ -7,6 +7,10 @@
 
 import GoogleMaps
 
+protocol MapControllerDelegate: AnyObject {
+    func didAddNewMarker(coordinates: Coordinates)
+}
+
 final class MapController: NSObject {
     lazy var mapView: GMSMapView = {
         let options = GMSMapViewOptions()
@@ -17,9 +21,15 @@ final class MapController: NSObject {
     }()
     
     private let locationManager: CLLocationManager
-
+    
     private var isInitialLocationSet = false
     private var lastUserLocation: CLLocation?
+    
+    private var markers = [Marker]()
+    
+    private var newSelectedMarker: Marker?
+    
+    weak var delegate: MapControllerDelegate?
     
     // MARK: - Init
     override init() {
@@ -28,7 +38,7 @@ final class MapController: NSObject {
         super.init()
         mapView.delegate = self
         locationManager.delegate = self
-
+        
         setupMapStyle()
         startUpdatingLocation()
     }
@@ -61,10 +71,40 @@ final class MapController: NSObject {
         guard let lastUserLocation else { return }
         centerCamera(at: lastUserLocation)
     }
+    
+    func removeNewSelectedLocation() {
+        guard let newSelectedMarker else { return }
+        newSelectedMarker.removeMarkerFromMap()
+        self.newSelectedMarker = nil
+    }
+    
+    func setNewSelectedLocationSteady() {
+        guard let newSelectedMarker else { return }
+        markers.append(newSelectedMarker)
+        self.newSelectedMarker = nil
+    }
 }
 
 // MARK: - GMSMapViewDelegate
 extension MapController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
+        guard newSelectedMarker == nil else { return }
+        
+        let coordinates = Coordinates(
+            longitude: coordinate.longitude,
+            latitude: coordinate.latitude
+        )
+        
+        let newSelectedMarker = Marker(
+            id: UUID().uuidString,
+            coordinates: coordinates
+        )
+        
+        newSelectedMarker.addMarker(on: mapView)
+        self.newSelectedMarker = newSelectedMarker
+        
+        delegate?.didAddNewMarker(coordinates: newSelectedMarker.coordinates)
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
