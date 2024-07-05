@@ -99,12 +99,12 @@ enum ChannelsDataRepositoryError: Error {
         
         guard !id.isEmpty else { return nil }
         
-        return try await channelsClient.channel(with: channel.id)
+        return try await channelsClient.channel(withId: channel.id)
     }
     
     private func updateExistingChannel(clientModel: ChannelClientModel, update: Channel) async throws -> Channel {
         let updatedClientModel = ChannelClientModel(channelModel: update)
-        try await channelsClient.updateChannel(channelClientModel: updatedClientModel, id: update.id)
+        try await channelsClient.updateChannel(withId: update.id, channelClientModel: updatedClientModel)
         
         if let channelLocalStoreModel = try localStorageClientModel(channelId: update.id) {
             localStorage.delete(model: channelLocalStoreModel)
@@ -128,7 +128,7 @@ enum ChannelsDataRepositoryError: Error {
     }
     
     private func createChannelParticipantsList(channel: Channel) async throws {
-        let ownerModel = ChannelParticipantModel(id: channel.ownerId)
+        let ownerModel = ChannelParticipantClientModel(id: channel.ownerId)
         try await channelsClient.createChannelParticipantsList(channelId: channel.id, owner: ownerModel)
     }
     
@@ -144,7 +144,7 @@ enum ChannelsDataRepositoryError: Error {
     }
     
     private func fetchChannelClientModelAndReturnChanelLocalStoreModel(id: String) async throws -> ChannelPersistencyModel? {
-        guard let clientModel = try await channelsClient.channel(with: id) else {
+        guard let clientModel = try await channelsClient.channel(withId: id) else {
             return nil
         }
         
@@ -156,8 +156,8 @@ enum ChannelsDataRepositoryError: Error {
             channelDescription: clientModel.description,
             imageUrl: clientModel.imageUrl,
             missedUpdatesNumber: clientModel.missedUpdatesNumber,
-            creationDate: clientModel.creationDate,
-            lastUpdateDate: clientModel.lastUpdateDate,
+            creationDate: clientModel.createdAt,
+            lastUpdateDate: clientModel.updatedAt,
             channelSettings: nil,
             channelUserSettings: nil
         )

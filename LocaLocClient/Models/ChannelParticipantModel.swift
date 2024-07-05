@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ChannelParticipantModel: Codable {
+public struct ChannelParticipantClientModel: Codable {
     public init(id: String) {
         self.id = id
     }

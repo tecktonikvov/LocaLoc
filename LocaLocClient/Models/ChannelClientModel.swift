@@ -15,8 +15,8 @@ public struct ChannelClientModel: Codable {
         self.description = description
         self.imageUrl = imageUrl
         self.missedUpdatesNumber = missedUpdatesNumber
-        self.creationDate = creationDate
-        self.lastUpdateDate = lastUpdateDate
+        self.createdAt = creationDate
+        self.updatedAt = lastUpdateDate
         self.channelInvitationMode = channelInvitationMode
     }
     
@@ -26,7 +26,7 @@ public struct ChannelClientModel: Codable {
     public let description: String
     public let imageUrl: URL?
     public let missedUpdatesNumber: Int
-    public let creationDate: Date?
-    public let lastUpdateDate: Date?
+    public let createdAt: Date?
+    public let updatedAt: Date?
     public let channelInvitationMode: String
 }

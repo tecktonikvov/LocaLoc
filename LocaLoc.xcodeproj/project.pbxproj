@@ -35,6 +35,8 @@
 		042B9B492C38408200DE7CB0 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B482C38408200DE7CB0 /* Coordinates.swift */; };
 		042B9B4B2C384C1E00DE7CB0 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4A2C384C1E00DE7CB0 /* Marker.swift */; };
 		042B9B4D2C384C7F00DE7CB0 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4C2C384C7F00DE7CB0 /* Address.swift */; };
+		042B9B4F2C388D3C00DE7CB0 /* PointClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4E2C388D3C00DE7CB0 /* PointClientModel.swift */; };
+		042B9B512C388D5500DE7CB0 /* PointsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B502C388D5500DE7CB0 /* PointsClient.swift */; };
 		0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */; };
 		0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */; };
 		0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */; };
@@ -257,6 +259,8 @@
 		042B9B482C38408200DE7CB0 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		042B9B4A2C384C1E00DE7CB0 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		042B9B4C2C384C7F00DE7CB0 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		042B9B4E2C388D3C00DE7CB0 /* PointClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointClientModel.swift; sourceTree = "<group>"; };
+		042B9B502C388D5500DE7CB0 /* PointsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsClient.swift; sourceTree = "<group>"; };
 		0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploaderClient.swift; sourceTree = "<group>"; };
 		0438C4632C2C57AC000665D0 /* FilesUploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesUploadingService.swift; sourceTree = "<group>"; };
 		0438C4652C2C5882000665D0 /* UserPhotoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoUploader.swift; sourceTree = "<group>"; };
@@ -792,6 +796,7 @@
 			children = (
 				044D62462C33404800D130FA /* ChannelClientModel.swift */,
 				042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */,
+				042B9B4E2C388D3C00DE7CB0 /* PointClientModel.swift */,
 				04AA9BFF2C15D68300459E00 /* UserClientModel.swift */,
 			);
 			path = Models;
@@ -913,6 +918,7 @@
 				044D62442C333D6900D130FA /* ChannelsClient.swift */,
 				04FAE90F2C0C5A0700200ADC /* Client.swift */,
 				0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */,
+				042B9B502C388D5500DE7CB0 /* PointsClient.swift */,
 				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
 				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
 				04FAE9522C0C704A00200ADC /* Configs */,
@@ -1428,6 +1434,8 @@
 				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
 				0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */,
 				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
+				042B9B512C388D5500DE7CB0 /* PointsClient.swift in Sources */,
+				042B9B4F2C388D3C00DE7CB0 /* PointClientModel.swift in Sources */,
 				042B9B2F2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,18 +24,18 @@ public final class ChannelsClient {
             data: channelClientModel)
     }
     
-    public func channel(with id: String) async throws -> ChannelClientModel? {
+    public func channel(withId id: String) async throws -> ChannelClientModel? {
         try await client.data(documentId: id, collectionName: channelsCollection, type: ChannelClientModel.self)
     }
     
-    public func updateChannel(channelClientModel: ChannelClientModel, id: String) async throws {
+    public func updateChannel(withId id: String, channelClientModel: ChannelClientModel) async throws {
         try await client.setData(
             documentId: id,
             collectionName: channelsCollection,
             data: channelClientModel)
     }
     
-    public func createChannelParticipantsList(channelId: String, owner: ChannelParticipantModel) async throws {
+    public func createChannelParticipantsList(channelId: String, owner: ChannelParticipantClientModel) async throws {
         try await client.setData(
             documentId: channelId,
             collectionName: channelsParticipantsCollection,
