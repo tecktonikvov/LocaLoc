@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CryptoKit
+import FirebaseAuth
 import AuthenticationServices
 
 final class AppleAuthenticationProvider: NSObject {
