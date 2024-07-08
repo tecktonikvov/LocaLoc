@@ -32,7 +32,7 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
                     
                     setCrashlyticsData(user: authorizationData.user)
                     
-                    try userDataRepository.setAuthorizedUser(authorizationData)
+                    try await userDataRepository.setAuthorizedUser(authorizationData)
                     completion(nil)
                 } catch {
                     signOut()
@@ -46,12 +46,14 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
                 case .failure(let error):
                     completion(error)
                 case .success(let authorizationData):
-                    do {
-                        self?.setCrashlyticsData(user: authorizationData.user)
-                        try self?.userDataRepository.setAuthorizedUser(authorizationData)
-                    } catch {
-                        self?.signOut()
-                        completion(error)
+                    Task { [weak self] in
+                        do {
+                            self?.setCrashlyticsData(user: authorizationData.user)
+                            try await self?.userDataRepository.setAuthorizedUser(authorizationData)
+                        } catch {
+                            self?.signOut()
+                            completion(error)
+                        }
                     }
                 }
             }
@@ -69,7 +71,7 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
                 break
             }
             
-            userDataRepository.clearCurrentUserData()
+            userDataRepository.removeCurrentUserData()
         }
     }
 }

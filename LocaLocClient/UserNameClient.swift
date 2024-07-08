@@ -31,7 +31,7 @@ public final class UserNameClient {
         return !fondIdentifiers.contains(lowercased)
     }
     
-    public func set(username: String, userId: String) async throws {
-        try await client.updateData(in: usersCollection, for: userId, data: [usernameFieldName: username])
-    }
+//    public func set(username: String, userId: String) async throws {
+//        try await client.updateData(in: usersCollection, for: userId, data: [usernameFieldName: username])
+//    }
 }

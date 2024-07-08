@@ -8,7 +8,6 @@
 import SwiftUI
 import CryptoKit
 import AuthenticationServices
-import FirebaseAuth
 
 final class AppleAuthenticationProvider: NSObject {
     private var currentNonce: String?
@@ -111,7 +110,13 @@ extension AppleAuthenticationProvider: ASAuthorizationControllerDelegate {
                         username: ""
                     )
                     
-                    let user = User(id: "ID", authenticationProviderType: .apple, profile: profile)
+                    let user = User(
+                        id: "ID",
+                        authenticationProviderType: .apple,
+                        profile: profile,
+                        createdAt: Date.timeZoneIndependentCurrentDate,
+                        updatedAt: Date.timeZoneIndependentCurrentDate
+                    )
                     
                     let data = AuthorizationUserData(isNewUser: true, user: user)
                     

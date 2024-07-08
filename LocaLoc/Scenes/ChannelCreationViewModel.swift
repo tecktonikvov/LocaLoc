@@ -64,8 +64,8 @@ import Factory
             description: description,
             imageUrl: nil,
             missedUpdatesNumber: 0,
-            creationDate: nil,
-            lastUpdateDate: nil,
+            creationDate: Date.timeZoneIndependentCurrentDate,
+            lastUpdateDate: Date.timeZoneIndependentCurrentDate,
             channelSettings: ChannelSettings(invitationMode: invitationMode),
             userSettings: .default
         )

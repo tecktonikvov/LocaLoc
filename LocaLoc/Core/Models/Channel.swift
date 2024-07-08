@@ -54,7 +54,7 @@ import Foundation
     var imageUrl: URL?
     let missedUpdatesNumber: Int
     let creationDate: Date?
-    let lastUpdateDate: Date?
+    var lastUpdateDate: Date?
     let channelSettings: ChannelSettings
     let userSettings: ChannelUserSettings
 }

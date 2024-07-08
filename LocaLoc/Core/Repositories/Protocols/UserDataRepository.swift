@@ -10,7 +10,7 @@ import SwiftUI
 protocol UserDataRepository: Observable {
     var currentUser: User? { get }
     var userAuthenticationStatus: UserAuthenticationStatus { get }
-    func clearCurrentUserData()
-    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) throws
-    func updateCurrentUser(_ user: User) throws
+    func removeCurrentUserData()
+    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) async throws
+    func updateUser(_ user: User) async throws
 }

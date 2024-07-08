@@ -18,10 +18,8 @@ public final class UserDataClient {
     }
     
     // MARK: - Private
-    public func setUserData(userId: String, data: UserClientModel) throws {
-        Task {
-            try await client.setData(documentId: userId, collectionName: usersCollection, data: data)
-        }
+    public func setUserData(userId: String, data: UserClientModel) async throws {
+        try await client.setData(documentId: userId, collectionName: usersCollection, data: data)
     }
     
     public func userData(userId: String) async throws -> UserClientModel? {

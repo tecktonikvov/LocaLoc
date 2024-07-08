@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum UserIdProviderError: Error {
-    case userIsNotAuthenticated
-}
-
 protocol UserIdProvider {
     func userId() throws -> String
 }

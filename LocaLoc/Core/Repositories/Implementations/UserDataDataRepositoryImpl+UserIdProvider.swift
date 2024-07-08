@@ -1,12 +1,17 @@
 //
-//  UserDataDataRepository+UserIdProvider.swift
+//   UserDataDataRepositoryImpl+UserIdProvider.swift
 //  LocaLoc
 //
-//  Created by Volodymyr Kotsiubenko on 4/7/24.
+//  Created by Volodymyr Kotsiubenko on 8/7/24.
 //
 
-import LocaLocDataRepository
+import Foundation
 
+enum UserIdProviderError: Error {
+    case userIsNotAuthenticated
+}
+
+// MARK: UserIdProvider
 extension UserDataDataRepository: UserIdProvider {
     func userId() throws -> String {
         if let currentUser {

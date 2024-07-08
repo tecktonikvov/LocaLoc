@@ -1,114 +1,163 @@
 //
-//  UserDataRepositoryImpl+UserDataRepository.swift
+//  UserDataDataRepositoryImpl+UserDataRepository.swift
 //  LocaLoc
 //
 //  Created by Volodymyr Kotsiubenko on 1/6/24.
 //
 
-import LocaLocDataRepository
+import SwiftUI
+import K_Logger
+import LocaLocClient
+import LocaLocLocalStore
 
-extension UserDataDataRepository: UserDataRepository {
-    var currentUser: User? {
-        User(persistencyUserModel: _currentUser)
-    }
+// MARK: String+currentUserIdKey
+fileprivate extension String {
+    static let currentUserIdKey = "current_user_id"
+}
+
+enum UserDataDataRepositoryError: Error {
+    case currentUserIsMissed
+}
+
+@Observable open class UserDataDataRepository {
+   // private(set) var isUserAuthorized: Bool = false
+    private(set) var currentUser: User?
     
     var userAuthenticationStatus: UserAuthenticationStatus {
-        if isUserAuthorized {
-            if let currentUser = _currentUser,
-                currentUser.profile.username.isEmpty {
+        if let currentUser {
+            if currentUser.profile.username.isEmpty {
                 return .noUsername
             } else {
                 return .authorized
             }
+        } else {
+            return .unauthorized
         }
-        
-        return .unauthorized
     }
     
-    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) throws {
-        let persistencyModel = UserPersistencyModel(user: authorizationUserData.user)
-        try setAuthorizedUser(persistencyModel, isNewUser: authorizationUserData.isNewUser)
+    let userNameClient: UserNameClient
+    
+    private let userDataClient: UserDataClient
+    private let localStorage: LocalStorage
+    
+    // MARK: - Init
+    init(localStorage: LocalStorage) throws {
+        self.localStorage = localStorage
+        
+        let client = Client()
+        
+        self.userDataClient = UserDataClient(client: client)
+        self.userNameClient = UserNameClient(client: client)
+        
+        try loadUser()
     }
     
-    func updateCurrentUser(_ user: User) throws {
-        let persistencyModel = UserPersistencyModel(user: user)
-        try updateUserData(persistencyModel)
+    // MARK: - Private
+    private func loadUser() throws {
+        if let currentUserId = UserDefaults.standard.string(forKey: .currentUserIdKey),
+           let storedUserModel = try storedUser(with: currentUserId) {
+            currentUser = User(userLocalStoreModel: storedUserModel)
+           // self.isUserAuthorized = true
+        }
     }
-}
-
-// MARK: - Models bridges
-fileprivate extension User {
-    convenience init?(persistencyUserModel: UserPersistencyModel?) {
-        guard let persistencyUserModel else { return nil }
+    
+    private func storedUser(with id: String) throws -> UserPersistencyModel? {
+        let users = try localStorage.fetchModelsWith(model: UserPersistencyModel.self, descriptor: nil)
+        return users.first(where: { $0.id == id })
+    }
+    
+    private func setUserToLocalStorage(_ userLocalStoreModel: UserPersistencyModel) throws {
+        let userId = userLocalStoreModel.id
         
-        self.init(
-            id: persistencyUserModel.id,
-            authenticationProviderType: AuthenticationProviderType(persistencyTypeModel: persistencyUserModel.authenticationProviderType),
-            profile: Profile(persistencyProfileModel: persistencyUserModel.profile)
-        )
-    }
-}
-
-fileprivate extension UserPersistencyModel {
-    convenience init(user: User) {
-        self.init(
-            id: user.id,
-            authenticationProviderType: AuthenticationProviderTypePersistencyModel(type: user.authenticationProviderType),
-            profile: ProfilePersistencyModel(profile: user.profile)
-        )
-    }
-}
-
-fileprivate extension Profile {
-    convenience init(persistencyProfileModel: ProfilePersistencyModel) {
-        self.init(
-            firstName: persistencyProfileModel.firstName,
-            lastName: persistencyProfileModel.lastName,
-            email: persistencyProfileModel.email,
-            imageUrl: persistencyProfileModel.imageUrl,
-            username: persistencyProfileModel.username
-        )
-    }
-}
-
-fileprivate extension ProfilePersistencyModel {
-    convenience init(profile: Profile) {
-        self.init(
-            firstName: profile.firstName,
-            lastName: profile.lastName,
-            email: profile.email,
-            imageUrl: profile.imageUrl,
-            username: profile.username
-        )
-    }
-}
-
-fileprivate extension AuthenticationProviderType {
-    init?(persistencyTypeModel: AuthenticationProviderTypePersistencyModel?) {
-        guard let persistencyTypeModel else {
-            return nil
+        do {
+            // If user exist delete it
+            if let existingUser = try storedUser(with: userId) {
+                localStorage.delete(model: existingUser)
+            }
+            
+            // Save updated user to local storage
+            localStorage.addModel(model: userLocalStoreModel)
+        } catch {
+            Log.error("Local storage setting user data error: \(error)", module: "UserDataDataRepository")
+            throw error
         }
+    }
+    
+    private func setUserToClient(_ userClientModel: UserClientModel) async throws {
+        do {
+            try await userDataClient.setUserData(userId: userClientModel.id, data: userClientModel)
+        } catch {
+            Log.error("Client setting user data error: \(error)", module: "UserDataDataRepository")
+            throw error
+        }
+    }
+    
+    private func setCurrentUser(_ user: User) {
+        currentUser = user
+        //isUserAuthorized = true
+    }
+    
+    private func getClientUserData(userId: String) async throws -> UserClientModel? {
+        try await userDataClient.userData(userId: userId)
+    }
+    
+    // MARK: - Public
+    func setUserData(_ user: User, shouldUpdateClient: Bool) async throws {
+        if shouldUpdateClient {
+            let userClientModel = UserClientModel(userModel: user)
+            try await setUserToClient(userClientModel)
+        }
+        // Was on top
+        let userLocalStoreModel = UserPersistencyModel(user: user)
+        try setUserToLocalStorage(userLocalStoreModel)
         
-        switch persistencyTypeModel {
-        case .google:
-            self = .google
-        case .apple:
-            self = .apple
-        }
+        setCurrentUser(user)
     }
 }
 
-fileprivate extension AuthenticationProviderTypePersistencyModel {
-    init?(type: AuthenticationProviderType?) {
-        guard let type else {
-            return nil
-        }
+// MARK: UserDataRepository
+extension UserDataDataRepository: UserDataRepository {
+    func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) async throws {
+        let user = authorizationUserData.user
+        let isNewUser = authorizationUserData.isNewUser
         
-        switch type {
-        case .google:
-            self = .google
-        case .apple:
-            self = .apple
+        do {
+            if isNewUser {
+                try await setUserData(user, shouldUpdateClient: true)
+            } else {
+                if let existingUserClientModel = try await getClientUserData(userId: user.id) {
+                    let existingUserModel = User(userClientModel: existingUserClientModel)
+                    try await setUserData(existingUserModel, shouldUpdateClient: false)
+                } else {
+                    try await setUserData(user, shouldUpdateClient: true)
+                }
+            }
+            
+            UserDefaults.standard.set(user.id, forKey: .currentUserIdKey)
+            Log.info("Set currentUserId: \(user.id)", module: "UserDataDataRepository")
+        } catch {
+            Log.error("Authorized user data setting up failed, error: \(error)", module: "UserDataDataRepository")
+            throw error
         }
+    }
+    
+    func updateUser(_ user: User) async throws {
+        do {
+            guard currentUser != nil else {
+                throw UserDataDataRepositoryError.currentUserIsMissed
+            }
+            
+            try await setUserData(user, shouldUpdateClient: true)
+        } catch  {
+            Log.error("User data update error: \(error)", module: "UserDataDataRepository")
+            throw error
+        }
+    }
+    
+    func removeCurrentUserData() {
+        UserDefaults.standard.removeObject(forKey: .currentUserIdKey)
+        
+        currentUser = nil
+        //isUserAuthorized = false
     }
 }

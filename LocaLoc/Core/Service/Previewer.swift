@@ -6,8 +6,8 @@
 //
 
 import SwiftData
-import LocaLocDataRepository
 import LocaLocLocalStore
+import Foundation
 
 @MainActor
 struct Previewer {
@@ -15,7 +15,7 @@ struct Previewer {
         func setAuthorizedUser(_ authorizationUserData: AuthorizationUserData) {
         }
         
-        func updateCurrentUser(_ user: User) {
+        func updateUser(_ user: User) {
         }
         
         func updateUserProfile(_ profile: Profile, userId: String) {
@@ -23,12 +23,18 @@ struct Previewer {
         
         var currentUser: User? {
             let profile = Profile(firstName: "Test first name", lastName: "Test Last name", email: "example@email.com", imageUrl: "", username: "testUsername")
-            return User(id: "testUserId", authenticationProviderType: .google, profile: profile)
+            return User(
+                id: "testUserId",
+                authenticationProviderType: .google,
+                profile: profile,
+                createdAt: Date(),
+                updatedAt: Date()
+            )
         }
         
         var userAuthenticationStatus: UserAuthenticationStatus = .authorized
         
-        func clearCurrentUserData() {
+        func removeCurrentUserData() {
         }
     }
     

@@ -9,7 +9,6 @@ import Factory
 import K_Logger
 import LocaLocClient
 import LocaLocLocalStore
-import LocaLocDataRepository
 
 extension Container {
     // MARK: - Private

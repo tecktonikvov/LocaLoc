@@ -18,7 +18,7 @@ struct CoreApp: App {
     // MARK: - Init
     init() {
         CoreApp.setupFirebaseApp()
-        CoreApp.setupGmaps()
+        CoreApp.setupGMaps()
         
         let appComposer = AppComposer()
         self.appComposer = appComposer
@@ -41,7 +41,7 @@ struct CoreApp: App {
         }
     }
     
-    private static func setupGmaps() {
+    private static func setupGMaps() {
         GMSServices.provideAPIKey("AIzaSyAtazBNVQVn-DE7QPmojFf7ClPiR9gEfbI")
     }
     

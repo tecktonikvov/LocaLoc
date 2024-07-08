@@ -5,12 +5,12 @@
 //  Created by Volodymyr Kotsiubenko on 30/6/24.
 //
 
+import Factory
 import SwiftUI
 import K_Logger
+import SwiftData
 import LocaLocClient
 import LocaLocLocalStore
-import SwiftData
-import Factory
 
 enum ChannelsDataRepositoryError: Error {
     case attemptToUpdateChannelWithEmptyId
@@ -19,8 +19,8 @@ enum ChannelsDataRepositoryError: Error {
 @Observable class ChannelsDataRepository {
     var channels: [Channel] = []
         
-    let localStorage: LocalStorage
-    let channelsClient: ChannelsClient
+    private let localStorage: LocalStorage
+    private let channelsClient: ChannelsClient
     
     @ObservationIgnored
     @Injected(\.userIdProvider) private var userIdProvider
@@ -102,7 +102,7 @@ enum ChannelsDataRepositoryError: Error {
         return try await channelsClient.channel(withId: channel.id)
     }
     
-    private func updateExistingChannel(clientModel: ChannelClientModel, update: Channel) async throws -> Channel {
+    private func updateExistingChannel(update: Channel) async throws -> Channel {
         let updatedClientModel = ChannelClientModel(channelModel: update)
         try await channelsClient.updateChannel(withId: update.id, channelClientModel: updatedClientModel)
         
@@ -195,12 +195,16 @@ extension ChannelsDataRepository: ChannelsRepository {
     func saveChannel(_ channel: Channel) async throws -> Channel {
         let result: Channel
         
-        if let existingChannel = try await existingClientChannel(channel) {
+        channel.lastUpdateDate = Date.timeZoneIndependentCurrentDate
+        
+        let isChannelExists = try await existingClientChannel(channel) != nil
+        
+        if isChannelExists {
             guard !channel.id.isEmpty else {
                 throw ChannelsDataRepositoryError.attemptToUpdateChannelWithEmptyId
             }
             
-            result = try await updateExistingChannel(clientModel: existingChannel, update: channel)
+            result = try await updateExistingChannel(update: channel)
         } else {
             result = try await createAndSaveChannel(channel)
         }

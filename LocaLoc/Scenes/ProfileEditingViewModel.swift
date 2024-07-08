@@ -66,11 +66,11 @@ import Factory
         }
     }
     
-    private func saveUser() throws {
+    private func saveUser() async throws {
         guard let user = userDataRepository.currentUser else { return }
         user.profile = profile
         
-        try userDataRepository.updateCurrentUser(user)
+        try await userDataRepository.updateUser(user)
     }
     
     private func uploadImage(_ image: UIImage) async throws -> URL {
@@ -132,7 +132,7 @@ import Factory
                     try await updateUserImage(selectedUIImage)
                 }
                 
-                try saveUser()
+                try await saveUser()
                 dismiss = true
             } catch {
                 print("🔴Error", error)

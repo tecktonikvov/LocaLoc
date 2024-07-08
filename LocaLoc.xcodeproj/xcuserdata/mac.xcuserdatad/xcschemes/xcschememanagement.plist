@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>FirebaseWrapper.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>LocaLoc.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>

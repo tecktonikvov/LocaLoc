@@ -54,7 +54,14 @@ final class GoogleAuthenticationProvider {
             username: ""
         )
         
-        let user = User(id: userID, authenticationProviderType: .google, profile: profile)
+        let user = User(
+            id: userID,
+            authenticationProviderType: .google,
+            profile: profile,
+            createdAt: Date.timeZoneIndependentCurrentDate, 
+            updatedAt: Date.timeZoneIndependentCurrentDate
+        )
+        
         let isNewUser = (firebaseSignInResult.additionalUserInfo?.isNewUser as? Bool) ?? true
         let data = AuthorizationUserData(isNewUser: isNewUser, user: user)
         
