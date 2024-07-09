@@ -18,7 +18,7 @@ final class MapViewController: UIViewController, MapView {
     init(mapView: GMSMapView) {
         self.mapView = mapView
         super.init(nibName: nil, bundle: nil)
-        mapOverlayView = mapView.subviews[1]
+        mapOverlayView = mapView.subviews[safe: 1]
     }
     
     required init?(coder: NSCoder) {

@@ -84,6 +84,7 @@
 		0459F7DD2C3D915700B48A6D /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7DC2C3D915600B48A6D /* Double+Extension.swift */; };
 		0459F7DF2C3D9A2F00B48A6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */; };
 		0459F7E32C3DA09800B48A6D /* splash_point_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7E22C3DA09800B48A6D /* splash_point_image.png */; };
+		0459F7E52C3DB01A00B48A6D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -272,6 +273,7 @@
 		0459F7DC2C3D915600B48A6D /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0459F7E22C3DA09800B48A6D /* splash_point_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_point_image.png; sourceTree = "<group>"; };
+		0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				0459F7DC2C3D915600B48A6D /* Double+Extension.swift */,
 				044D621D2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift */,
 				044D62122C31BEEC00D130FA /* UIImage+Extension.swift */,
+				0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1277,6 +1280,7 @@
 				0438C46D2C2C5B78000665D0 /* FilesUploadingServiceError.swift in Sources */,
 				0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */,
 				0443BFA22C0F494400D7CAE7 /* UsernameCreationViewViewModel.swift in Sources */,
+				0459F7E52C3DB01A00B48A6D /* Collection+Extension.swift in Sources */,
 				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
 				04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */,
 				042B9B652C3BFA5800DE7CB0 /* UserPersistencyModel.swift in Sources */,
