@@ -68,25 +68,25 @@ struct MapContainerView: View {
                 }
             }
             .padding(.trailing, 20)
-            .popup(isPresented: $viewModel.showAddPointView ) {
-                if let selectedCoordinates = viewModel.selectedCoordinates {
-                    PointAddView(coordinates: selectedCoordinates) {
-                        self.viewModel.newPointApproved()
-                    } onClose: {
-                        self.viewModel.newPointCanceled()
-                    }
-                }
-            } customize: {
-                $0
-                    .type(.toast)
-                    .appearFrom(.bottomSlide)
-                    .isOpaque(false)
-            }
         }
         .onChange(of: viewModel.dismiss) { _, shouldDismiss in
             if shouldDismiss {
                 dismiss()
             }
+        }
+        .popup(isPresented: $viewModel.showAddPointView ) {
+            if let selectedCoordinates = viewModel.selectedCoordinates {
+                PointAddView(coordinates: selectedCoordinates) {
+                    self.viewModel.newPointApproved()
+                } onClose: {
+                    self.viewModel.newPointCanceled()
+                }
+            }
+        } customize: {
+            $0
+                .type(.toast)
+                .appearFrom(.bottomSlide)
+                .isOpaque(false)
         }
     }
 }
