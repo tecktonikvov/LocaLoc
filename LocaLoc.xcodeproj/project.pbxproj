@@ -81,6 +81,7 @@
 		0459F7B72C3C773B00B48A6D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F7B62C3C773B00B48A6D /* FirebaseCrashlytics */; };
 		0459F7B92C3C773B00B48A6D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F7B82C3C773B00B48A6D /* FirebaseFirestore */; };
 		0459F7BB2C3C773B00B48A6D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F7BA2C3C773B00B48A6D /* FirebaseStorage */; };
+		0459F7DD2C3D915700B48A6D /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7DC2C3D915600B48A6D /* Double+Extension.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -266,6 +267,7 @@
 		044D62442C333D6900D130FA /* ChannelsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsClient.swift; sourceTree = "<group>"; };
 		044D62462C33404800D130FA /* ChannelClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelClientModel.swift; sourceTree = "<group>"; };
 		044D624D2C33463E00D130FA /* Channel+Bridges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Channel+Bridges.swift"; sourceTree = "<group>"; };
+		0459F7DC2C3D915600B48A6D /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 			children = (
 				044D62102C31BEC800D130FA /* Binding+Extension.swift */,
 				042B9B542C3BF2BB00DE7CB0 /* Date+Extension.swift */,
+				0459F7DC2C3D915600B48A6D /* Double+Extension.swift */,
 				044D621D2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift */,
 				044D62122C31BEEC00D130FA /* UIImage+Extension.swift */,
 			);
@@ -1278,6 +1281,7 @@
 				042B9B552C3BF2BB00DE7CB0 /* Date+Extension.swift in Sources */,
 				042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */,
 				04FD11F32C03B3D10020B7EA /* ProfileEditingView.swift in Sources */,
+				0459F7DD2C3D915700B48A6D /* Double+Extension.swift in Sources */,
 				042B9B372C372D7000DE7CB0 /* MapContainerView.swift in Sources */,
 				042B9B222C36AAE700DE7CB0 /* UserIdProvider.swift in Sources */,
 				04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */,
