@@ -22,12 +22,16 @@ final class Marker {
     init(id: String, coordinates: Coordinates) {
         self.id = id
         self.coordinates = coordinates
-        
         let marker = GMSMarker(position: coordinates.as2DCoordinates)
-        marker.icon = UIImage(named: "marker_brand")
-        marker.setIconSize(scaledToSize: CGSize(width: 22, height: 32))
-        
         self.gMSMarker = marker
+        
+        setImage(name: "marker_new", marker: marker)
+    }
+    
+    // MARK: - Private
+    private func setImage(name: String, marker: GMSMarker) {
+        marker.icon = UIImage(named: name)
+        marker.setIconSize(scaledToSize: CGSize(width: 22, height: 32))
     }
     
     // MARK: - Public
@@ -37,6 +41,10 @@ final class Marker {
     
     func removeMarkerFromMap() {
         gMSMarker.map = nil
+    }
+    
+    func setSteadyAppearance() {
+        setImage(name: "marker_brand", marker: gMSMarker)
     }
 }
 

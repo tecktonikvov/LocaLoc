@@ -80,6 +80,7 @@ final class MapController: NSObject {
     
     func setNewSelectedLocationSteady() {
         guard let newSelectedMarker else { return }
+        newSelectedMarker.setSteadyAppearance()
         markers.append(newSelectedMarker)
         self.newSelectedMarker = nil
     }
