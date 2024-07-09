@@ -128,7 +128,12 @@ enum ChannelsDataRepositoryError: Error {
     }
     
     private func createChannelParticipantsList(channel: Channel) async throws {
-        let ownerModel = ChannelParticipantClientModel(id: channel.ownerId)
+        let ownerModel = ChannelParticipantClientModel(
+            id: channel.ownerId,
+            createdAt: Date.timeZoneIndependentCurrentDate,
+            updatedAt: Date.timeZoneIndependentCurrentDate
+        )
+        
         try await channelsClient.createChannelParticipantsList(channelId: channel.id, owner: ownerModel)
     }
     

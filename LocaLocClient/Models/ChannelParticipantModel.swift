@@ -8,9 +8,13 @@
 import Foundation
 
 public struct ChannelParticipantClientModel: Codable {
-    public init(id: String) {
+    public init(id: String, createdAt: Date, updatedAt: Date) {
         self.id = id
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
     
     public let id: String
+    public let createdAt: Date
+    public let updatedAt: Date
 }
