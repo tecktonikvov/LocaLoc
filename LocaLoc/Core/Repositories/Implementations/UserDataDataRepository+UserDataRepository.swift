@@ -100,6 +100,8 @@ enum UserDataDataRepositoryError: Error {
     
     // MARK: - Public
     func setUserData(_ user: User, shouldUpdateClient: Bool) async throws {
+        user.updatedAt = Date.timeZoneIndependentCurrentDate
+        
         if shouldUpdateClient {
             let userClientModel = UserClientModel(userModel: user)
             try await setUserToClient(userClientModel)

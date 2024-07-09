@@ -23,7 +23,7 @@ extension UserDataDataRepository: UsernameManager {
                 updatedAt: currentUser.updatedAt
             )
                         
-            currentUserCopy.profile.username = username
+            currentUserCopy.profile.username = username.lowercased()
             
             try await setUserData(currentUserCopy, shouldUpdateClient: true)
         } catch {
