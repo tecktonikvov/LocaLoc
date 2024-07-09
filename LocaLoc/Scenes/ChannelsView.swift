@@ -22,10 +22,23 @@ struct ChannelsView: View {
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
-                List {
-                    if viewModel.channelsRepository.channels.isEmpty {
-                        Text("Empty")
-                    } else {
+                LinearGradient(gradient: Gradient(
+                    colors: [.backgroundGradientTop, .backgroundGradientBottom]),
+                               startPoint: .topLeading, endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+                
+                if viewModel.channelsRepository.channels.isEmpty {
+                    VStack(alignment: .center) {
+                        Spacer()
+                        Image(systemName: "list.bullet")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                        Text("No channels")
+                        Spacer()
+                    }
+                } else {
+                    List {
                         ForEach(viewModel.channelsRepository.channels, id: \.self) { channel in
                             Button {
                                 path.append(NavigationState.map(channel: channel))
@@ -38,10 +51,10 @@ struct ChannelsView: View {
                             )
                         }
                     }
-                }
-                .listStyle(PlainListStyle())
-                .refreshable {
-                    viewModel.synchronizeUserChannelsList(showLoadingIndicator: false)
+                    .listStyle(PlainListStyle())
+                    .refreshable {
+                        viewModel.synchronizeUserChannelsList(showLoadingIndicator: false)
+                    }
                 }
             }
             .navigationTitle("Channels")
@@ -65,7 +78,6 @@ struct ChannelsView: View {
                     }
                 }
             }
-            .backgroundDefault()
             .navigationDestination(for: NavigationState.self) { state in
                 switch state {
                 case .createNewChannel:
