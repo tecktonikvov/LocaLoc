@@ -78,8 +78,10 @@ struct MapContainerView: View {
             if let selectedCoordinates = viewModel.selectedCoordinates {
                 PointAddView(coordinates: selectedCoordinates) {
                     self.viewModel.newPointApproved()
+                    self.viewModel.showAddPointView = false
                 } onClose: {
                     self.viewModel.newPointCanceled()
+                    self.viewModel.showAddPointView = false
                 }
             }
         } customize: {
@@ -87,6 +89,7 @@ struct MapContainerView: View {
                 .type(.toast)
                 .appearFrom(.bottomSlide)
                 .isOpaque(false)
+                .closeOnTap(false)
         }
     }
 }
