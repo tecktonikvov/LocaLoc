@@ -67,7 +67,7 @@ struct ChannelsView: View {
             .navigationDestination(for: NavigationState.self) { state in
                 switch state {
                 case .createNewChannel:
-                    ChannelCreationView(viewModel: viewModel.channelCreationViewModel)
+                    ChannelCreationView(viewModel: ChannelCreationViewModel())
                 case .map(let channel):
                     MapContainerView(viewModel: MapContainerViewModel(channel: channel))
                 }

@@ -11,9 +11,7 @@ import Foundation
 @Observable final class ChannelsViewModel {
     @ObservationIgnored
     @Injected(\.channelsRepository) var channelsRepository
-    
-    let channelCreationViewModel = ChannelCreationViewModel()
-    
+        
     var isDataSynchronizationRunning = false
     
     // MARK: - Public
