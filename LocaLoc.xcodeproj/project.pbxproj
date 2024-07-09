@@ -82,6 +82,9 @@
 		0459F7B92C3C773B00B48A6D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F7B82C3C773B00B48A6D /* FirebaseFirestore */; };
 		0459F7BB2C3C773B00B48A6D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F7BA2C3C773B00B48A6D /* FirebaseStorage */; };
 		0459F7DD2C3D915700B48A6D /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7DC2C3D915600B48A6D /* Double+Extension.swift */; };
+		0459F7DF2C3D9A2F00B48A6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */; };
+		0459F7E12C3DA07200B48A6D /* splash_screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7E02C3DA07200B48A6D /* splash_screen.jpg */; };
+		0459F7E32C3DA09800B48A6D /* splash_point_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7E22C3DA09800B48A6D /* splash_point_image.png */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -268,6 +271,9 @@
 		044D62462C33404800D130FA /* ChannelClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelClientModel.swift; sourceTree = "<group>"; };
 		044D624D2C33463E00D130FA /* Channel+Bridges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Channel+Bridges.swift"; sourceTree = "<group>"; };
 		0459F7DC2C3D915600B48A6D /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0459F7E02C3DA07200B48A6D /* splash_screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash_screen.jpg; sourceTree = "<group>"; };
+		0459F7E22C3DA09800B48A6D /* splash_point_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_point_image.png; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -405,6 +411,8 @@
 				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
 				047ECA2F2BFB84460065837C /* Colors.xcassets */,
 				047ECA2B2BFB82520065837C /* Icons.xcassets */,
+				0459F7E02C3DA07200B48A6D /* splash_screen.jpg */,
+				0459F7E22C3DA09800B48A6D /* splash_point_image.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -674,6 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				044D62012C2DC2EE00D130FA /* LocaLoc.entitlements */,
+				0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */,
 				047ECA0A2BFA85FD0065837C /* AppComposer.swift */,
 				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
@@ -1113,8 +1122,11 @@
 			files = (
 				047ECA302BFB84460065837C /* Colors.xcassets in Resources */,
 				042B9B392C37337200DE7CB0 /* googleMapsStyleDark.json in Resources */,
+				0459F7E12C3DA07200B48A6D /* splash_screen.jpg in Resources */,
 				047ECA2C2BFB82520065837C /* Icons.xcassets in Resources */,
+				0459F7DF2C3D9A2F00B48A6D /* Launch Screen.storyboard in Resources */,
 				046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */,
+				0459F7E32C3DA09800B48A6D /* splash_point_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1510,6 +1522,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = "$(LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET)";
@@ -1555,6 +1568,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = "$(LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET)";

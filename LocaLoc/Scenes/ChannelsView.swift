@@ -17,6 +17,8 @@ struct ChannelsView: View {
     
     @State private var path = NavigationPath()
     
+    @State private var isLoaded = false
+    
     var body: some View {
         NavigationStack(path: $path) {
             ZStack {
@@ -39,7 +41,7 @@ struct ChannelsView: View {
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {
-                    viewModel.synchronizeUserChannelsList()
+                    viewModel.synchronizeUserChannelsList(showLoadingIndicator: false)
                 }
             }
             .navigationTitle("Channels")
@@ -56,7 +58,7 @@ struct ChannelsView: View {
                     }
                 }
                 
-                if viewModel.isDataSynchronizationRunning {
+                if viewModel.showLoadingIndicator {
                     ToolbarItem(placement: .topBarLeading) {
                         PointAnimationView()
                             .frame(width: 32, height: 32)
@@ -73,7 +75,8 @@ struct ChannelsView: View {
                 }
             }
             .onAppear {
-                viewModel.synchronizeUserChannelsList()
+                viewModel.synchronizeUserChannelsList(showLoadingIndicator: !isLoaded)
+                isLoaded = true
             }
         }
     }

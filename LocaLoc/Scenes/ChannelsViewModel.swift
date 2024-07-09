@@ -12,11 +12,13 @@ import Foundation
     @ObservationIgnored
     @Injected(\.channelsRepository) var channelsRepository
         
-    var isDataSynchronizationRunning = false
-    
+    var showLoadingIndicator = false
+
     // MARK: - Public
-    func synchronizeUserChannelsList() {
-        isDataSynchronizationRunning = true
+    func synchronizeUserChannelsList(showLoadingIndicator: Bool) {
+        if showLoadingIndicator {
+            self.showLoadingIndicator = true
+        }
         
         Task { @MainActor in
             do {
@@ -25,7 +27,9 @@ import Foundation
                 print("🔴", error)
             }
             
-            isDataSynchronizationRunning = false
+            if showLoadingIndicator {
+                self.showLoadingIndicator = false
+            }
         }
     }
 }
