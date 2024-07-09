@@ -78,17 +78,17 @@ struct ChannelsView: View {
                     }
                 }
             }
-            .navigationDestination(for: NavigationState.self) { state in
-                switch state {
-                case .createNewChannel:
-                    ChannelCreationView(viewModel: ChannelCreationViewModel())
-                case .map(let channel):
-                    MapContainerView(viewModel: MapContainerViewModel(channel: channel))
-                }
-            }
             .onAppear {
                 viewModel.synchronizeUserChannelsList(showLoadingIndicator: !isLoaded)
                 isLoaded = true
+            }
+        }
+        .navigationDestination(for: NavigationState.self) { state in
+            switch state {
+            case .createNewChannel:
+                ChannelCreationView(viewModel: ChannelCreationViewModel())
+            case .map(let channel):
+                MapContainerView(viewModel: MapContainerViewModel(channel: channel))
             }
         }
     }
