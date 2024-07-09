@@ -192,6 +192,10 @@ enum ChannelsDataRepositoryError: Error {
 }
 
 extension ChannelsDataRepository: ChannelsRepository {
+    func cleanChannelsList() {
+        channels = []
+    }
+    
     func saveChannel(_ channel: Channel) async throws -> Channel {
         let result: Channel
         

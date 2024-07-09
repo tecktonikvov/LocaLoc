@@ -9,7 +9,7 @@ import SwiftUI
 
 fileprivate enum NavigationState: Hashable {
     case createNewChannel
-    case map(channelId: Channel)
+    case map(channel: Channel)
 }
 
 struct ChannelsView: View {
@@ -21,18 +21,20 @@ struct ChannelsView: View {
         NavigationStack(path: $path) {
             ZStack {
                 List {
-                    ForEach(0..<viewModel.channelsRepository.channels.count, id: \.self) { index in
-                        let channel = viewModel.channelsRepository.channels[index]
-                        
-                        Button {
-                            path.append(NavigationState.map(channelId: channel))
-                        } label: {
-                            ChannelsRow(channel: channel)
+                    if viewModel.channelsRepository.channels.isEmpty {
+                        Text("Empty")
+                    } else {
+                        ForEach(viewModel.channelsRepository.channels, id: \.self) { channel in
+                            Button {
+                                path.append(NavigationState.map(channel: channel))
+                            } label: {
+                                ChannelsRow(channel: channel)
+                            }
+                            .frame(height: 70)
+                            .listRowBackground(
+                                Color(UIColor.clear)
+                            )
                         }
-                        .frame(height: 70)
-                        .listRowBackground(
-                            Color(UIColor.clear)
-                        )
                     }
                 }
                 .listStyle(PlainListStyle())

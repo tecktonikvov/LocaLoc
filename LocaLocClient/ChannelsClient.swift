@@ -15,7 +15,7 @@ public final class ChannelsClient {
     
     // MARK: - Init
     public init() {
-        self.client = Client()
+        self.client = Client.shared
     }
 
     public func saveChanel(channelClientModel: ChannelClientModel) async throws -> String {

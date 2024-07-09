@@ -36,9 +36,7 @@ struct CoreApp: App {
     }
     
     private static func setupFirebaseApp() {
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-        }
+        FirebaseApp.configure()
     }
     
     private static func setupGMaps() {

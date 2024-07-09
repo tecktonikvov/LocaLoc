@@ -13,7 +13,7 @@ public final class PointsClient {
     
     // MARK: - Init
     public init() {
-        self.client = Client()
+        self.client = Client.shared
     }
 
     public func savePoint(pointClientModel: PointClientModel) async throws -> String {

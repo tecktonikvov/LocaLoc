@@ -14,7 +14,7 @@ public final class ChannelIdentifierClient {
     
     // MARK: - Init
     public init() {
-        self.client = Client()
+        self.client = Client.shared
     }
 
     public func isIdentifierFree(identifier: String) async throws -> Bool {

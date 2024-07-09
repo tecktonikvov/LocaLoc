@@ -11,7 +11,8 @@ import AuthenticationServices
 
 final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationControllerDelegate {
     @Injected(\.userDataRepository) private var userDataRepository
-    
+    @Injected(\.channelsRepository) private var channelsRepository
+
     private lazy var appleProvider = AppleAuthenticationProvider()
     private lazy var googleProvider = GoogleAuthenticationProvider()
     
@@ -72,6 +73,7 @@ final class AuthenticationService: NSObject, ObservableObject, ASAuthorizationCo
             }
             
             userDataRepository.removeCurrentUserData()
+            channelsRepository.cleanChannelsList()
         }
     }
 }

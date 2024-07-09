@@ -19,9 +19,11 @@ enum ClientError: Error {
 public final class Client {
     private let database: Firestore
     private let storage: Storage
+    
+    static public var shared = Client()
         
     // MARK: - Init
-    public init() {
+    private init() {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }

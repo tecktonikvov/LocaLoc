@@ -12,7 +12,7 @@ final class FilesUploadingService {
     let filesUploadingClient: FilesUploaderClient
 
     init(userDataRepository: UserDataRepository) {
-        let client = Client()
+        let client = Client.shared
         
         self.userDataRepository = userDataRepository
         self.filesUploadingClient = FilesUploaderClient(client: client)

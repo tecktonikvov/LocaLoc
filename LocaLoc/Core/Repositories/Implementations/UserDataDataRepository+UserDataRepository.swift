@@ -20,7 +20,6 @@ enum UserDataDataRepositoryError: Error {
 }
 
 @Observable open class UserDataDataRepository {
-   // private(set) var isUserAuthorized: Bool = false
     private(set) var currentUser: User?
     
     var userAuthenticationStatus: UserAuthenticationStatus {
@@ -44,7 +43,7 @@ enum UserDataDataRepositoryError: Error {
     init(localStorage: LocalStorage) throws {
         self.localStorage = localStorage
         
-        let client = Client()
+        let client = Client.shared
         
         self.userDataClient = UserDataClient(client: client)
         self.userNameClient = UserNameClient(client: client)
@@ -57,7 +56,6 @@ enum UserDataDataRepositoryError: Error {
         if let currentUserId = UserDefaults.standard.string(forKey: .currentUserIdKey),
            let storedUserModel = try storedUser(with: currentUserId) {
             currentUser = User(userLocalStoreModel: storedUserModel)
-           // self.isUserAuthorized = true
         }
     }
     
@@ -94,7 +92,6 @@ enum UserDataDataRepositoryError: Error {
     
     private func setCurrentUser(_ user: User) {
         currentUser = user
-        //isUserAuthorized = true
     }
     
     private func getClientUserData(userId: String) async throws -> UserClientModel? {
@@ -107,7 +104,7 @@ enum UserDataDataRepositoryError: Error {
             let userClientModel = UserClientModel(userModel: user)
             try await setUserToClient(userClientModel)
         }
-        // Was on top
+        
         let userLocalStoreModel = UserPersistencyModel(user: user)
         try setUserToLocalStorage(userLocalStoreModel)
         
@@ -158,6 +155,5 @@ extension UserDataDataRepository: UserDataRepository {
         UserDefaults.standard.removeObject(forKey: .currentUserIdKey)
         
         currentUser = nil
-        //isUserAuthorized = false
     }
 }
