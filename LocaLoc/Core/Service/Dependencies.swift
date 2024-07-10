@@ -31,7 +31,8 @@ extension Container {
                                            ProfilePersistencyModel.self,
                                            ChannelPersistencyModel.self,
                                            ChannelUserSettingsPersistencyModel.self,
-                                           ChannelSettingsPersistencyModel.self)
+                                           ChannelSettingsPersistencyModel.self,
+                                           ChannelPointPersistencyModel.self)
             } catch {
                 let errorString = "LocalStorage initialization error: \(error)"
                 
@@ -62,6 +63,20 @@ extension Container {
                 return try ChannelsDataRepository(localStorage: self.appLocalStorage())
             } catch {
                 let errorString = "ChannelsDataRepository initialization error: \(error)"
+                
+                Log.error(errorString, module: self.moduleName)
+                fatalError(errorString)
+            }
+        }
+        .singleton
+    }
+    
+    private var channelPointsDataRepository: ParameterFactory<Channel, ChannelPointsDataRepository> {
+        self {
+            do {
+                return try LocaLoc.ChannelPointsDataRepository(localStorage: self.appLocalStorage(), channel: $0)
+            } catch {
+                let errorString = "ChannelPointsDataRepository initialization error: \(error)"
                 
                 Log.error(errorString, module: self.moduleName)
                 fatalError(errorString)
@@ -119,5 +134,13 @@ extension Container {
     
     var addressProvider: Factory<AddressProvider> {
         Factory(self) { AddressProvider() }
+    }
+    
+    var channelPointsClient: Factory<ChannelPointsClient> {
+        Factory(self) { ChannelPointsClient() }
+    }
+    
+    var channelPointsRepository: ParameterFactory<Channel, ChannelPointsDataRepository> {
+        self { self.channelPointsDataRepository($0) }.unique
     }
 }

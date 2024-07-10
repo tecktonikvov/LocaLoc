@@ -7,8 +7,25 @@
 
 import GoogleMaps
 
-final class Marker {
+final class Marker: Equatable {
+    enum MarkerType {
+        case new(hidden: Bool)
+        case viewed(hidden: Bool)
+        case notApproved
+    }
+    
+    static func == (lhs: Marker, rhs: Marker) -> Bool {
+        lhs.id == rhs.id
+        && lhs.coordinates == rhs.coordinates
+    }
+    
     let id: String
+    
+    var type: MarkerType {
+        didSet {
+            setImage(name: type.imageName, marker: gMSMarker)
+        }
+    }
 
     private let gMSMarker: GMSMarker
     
@@ -19,13 +36,17 @@ final class Marker {
     }
     
     // MARK: - Init
-    init(id: String, coordinates: Coordinates) {
+    init(id: String, coordinates: Coordinates, type: MarkerType) {
         self.id = id
+        self.type = type
         self.coordinates = coordinates
+        
         let marker = GMSMarker(position: coordinates.as2DCoordinates)
+        marker.appearAnimation = .pop
+        
         self.gMSMarker = marker
         
-        setImage(name: "marker_new", marker: marker)
+        setImage(name: type.imageName, marker: gMSMarker)
     }
     
     // MARK: - Private
@@ -42,10 +63,6 @@ final class Marker {
     func removeMarkerFromMap() {
         gMSMarker.map = nil
     }
-    
-    func setSteadyAppearance() {
-        setImage(name: "marker_brand", marker: gMSMarker)
-    }
 }
 
 fileprivate extension GMSMarker {
@@ -55,5 +72,26 @@ fileprivate extension GMSMarker {
         let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         icon = newImage
+    }
+}
+
+fileprivate extension Marker.MarkerType {
+    var imageName: String {
+        switch self {
+        case .new(let hidden):
+            if hidden {
+                return "marker_new_hidden"
+            } else {
+                return "marker_new"
+            }
+        case .viewed(let hidden):
+            if hidden {
+                return "marker_viewed_hidden"
+            } else {
+                return "marker_viewed"
+            }
+        case .notApproved:
+            return "marker_not_approved"
+        }
     }
 }

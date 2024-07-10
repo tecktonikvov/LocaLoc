@@ -52,25 +52,3 @@ public final class ChannelPersistencyModel {
         self.channelUserSettings = channelUserSettings
     }
 }
-
-@Model 
-public final class ChannelSettingsPersistencyModel {
-    public var invitationMode: String
-    let channel: ChannelPersistencyModel
-    
-    public init(invitationMode: String, channel: ChannelPersistencyModel) {
-        self.channel = channel
-        self.invitationMode = invitationMode
-    }
-}
-
-@Model
-public final class ChannelUserSettingsPersistencyModel {
-    public var isMuted: Bool
-    let channel: ChannelPersistencyModel
-    
-    public init(isMuted: Bool, channel: ChannelPersistencyModel) {
-        self.isMuted = isMuted
-        self.channel = channel
-    }
-}

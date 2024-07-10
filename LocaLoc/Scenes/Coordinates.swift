@@ -7,7 +7,7 @@
 
 import CoreLocation
 
-struct Coordinates {
+struct Coordinates: Equatable {
     let longitude: Double
     let latitude: Double
     

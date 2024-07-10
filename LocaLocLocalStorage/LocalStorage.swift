@@ -13,6 +13,7 @@ public protocol LocalStorage {
     func addModel(model: any PersistentModel)
     func delete(model: any PersistentModel)
     func deleteAllModels(withTypes types: any PersistentModel.Type...) throws
+    func deleteAll<T>(model: T.Type, descriptor: FetchDescriptor<T>?) throws
 }
 
 public class AppLocalStorage {
@@ -48,6 +49,15 @@ extension AppLocalStorage: LocalStorage {
     public func deleteAllModels(withTypes types: any PersistentModel.Type...) throws {
         for type in types {
             try modelContext.delete(model: type)
+        }
+    }
+    
+    public func deleteAll<T>(model: T.Type, descriptor: FetchDescriptor<T>?) throws {
+        let descriptor = descriptor ?? FetchDescriptor<T>()
+        let fetchResult = try modelContext.fetch(descriptor)
+        
+        fetchResult.forEach {
+            modelContext.delete($0)
         }
     }
 }

@@ -35,7 +35,6 @@ enum ChannelsDataRepositoryError: Error {
         //deleteAllLocalCachedChannels()
     }
     
-    
     // MARK: - Private
     private func deleteAllLocalCachedChannels() {
         try? localStorage.deleteAllModels(withTypes: ChannelPersistencyModel.self)
@@ -106,7 +105,7 @@ enum ChannelsDataRepositoryError: Error {
         let updatedClientModel = ChannelClientModel(channelModel: update)
         try await channelsClient.updateChannel(withId: update.id, channelClientModel: updatedClientModel)
         
-        if let channelLocalStoreModel = try localStorageClientModel(channelId: update.id) {
+        if let channelLocalStoreModel = try localStorageChannelModel(channelId: update.id) {
             localStorage.delete(model: channelLocalStoreModel)
             
             let newChannelLocalStoreModel = makeChannelLocalStorageModel(update)
@@ -116,10 +115,9 @@ enum ChannelsDataRepositoryError: Error {
         return update
     }
     
-    private func localStorageClientModel(channelId id: String) throws -> ChannelPersistencyModel? {
-        let descriptor = FetchDescriptor<ChannelPersistencyModel>(predicate: #Predicate { channelLocalStoreModel in
-            channelLocalStoreModel.channelId == id
-        })
+    private func localStorageChannelModel(channelId id: String) throws -> ChannelPersistencyModel? {
+        let predicate = #Predicate<ChannelPersistencyModel> { $0.channelId == id }
+        let descriptor = FetchDescriptor<ChannelPersistencyModel>(predicate: predicate)
         
         return try localStorage.fetchModelsWith(
             model: ChannelPersistencyModel.self,
@@ -148,39 +146,38 @@ enum ChannelsDataRepositoryError: Error {
         return channel
     }
     
-    private func fetchChannelClientModelAndReturnChanelLocalStoreModel(id: String) async throws -> ChannelPersistencyModel? {
-        guard let clientModel = try await channelsClient.channel(withId: id) else {
-            return nil
-        }
-        
-        let channelLocalStorageModel = ChannelPersistencyModel(
-            channelId: id,
-            identifier: clientModel.identifier,
-            ownerId: clientModel.ownerId,
-            name: clientModel.name,
-            channelDescription: clientModel.description,
-            imageUrl: clientModel.imageUrl,
-            missedUpdatesNumber: clientModel.missedUpdatesNumber,
-            creationDate: clientModel.createdAt,
-            lastUpdateDate: clientModel.updatedAt,
-            channelSettings: nil,
-            channelUserSettings: nil
-        )
-        
-        let channelSettingsLocalStoreModel = ChannelSettingsPersistencyModel(
-            invitationMode: clientModel.channelInvitationMode,
-            channel: channelLocalStorageModel
-        )
-
-        channelLocalStorageModel.channelSettings = channelSettingsLocalStoreModel
-        
-        return channelLocalStorageModel
-    }
-    
     private func channels(withIds ids: [String]) async throws -> [ChannelPersistencyModel] {
         let channels = try await withThrowingTaskGroup(of: ChannelPersistencyModel?.self, returning: [ChannelPersistencyModel?].self) { taskGroup in
             for id in ids {
-                taskGroup.addTask { try await self.fetchChannelClientModelAndReturnChanelLocalStoreModel(id: id) }
+                taskGroup.addTask { [weak self] in
+                    guard let self,
+                          let clientModel = try await channelsClient.channel(withId: id) else {
+                        return nil
+                    }
+                    
+                    let channelLocalStorageModel = ChannelPersistencyModel(
+                        channelId: id,
+                        identifier: clientModel.identifier,
+                        ownerId: clientModel.ownerId,
+                        name: clientModel.name,
+                        channelDescription: clientModel.description,
+                        imageUrl: clientModel.imageUrl,
+                        missedUpdatesNumber: clientModel.missedUpdatesNumber,
+                        creationDate: clientModel.createdAt,
+                        lastUpdateDate: clientModel.updatedAt,
+                        channelSettings: nil,
+                        channelUserSettings: nil
+                    )
+                    
+                    let channelSettingsLocalStoreModel = ChannelSettingsPersistencyModel(
+                        invitationMode: clientModel.channelInvitationMode,
+                        channel: channelLocalStorageModel
+                    )
+
+                    channelLocalStorageModel.channelSettings = channelSettingsLocalStoreModel
+                    
+                    return channelLocalStorageModel
+                }
             }
 
             var channels = [ChannelPersistencyModel?]()

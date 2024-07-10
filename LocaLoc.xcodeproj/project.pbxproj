@@ -34,8 +34,8 @@
 		042B9B492C38408200DE7CB0 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B482C38408200DE7CB0 /* Coordinates.swift */; };
 		042B9B4B2C384C1E00DE7CB0 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4A2C384C1E00DE7CB0 /* Marker.swift */; };
 		042B9B4D2C384C7F00DE7CB0 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4C2C384C7F00DE7CB0 /* Address.swift */; };
-		042B9B4F2C388D3C00DE7CB0 /* PointClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4E2C388D3C00DE7CB0 /* PointClientModel.swift */; };
-		042B9B512C388D5500DE7CB0 /* PointsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B502C388D5500DE7CB0 /* PointsClient.swift */; };
+		042B9B4F2C388D3C00DE7CB0 /* ChannelPointClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B4E2C388D3C00DE7CB0 /* ChannelPointClientModel.swift */; };
+		042B9B512C388D5500DE7CB0 /* ChannelPointsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B502C388D5500DE7CB0 /* ChannelPointsClient.swift */; };
 		042B9B552C3BF2BB00DE7CB0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B542C3BF2BB00DE7CB0 /* Date+Extension.swift */; };
 		042B9B622C3BFA5800DE7CB0 /* AuthenticationProviderTypePersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B5D2C3BFA5800DE7CB0 /* AuthenticationProviderTypePersistencyModel.swift */; };
 		042B9B632C3BFA5800DE7CB0 /* ChannelPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B5E2C3BFA5800DE7CB0 /* ChannelPersistencyModel.swift */; };
@@ -85,6 +85,12 @@
 		0459F7DF2C3D9A2F00B48A6D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */; };
 		0459F7E32C3DA09800B48A6D /* splash_point_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0459F7E22C3DA09800B48A6D /* splash_point_image.png */; };
 		0459F7E52C3DB01A00B48A6D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */; };
+		0459F7EB2C3DB58A00B48A6D /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7EA2C3DB58A00B48A6D /* ChannelPoint.swift */; };
+		0459F7ED2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7EC2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift */; };
+		0459F7EF2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7EE2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift */; };
+		0459F7F12C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */; };
+		0459F7F52C3E90E700B48A6D /* ChannelPointsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */; };
+		0459F7F72C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -230,8 +236,8 @@
 		042B9B482C38408200DE7CB0 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		042B9B4A2C384C1E00DE7CB0 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		042B9B4C2C384C7F00DE7CB0 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		042B9B4E2C388D3C00DE7CB0 /* PointClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointClientModel.swift; sourceTree = "<group>"; };
-		042B9B502C388D5500DE7CB0 /* PointsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsClient.swift; sourceTree = "<group>"; };
+		042B9B4E2C388D3C00DE7CB0 /* ChannelPointClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointClientModel.swift; sourceTree = "<group>"; };
+		042B9B502C388D5500DE7CB0 /* ChannelPointsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointsClient.swift; sourceTree = "<group>"; };
 		042B9B542C3BF2BB00DE7CB0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		042B9B5D2C3BFA5800DE7CB0 /* AuthenticationProviderTypePersistencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationProviderTypePersistencyModel.swift; sourceTree = "<group>"; };
 		042B9B5E2C3BFA5800DE7CB0 /* ChannelPersistencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelPersistencyModel.swift; sourceTree = "<group>"; };
@@ -274,6 +280,12 @@
 		0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0459F7E22C3DA09800B48A6D /* splash_point_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_point_image.png; sourceTree = "<group>"; };
 		0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		0459F7EA2C3DB58A00B48A6D /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
+		0459F7EC2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointPersistencyModel.swift; sourceTree = "<group>"; };
+		0459F7EE2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingsPersistencyModel.swift; sourceTree = "<group>"; };
+		0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUserSettingsPersistencyModel.swift; sourceTree = "<group>"; };
+		0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointsRepository.swift; sourceTree = "<group>"; };
+		0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelPointsDataRepository+ChannelPointsRepository.swift"; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -458,12 +470,13 @@
 		040D85862C008F8B000F8F52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				042B9B4C2C384C7F00DE7CB0 /* Address.swift */,
 				040D858B2C008FD1000F8F52 /* AuthenticationProviderType.swift */,
 				044D62212C31C60300D130FA /* Channel.swift */,
+				0459F7EA2C3DB58A00B48A6D /* ChannelPoint.swift */,
 				040D85872C008F97000F8F52 /* Profile.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
 				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
-				042B9B4C2C384C7F00DE7CB0 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -539,6 +552,9 @@
 			children = (
 				042B9B5D2C3BFA5800DE7CB0 /* AuthenticationProviderTypePersistencyModel.swift */,
 				042B9B5E2C3BFA5800DE7CB0 /* ChannelPersistencyModel.swift */,
+				0459F7EC2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift */,
+				0459F7EE2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift */,
+				0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */,
 				042B9B5F2C3BFA5800DE7CB0 /* ProfilePersistencyModel.swift */,
 				042B9B602C3BFA5800DE7CB0 /* UserPersistencyModel.swift */,
 			);
@@ -549,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				044D62192C31C16F00D130FA /* ChannelPhotoUploader.swift */,
+				0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */,
 				044D621F2C31C56600D130FA /* ChannelsRepository.swift */,
 				04BA85042C0B6590004F76B3 /* UserDataRepository.swift */,
 				042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */,
@@ -561,6 +578,7 @@
 		0438C4622C2C3E39000665D0 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */,
 				044D62242C31CB7000D130FA /* ChannelsDataRepository+ChannelsRepository.swift */,
 				044D621B2C31C19600D130FA /* FilesUploadingService+ChannelPhotoUploader.swift */,
 				0438C4672C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift */,
@@ -771,7 +789,7 @@
 			children = (
 				044D62462C33404800D130FA /* ChannelClientModel.swift */,
 				042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */,
-				042B9B4E2C388D3C00DE7CB0 /* PointClientModel.swift */,
+				042B9B4E2C388D3C00DE7CB0 /* ChannelPointClientModel.swift */,
 				04AA9BFF2C15D68300459E00 /* UserClientModel.swift */,
 			);
 			path = Models;
@@ -854,10 +872,10 @@
 			isa = PBXGroup;
 			children = (
 				044D62072C2F1D6900D130FA /* ChannelIdentifierClient.swift */,
+				042B9B502C388D5500DE7CB0 /* ChannelPointsClient.swift */,
 				044D62442C333D6900D130FA /* ChannelsClient.swift */,
 				04FAE90F2C0C5A0700200ADC /* Client.swift */,
 				0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */,
-				042B9B502C388D5500DE7CB0 /* PointsClient.swift */,
 				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
 				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
 				04FAE9522C0C704A00200ADC /* Configs */,
@@ -1217,8 +1235,10 @@
 				0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
+				0459F7EB2C3DB58A00B48A6D /* ChannelPoint.swift in Sources */,
 				04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */,
 				047ECA182BFA91FD0065837C /* ChannelsViewModel.swift in Sources */,
+				0459F7ED2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift in Sources */,
 				042B9B4B2C384C1E00DE7CB0 /* Marker.swift in Sources */,
 				044D62482C3342AF00D130FA /* ChannelsDataRepository+ChannelsRepository.swift in Sources */,
 				042B9B642C3BFA5800DE7CB0 /* ProfilePersistencyModel.swift in Sources */,
@@ -1227,6 +1247,7 @@
 				040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */,
 				04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */,
 				044D62222C31C60300D130FA /* Channel.swift in Sources */,
+				0459F7F12C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
 				047ECA2E2BFB83B90065837C /* Color.swift in Sources */,
@@ -1241,6 +1262,7 @@
 				04BA84E52C0B0EAC004F76B3 /* Previewer.swift in Sources */,
 				047ECA0B2BFA85FD0065837C /* AppComposer.swift in Sources */,
 				042B9B492C38408200DE7CB0 /* Coordinates.swift in Sources */,
+				0459F7F52C3E90E700B48A6D /* ChannelPointsRepository.swift in Sources */,
 				042B9B3E2C37E72A00DE7CB0 /* MapViewControllerBridge.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				044D62132C31BEEC00D130FA /* UIImage+Extension.swift in Sources */,
@@ -1254,12 +1276,14 @@
 				042B9B472C38403700DE7CB0 /* PointAddView.swift in Sources */,
 				044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */,
 				0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */,
+				0459F7F72C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift in Sources */,
 				042B9B622C3BFA5800DE7CB0 /* AuthenticationProviderTypePersistencyModel.swift in Sources */,
 				044D62182C31C0FB00D130FA /* PhotoPreparer.swift in Sources */,
 				042B9B342C372CF600DE7CB0 /* MapViewController.swift in Sources */,
 				044D62202C31C56600D130FA /* ChannelsRepository.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */,
+				0459F7EF2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift in Sources */,
 				042B9B432C38312B00DE7CB0 /* AddressProvider.swift in Sources */,
 				042B9B452C383BBD00DE7CB0 /* PointAnimationView.swift in Sources */,
 				0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */,
@@ -1332,8 +1356,8 @@
 				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
 				0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */,
 				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
-				042B9B512C388D5500DE7CB0 /* PointsClient.swift in Sources */,
-				042B9B4F2C388D3C00DE7CB0 /* PointClientModel.swift in Sources */,
+				042B9B512C388D5500DE7CB0 /* ChannelPointsClient.swift in Sources */,
+				042B9B4F2C388D3C00DE7CB0 /* ChannelPointClientModel.swift in Sources */,
 				042B9B2F2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,7 +27,7 @@ final class MapController: NSObject {
     
     private var markers = [Marker]()
     
-    private var newSelectedMarker: Marker?
+    private(set) var newSelectedMarker: Marker?
     
     weak var delegate: MapControllerDelegate?
     
@@ -80,9 +80,32 @@ final class MapController: NSObject {
     
     func setNewSelectedLocationSteady() {
         guard let newSelectedMarker else { return }
-        newSelectedMarker.setSteadyAppearance()
+        newSelectedMarker.type = .viewed(hidden: false)
         markers.append(newSelectedMarker)
         self.newSelectedMarker = nil
+    }
+    
+    func addMarkers(forPoints points: [ChannelPoint]) {
+        let markers = points.map {
+            Marker(
+                id: $0.id,
+                coordinates: Coordinates(longitude: $0.longitude,
+                                         latitude: $0.latitude),
+                type: .viewed(hidden: $0.isHidden)
+            )
+        }
+        
+        markers.forEach {
+            if !self.markers.contains($0) {
+                self.markers.append($0)
+                $0.addMarker(on: mapView)
+            }
+        }
+    }
+    
+    func clearMarkers() {
+        mapView.clear()
+        markers.removeAll()
     }
 }
 
@@ -98,7 +121,8 @@ extension MapController: GMSMapViewDelegate {
         
         let newSelectedMarker = Marker(
             id: UUID().uuidString,
-            coordinates: coordinates
+            coordinates: coordinates,
+            type: .notApproved
         )
         
         newSelectedMarker.addMarker(on: mapView)

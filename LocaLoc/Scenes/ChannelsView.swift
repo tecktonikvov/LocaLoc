@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import K_Logger
 
 fileprivate enum NavigationState: Hashable {
     case createNewChannel
@@ -13,11 +14,15 @@ fileprivate enum NavigationState: Hashable {
 }
 
 struct ChannelsView: View {
-    var viewModel: ChannelsViewModel
+    private var viewModel: ChannelsViewModel
     
     @State private var path = NavigationPath()
-    
     @State private var isLoaded = false
+    
+    // MARK: - Init
+    init(viewModel: ChannelsViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -41,6 +46,7 @@ struct ChannelsView: View {
                     List {
                         ForEach(viewModel.channelsRepository.channels, id: \.self) { channel in
                             Button {
+                                Log.user("User selected channel with id: \(channel.id)")
                                 path.append(NavigationState.map(channel: channel))
                             } label: {
                                 ChannelsRow(channel: channel)
@@ -61,6 +67,7 @@ struct ChannelsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        Log.user("User selected create channel")
                         path.append(NavigationState.createNewChannel)
                     } label: {
                         Image(systemName: "plus.circle")

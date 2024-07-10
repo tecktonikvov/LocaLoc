@@ -13,6 +13,7 @@ struct MapContainerView: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var viewModel: MapContainerViewModel
+    @State private var isPointsAdded = false
     
     // MARK: - Init
     init(viewModel: MapContainerViewModel) {
@@ -55,16 +56,20 @@ struct MapContainerView: View {
                         }
                     }
                 }
-            
             VStack() {
                 Spacer()
-                Button(action: viewModel.recenterButtonTapped) {
-                    Image("center")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .foregroundStyle(Color.Text.main)
-                        .padding(.top, 16)
-                        .shadow(color: .black, radius: 5, y: 4)
+                if viewModel.showSynchronizationIndicator {
+                    PointAnimationView()
+                        .frame(width: 32, height: 32)
+                } else {
+                    Button(action: viewModel.recenterButtonTapped) {
+                        Image("center")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .foregroundStyle(Color.Text.main)
+                            .padding(.top, 16)
+                            .shadow(color: .black, radius: 5, y: 4)
+                    }
                 }
             }
             .padding(.trailing, 20)
@@ -77,8 +82,11 @@ struct MapContainerView: View {
         .popup(isPresented: $viewModel.showAddPointView ) {
             if let selectedCoordinates = viewModel.selectedCoordinates {
                 PointAddView(coordinates: selectedCoordinates) {
-                    self.viewModel.newPointApproved()
-                    self.viewModel.showAddPointView = false
+                    Task { @MainActor in
+                        try await self.viewModel.newPointApproved()
+                        self.viewModel.showAddPointView = false
+                    }
+                   
                 } onClose: {
                     self.viewModel.newPointCanceled()
                     self.viewModel.showAddPointView = false
@@ -90,6 +98,13 @@ struct MapContainerView: View {
                 .appearFrom(.bottomSlide)
                 .isOpaque(false)
                 .closeOnTap(false)
+        }
+        .onAppear {
+            if !isPointsAdded {
+                viewModel.addChannelPoints()
+                isPointsAdded = true
+                viewModel.synchronizeChannelsPoints()
+            }
         }
     }
 }

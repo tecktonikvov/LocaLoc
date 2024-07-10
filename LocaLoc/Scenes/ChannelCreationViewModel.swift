@@ -55,7 +55,7 @@ import Factory
         return fileUrl
     }
     
-    private func makeChannelEmpty() throws -> Channel {
+    private func makeEmptyChannel() throws -> Channel {
         Channel(
             id: "",
             identifier: identifier, 
@@ -67,12 +67,13 @@ import Factory
             creationDate: Date.timeZoneIndependentCurrentDate,
             lastUpdateDate: Date.timeZoneIndependentCurrentDate,
             channelSettings: ChannelSettings(invitationMode: invitationMode),
-            userSettings: .default
+            userSettings: .default, 
+            channelPoints: []
         )
     }
     
     private func createEmptyChannelAndSave() async throws -> Channel {
-        let channel = try makeChannelEmpty()
+        let channel = try makeEmptyChannel()
         return try await channelsRepository.saveChannel(channel)
     }
     

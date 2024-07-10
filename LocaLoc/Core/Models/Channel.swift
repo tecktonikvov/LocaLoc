@@ -28,7 +28,7 @@ import Foundation
 }
 
 @Observable final class Channel: Equatable {
-    init(id: String, identifier: String, ownerId: String, name: String, description: String, imageUrl: URL?, missedUpdatesNumber: Int, creationDate: Date?, lastUpdateDate: Date?, channelSettings: ChannelSettings, userSettings: ChannelUserSettings) {
+    init(id: String, identifier: String, ownerId: String, name: String, description: String, imageUrl: URL?, missedUpdatesNumber: Int, creationDate: Date?, lastUpdateDate: Date?, channelSettings: ChannelSettings, userSettings: ChannelUserSettings, channelPoints: [ChannelPoint]) {
         self.id = id
         self.identifier = identifier
         self.ownerId = ownerId
@@ -40,10 +40,11 @@ import Foundation
         self.lastUpdateDate = lastUpdateDate
         self.channelSettings = channelSettings
         self.userSettings = userSettings
+        self.channelPoints = channelPoints
     }
     
     static func == (lhs: Channel, rhs: Channel) -> Bool {
-        lhs.identifier == rhs.identifier
+        lhs.id == rhs.id
     }
     
     var id: String
@@ -57,6 +58,7 @@ import Foundation
     var lastUpdateDate: Date?
     let channelSettings: ChannelSettings
     let userSettings: ChannelUserSettings
+    var channelPoints: [ChannelPoint]
 }
 
 extension Channel: Identifiable, Hashable {
@@ -80,7 +82,8 @@ extension Channel {
             creationDate: nil,
             lastUpdateDate: Date(),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true), 
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -97,7 +100,8 @@ extension Channel {
                 -3600
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -112,7 +116,8 @@ extension Channel {
                 -14400
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -129,7 +134,8 @@ extension Channel {
                 -2520000000
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -144,7 +150,8 @@ extension Channel {
                 -144000000
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -161,7 +168,8 @@ extension Channel {
                 -25200000
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -176,7 +184,8 @@ extension Channel {
                 -1440000
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         ),
         Channel(
             id: UUID().uuidString,
@@ -193,7 +202,8 @@ extension Channel {
                 -252000
             ),
             channelSettings: .default,
-            userSettings: ChannelUserSettings(isMuted: true)
+            userSettings: ChannelUserSettings(isMuted: true),
+            channelPoints: []
         )
     ]
 }
