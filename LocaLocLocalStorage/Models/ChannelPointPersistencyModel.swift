@@ -10,7 +10,7 @@ import Foundation
 
 @Model
 public final class ChannelPointPersistencyModel {
-    public init(id: String, channelId: String, latitude: Double, longitude: Double, address: String, description: String, creatorId: String, createdAt: Date, updatedAt: Date, heading: Double, lifeTime: Int?, emojiCode: String?, isHidden: Bool) {
+    public init(id: String, channelId: String, latitude: Double, longitude: Double, address: String, description: String, creatorId: String, createdAt: Date, updatedAt: Date, heading: Double?, lifeTime: Int?, emojiCode: String?, isHidden: Bool) {
         self.id = id
         self.channelId = channelId
         self.latitude = latitude
@@ -35,7 +35,7 @@ public final class ChannelPointPersistencyModel {
     public let creatorId: String
     public let createdAt: Date
     public let updatedAt: Date
-    public let heading: Double
+    public let heading: Double?
     public let lifeTime: Int?
     public let emojiCode: String?
     public let isHidden: Bool

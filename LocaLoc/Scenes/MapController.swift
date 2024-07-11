@@ -56,11 +56,11 @@ final class MapController: NSObject {
         mapView.mapStyle = try? GMSMapStyle(contentsOfFileURL: styleURL)
     }
     
-    private func centerCamera(at location: CLLocation) {
+    private func centerCamera(at location: CLLocation, zoom: Float = 15) {
         let camera = GMSCameraPosition.camera(
             withLatitude: location.coordinate.latitude,
             longitude: location.coordinate.longitude,
-            zoom: 15.0
+            zoom: zoom
         )
         
         mapView.animate(to: camera)
@@ -72,15 +72,15 @@ final class MapController: NSObject {
         centerCamera(at: lastUserLocation)
     }
     
-    func removeNewSelectedLocation() {
+    func removeNewSelectedPoint() {
         guard let newSelectedMarker else { return }
         newSelectedMarker.removeMarkerFromMap()
         self.newSelectedMarker = nil
     }
     
-    func setNewSelectedLocationSteady() {
+    func setNewSelectedPointSteady(hidden: Bool) {
         guard let newSelectedMarker else { return }
-        newSelectedMarker.type = .viewed(hidden: false)
+        newSelectedMarker.type = .new(hidden: hidden)
         markers.append(newSelectedMarker)
         self.newSelectedMarker = nil
     }

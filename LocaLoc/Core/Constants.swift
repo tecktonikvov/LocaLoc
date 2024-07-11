@@ -24,4 +24,8 @@ struct Constants {
     static let channelDescriptionCharactersLimit: Int = 255
     static let channelsAvatarCompression: Double = 1.0
     static let channelAvatarImageFormat: String = ".jpeg"
+    
+    // Point constants
+    static let pointAdressMaxCharactersLimit: Int = 300
+    static let pointDescriptionMaxCharactersLimit: Int = 255
 }

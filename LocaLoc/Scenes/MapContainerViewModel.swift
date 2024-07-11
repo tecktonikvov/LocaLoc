@@ -28,7 +28,15 @@ import Factory
     var showAddPointView = false
     var showSynchronizationIndicator = false
     var pointCreationRequestInProgress = false
-        
+    
+    // New point properties
+    var showPoint: Bool = false
+    var description: String = ""
+    var addressString: String = ""
+    var lifetime: Int? // Not implemented
+    var emojiCode: String? // Not implemented
+    var heading: Double? // Not implemented
+
     private(set) var channel: Channel
 
     // MARK: - Init
@@ -44,6 +52,16 @@ import Factory
         try? channelPointsRepository.reload(with: channel)
         
         mapController.delegate = self
+    }
+    
+    // MARK: - Private
+    private func clearCurrentPointData() {
+        description = ""
+        addressString = ""
+        lifetime = nil
+        emojiCode = nil
+        heading = nil
+        showPoint = false
     }
 
     // MARK: - Public
@@ -66,30 +84,32 @@ import Factory
             pointCreationRequestInProgress = true
 
             do {
-                try await Task.sleep(nanoseconds: 2.0.nanoseconds)
-                
                 let point = ChannelPoint(
                     id: UUID().uuidString,
                     channelId: channel.id,
                     latitude: newSelectedMarker.coordinates.latitude,
                     longitude: newSelectedMarker.coordinates.longitude,
-                    address: "newSelectedMarker",
-                    description: "Description",
+                    address: addressString,
+                    description: description,
                     creatorId: try userIdProvider.userId(),
                     createdAt: Date.timeZoneIndependentCurrentDate,
                     updatedAt: Date.timeZoneIndependentCurrentDate,
-                    heading: 0.0,
-                    lifeTime: nil,
-                    emojiCode: nil,
-                    isHidden: false
+                    heading: heading,
+                    lifeTime: lifetime,
+                    emojiCode: emojiCode,
+                    isHidden: !showPoint
                 )
                 
                 let pointWithId = try await channelPointsRepository.saveChannelPoint(point)
-                mapController.setNewSelectedLocationSteady()
+                mapController.setNewSelectedPointSteady(hidden: !showPoint)
                 
                 self.channel.channelPoints.append(pointWithId)
+                Haptic.perform(.success)
+                
+                clearCurrentPointData()
             } catch {
                 print("🔴", error)
+                Haptic.perform(.error)
             }
             
             showAddPointView = false
@@ -98,7 +118,7 @@ import Factory
     }
     
     func newPointCanceled() {
-        mapController.removeNewSelectedLocation()
+        mapController.removeNewSelectedPoint()
         showAddPointView = false
     }
     

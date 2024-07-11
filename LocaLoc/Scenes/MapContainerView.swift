@@ -79,7 +79,13 @@ struct MapContainerView: View {
         }
         .popup(isPresented: $viewModel.showAddPointView ) {
             if let selectedCoordinates = viewModel.selectedCoordinates {
-                PointAddView(coordinates: selectedCoordinates, 
+                PointAddView(coordinates: selectedCoordinates,
+                             addressString: $viewModel.addressString,
+                             description: $viewModel.description,
+                             showPoint: $viewModel.showPoint,
+                             lifetime: $viewModel.lifetime,
+                             emojiCode: $viewModel.emojiCode,
+                             heading: $viewModel.heading,
                              isApproveButtonLoading: $viewModel.pointCreationRequestInProgress) {
                     self.viewModel.newPointApproved()
                 } onClose: {
@@ -92,6 +98,7 @@ struct MapContainerView: View {
                 .appearFrom(.bottomSlide)
                 .isOpaque(false)
                 .closeOnTap(false)
+                .useKeyboardSafeArea(true)
         }
         .onAppear {
             if !isPointsAdded {

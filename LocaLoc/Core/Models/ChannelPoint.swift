@@ -12,7 +12,7 @@ import Foundation
         lhs.id == rhs.id
     }
     
-    public init(id: String, channelId: String, latitude: Double, longitude: Double, address: String, description: String, creatorId: String, createdAt: Date, updatedAt: Date, heading: Double, lifeTime: Int?, emojiCode: String?, isHidden: Bool) {
+    public init(id: String, channelId: String, latitude: Double, longitude: Double, address: String, description: String, creatorId: String, createdAt: Date, updatedAt: Date, heading: Double?, lifeTime: Int?, emojiCode: String?, isHidden: Bool) {
         self.id = id
         self.channelId = channelId
         self.latitude = latitude
@@ -37,7 +37,7 @@ import Foundation
     let creatorId: String
     let createdAt: Date
     let updatedAt: Date
-    var heading: Double
+    var heading: Double?
     var lifeTime: Int?
     var emojiCode: String?
     var isHidden: Bool

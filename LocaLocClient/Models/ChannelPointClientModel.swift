@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ChannelPointClientModel: Codable {
-    public init(channelId: String, latitude: Double, longitude: Double, address: String, description: String, creatorId: String, createdAt: Date, updatedAt: Date, heading: Double, lifeTime: Int?, emojiCode: String?, isHidden: Bool) {
+    public init(channelId: String, latitude: Double, longitude: Double, address: String, description: String, creatorId: String, createdAt: Date, updatedAt: Date, heading: Double?, lifeTime: Int?, emojiCode: String?, isHidden: Bool) {
         self.channelId = channelId
         self.latitude = latitude
         self.longitude = longitude
@@ -31,7 +31,7 @@ public struct ChannelPointClientModel: Codable {
     public let creatorId: String
     public let createdAt: Date
     public let updatedAt: Date
-    public let heading: Double
+    public let heading: Double?
     public let lifeTime: Int?
     public let emojiCode: String?
     public let isHidden: Bool
