@@ -112,6 +112,7 @@ import Factory
 // MARK: - MapControllerDelegate
 extension MapContainerViewModel: MapControllerDelegate {
     func didAddNewMarker(coordinates: Coordinates) {
+        Haptic.perform()
         selectedCoordinates = coordinates
         showAddPointView = true
     }
