@@ -91,6 +91,7 @@
 		0459F7F12C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */; };
 		0459F7F52C3E90E700B48A6D /* ChannelPointsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */; };
 		0459F7F72C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */; };
+		0459F7F92C3F06C800B48A6D /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F82C3F06C800B48A6D /* Haptic.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -286,6 +287,7 @@
 		0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUserSettingsPersistencyModel.swift; sourceTree = "<group>"; };
 		0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointsRepository.swift; sourceTree = "<group>"; };
 		0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelPointsDataRepository+ChannelPointsRepository.swift"; sourceTree = "<group>"; };
+		0459F7F82C3F06C800B48A6D /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -735,6 +737,7 @@
 			children = (
 				047ECA2D2BFB83B90065837C /* Color.swift */,
 				04D3DDE42C090C99002FF3DC /* CustomError.swift */,
+				0459F7F82C3F06C800B48A6D /* Haptic.swift */,
 				047ECA1D2BFA925F0065837C /* SceneComposer.swift */,
 				047ECA272BFB81F00065837C /* TabScene.swift */,
 				047ECA292BFB82000065837C /* TabSceneType.swift */,
@@ -1228,6 +1231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0459F7F92C3F06C800B48A6D /* Haptic.swift in Sources */,
 				0438C4A92C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift in Sources */,
 				0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */,
 				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,

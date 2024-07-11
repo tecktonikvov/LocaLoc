@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MapContainerView: View {
-    //  @Binding var markers: [GMSMarker]
-    //  @Binding var selectedMarker: GMSMarker?
     @Environment(\.dismiss) var dismiss
 
     @State private var viewModel: MapContainerViewModel
@@ -81,15 +79,11 @@ struct MapContainerView: View {
         }
         .popup(isPresented: $viewModel.showAddPointView ) {
             if let selectedCoordinates = viewModel.selectedCoordinates {
-                PointAddView(coordinates: selectedCoordinates) {
-                    Task { @MainActor in
-                        try await self.viewModel.newPointApproved()
-                        self.viewModel.showAddPointView = false
-                    }
-                   
+                PointAddView(coordinates: selectedCoordinates, 
+                             isApproveButtonLoading: $viewModel.pointCreationRequestInProgress) {
+                    self.viewModel.newPointApproved()
                 } onClose: {
                     self.viewModel.newPointCanceled()
-                    self.viewModel.showAddPointView = false
                 }
             }
         } customize: {

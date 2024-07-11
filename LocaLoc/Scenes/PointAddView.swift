@@ -12,9 +12,10 @@ import K_Logger
 struct PointAddView: View {
     @Injected(\.addressProvider) private var addressProvider
     
-    @State var addressString = ""
-    @State var isLoading = true
-    
+    @State private var addressString = ""
+    @State private var isLoading = true
+    @Binding private var isApproveButtonLoading: Bool
+
     private let coordinates: Coordinates
     
     // MARK: - Output
@@ -22,8 +23,9 @@ struct PointAddView: View {
     var onClose: () -> Void
 
     // MARK: - Init
-    init(coordinates: Coordinates, onCreateApproved: @escaping () -> Void, onClose: @escaping () -> Void) {
+    init(coordinates: Coordinates, isApproveButtonLoading: Binding<Bool>, onCreateApproved: @escaping () -> Void, onClose: @escaping () -> Void) {
         self.coordinates = coordinates
+        self._isApproveButtonLoading = isApproveButtonLoading
         self.onClose = onClose
         self.onCreateApproved = onCreateApproved
     }
@@ -45,6 +47,7 @@ struct PointAddView: View {
                             .foregroundStyle(Color.Text.main)
                     }
                     .padding(.trailing, 4)
+                    .disabled(isApproveButtonLoading)
                 }
                 
                 Text(addressString)
@@ -62,8 +65,13 @@ struct PointAddView: View {
                         onCreateApproved()
                     } label: {
                         Spacer()
-                        Text("Create")
-                            .foregroundColor(Color.Extra.taupe)
+                        if isApproveButtonLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        } else {
+                            Text("Create")
+                                .foregroundColor(Color.Extra.taupe)
+                        }
                         Spacer()
                     }
                     .padding()
@@ -71,6 +79,7 @@ struct PointAddView: View {
                         .fill(Color.brand)
                     )
                     .padding(.bottom)
+                    .disabled(isApproveButtonLoading)
                 }
             }
             .frame(maxWidth: .infinity)
