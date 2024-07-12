@@ -75,7 +75,7 @@ fileprivate extension Date {
         switch daysAgo {
         case 0:
             dateFormatter.dateFormat = "HH:mm"
-        case 1...7:
+        case 1...6:
             dateFormatter.dateFormat = "E"
         default:
             dateFormatter.dateFormat = "MM/dd/yy"

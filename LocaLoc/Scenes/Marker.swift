@@ -7,6 +7,12 @@
 
 import GoogleMaps
 
+struct MarkerConfig {
+    let size: CGSize
+    
+    static let defaultConfig = MarkerConfig(size: CGSize(width: 22, height: 32))
+}
+
 final class Marker: Equatable {
     enum MarkerType {
         case new(hidden: Bool)
@@ -20,14 +26,15 @@ final class Marker: Equatable {
     }
     
     let id: String
-    
+    let config: MarkerConfig
+
     var type: MarkerType {
         didSet {
             setImage(name: type.imageName, marker: gMSMarker)
         }
     }
 
-    private let gMSMarker: GMSMarker
+    let gMSMarker: GMSMarker
     
     var coordinates: Coordinates {
         didSet {
@@ -36,11 +43,12 @@ final class Marker: Equatable {
     }
     
     // MARK: - Init
-    init(id: String, coordinates: Coordinates, type: MarkerType) {
+    init(id: String, coordinates: Coordinates, type: MarkerType, config: MarkerConfig = .defaultConfig) {
         self.id = id
         self.type = type
+        self.config = config
         self.coordinates = coordinates
-        
+
         let marker = GMSMarker(position: coordinates.as2DCoordinates)
         marker.appearAnimation = .pop
         
@@ -52,7 +60,7 @@ final class Marker: Equatable {
     // MARK: - Private
     private func setImage(name: String, marker: GMSMarker) {
         marker.icon = UIImage(named: name)
-        marker.setIconSize(scaledToSize: CGSize(width: 22, height: 32))
+        marker.setIconSize(scaledToSize: CGSize(width: config.size.width, height: config.size.height))
     }
     
     // MARK: - Public

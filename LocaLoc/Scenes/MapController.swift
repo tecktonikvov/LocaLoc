@@ -5,10 +5,13 @@
 //  Created by Volodymyr Kotsiubenko on 5/7/24.
 //
 
+import SwiftUI
 import GoogleMaps
 
 protocol MapControllerDelegate: AnyObject {
     func didAddNewMarker(coordinates: Coordinates)
+    func didTapOnMarker(withId pointId: String, markerViewFrame: CGRect)
+    func didChangeCameraPosition()
 }
 
 final class MapController: NSObject {
@@ -64,6 +67,10 @@ final class MapController: NSObject {
         )
         
         mapView.animate(to: camera)
+    }
+    
+    private func markerModel(forGMSMarker GMSMarker: GMSMarker) -> Marker? {
+        markers.first(where: { $0.gMSMarker == GMSMarker })
     }
     
     // MARK: - Public
@@ -129,6 +136,31 @@ extension MapController: GMSMapViewDelegate {
         self.newSelectedMarker = newSelectedMarker
         
         delegate?.didAddNewMarker(coordinates: newSelectedMarker.coordinates)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let markerModel = markerModel(forGMSMarker: marker) else {
+            return true
+        }
+        
+        mapView.selectedMarker = marker
+
+        let point = mapView.projection.point(for: marker.position)
+        
+        let markerViewFrame = CGRect(
+            x: point.x - markerModel.config.size.width * 0.5, // For some reason it returns wrong value
+            y: point.y,
+            width: markerModel.config.size.width,
+            height: markerModel.config.size.height
+        )
+        
+        delegate?.didTapOnMarker(withId: markerModel.id, markerViewFrame: markerViewFrame)
+        
+        return true
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        delegate?.didChangeCameraPosition()
     }
 }
 

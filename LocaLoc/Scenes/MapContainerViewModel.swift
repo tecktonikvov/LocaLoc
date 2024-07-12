@@ -8,6 +8,11 @@
 import Foundation
 import Factory
 
+struct SelectedPointData: Equatable {
+    let point: ChannelPoint
+    let markerFrame: CGRect
+}
+
 @Observable final class MapContainerViewModel {
     @ObservationIgnored
     private(set) var mapView: MapViewController
@@ -36,8 +41,14 @@ import Factory
     var lifetime: Int? // Not implemented
     var emojiCode: String? // Not implemented
     var heading: Double? // Not implemented
+    
+    private(set) var selectedPointData: SelectedPointData?
 
     private(set) var channel: Channel
+    
+    var mapTopSafeAreaInset: CGFloat {
+        mapController.mapView.safeAreaInsets.top
+    }
 
     // MARK: - Init
     init(channel: Channel) {
@@ -52,6 +63,7 @@ import Factory
         try? channelPointsRepository.reload(with: channel)
         
         mapController.delegate = self
+      //  mapController.mapMarkerInfoViewDataProvider = self
     }
     
     // MARK: - Private
@@ -147,6 +159,25 @@ import Factory
 
 // MARK: - MapControllerDelegate
 extension MapContainerViewModel: MapControllerDelegate {
+    func didTapOnMarker(withId pointId: String, markerViewFrame: CGRect) {
+        if self.selectedPointData != nil {
+            self.selectedPointData = nil
+        }
+        
+        DispatchQueue.main.async {
+            guard let selectedPoint = self.channelPointsRepository.points.first(where: { $0.id == pointId }) else {
+                return
+            }
+            
+            self.selectedPointData = SelectedPointData(point: selectedPoint, markerFrame: markerViewFrame)
+        }
+    }
+    
+    func didChangeCameraPosition() {
+        guard selectedPointData != nil else { return }
+        self.selectedPointData = nil
+    }
+    
     func didAddNewMarker(coordinates: Coordinates) {
         Haptic.perform()
         selectedCoordinates = coordinates

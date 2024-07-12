@@ -10,46 +10,44 @@ import SwiftUI
 struct ChannelCreationView: View {
     @Bindable private var viewModel: ChannelCreationViewModel
     @Environment(\.dismiss) var dismiss
-
+    
     // MARK: - Init
     init(viewModel: ChannelCreationViewModel) {
         self.viewModel = viewModel
     }
-
+    
     var body: some View {
-        NavigationView {
-            List {
-                Section("Main information") {
-                    ImagePickerView(viewModel: viewModel)
-                    
-                    TextEditorWithPlaceholder(
-                        text: $viewModel.name.max(Constants.channelNameCharactersLimit),
-                        placeholder: "Name")
-                    
-                    TextEditorWithPlaceholder(
-                        text: $viewModel.description.max(Constants.channelDescriptionCharactersLimit),
-                        placeholder: "Description")
-                    
-                    HStack(alignment: .top) {
-                        Text("@")
-                            .opacity(0.6)
-                        
-                        LimitedTextField(
-                            max: Constants.channelIdentifierMaxCharactersLimit,
-                            min: Constants.channelIdentifierMinCharactersLimit,
-                            title: "Identifier",
-                            output: $viewModel.identifier)
-                        .padding(.leading, -4)
-                    }
-                }
+        List {
+            Section("Main information") {
+                ImagePickerView(viewModel: viewModel)
                 
-                Section("Settings") {
-                    ChannelSettingsView(viewModel: viewModel)
+                TextEditorWithPlaceholder(
+                    text: $viewModel.name.max(Constants.channelNameCharactersLimit),
+                    placeholder: "Name")
+                
+                TextEditorWithPlaceholder(
+                    text: $viewModel.description.max(Constants.channelDescriptionCharactersLimit),
+                    placeholder: "Description")
+                
+                HStack(alignment: .top) {
+                    Text("@")
+                        .opacity(0.6)
+                    
+                    LimitedTextField(
+                        max: Constants.channelIdentifierMaxCharactersLimit,
+                        min: Constants.channelIdentifierMinCharactersLimit,
+                        title: "Identifier",
+                        output: $viewModel.identifier)
+                    .padding(.leading, -4)
                 }
             }
-            .scrollContentBackground(.hidden)
-            .backgroundDefault()
+            
+            Section("Settings") {
+                ChannelSettingsView(viewModel: viewModel)
+            }
         }
+        .scrollContentBackground(.hidden)
+        .backgroundDefault()
         .navigationTitle("Create new channel")
         .toolbarBackground(Color.background, for: .navigationBar)
         .toolbar {
@@ -179,8 +177,8 @@ fileprivate struct ImagePickerView: View {
                 Spacer()
                 if viewModel.isImageSelected {
                     CachedCenteredImage(uiImage: viewModel.image)
-                    .frame(width: 180, height: 180)
-                    .clipShape(Circle())
+                        .frame(width: 180, height: 180)
+                        .clipShape(Circle())
                 } else {
                     Image(systemName: "photo.circle.fill")
                         .resizable()

@@ -17,20 +17,18 @@ struct ProfileEditingView: View {
     @State private var showCamera = false
     @State private var showPhotosPicker = false
     @State private var doesImageWasChanged = false
-        
+    
     init(viewModel: ProfileEditingViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
-        NavigationView {
-            ProfileEditingListView(
-                viewModel: viewModel,
-                doesImageWasChanged: $doesImageWasChanged,
-                showCamera: $showCamera,
-                showPhotosPicker: $showPhotosPicker
-            )
-        }
+        ProfileEditingListView(
+            viewModel: viewModel,
+            doesImageWasChanged: $doesImageWasChanged,
+            showCamera: $showCamera,
+            showPhotosPicker: $showPhotosPicker
+        )
         .navigationTitle("Edit profile")
         .toolbar {
             if viewModel.isLoading {
@@ -76,7 +74,7 @@ fileprivate struct ProfileEditingListView: View {
     @Binding private var doesImageWasChanged: Bool
     @Binding private var showCamera: Bool
     @Binding private var showPhotosPicker: Bool
-
+    
     @State private var showUsernameTipsView = false
     @State private var showPhotoSourceSheet = false
     
@@ -99,8 +97,8 @@ fileprivate struct ProfileEditingListView: View {
                             CachedCenteredImage(
                                 url: URL(string: viewModel.profile.imageUrl),
                                 placeholderImageName: "person.circle.fill")
-                                .frame(width: 80, height: 80)
-                                .clipShape(Circle())
+                            .frame(width: 80, height: 80)
+                            .clipShape(Circle())
                             
                         } else {
                             CachedCenteredImage(uiImage: viewModel.selectedUIImage ?? UIImage())
@@ -237,41 +235,41 @@ fileprivate struct SourceSelector: View {
                 .font(.title)
                 .padding(.vertical)
             
-                Button {
-                    showCamera = true
-                } label: {
-                    ZStack {
-                        HStack {
-                            Image(systemName: "camera")
-                                .font(.system(size: 24))
-                            Spacer()
-                        }
-                        Text("Camera")
+            Button {
+                showCamera = true
+            } label: {
+                ZStack {
+                    HStack {
+                        Image(systemName: "camera")
+                            .font(.system(size: 24))
+                        Spacer()
                     }
-                    .padding()
-                    .background(Color.Extra.isabelline)
+                    Text("Camera")
                 }
-                .cornerRadius(12)
-                .tint(Color.black)
-                .padding(.horizontal)
-                
-                Button {
-                    showGallery = true
-                } label: {
-                    ZStack {
-                        HStack {
-                            Image(systemName: "photo")
-                                .font(.system(size: 24))
-                            Spacer()
-                        }
-                        Text("Gallery")
+                .padding()
+                .background(Color.Extra.isabelline)
+            }
+            .cornerRadius(12)
+            .tint(Color.black)
+            .padding(.horizontal)
+            
+            Button {
+                showGallery = true
+            } label: {
+                ZStack {
+                    HStack {
+                        Image(systemName: "photo")
+                            .font(.system(size: 24))
+                        Spacer()
                     }
-                    .padding()
-                    .background(Color.Extra.isabelline)
+                    Text("Gallery")
                 }
-                .cornerRadius(12)
-                .tint(Color.black)
-                .padding(.horizontal)
+                .padding()
+                .background(Color.Extra.isabelline)
+            }
+            .cornerRadius(12)
+            .tint(Color.black)
+            .padding(.horizontal)
         }
         .padding(.bottom, 40)
         .frame(maxWidth: .infinity)
@@ -285,7 +283,7 @@ fileprivate struct SourceSelector: View {
 //    return ProfileEditingListView(
 //        viewModel: ProfileEditingViewModel(
 //            userDataRepository: previewer.userDataRepository,
-//            usernameManager: previewer.usernameManager, 
+//            usernameManager: previewer.usernameManager,
 //            userPhotoUploader: previewer.userPhotoUploader),
 //        doesImageWasChanged: .constant(false), showCamera: .constant(false), showPhotosPicker: .constant(false))
 //}

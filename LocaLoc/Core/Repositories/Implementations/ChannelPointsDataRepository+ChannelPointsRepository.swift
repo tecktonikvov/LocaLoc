@@ -125,7 +125,8 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
         let pointModelWithId = ChannelPoint(channelPointClientModel: channelPointClientModel, id: pointId)
         let pointLocalStoreModel = ChannelPointPersistencyModel(channelPointModel: pointModelWithId)
         localStorage.addModel(model: pointLocalStoreModel)
-//        channel.channelPoints.append(pointModelWithId)
+        
+        points.append(pointModelWithId)
         
         return pointModelWithId
     }
