@@ -94,6 +94,8 @@
 		0459F7F92C3F06C800B48A6D /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F82C3F06C800B48A6D /* Haptic.swift */; };
 		0459F7FB2C3FF42400B48A6D /* PointInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7FA2C3FF42400B48A6D /* PointInfoView.swift */; };
 		0459F8002C40331C00B48A6D /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7FF2C40331C00B48A6D /* View+Extension.swift */; };
+		0459F80B2C42A2B000B48A6D /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F80A2C42A2B000B48A6D /* MCEmojiPicker */; };
+		0459F80D2C459C3400B48A6D /* MarkerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F80C2C459C3300B48A6D /* MarkerConfig.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
@@ -292,6 +294,7 @@
 		0459F7F82C3F06C800B48A6D /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		0459F7FA2C3FF42400B48A6D /* PointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInfoView.swift; sourceTree = "<group>"; };
 		0459F7FF2C40331C00B48A6D /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		0459F80C2C459C3300B48A6D /* MarkerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerConfig.swift; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040255DB2C2B565B00DC8130 /* PopupView in Frameworks */,
+				0459F80B2C42A2B000B48A6D /* MCEmojiPicker in Frameworks */,
 				0459F7B52C3C773B00B48A6D /* FirebaseAuth in Frameworks */,
 				0459F7BB2C3C773B00B48A6D /* FirebaseStorage in Frameworks */,
 				042B9B1E2C35D7FC00DE7CB0 /* Factory in Frameworks */,
@@ -683,6 +687,7 @@
 			children = (
 				042B9B482C38408200DE7CB0 /* Coordinates.swift */,
 				042B9B4A2C384C1E00DE7CB0 /* Marker.swift */,
+				0459F80C2C459C3300B48A6D /* MarkerConfig.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1002,6 +1007,7 @@
 				0459F7B62C3C773B00B48A6D /* FirebaseCrashlytics */,
 				0459F7B82C3C773B00B48A6D /* FirebaseFirestore */,
 				0459F7BA2C3C773B00B48A6D /* FirebaseStorage */,
+				0459F80A2C42A2B000B48A6D /* MCEmojiPicker */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -1136,6 +1142,7 @@
 				042B9B1A2C35D77400DE7CB0 /* XCRemoteSwiftPackageReference "Factory" */,
 				042B9B302C372C1D00DE7CB0 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				0459F7AC2C3C76EA00B48A6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0459F8092C42A2A300B48A6D /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
 			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
@@ -1252,6 +1259,7 @@
 				0459F7FB2C3FF42400B48A6D /* PointInfoView.swift in Sources */,
 				04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */,
 				0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */,
+				0459F80D2C459C3400B48A6D /* MarkerConfig.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				0459F7EB2C3DB58A00B48A6D /* ChannelPoint.swift in Sources */,
@@ -1986,6 +1994,14 @@
 				minimumVersion = 10.29.0;
 			};
 		};
+		0459F8092C42A2A300B48A6D /* XCRemoteSwiftPackageReference "MCEmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/izyumkin/MCEmojiPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.3;
+			};
+		};
 		04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tecktonikvov/K-Logger";
@@ -2056,6 +2072,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0459F7AC2C3C76EA00B48A6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		0459F80A2C42A2B000B48A6D /* MCEmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0459F8092C42A2A300B48A6D /* XCRemoteSwiftPackageReference "MCEmojiPicker" */;
+			productName = MCEmojiPicker;
 		};
 		04AA61942C0CE45A00AD6D93 /* K-Logger */ = {
 			isa = XCSwiftPackageProductDependency;

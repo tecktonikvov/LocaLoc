@@ -8,6 +8,7 @@
 import SwiftUI
 import Factory
 import K_Logger
+import MCEmojiPicker
 
 struct PointAddView: View {
     enum Field: Hashable {
@@ -23,12 +24,15 @@ struct PointAddView: View {
     @Binding private var description: String
     @Binding private var showPoint: Bool
     @Binding private var lifetime: Int?
-    @Binding private var emojiCode: String?
+    @Binding private var emojiCode: String
     @Binding private var heading: Double?
-
+    @Binding private var selectedPointSingType: SelectedPointSingType
+    
     @Binding private var isApproveButtonLoading: Bool
     
     @FocusState private var focusedField: Field?
+    
+    @State private var isEmojiPickerPresented: Bool = false
 
     private let coordinates: Coordinates
     
@@ -43,8 +47,9 @@ struct PointAddView: View {
         description: Binding<String>,
         showPoint: Binding<Bool>,
         lifetime: Binding<Int?>,
-        emojiCode: Binding<String?>,
+        emojiCode: Binding<String>,
         heading: Binding<Double?>,
+        selectedPointSingType: Binding<SelectedPointSingType>,
         isApproveButtonLoading: Binding<Bool>,
         onCreateApproved: @escaping () -> Void,
         onClose: @escaping () -> Void
@@ -59,6 +64,7 @@ struct PointAddView: View {
         self._lifetime = lifetime
         self._emojiCode = emojiCode
         self._heading = heading
+        self._selectedPointSingType = selectedPointSingType
     }
 
     var body: some View {
@@ -79,6 +85,44 @@ struct PointAddView: View {
                             .foregroundStyle(Color.Text.main)
                     }
                     .padding(.trailing, 4)
+                }
+                
+                HStack {
+                    Text("Point sign")
+                        .font(.title3)
+                    
+                    Spacer()
+                    
+                    Button {
+                        selectedPointSingType = .default
+                    } label: {
+                        Image("marker_default")
+                            .resizable()
+                            .frame(width: 32, height: 48)
+                    }
+                    .padding(8)
+                    .background((selectedPointSingType == .default ? Color.gray : Color.clear))
+                    .cornerRadius(8)
+                    
+                    Button {
+                        selectedPointSingType = .emoji
+                        isEmojiPickerPresented.toggle()
+                    } label: {
+                        ZStack(alignment: .top) {
+                            Image("marker_with_placeholder")
+                                .resizable()
+                                .frame(width: 32, height: 48)
+                            Text(emojiCode)
+                                .font(.system(size: 32))
+                        }
+                    }
+                    .padding(8)
+                    .background((selectedPointSingType == .emoji ? Color.gray : Color.clear))
+                    .cornerRadius(8)
+                    .emojiPicker(
+                        isPresented: $isEmojiPickerPresented,
+                        selectedEmoji: $emojiCode
+                    )
                 }
                 
                 VStack(alignment: .leading, spacing: 16) {
@@ -176,5 +220,37 @@ struct PointAddView: View {
             }
         }
         .disabled(isApproveButtonLoading)
+    }
+}
+
+struct PointEmojiSignView: View {
+    @Binding private var emojiCode: String
+    
+    var alpha: CGFloat = 1
+    var size = CGSize(width: 32, height: 48)
+    var isNew = false
+    
+    init(emojiCode: Binding<String>) {
+        self._emojiCode = emojiCode
+    }
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            Image("marker_with_placeholder")
+                .resizable()
+                .frame(width: size.width, height: size.height)
+            Text(emojiCode)
+                .font(.system(size: size.width))
+            if isNew {
+                HStack {
+                    Spacer()
+                    Image("red_dot")
+                        .resizable()
+                        .frame(width: MarkerConfig.defaultConfig.newMarkerIndicatorSize.width,
+                               height: MarkerConfig.defaultConfig.newMarkerIndicatorSize.height)
+                }
+            }
+        }
+        .opacity(alpha)
     }
 }

@@ -23,3 +23,12 @@ struct SizePreferenceKey: PreferenceKey {
   static var defaultValue: CGSize = .zero
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }
+
+extension View {
+    @MainActor
+    func snapshot(scale: CGFloat? = nil) -> UIImage? {
+        let renderer = ImageRenderer(content: self)
+        renderer.scale = scale ?? UIScreen.main.scale
+        return renderer.uiImage
+    }
+}

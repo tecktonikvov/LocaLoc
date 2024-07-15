@@ -85,9 +85,9 @@ final class MapController: NSObject {
         self.newSelectedMarker = nil
     }
     
-    func setNewSelectedPointSteady(hidden: Bool) {
+    func setNewSelectedPointSteady() {
         guard let newSelectedMarker else { return }
-        newSelectedMarker.type = .new(hidden: hidden)
+        newSelectedMarker.type = .new
         markers.append(newSelectedMarker)
         self.newSelectedMarker = nil
     }
@@ -98,7 +98,9 @@ final class MapController: NSObject {
                 id: $0.id,
                 coordinates: Coordinates(longitude: $0.longitude,
                                          latitude: $0.latitude),
-                type: .viewed(hidden: $0.isHidden)
+                type: .viewed,
+                emojiCode: $0.emojiCode,
+                isHidden: $0.isHidden
             )
         }
         
@@ -129,7 +131,9 @@ extension MapController: GMSMapViewDelegate {
         let newSelectedMarker = Marker(
             id: UUID().uuidString,
             coordinates: coordinates,
-            type: .notApproved
+            type: .notApproved, 
+            emojiCode: nil, 
+            isHidden: false
         )
         
         newSelectedMarker.addMarker(on: mapView)
@@ -148,10 +152,10 @@ extension MapController: GMSMapViewDelegate {
         let point = mapView.projection.point(for: marker.position)
         
         let markerViewFrame = CGRect(
-            x: point.x - markerModel.config.size.width * 0.5, // For some reason it returns wrong value
+            x: point.x - markerModel.config.markerSize.width * 0.5, // For some reason it returns wrong value
             y: point.y,
-            width: markerModel.config.size.width,
-            height: markerModel.config.size.height
+            width: markerModel.config.markerSize.width,
+            height: markerModel.config.markerSize.height
         )
         
         delegate?.didTapOnMarker(withId: markerModel.id, markerViewFrame: markerViewFrame)

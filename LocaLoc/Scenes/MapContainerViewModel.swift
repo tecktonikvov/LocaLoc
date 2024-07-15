@@ -13,6 +13,11 @@ struct SelectedPointData: Equatable {
     let markerFrame: CGRect
 }
 
+enum SelectedPointSingType {
+    case `default`
+    case emoji
+}
+
 @Observable final class MapContainerViewModel {
     @ObservationIgnored
     private(set) var mapView: MapViewController
@@ -39,8 +44,9 @@ struct SelectedPointData: Equatable {
     var description: String = ""
     var addressString: String = ""
     var lifetime: Int? // Not implemented
-    var emojiCode: String? // Not implemented
+    var emojiCode: String = "😀"
     var heading: Double? // Not implemented
+    var selectedPointSingType: SelectedPointSingType = .default
     
     private(set) var selectedPointData: SelectedPointData?
 
@@ -63,7 +69,6 @@ struct SelectedPointData: Equatable {
         try? channelPointsRepository.reload(with: channel)
         
         mapController.delegate = self
-      //  mapController.mapMarkerInfoViewDataProvider = self
     }
     
     // MARK: - Private
@@ -71,9 +76,10 @@ struct SelectedPointData: Equatable {
         description = ""
         addressString = ""
         lifetime = nil
-        emojiCode = nil
+        emojiCode = "😀"
         heading = nil
         showPoint = false
+        selectedPointSingType = .default
     }
 
     // MARK: - Public
@@ -92,8 +98,12 @@ struct SelectedPointData: Equatable {
     func newPointApproved() {
         Task { @MainActor in
             guard let newSelectedMarker = mapController.newSelectedMarker else { return }
-            
+            let emojiCode = selectedPointSingType == .emoji ? emojiCode : nil
+
             pointCreationRequestInProgress = true
+
+            newSelectedMarker.emojiCode = emojiCode
+            newSelectedMarker.isHidden = !showPoint
 
             do {
                 let point = ChannelPoint(
@@ -113,7 +123,7 @@ struct SelectedPointData: Equatable {
                 )
                 
                 let pointWithId = try await channelPointsRepository.saveChannelPoint(point)
-                mapController.setNewSelectedPointSteady(hidden: !showPoint)
+                mapController.setNewSelectedPointSteady()
                 
                 self.channel.channelPoints.append(pointWithId)
                 Haptic.perform(.success)

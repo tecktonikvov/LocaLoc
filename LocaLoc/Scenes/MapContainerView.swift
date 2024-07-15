@@ -112,7 +112,8 @@ struct MapContainerView: View {
                              showPoint: $viewModel.showPoint,
                              lifetime: $viewModel.lifetime,
                              emojiCode: $viewModel.emojiCode,
-                             heading: $viewModel.heading,
+                             heading: $viewModel.heading, 
+                             selectedPointSingType: $viewModel.selectedPointSingType,
                              isApproveButtonLoading: $viewModel.pointCreationRequestInProgress) {
                     self.viewModel.newPointApproved()
                 } onClose: {
