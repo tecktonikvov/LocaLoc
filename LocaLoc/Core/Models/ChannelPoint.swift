@@ -36,7 +36,7 @@ import Foundation
     var description: String
     let creatorId: String
     let createdAt: Date
-    let updatedAt: Date
+    var updatedAt: Date
     var heading: Double?
     var lifeTime: Int?
     var emojiCode: String?

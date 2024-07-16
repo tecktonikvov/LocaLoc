@@ -11,21 +11,45 @@ struct PointInfoView: View {
     private let address: String
     private let description: String
     private let updatedAt: Date
+    private let isEditingAllowed: Bool
     
+    private let onEditButtonTapped: (() -> Void)?
+
     @Binding private var showContent: Bool
     
-    init(address: String, description: String, updatedAt: Date, showContent: Binding<Bool>) {
+    init(address: String, description: String, updatedAt: Date, isEditingAllowed: Bool, showContent: Binding<Bool>, onEditButtonTapped: (() -> Void)?) {
         self.address = address
         self.description = description
         self.updatedAt = updatedAt
+        self.isEditingAllowed = isEditingAllowed
+        self.onEditButtonTapped = onEditButtonTapped
         self._showContent = showContent
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(updatedAt.timeAgo())
-            Text(address)
-            Text(description)
+            
+            if !address.isEmpty {
+                Text(address)
+            }
+            
+            if !description.isEmpty {
+                Text(description)
+            }
+            
+            if isEditingAllowed {
+                HStack {
+                    Spacer()
+                    Button {
+                        onEditButtonTapped?()
+                    } label: {
+                        Text("Edit")
+                            .underline()
+                            .foregroundStyle(Color.Text.main)
+                    }
+                }
+            }
         }
         .padding(8)
         .opacity(showContent ? 1 : 0)

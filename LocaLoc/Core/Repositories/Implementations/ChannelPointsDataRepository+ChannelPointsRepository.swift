@@ -130,4 +130,12 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
         
         return pointModelWithId
     }
+    
+    func updateChannelPoint(_ point: ChannelPoint) async throws {
+        // Update client data
+        let channelPointClientModel = ChannelPointClientModel(channelPointModel: point)
+        try await channelPointsClient.updatePoint(withId: point.id, pointClientModel: channelPointClientModel)
+        
+        try  await synchronizeUserChannelPointsList()
+    }
 }

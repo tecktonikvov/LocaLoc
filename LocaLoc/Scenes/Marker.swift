@@ -18,6 +18,9 @@ final class Marker: Equatable {
     static func == (lhs: Marker, rhs: Marker) -> Bool {
         lhs.id == rhs.id
         && lhs.coordinates == rhs.coordinates
+        && lhs.emojiCode == rhs.emojiCode
+        && lhs.type == rhs.type
+        && lhs.isHidden == rhs.isHidden
     }
     
     let id: String

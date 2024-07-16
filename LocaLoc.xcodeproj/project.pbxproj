@@ -96,11 +96,14 @@
 		0459F8002C40331C00B48A6D /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7FF2C40331C00B48A6D /* View+Extension.swift */; };
 		0459F80B2C42A2B000B48A6D /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 0459F80A2C42A2B000B48A6D /* MCEmojiPicker */; };
 		0459F80D2C459C3400B48A6D /* MarkerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F80C2C459C3300B48A6D /* MarkerConfig.swift */; };
+		0459F80F2C45AB3600B48A6D /* PointEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F80E2C45AB3600B48A6D /* PointEditingView.swift */; };
+		0459F8112C45AB7E00B48A6D /* PointEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F8102C45AB7E00B48A6D /* PointEditingViewModel.swift */; };
 		046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EA22BE917E800BBFF47 /* CoreApp.swift */; };
 		046C3EA72BE917E900BBFF47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 046C3EA62BE917E900BBFF47 /* Assets.xcassets */; };
 		046C3EB42BE917E900BBFF47 /* LocaLocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EB32BE917E900BBFF47 /* LocaLocTests.swift */; };
 		046C3EBE2BE917E900BBFF47 /* LocaLocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBD2BE917E900BBFF47 /* LocaLocUITests.swift */; };
 		046C3EC02BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */; };
+		047A03F62C46BA55000EDA80 /* Prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A03F52C46BA55000EDA80 /* Prefix.swift */; };
 		047ECA0B2BFA85FD0065837C /* AppComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0A2BFA85FD0065837C /* AppComposer.swift */; };
 		047ECA0F2BFA86DB0065837C /* HomeComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA0E2BFA86DB0065837C /* HomeComposer.swift */; };
 		047ECA112BFA88AC0065837C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047ECA102BFA88AC0065837C /* HomeView.swift */; };
@@ -295,6 +298,8 @@
 		0459F7FA2C3FF42400B48A6D /* PointInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInfoView.swift; sourceTree = "<group>"; };
 		0459F7FF2C40331C00B48A6D /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		0459F80C2C459C3300B48A6D /* MarkerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerConfig.swift; sourceTree = "<group>"; };
+		0459F80E2C45AB3600B48A6D /* PointEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEditingView.swift; sourceTree = "<group>"; };
+		0459F8102C45AB7E00B48A6D /* PointEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEditingViewModel.swift; sourceTree = "<group>"; };
 		046C3E9F2BE917E800BBFF47 /* LocaLoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocaLoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046C3EA22BE917E800BBFF47 /* CoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreApp.swift; sourceTree = "<group>"; };
 		046C3EA62BE917E900BBFF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -305,6 +310,7 @@
 		046C3EBF2BE917E900BBFF47 /* LocaLocUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaLocUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		046C3ECC2BE91BDC00BBFF47 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		046C3ECD2BE91C8700BBFF47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		047A03F52C46BA55000EDA80 /* Prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefix.swift; sourceTree = "<group>"; };
 		047ECA0A2BFA85FD0065837C /* AppComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComposer.swift; sourceTree = "<group>"; };
 		047ECA0E2BFA86DB0065837C /* HomeComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComposer.swift; sourceTree = "<group>"; };
 		047ECA102BFA88AC0065837C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -534,6 +540,8 @@
 				0459F7FA2C3FF42400B48A6D /* PointInfoView.swift */,
 				042B9B3F2C37E77900DE7CB0 /* Adaptation */,
 				042B9B3C2C37E71C00DE7CB0 /* Styles */,
+				0459F80E2C45AB3600B48A6D /* PointEditingView.swift */,
+				0459F8102C45AB7E00B48A6D /* PointEditingViewModel.swift */,
 			);
 			name = MapContainer;
 			sourceTree = "<group>";
@@ -652,6 +660,7 @@
 				042B9B542C3BF2BB00DE7CB0 /* Date+Extension.swift */,
 				0459F7DC2C3D915600B48A6D /* Double+Extension.swift */,
 				044D621D2C31C27F00D130FA /* FilesUploadingService+PhotoPreparer.swift */,
+				047A03F52C46BA55000EDA80 /* Prefix.swift */,
 				044D62122C31BEEC00D130FA /* UIImage+Extension.swift */,
 				0459F7FF2C40331C00B48A6D /* View+Extension.swift */,
 			);
@@ -1273,6 +1282,7 @@
 				044D620E2C31BCB500D130FA /* ChannelIdentifierClient+ChannelIdentifierChecker.swift in Sources */,
 				040E4ECC2C02634300056856 /* ChannelCreationViewModel.swift in Sources */,
 				04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */,
+				0459F8112C45AB7E00B48A6D /* PointEditingViewModel.swift in Sources */,
 				044D62222C31C60300D130FA /* Channel.swift in Sources */,
 				0459F7F12C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
@@ -1300,6 +1310,7 @@
 				04D3DDE52C090C99002FF3DC /* CustomError.swift in Sources */,
 				044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */,
 				044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */,
+				047A03F62C46BA55000EDA80 /* Prefix.swift in Sources */,
 				042B9B672C3BFC2C00DE7CB0 /* User+Bridges.swift in Sources */,
 				042B9B472C38403700DE7CB0 /* PointAddView.swift in Sources */,
 				044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */,
@@ -1314,6 +1325,7 @@
 				0459F7EF2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift in Sources */,
 				042B9B432C38312B00DE7CB0 /* AddressProvider.swift in Sources */,
 				042B9B452C383BBD00DE7CB0 /* PointAnimationView.swift in Sources */,
+				0459F80F2C45AB3600B48A6D /* PointEditingView.swift in Sources */,
 				0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */,
 				044D62112C31BEC800D130FA /* Binding+Extension.swift in Sources */,
 				040E4EC52C025FF200056856 /* UserDefaultsKeys.swift in Sources */,

@@ -14,5 +14,6 @@ protocol ChannelPointsRepository {
     @discardableResult func saveChannelPoint(_ point: ChannelPoint) async throws -> ChannelPoint
     func reload(with channel: Channel) throws
     func synchronizeUserChannelPointsList() async throws
+    func updateChannelPoint(_ point: ChannelPoint) async throws
     func cleanPointsList()
 }

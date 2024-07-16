@@ -73,6 +73,27 @@ final class MapController: NSObject {
         markers.first(where: { $0.gMSMarker == GMSMarker })
     }
     
+    private func markersToUpdate(points: [ChannelPoint]) -> [Marker] {
+        var result = [Marker]()
+
+        let newMarkers = points.map {
+            Marker(
+                id: $0.id,
+                coordinates: Coordinates(longitude: $0.longitude,
+                                         latitude: $0.latitude),
+                type: .viewed,
+                emojiCode: $0.emojiCode,
+                isHidden: $0.isHidden
+            )
+        }
+        
+        for marker in newMarkers where !markers.contains(marker) {
+            result.append(marker)
+        }
+        
+        return result
+    }
+    
     // MARK: - Public
     func goToMyLocation() {
         guard let lastUserLocation else { return }
@@ -85,36 +106,58 @@ final class MapController: NSObject {
         self.newSelectedMarker = nil
     }
     
-    func setNewSelectedPointSteady() {
-        guard let newSelectedMarker else { return }
-        newSelectedMarker.type = .new
-        markers.append(newSelectedMarker)
-        self.newSelectedMarker = nil
+    func replaceNewSelectedPoint(by point: ChannelPoint) {
+        removeNewSelectedPoint()
+        
+        let marker = Marker(
+            id: point.id,
+            coordinates: Coordinates(longitude: point.longitude,
+                                     latitude: point.latitude),
+            type: .new,
+            emojiCode: point.emojiCode,
+            isHidden: point.isHidden
+        )
+        
+        marker.addMarker(on: mapView)
+        
+        markers.append(marker)
     }
     
     func addMarkers(forPoints points: [ChannelPoint]) {
-        let markers = points.map {
-            Marker(
-                id: $0.id,
-                coordinates: Coordinates(longitude: $0.longitude,
-                                         latitude: $0.latitude),
-                type: .viewed,
-                emojiCode: $0.emojiCode,
-                isHidden: $0.isHidden
-            )
-        }
-        
-        markers.forEach {
-            if !self.markers.contains($0) {
-                self.markers.append($0)
-                $0.addMarker(on: mapView)
-            }
-        }
+        updateMarkersIfNeeded(points: points)
     }
     
     func clearMarkers() {
         mapView.clear()
         markers.removeAll()
+    }
+    
+    func updateMarkersIfNeeded(points: [ChannelPoint]) {
+        let markersToUpdate = markersToUpdate(points: points)
+        
+        for marker in markersToUpdate {
+            // Remove marker from map
+            let existingMarker = markers.first(where: { $0.id == marker.id })
+            existingMarker?.removeMarkerFromMap()
+            
+            // Remove marker from markers list
+            markers.removeAll(where: { $0.id == marker.id })
+            
+            // Add updated or new marker to markers list
+            markers.append(marker)
+            
+            // Add updated or new marker image to map
+            marker.addMarker(on: self.mapView)
+        }
+    }
+    
+    func focusCamera(on point: ChannelPoint) {
+        let coordinates = Coordinates(
+            longitude: point.longitude,
+            latitude: point.latitude - 0.005 // Add small bottom inset
+        )
+        
+        mapView.animate(toLocation: coordinates.as2DCoordinates)
     }
 }
 

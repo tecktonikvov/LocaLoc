@@ -104,22 +104,18 @@ struct MapContainerView: View {
                 dismiss()
             }
         }
-        .popup(isPresented: $viewModel.showAddPointView ) {
-            if let selectedCoordinates = viewModel.selectedCoordinates {
-                PointAddView(coordinates: selectedCoordinates,
-                             addressString: $viewModel.addressString,
-                             description: $viewModel.description,
-                             showPoint: $viewModel.showPoint,
-                             lifetime: $viewModel.lifetime,
-                             emojiCode: $viewModel.emojiCode,
-                             heading: $viewModel.heading, 
-                             selectedPointSingType: $viewModel.selectedPointSingType,
-                             isApproveButtonLoading: $viewModel.pointCreationRequestInProgress) {
-                    self.viewModel.newPointApproved()
-                } onClose: {
-                    self.viewModel.newPointCanceled()
-                }
-            }
+        .popup(isPresented: $viewModel.showPointEditingView) {
+            pointEditingView()
+        } customize: {
+            $0
+                .type(.toast)
+                .appearFrom(.bottomSlide)
+                .isOpaque(false)
+                .closeOnTap(false)
+                .useKeyboardSafeArea(true)
+        }
+        .popup(isPresented: $viewModel.showAddPointView) {
+            pointAddView()
         } customize: {
             $0
                 .type(.toast)
@@ -154,8 +150,11 @@ struct MapContainerView: View {
                 address: point.address,
                 description: point.description,
                 updatedAt: point.updatedAt,
+                isEditingAllowed: viewModel.isEditingAllowed(),
                 showContent: $showPointInfoViewContent
-            )
+            ) {
+                viewModel.pointEditButtonTaped()
+            }
             .readSize { size in
                 self.pointInfoViewSize = size
             }
@@ -224,6 +223,32 @@ struct MapContainerView: View {
             return CGPoint(x: -contentSize.width * 0.5, y: contentSize.height * 0.5 - markerFrame.height)
         case .right:
             return CGPoint(x: contentSize.width * 0.5, y: contentSize.height * 0.5 - markerFrame.height)
+        }
+    }
+    
+    @ViewBuilder
+    private func pointAddView() -> some View {
+        if let selectedCoordinates = viewModel.selectedCoordinates {
+            PointAddView(coordinates: selectedCoordinates,
+                         addressString: $viewModel.addressString,
+                         description: $viewModel.description,
+                         showPoint: $viewModel.showPoint,
+                         lifetime: $viewModel.lifetime,
+                         emojiCode: $viewModel.emojiCode,
+                         heading: $viewModel.heading,
+                         selectedPointSingType: $viewModel.selectedPointSingType,
+                         isApproveButtonLoading: $viewModel.pointCreationRequestInProgress) {
+                self.viewModel.newPointApproved()
+            } onClose: {
+                self.viewModel.newPointCanceled()
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func pointEditingView() -> some View {
+        if let pointEditingViewModel = viewModel.pointEditingViewModel {
+            PointEditingView(viewModel: pointEditingViewModel)
         }
     }
 }

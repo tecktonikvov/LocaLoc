@@ -36,6 +36,7 @@ enum SelectedPointSingType {
     
     var dismiss = false
     var showAddPointView = false
+    var showPointEditingView = false
     var showSynchronizationIndicator = false
     var pointCreationRequestInProgress = false
     
@@ -49,8 +50,11 @@ enum SelectedPointSingType {
     var selectedPointSingType: SelectedPointSingType = .default
     
     private(set) var selectedPointData: SelectedPointData?
+    private(set) var pointEditingViewModel: PointEditingViewModel?
 
     private(set) var channel: Channel
+    
+    private var currentUserId: String = ""
     
     var mapTopSafeAreaInset: CGFloat {
         mapController.mapView.safeAreaInsets.top
@@ -69,6 +73,10 @@ enum SelectedPointSingType {
         try? channelPointsRepository.reload(with: channel)
         
         mapController.delegate = self
+        
+        Task {
+            currentUserId = try userIdProvider.userId()
+        }
     }
     
     // MARK: - Private
@@ -80,6 +88,28 @@ enum SelectedPointSingType {
         heading = nil
         showPoint = false
         selectedPointSingType = .default
+    }
+    
+    private func makePointEditingViewModel(for point: ChannelPoint) -> PointEditingViewModel {
+        let viewModel = PointEditingViewModel(
+            channelPoint: point,
+            channelPointsRepository: channelPointsRepository
+        )
+        
+        viewModel.onClose = { [weak self] in
+            self?.removePointEditingViewModel()
+            self?.showPointEditingView = false
+        }
+        
+        viewModel.onSuccess = { [weak self] in
+            guard let self else { return }
+            
+            let updatedPoints = channelPointsRepository.points
+            mapController.updateMarkersIfNeeded(points: updatedPoints)
+            showPointEditingView = false
+        }
+        
+        return viewModel
     }
 
     // MARK: - Public
@@ -113,7 +143,7 @@ enum SelectedPointSingType {
                     longitude: newSelectedMarker.coordinates.longitude,
                     address: addressString,
                     description: description,
-                    creatorId: try userIdProvider.userId(),
+                    creatorId: currentUserId,
                     createdAt: Date.timeZoneIndependentCurrentDate,
                     updatedAt: Date.timeZoneIndependentCurrentDate,
                     heading: heading,
@@ -123,7 +153,7 @@ enum SelectedPointSingType {
                 )
                 
                 let pointWithId = try await channelPointsRepository.saveChannelPoint(point)
-                mapController.setNewSelectedPointSteady()
+                mapController.replaceNewSelectedPoint(by: pointWithId)
                 
                 self.channel.channelPoints.append(pointWithId)
                 Haptic.perform(.success)
@@ -147,6 +177,27 @@ enum SelectedPointSingType {
     func addChannelPoints() {
         let points = channelPointsRepository.points
         mapController.addMarkers(forPoints: points)
+    }
+    
+    func pointEditButtonTaped() {
+        guard let point = selectedPointData?.point else { return }
+        
+        self.pointEditingViewModel = makePointEditingViewModel(for: point)
+                
+        showPointEditingView = true
+        
+        mapController.focusCamera(on: point)
+    }
+    
+    func removePointEditingViewModel() {
+        self.pointEditingViewModel = nil
+    }
+    
+    func isEditingAllowed() -> Bool {
+        guard !currentUserId.isEmpty && !channel.ownerId.isEmpty else {
+            return false
+        }
+        return currentUserId == channel.ownerId
     }
     
     // MARK: - Public
