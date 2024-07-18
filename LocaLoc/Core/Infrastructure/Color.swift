@@ -15,6 +15,8 @@ extension Color {
     static let backgroundGradientTop = Color("background_gradient_top")
     static let backgroundGradientBottom = Color("background_gradient_bottom")
     
+    static let mapBackground = Color("map_background")
+
     static let brand = Color("brand")
 
     struct Text {

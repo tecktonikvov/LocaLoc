@@ -94,10 +94,12 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
         let predicate = #Predicate<ChannelPointPersistencyModel> { $0.channelId == channelId }
         let descriptor = FetchDescriptor<ChannelPointPersistencyModel>(predicate: predicate)
         try localStorage.deleteAll(model: ChannelPointPersistencyModel.self, descriptor: descriptor)
+        Log.info("Cached channel points deleted", module: "ChannelPointsDataRepository")
         
         // Add actual models
         let channelPointsLocalStoreModels = try await points(ids: pointsIds)
-        
+        Log.info("Initialized new channel points models", module: "ChannelPointsDataRepository")
+
         for channelPointLocalStoreModel in channelPointsLocalStoreModels {
             localStorage.addModel(model: channelPointLocalStoreModel)
         }

@@ -17,6 +17,7 @@ protocol MapControllerDelegate: AnyObject {
 final class MapController: NSObject {
     lazy var mapView: GMSMapView = {
         let options = GMSMapViewOptions()
+        options.backgroundColor = UIColor(Color.mapBackground)
         let view = GMSMapView(options: options)
         view.isMyLocationEnabled = true
         view.settings.tiltGestures = false
@@ -152,12 +153,13 @@ final class MapController: NSObject {
     }
     
     func focusCamera(on point: ChannelPoint) {
-        let coordinates = Coordinates(
+        let cameraPosition = GMSCameraPosition(
+            latitude: point.latitude - 0.0015, // Add small bottom inset
             longitude: point.longitude,
-            latitude: point.latitude - 0.005 // Add small bottom inset
+            zoom: 17
         )
         
-        mapView.animate(toLocation: coordinates.as2DCoordinates)
+        mapView.animate(to: cameraPosition)
     }
 }
 
