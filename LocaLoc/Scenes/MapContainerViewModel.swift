@@ -102,14 +102,27 @@ enum SelectedPointSingType {
         }
         
         viewModel.onSuccess = { [weak self] in
-            guard let self else { return }
-            
-            let updatedPoints = channelPointsRepository.points
-            mapController.updateMarkersIfNeeded(points: updatedPoints)
-            showPointEditingView = false
+            self?.updateMarkersOnMap()
+            self?.showPointEditingView = false
+        }
+        
+        viewModel.onDeleted = { [weak self] in
+            self?.updateMarkersOnMap()
+            self?.clearSelectedPoint()
+            self?.showPointEditingView = false
         }
         
         return viewModel
+    }
+    
+    private func clearSelectedPoint() {
+        guard selectedPointData != nil else { return }
+        self.selectedPointData = nil
+    }
+    
+    private func updateMarkersOnMap() {
+        let updatedPoints = channelPointsRepository.points
+        mapController.updateMarkersIfNeeded(points: updatedPoints)
     }
 
     // MARK: - Public
@@ -235,8 +248,7 @@ extension MapContainerViewModel: MapControllerDelegate {
     }
     
     func didChangeCameraPosition() {
-        guard selectedPointData != nil else { return }
-        self.selectedPointData = nil
+        clearSelectedPoint()
     }
     
     func didAddNewMarker(coordinates: Coordinates) {

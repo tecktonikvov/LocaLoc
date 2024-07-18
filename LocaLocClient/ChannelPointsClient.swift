@@ -44,4 +44,8 @@ public final class ChannelPointsClient {
         
         return documents.map { $0.documentID }
     }
+    
+    public func delete(pointWithId id: String) async throws {
+        try await client.delete(documentId: id, collectionName: channelsPointsCollection)
+    }
 }

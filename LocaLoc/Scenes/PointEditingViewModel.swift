@@ -10,18 +10,21 @@ import K_Logger
 
 @Observable final class PointEditingViewModel {
     private(set) var isApproveButtonLoading: Bool = false
-    
+    private(set) var isDeleteButtonLoading: Bool = false
+
     var channelPoint: ChannelPoint
     
     var selectedEmojiCode: String
     var selectedPointSingType: SelectedPointSingType
-    
+    var showDeletePointModal: Bool = false
+
     @ObservationIgnored
     private let channelPointsRepository: ChannelPointsDataRepository
     
     // MARK: - Output
     var onSuccess: (() -> Void)?
     var onClose: (() -> Void)?
+    var onDeleted: (() -> Void)?
 
     // MARK: - Init
     init(channelPoint: ChannelPoint, channelPointsRepository: ChannelPointsDataRepository) {
@@ -49,6 +52,30 @@ import K_Logger
             
             isApproveButtonLoading = false
         }
+    }
+    
+    func deletePointTapped() {
+        showDeletePointModal = true
+    }
+    
+    func deletePoint() {
+        isDeleteButtonLoading = true
+        
+        Task { @MainActor in
+            do {
+                try await channelPointsRepository.delete(point: channelPoint)
+                showDeletePointModal = false
+                onDeleted?()
+            } catch {
+                Log.error("Channel point deletion error: \(error)", module: "PointEditingViewModel")
+            }
+            
+            isDeleteButtonLoading = false
+        }
+    }
+    
+    func deletePointCanceled() {
+        showDeletePointModal = false
     }
     
     func userTappedCloseButton() {

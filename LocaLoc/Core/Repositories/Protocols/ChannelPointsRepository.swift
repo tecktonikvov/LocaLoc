@@ -15,5 +15,5 @@ protocol ChannelPointsRepository {
     func reload(with channel: Channel) throws
     func synchronizeUserChannelPointsList() async throws
     func updateChannelPoint(_ point: ChannelPoint) async throws
-    func cleanPointsList()
+    func delete(point: ChannelPoint) async throws
 }

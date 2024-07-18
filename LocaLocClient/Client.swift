@@ -33,12 +33,17 @@ public final class Client {
     }
     
     // MARK: - Private
-    private func log(message: String, dictionary: [String: Any]) {
+    private func log(message: String, dictionary: [String: Any]? = nil) {
         Task {
-            let jsonData = (try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)) ?? Data()
-            let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
-            let message = message + "\n" + jsonString
-            Log.info(message, module: "Client")
+            var log = message
+            
+            if let dictionary {
+                let jsonData = (try? JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)) ?? Data()
+                let jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+                log = message + "\n" + jsonString
+            }
+            
+            Log.info(log, module: "Client")
         }
     }
     
@@ -73,6 +78,14 @@ public final class Client {
             .document(documentId)
             .setData(dictionary)
         log(message: "Data saved to collection: \"\(collectionName)\"", dictionary: dictionary)
+    }
+    
+    func delete(documentId: String, collectionName: String) async throws {
+        try await database
+            .collection(collectionName)
+            .document(documentId)
+            .delete()
+        log(message: "Document: \(documentId) deleted from collection: \"\(collectionName)\"")
     }
     
     func updateData(in collectionName: String, for documentId: String, data: [String: Any]) async throws {

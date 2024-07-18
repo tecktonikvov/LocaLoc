@@ -111,13 +111,9 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
     }
     
     func reload(with channel: Channel) throws {
-        cleanPointsList()
+        points = []
         self.channel = channel
         try loadLocalStorePoints()
-    }
-    
-    func cleanPointsList() {
-        points = []
     }
     
     func saveChannelPoint(_ point: ChannelPoint) async throws -> ChannelPoint {
@@ -139,5 +135,10 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
         try await channelPointsClient.updatePoint(withId: point.id, pointClientModel: channelPointClientModel)
         
         try  await synchronizeUserChannelPointsList()
+    }
+    
+    func delete(point: ChannelPoint) async throws {
+        try await channelPointsClient.delete(pointWithId: point.id)
+        try await synchronizeUserChannelPointsList()
     }
 }

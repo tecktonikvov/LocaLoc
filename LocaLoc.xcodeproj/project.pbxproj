@@ -536,12 +536,11 @@
 			children = (
 				042B9B362C372D7000DE7CB0 /* MapContainerView.swift */,
 				042B9B3A2C37D9C600DE7CB0 /* MapContainerViewModel.swift */,
-				042B9B462C38403700DE7CB0 /* PointAddView.swift */,
-				0459F7FA2C3FF42400B48A6D /* PointInfoView.swift */,
 				042B9B3F2C37E77900DE7CB0 /* Adaptation */,
+				04F624162C491022003CCE0F /* PointAddView */,
+				04F624152C49100C003CCE0F /* PointEditingView */,
+				04F624172C49102A003CCE0F /* PointInfoView */,
 				042B9B3C2C37E71C00DE7CB0 /* Styles */,
-				0459F80E2C45AB3600B48A6D /* PointEditingView.swift */,
-				0459F8102C45AB7E00B48A6D /* PointEditingViewModel.swift */,
 			);
 			name = MapContainer;
 			sourceTree = "<group>";
@@ -871,6 +870,31 @@
 				04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		04F624152C49100C003CCE0F /* PointEditingView */ = {
+			isa = PBXGroup;
+			children = (
+				0459F80E2C45AB3600B48A6D /* PointEditingView.swift */,
+				0459F8102C45AB7E00B48A6D /* PointEditingViewModel.swift */,
+			);
+			name = PointEditingView;
+			sourceTree = "<group>";
+		};
+		04F624162C491022003CCE0F /* PointAddView */ = {
+			isa = PBXGroup;
+			children = (
+				042B9B462C38403700DE7CB0 /* PointAddView.swift */,
+			);
+			name = PointAddView;
+			sourceTree = "<group>";
+		};
+		04F624172C49102A003CCE0F /* PointInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				0459F7FA2C3FF42400B48A6D /* PointInfoView.swift */,
+			);
+			name = PointInfoView;
 			sourceTree = "<group>";
 		};
 		04FAE9012C0BB75D00200ADC /* Crashlytics */ = {

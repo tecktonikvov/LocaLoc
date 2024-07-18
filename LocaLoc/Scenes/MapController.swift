@@ -95,6 +95,44 @@ final class MapController: NSObject {
         return result
     }
     
+    private func updateMarkers(_ markers: [Marker]) {
+        for marker in markers {
+            // Remove marker from map
+            let existingMarker = self.markers.first(where: { $0.id == marker.id })
+            existingMarker?.removeMarkerFromMap()
+            
+            // Remove marker from markers list
+            self.markers.removeAll(where: { $0.id == marker.id })
+            
+            // Add updated or new marker to markers list
+            self.markers.append(marker)
+            
+            // Add updated or new marker image to map
+            marker.addMarker(on: self.mapView)
+        }
+    }
+    
+    private func deleteMarkers(_ markers: [Marker]) {
+        for marker in markers {
+            // Remove marker from map
+            let existingMarker = markers.first(where: { $0.id == marker.id })
+            existingMarker?.removeMarkerFromMap()
+            
+            // Remove marker from markers list
+            self.markers.removeAll(where: { $0.id == marker.id })
+        }
+    }
+    
+    private func markersToDelete(points: [ChannelPoint]) -> [Marker] {
+        var result = [Marker]()
+        
+        for marker in markers where !points.contains(where: { $0.id == marker.id }) {
+            result.append(marker)
+        }
+        
+        return result
+    }
+    
     // MARK: - Public
     func goToMyLocation() {
         guard let lastUserLocation else { return }
@@ -125,7 +163,10 @@ final class MapController: NSObject {
     }
     
     func addMarkers(forPoints points: [ChannelPoint]) {
-        updateMarkersIfNeeded(points: points)
+        let markersToUpdate = markersToUpdate(points: points)
+        if !markersToUpdate.isEmpty {
+            updateMarkers(markersToUpdate)
+        }
     }
     
     func clearMarkers() {
@@ -134,21 +175,14 @@ final class MapController: NSObject {
     }
     
     func updateMarkersIfNeeded(points: [ChannelPoint]) {
-        let markersToUpdate = markersToUpdate(points: points)
+        let markersToDelete = markersToDelete(points: points)
+        if !markersToDelete.isEmpty {
+            deleteMarkers(markersToDelete)
+        }
         
-        for marker in markersToUpdate {
-            // Remove marker from map
-            let existingMarker = markers.first(where: { $0.id == marker.id })
-            existingMarker?.removeMarkerFromMap()
-            
-            // Remove marker from markers list
-            markers.removeAll(where: { $0.id == marker.id })
-            
-            // Add updated or new marker to markers list
-            markers.append(marker)
-            
-            // Add updated or new marker image to map
-            marker.addMarker(on: self.mapView)
+        let markersToUpdate = markersToUpdate(points: points)
+        if !markersToUpdate.isEmpty {
+            updateMarkers(markersToUpdate)
         }
     }
     

@@ -129,24 +129,42 @@ struct PointEditingView: View {
                         .tint(Color.brand)
                 }
                 
-                Button {
-                    focusedField = nil
-                    viewModel.updatePoint()
-                } label: {
-                    Spacer()
-                    if viewModel.isApproveButtonLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .black))
-                    } else {
-                        Text("Save")
-                            .foregroundColor(Color.Extra.taupe)
+                HStack(spacing: 16) {
+                    Button {
+                        focusedField = nil
+                        viewModel.deletePointTapped()
+                    } label: {
+                        Spacer()
+                        if viewModel.isDeleteButtonLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        } else {
+                            Text("Delete")
+                                .foregroundColor(Color.Text.attention)
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    .padding()
+                    
+                    Button {
+                        focusedField = nil
+                        viewModel.updatePoint()
+                    } label: {
+                        Spacer()
+                        if viewModel.isApproveButtonLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                        } else {
+                            Text("Save")
+                                .foregroundColor(Color.Extra.taupe)
+                        }
+                        Spacer()
+                    }
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(Color.brand)
+                    )
                 }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color.brand)
-                )
                 .padding(.bottom)
             }
             .frame(maxWidth: .infinity)
@@ -156,5 +174,72 @@ struct PointEditingView: View {
             )
         }
         .disabled(viewModel.isApproveButtonLoading)
+        .popup(isPresented: $viewModel.showDeletePointModal) {
+            deletingConfirmationView()
+        } customize: {
+            $0
+                .appearFrom(.centerScale)
+                .isOpaque(true)
+                .closeOnTap(false)
+                .backgroundColor(Color.black.opacity(0.5))
+        }
+    }
+    
+    // MARK: - Private
+    @ViewBuilder
+    private func deletingConfirmationView() -> some View {
+        VStack(spacing: 16) {
+            Text("Delete Point")
+                .font(.title)
+            
+            Text("Are you sure you want to delete this point?\nThis action cannot be undone.")
+                .multilineTextAlignment(.center)
+            
+            HStack(spacing: 16) {
+                Button {
+                    viewModel.deletePoint()
+                } label: {
+                    Spacer()
+                    if viewModel.isDeleteButtonLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                    } else {
+                        Text("Delete")
+                            .foregroundColor(Color.Text.attention)
+                            .fontWeight(.semibold)
+                    }
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.Extra.isabelline)
+                )
+                
+                Button {
+                    viewModel.deletePointCanceled()
+                } label: {
+                    Spacer()
+                    if viewModel.isApproveButtonLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                    } else {
+                        Text("Cancel")
+                            .foregroundColor(Color.Extra.taupe)
+                    }
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.brand)
+                )
+            }
+            .padding(.bottom)
+        }
+        .padding()
+        .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+            .fill(Color.background)
+        )
+        .padding(.horizontal)
+        .disabled(viewModel.isDeleteButtonLoading)
     }
 }
