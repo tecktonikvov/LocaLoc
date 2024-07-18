@@ -11,8 +11,9 @@ public final class ChannelsClient {
     private let client: Client
     private let channelsCollection = CollectionsKeys.channelsCollection
     private let channelsParticipantsCollection = CollectionsKeys.channelsParticipants
-    private let channelsParticipantsModelIdFieldName = "id"
-    
+    private let channelsParticipantsModelUserIdFieldName = "userId"
+    private let channelsParticipantsModelChannelIdFieldName = "channelId"
+
     // MARK: - Init
     public init() {
         self.client = Client.shared
@@ -35,21 +36,23 @@ public final class ChannelsClient {
             data: channelClientModel)
     }
     
-    public func createChannelParticipantsList(channelId: String, owner: ChannelParticipantClientModel) async throws {
-        try await client.setData(
-            documentId: channelId,
+    public func createChannelParticipant(channelParticipantClientModel: ChannelParticipantClientModel) async throws {
+        let _ = try await client.setData(
             collectionName: channelsParticipantsCollection,
-            data: owner)
+            data: channelParticipantClientModel
+        )
     }
     
     public func userChannelsIds(userId: String) async throws -> [String] {
-        let filter: Filter = .whereField(channelsParticipantsModelIdFieldName, isEqualTo: userId)
+        let filter: Filter = .whereField(channelsParticipantsModelUserIdFieldName, isEqualTo: userId)
         
         let documents = try await client.documents(
             filter: filter,
             collectionName: channelsParticipantsCollection
         )
         
-        return documents.map { $0.documentID }
+        return documents.compactMap {
+            $0.data()[channelsParticipantsModelChannelIdFieldName] as? String
+        }
     }
 }

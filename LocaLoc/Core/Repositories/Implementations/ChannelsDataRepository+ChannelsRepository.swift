@@ -125,21 +125,22 @@ enum ChannelsDataRepositoryError: Error {
         .first
     }
     
-    private func createChannelParticipantsList(channel: Channel) async throws {
+    private func addOwnerToChannelParticipantsList(channel: Channel) async throws {
         let ownerModel = ChannelParticipantClientModel(
-            id: channel.ownerId,
+            userId: channel.ownerId,
+            channelId: channel.id,
             createdAt: Date.timeZoneIndependentCurrentDate,
             updatedAt: Date.timeZoneIndependentCurrentDate
         )
         
-        try await channelsClient.createChannelParticipantsList(channelId: channel.id, owner: ownerModel)
+        try await channelsClient.createChannelParticipant(channelParticipantClientModel: ownerModel)
     }
     
     private func createAndSaveChannel(_ channel: Channel) async throws -> Channel {
         let channelClientId = try await saveChannelToClient(channel)
         channel.id = channelClientId
         
-        try await createChannelParticipantsList(channel: channel)
+        try await addOwnerToChannelParticipantsList(channel: channel)
         
         try saveChannelToLocalStorage(channel)
                         
