@@ -224,9 +224,12 @@ extension ChannelsDataRepository: ChannelsRepository {
         
         let userId = try userIdProvider.userId()
         let channelsIds = try await channelsClient.userChannelsIds(userId: userId)
-        let channelsLocalStoreModels = try await channels(withIds: channelsIds)
-        
+
+        // Delete cached channels
         try localStorage.deleteAllModels(withTypes: ChannelPersistencyModel.self)
+        
+        // Add actual models
+        let channelsLocalStoreModels = try await channels(withIds: channelsIds)
         
         for channelLocalStoreModel in channelsLocalStoreModels {
             localStorage.addModel(model: channelLocalStoreModel)

@@ -87,9 +87,7 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
     func synchronizeUserChannelPointsList() async throws {
         Log.info("Channels points list synchronization started", module: "ChannelPointsDataRepository")
         
-        // Get actual points
         let pointsIds = try await channelPointsClient.points(forChannelWithId: channel.id)
-        let channelPointsLocalStoreModels = try await points(ids: pointsIds)
         
         // Delete cached points
         let channelId = channel.id
@@ -97,7 +95,9 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
         let descriptor = FetchDescriptor<ChannelPointPersistencyModel>(predicate: predicate)
         try localStorage.deleteAll(model: ChannelPointPersistencyModel.self, descriptor: descriptor)
         
-        // Cache actual models
+        // Add actual models
+        let channelPointsLocalStoreModels = try await points(ids: pointsIds)
+        
         for channelPointLocalStoreModel in channelPointsLocalStoreModels {
             localStorage.addModel(model: channelPointLocalStoreModel)
         }
