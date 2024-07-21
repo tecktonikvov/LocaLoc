@@ -26,7 +26,10 @@ public final class ChannelsClient {
     }
     
     public func channel(withId id: String) async throws -> ChannelClientModel? {
-        try await client.data(documentId: id, collectionName: channelsCollection, type: ChannelClientModel.self)
+        try await client.data(
+            documentId: id,
+            collectionName: channelsCollection,
+            type: ChannelClientModel.self)
     }
     
     public func updateChannel(withId id: String, channelClientModel: ChannelClientModel) async throws {
@@ -41,6 +44,11 @@ public final class ChannelsClient {
             collectionName: channelsParticipantsCollection,
             data: channelParticipantClientModel
         )
+    }
+    
+    public func channelParticipantsNumber(channelId: String) async throws -> Int {
+        let filter: Filter = .whereField(channelsParticipantsModelChannelIdFieldName, isEqualTo: channelId)
+        return try await client.count(filter: filter, collectionName: channelsParticipantsCollection)
     }
     
     public func userChannelsIds(userId: String) async throws -> [String] {

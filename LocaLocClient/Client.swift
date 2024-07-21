@@ -117,6 +117,18 @@ public final class Client {
         return nil
     }
     
+    func count(filter: Filter, collectionName: String) async throws -> Int {
+        let query = database
+            .collection(collectionName)
+            .whereFilter(filter)
+        
+        let countQuery = query.count
+        
+        let aggregateQuerySnapshot = try await countQuery.getAggregation(source: .server)
+        
+        return Int(truncating: aggregateQuerySnapshot.count)
+    }
+    
     func filteredData(filter: Filter, collectionName: String) async throws -> [[String: Any]] {
         let querySnapshot = try await database
             .collection(collectionName)

@@ -57,7 +57,9 @@ import LocaLocLocalStore
     }
     
     private func points(ids: [String]) async throws -> [ChannelPointPersistencyModel] {
-        let points = try await withThrowingTaskGroup(of: ChannelPointPersistencyModel?.self, 
+        guard !ids.isEmpty else { return [] }
+        
+        let points = try await withThrowingTaskGroup(of: ChannelPointPersistencyModel?.self,
                                                      returning: [ChannelPointPersistencyModel?].self) { taskGroup in
             for id in ids {
                 taskGroup.addTask { [weak self] in
@@ -87,7 +89,7 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
     func synchronizeUserChannelPointsList() async throws {
         Log.info("Channels points list synchronization started", module: "ChannelPointsDataRepository")
         
-        let pointsIds = try await channelPointsClient.points(forChannelWithId: channel.id)
+        let pointsIds = try await channelPointsClient.pointsIds(forChannelWithId: channel.id)
         
         // Delete cached points
         let channelId = channel.id
@@ -108,12 +110,6 @@ extension ChannelPointsDataRepository: ChannelPointsRepository {
         try reloadLocalStorePoints()
         
         Log.info("Channels points list synchronization finished. Fetched \(channelPointsLocalStoreModels.count) points", module: "ChannelPointsDataRepository")
-    }
-    
-    func reload(with channel: Channel) throws {
-        points = []
-        self.channel = channel
-        try loadLocalStorePoints()
     }
     
     func saveChannelPoint(_ point: ChannelPoint) async throws -> ChannelPoint {

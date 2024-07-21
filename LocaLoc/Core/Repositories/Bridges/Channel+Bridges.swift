@@ -32,6 +32,30 @@ extension Channel {
             channelPoints: []
         )
     }
+    
+    convenience init?(clientModel: ChannelClientModel, id: String) {
+        guard let invitationMode = ChannelInvitationMode(rawValue: clientModel.channelInvitationMode) else {
+            return nil
+        }
+        
+        let channelSettings = ChannelSettings(invitationMode: invitationMode)
+        let userSettings = ChannelUserSettings(isMuted: false)
+        
+        self.init(
+            id: id,
+            identifier: clientModel.identifier,
+            ownerId: clientModel.ownerId,
+            name: clientModel.name,
+            description: clientModel.description,
+            imageUrl: clientModel.imageUrl,
+            missedUpdatesNumber: clientModel.missedUpdatesNumber,
+            creationDate: clientModel.createdAt,
+            lastUpdateDate: clientModel.updatedAt,
+            channelSettings: channelSettings,
+            userSettings: userSettings,
+            channelPoints: []
+        )
+    }
 }
 
 extension ChannelSettings {

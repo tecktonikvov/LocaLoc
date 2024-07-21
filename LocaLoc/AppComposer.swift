@@ -12,12 +12,12 @@ import Factory
     private var userDataRepository = Container.shared.userDataRepository()
     
     @ViewBuilder
-    func view() -> some View {
+    func view(path: Binding<NavigationPath>) -> some View {
         switch userDataRepository.userAuthenticationStatus {
         case .unauthorized:
             AuthenticationView(viewModel: AuthenticationViewModel())
         case .authorized:
-            HomeComposer.view(userDataRepository: userDataRepository)
+            HomeComposer.view(userDataRepository: userDataRepository, path: path)
         case .noUsername:
             UsernameCreationView(viewModel: UsernameCreationViewViewModel())
         }

@@ -17,6 +17,8 @@ struct UsernameCreationView: View {
     
     var body: some View {
         ZStack {
+            DefaultBackground()
+            
             VStack {
                 Spacer()
                 Text("Create username")
@@ -35,7 +37,7 @@ struct UsernameCreationView: View {
                     .background(RoundedRectangle(cornerRadius: 12)
                         .fill(.gray.opacity(0.3))
                     )
-
+                    
                     if let errorText = viewModel.errorText {
                         Text(errorText)
                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -74,7 +76,6 @@ struct UsernameCreationView: View {
             }
             .disabled(viewModel.isLoading)
         }
-        .backgroundDefault()
         .onChange(of: viewModel.username) { _, newValue in
             viewModel.errorText = nil
         }

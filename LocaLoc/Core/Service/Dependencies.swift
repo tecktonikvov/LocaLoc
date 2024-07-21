@@ -82,7 +82,6 @@ extension Container {
                 fatalError(errorString)
             }
         }
-        .singleton
     }
     
     private var channelIdentifierClient: Factory<ChannelIdentifierClient> {
@@ -141,6 +140,10 @@ extension Container {
     }
     
     var channelPointsRepository: ParameterFactory<Channel, ChannelPointsDataRepository> {
-        self { self.channelPointsDataRepository($0) }.unique
+        self { self.channelPointsDataRepository($0) }
+    }
+    
+    var channelsClient: Factory<ChannelsClient> {
+        Factory(self) { ChannelsClient() }
     }
 }

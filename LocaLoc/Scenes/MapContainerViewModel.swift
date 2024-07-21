@@ -69,9 +69,7 @@ enum SelectedPointSingType {
         
         let mapViewController = MapViewController(mapView: mapController.mapView)
         self.mapView = mapViewController
-        
-        try? channelPointsRepository.reload(with: channel)
-        
+                
         mapController.delegate = self
         
         Task {

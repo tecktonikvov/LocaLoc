@@ -147,7 +147,34 @@ enum ChannelsDataRepositoryError: Error {
         return channel
     }
     
+    private func makeChannelLocalStoreModel(channelId: String, clientModel: ChannelClientModel) -> ChannelPersistencyModel {
+        let channelLocalStorageModel = ChannelPersistencyModel(
+            channelId: channelId,
+            identifier: clientModel.identifier,
+            ownerId: clientModel.ownerId,
+            name: clientModel.name,
+            channelDescription: clientModel.description,
+            imageUrl: clientModel.imageUrl,
+            missedUpdatesNumber: clientModel.missedUpdatesNumber,
+            creationDate: clientModel.createdAt,
+            lastUpdateDate: clientModel.updatedAt,
+            channelSettings: nil,
+            channelUserSettings: nil
+        )
+        
+        let channelSettingsLocalStoreModel = ChannelSettingsPersistencyModel(
+            invitationMode: clientModel.channelInvitationMode,
+            channel: channelLocalStorageModel
+        )
+
+        channelLocalStorageModel.channelSettings = channelSettingsLocalStoreModel
+        
+        return channelLocalStorageModel
+    }
+    
     private func channels(withIds ids: [String]) async throws -> [ChannelPersistencyModel] {
+        guard !ids.isEmpty else { return [] }
+
         let channels = try await withThrowingTaskGroup(of: ChannelPersistencyModel?.self, returning: [ChannelPersistencyModel?].self) { taskGroup in
             for id in ids {
                 taskGroup.addTask { [weak self] in
@@ -156,28 +183,7 @@ enum ChannelsDataRepositoryError: Error {
                         return nil
                     }
                     
-                    let channelLocalStorageModel = ChannelPersistencyModel(
-                        channelId: id,
-                        identifier: clientModel.identifier,
-                        ownerId: clientModel.ownerId,
-                        name: clientModel.name,
-                        channelDescription: clientModel.description,
-                        imageUrl: clientModel.imageUrl,
-                        missedUpdatesNumber: clientModel.missedUpdatesNumber,
-                        creationDate: clientModel.createdAt,
-                        lastUpdateDate: clientModel.updatedAt,
-                        channelSettings: nil,
-                        channelUserSettings: nil
-                    )
-                    
-                    let channelSettingsLocalStoreModel = ChannelSettingsPersistencyModel(
-                        invitationMode: clientModel.channelInvitationMode,
-                        channel: channelLocalStorageModel
-                    )
-
-                    channelLocalStorageModel.channelSettings = channelSettingsLocalStoreModel
-                    
-                    return channelLocalStorageModel
+                   return makeChannelLocalStoreModel(channelId: id, clientModel: clientModel)
                 }
             }
 
@@ -239,5 +245,15 @@ extension ChannelsDataRepository: ChannelsRepository {
         try reloadLocalStoreChannels()
         
         Log.info("Channels list synchronization finished. Fetched \(channels.count) channels", module: "ChannelsDataRepository")
+    }
+    
+    func fetchChannel(withId channelId: String) async throws -> Channel? {
+        guard let clientModel = try await channelsClient.channel(withId: channelId) else {
+            return nil
+        }
+        
+        let channelModel = Channel(clientModel: clientModel, id: channelId)
+        
+        return channelModel
     }
 }

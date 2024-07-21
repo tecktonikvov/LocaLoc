@@ -12,6 +12,7 @@ protocol ChannelsRepository {
     
     /// Creates channel if id is empty and updates if not. Returns updated Channel model with id and saved in to local and remote storage
     @discardableResult func saveChannel(_ channel: Channel) async throws -> Channel
+    func fetchChannel(withId: String) async throws -> Channel?
     func synchronizeUserChannelsList() async throws
     func cleanChannelsList()
 }

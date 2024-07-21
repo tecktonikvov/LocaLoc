@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import K_Logger
 
 struct HomeView: View {
     private let viewModel: HomeViewModel
     
-    init(viewModel: HomeViewModel) {
+    @Binding private var path: NavigationPath
+    
+    // MARK: - Init
+    init(viewModel: HomeViewModel, path: Binding<NavigationPath>) {
+        self._path = path
         self.viewModel = viewModel
     }
     
@@ -23,8 +28,20 @@ struct HomeView: View {
         .onAppear {
             UITabBar.appearance().unselectedItemTintColor = .systemGray
             UITabBar.appearance().backgroundColor = .systemGray4
+            
+            viewModel.checkForDeepLinks(delay: 1.0)
         }
         .tint(Color.Text.main)
+        .onChange(of: viewModel.deeplinkChannel) { _, deeplinkChannel in
+            guard let deeplinkChannel else { return }
+            
+            switch deeplinkChannel {
+            case .openChannel(let channel):
+                path.append(NavigationState.map(channel: channel))
+            case .privateChannel(let privateChannelModel):
+                path.append(NavigationState.privateChannel(privateChannelModel: privateChannelModel))
+            }
+        }
     }
 }
 
@@ -34,10 +51,10 @@ fileprivate extension TabScene<AnyView> {
         NavigationView {
             content
         }
-            .tabItem {
-                image.renderingMode(.template)
-                Text(title)
-            }
+        .tabItem {
+            image.renderingMode(.template)
+            Text(title)
+        }
     }
     
     var image: Image {
@@ -57,9 +74,4 @@ fileprivate extension TabScene<AnyView> {
             return "Settings"
         }
     }
-}
-
-#Preview {
-    var previewer = Previewer()
-    return HomeComposer.view(userDataRepository: previewer.userDataRepository)
 }

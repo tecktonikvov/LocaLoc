@@ -34,7 +34,7 @@ public final class ChannelPointsClient {
             data: pointClientModel)
     }
     
-    public func points(forChannelWithId channelId: String) async throws -> [String] {
+    public func pointsIds(forChannelWithId channelId: String) async throws -> [String] {
         let filter: Filter = .whereField(channelsPointModelChannelIdFieldName, isEqualTo: channelId)
         
         let documents = try await client.documents(
@@ -43,6 +43,11 @@ public final class ChannelPointsClient {
         )
         
         return documents.map { $0.documentID }
+    }
+    
+    public func channelPointsNumber(channelId: String) async throws -> Int {
+        let filter: Filter = .whereField(channelsPointModelChannelIdFieldName, isEqualTo: channelId)
+        return try await client.count(filter: filter, collectionName: channelsPointsCollection)
     }
     
     public func delete(pointWithId id: String) async throws {

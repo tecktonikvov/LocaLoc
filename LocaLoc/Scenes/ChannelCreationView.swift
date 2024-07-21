@@ -17,58 +17,61 @@ struct ChannelCreationView: View {
     }
     
     var body: some View {
-        List {
-            Section("Main information") {
-                ImagePickerView(viewModel: viewModel)
-                
-                TextEditorWithPlaceholder(
-                    text: $viewModel.name.max(Constants.channelNameCharactersLimit),
-                    placeholder: "Name")
-                
-                TextEditorWithPlaceholder(
-                    text: $viewModel.description.max(Constants.channelDescriptionCharactersLimit),
-                    placeholder: "Description")
-                
-                HStack(alignment: .top) {
-                    Text("@")
-                        .opacity(0.6)
+        ZStack {
+            DefaultBackground()
+            
+            List {
+                Section("Main information") {
+                    ImagePickerView(viewModel: viewModel)
                     
-                    LimitedTextField(
-                        max: Constants.channelIdentifierMaxCharactersLimit,
-                        min: Constants.channelIdentifierMinCharactersLimit,
-                        title: "Identifier",
-                        output: $viewModel.identifier)
-                    .padding(.leading, -4)
+                    TextEditorWithPlaceholder(
+                        text: $viewModel.name.max(Constants.channelNameCharactersLimit),
+                        placeholder: "Name")
+                    
+                    TextEditorWithPlaceholder(
+                        text: $viewModel.description.max(Constants.channelDescriptionCharactersLimit),
+                        placeholder: "Description")
+                    
+                    HStack(alignment: .top) {
+                        Text("@")
+                            .opacity(0.6)
+                        
+                        LimitedTextField(
+                            max: Constants.channelIdentifierMaxCharactersLimit,
+                            min: Constants.channelIdentifierMinCharactersLimit,
+                            title: "Identifier",
+                            output: $viewModel.identifier)
+                        .padding(.leading, -4)
+                    }
+                }
+                
+                Section("Settings") {
+                    ChannelSettingsView(viewModel: viewModel)
                 }
             }
-            
-            Section("Settings") {
-                ChannelSettingsView(viewModel: viewModel)
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Create new channel")
+            .toolbarBackground(Color.background, for: .navigationBar)
+            .toolbar {
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    Button("Create", action: viewModel.createChannel)
+                        .disabled(viewModel.identifier.count < Constants.channelIdentifierMinCharactersLimit)
+                }
             }
-        }
-        .scrollContentBackground(.hidden)
-        .backgroundDefault()
-        .navigationTitle("Create new channel")
-        .toolbarBackground(Color.background, for: .navigationBar)
-        .toolbar {
-            if viewModel.isLoading {
-                ProgressView()
-            } else {
-                Button("Create", action: viewModel.createChannel)
-                    .disabled(viewModel.identifier.count < Constants.channelIdentifierMinCharactersLimit)
+            .disabled(viewModel.isLoading)
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(
+                    title: Text(viewModel.identifierErrorText),
+                    message: Text("Try another one"),
+                    dismissButton: .default(Text("OK"))
+                )
             }
-        }
-        .disabled(viewModel.isLoading)
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(
-                title: Text(viewModel.identifierErrorText),
-                message: Text("Try another one"),
-                dismissButton: .default(Text("OK"))
-            )
-        }
-        .onChange(of: viewModel.dismiss) { _, shouldDismiss in
-            if shouldDismiss {
-                dismiss()
+            .onChange(of: viewModel.dismiss) { _, shouldDismiss in
+                if shouldDismiss {
+                    dismiss()
+                }
             }
         }
     }

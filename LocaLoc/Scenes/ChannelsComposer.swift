@@ -8,9 +8,9 @@
 import SwiftUI
 
 final class ChannelsComposer: SceneComposer {
-    static func compose() -> TabScene<AnyView> {
+    static func compose(path: Binding<NavigationPath>) -> TabScene<AnyView> {
         let viewModel = ChannelsViewModel()
-        let view = ChannelsView(viewModel: viewModel)
+        let view = ChannelsView(viewModel: viewModel, path: path)
         
         return TabScene(type: .channels) {
             AnyView(view)

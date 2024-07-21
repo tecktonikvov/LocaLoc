@@ -89,89 +89,92 @@ fileprivate struct ProfileEditingListView: View {
     }
     
     var body: some View {
-        List {
-            Section {
-                HStack(alignment: .center) {
-                    ZStack {
-                        if !doesImageWasChanged {
-                            CachedCenteredImage(
-                                url: URL(string: viewModel.profile.imageUrl),
-                                placeholderImageName: "person.circle.fill")
-                            .frame(width: 80, height: 80)
-                            .clipShape(Circle())
-                            
-                        } else {
-                            CachedCenteredImage(uiImage: viewModel.selectedUIImage ?? UIImage())
-                                .frame(width: 80, height: 80)
-                        }
-                    }
-                    .overlay {
+        ZStack {
+            DefaultBackground()
+            
+            List {
+                Section {
+                    HStack(alignment: .center) {
                         ZStack {
-                            Button {
-                                showPhotoSourceSheet = true
-                            } label: {
-                                Image(systemName: "camera")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(Color.white)
+                            if !doesImageWasChanged {
+                                CachedCenteredImage(
+                                    url: URL(string: viewModel.profile.imageUrl),
+                                    placeholderImageName: "person.circle.fill")
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                                
+                            } else {
+                                CachedCenteredImage(uiImage: viewModel.selectedUIImage ?? UIImage())
+                                    .frame(width: 80, height: 80)
                             }
                         }
+                        .overlay {
+                            ZStack {
+                                Button {
+                                    showPhotoSourceSheet = true
+                                } label: {
+                                    Image(systemName: "camera")
+                                        .font(.system(size: 40))
+                                        .foregroundColor(Color.white)
+                                }
+                            }
+                        }
+                        .background(Color.gray)
+                        .opacity(0.7)
+                        .clipShape(Circle())
+                        
+                        VStack {
+                            TextField("First name", text: $viewModel.profile.firstName.max(Constants.firstNameCharactersLimit))
+                            Rectangle()
+                                .frame(height: 0.5)
+                            TextField("Last name", text: $viewModel.profile.lastName.max(Constants.lastNameCharactersLimit))
+                        }
+                        .padding(.leading)
                     }
-                    .background(Color.gray)
-                    .opacity(0.7)
-                    .clipShape(Circle())
-                    
-                    VStack {
-                        TextField("First name", text: $viewModel.profile.firstName.max(Constants.firstNameCharactersLimit))
-                        Rectangle()
-                            .frame(height: 0.5)
-                        TextField("Last name", text: $viewModel.profile.lastName.max(Constants.lastNameCharactersLimit))
-                    }
-                    .padding(.leading)
-                }
-            }
-            
-            VStack {
-                HStack {
-                    Text("@")
-                        .padding(.trailing, -6)
-                    TextField("Username",
-                              text: $viewModel.profile.username.max(Constants.usernameCharactersLimit)) { isEditing in
-                        showUsernameTipsView = isEditing || viewModel.errorText != nil
-                    }
-                }
-                .onChange(of: viewModel.profile.username) { _, _ in
-                    viewModel.errorText = nil
                 }
                 
-                if showUsernameTipsView || viewModel.errorText != nil {
-                    if let errorText = viewModel.errorText {
-                        Text(errorText)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .font(.footnote)
-                            .foregroundColor(Color.Text.attention)
-                    } else {
-                        let amount = symbolsLeft()
-                        Text("\(amount) symbols left")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .font(.footnote)
-                            .foregroundColor(amount <= 0 ? Color.Text.attention : Color.Text.main)
+                VStack {
+                    HStack {
+                        Text("@")
+                            .padding(.trailing, -6)
+                        TextField("Username",
+                                  text: $viewModel.profile.username.max(Constants.usernameCharactersLimit)) { isEditing in
+                            showUsernameTipsView = isEditing || viewModel.errorText != nil
+                        }
+                    }
+                    .onChange(of: viewModel.profile.username) { _, _ in
+                        viewModel.errorText = nil
+                    }
+                    
+                    if showUsernameTipsView || viewModel.errorText != nil {
+                        if let errorText = viewModel.errorText {
+                            Text(errorText)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .font(.footnote)
+                                .foregroundColor(Color.Text.attention)
+                        } else {
+                            let amount = symbolsLeft()
+                            Text("\(amount) symbols left")
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .font(.footnote)
+                                .foregroundColor(amount <= 0 ? Color.Text.attention : Color.Text.main)
+                        }
                     }
                 }
             }
-        }
-        .listStyle(InsetGroupedListStyle())
-        .scrollContentBackground(.hidden)
-        .backgroundDefault()
-        .popup(isPresented: $showPhotoSourceSheet) {
-            SourceSelector(showCamera: $showCamera, showGallery: $showPhotosPicker)
-        } customize: {
-            $0
-                .type(.toast)
-                .appearFrom(.bottomSlide)
-                .disappearTo(.bottomSlide)
-                .closeOnTapOutside(true)
-                .isOpaque(true)
-                .backgroundColor(Color.black.opacity(0.5))
+            .listStyle(InsetGroupedListStyle())
+            .scrollContentBackground(.hidden)
+            .popup(isPresented: $showPhotoSourceSheet) {
+                SourceSelector(showCamera: $showCamera, showGallery: $showPhotosPicker)
+            } customize: {
+                $0
+                    .type(.toast)
+                    .appearFrom(.bottomSlide)
+                    .disappearTo(.bottomSlide)
+                    .closeOnTapOutside(true)
+                    .isOpaque(true)
+                    .backgroundColor(Color.black.opacity(0.5))
+            }
         }
     }
     

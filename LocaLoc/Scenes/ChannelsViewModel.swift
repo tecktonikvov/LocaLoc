@@ -7,6 +7,7 @@
 
 import Factory
 import Foundation
+import K_Logger
 
 @Observable final class ChannelsViewModel {
     @ObservationIgnored

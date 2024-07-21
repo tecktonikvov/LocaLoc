@@ -9,17 +9,17 @@ import SwiftUI
 import Factory
 
 final class HomeComposer: SceneComposer {
-    @ViewBuilder static func view(userDataRepository: UserDataRepository) -> some View {
-            let channelsScene = ChannelsComposer.compose()
-            let settingsScene = settingsScene(userDataRepository: userDataRepository)
-            
-            let scenes = [channelsScene, settingsScene].compactMap { $0 }
-            let model = HomeModel(tabScenes: scenes)
-            
-            let viewModel = HomeViewModel(model: model)
-            
-            HomeView(viewModel: viewModel)
-        }
+    @ViewBuilder static func view(userDataRepository: UserDataRepository, path: Binding<NavigationPath>) -> some View {
+        let channelsScene = ChannelsComposer.compose(path: path)
+        let settingsScene = settingsScene(userDataRepository: userDataRepository)
+        
+        let scenes = [channelsScene, settingsScene].compactMap { $0 }
+        let model = HomeModel(tabScenes: scenes)
+        
+        let viewModel = HomeViewModel(model: model)
+        
+        HomeView(viewModel: viewModel, path: path)
+    }
     
     private static func settingsScene(userDataRepository: UserDataRepository) -> TabScene<AnyView>? {
         if let currentUser = userDataRepository.currentUser {

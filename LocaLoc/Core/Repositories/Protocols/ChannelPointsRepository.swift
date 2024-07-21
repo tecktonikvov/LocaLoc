@@ -12,7 +12,6 @@ protocol ChannelPointsRepository {
     
     /// Creates and saves point in remote and local storage. Returns updated point model with external id.
     @discardableResult func saveChannelPoint(_ point: ChannelPoint) async throws -> ChannelPoint
-    func reload(with channel: Channel) throws
     func synchronizeUserChannelPointsList() async throws
     func updateChannelPoint(_ point: ChannelPoint) async throws
     func delete(point: ChannelPoint) async throws

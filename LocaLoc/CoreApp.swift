@@ -9,11 +9,14 @@ import SwiftUI
 import Factory
 import FirebaseCore
 import GoogleMaps
- 
+import K_Logger
+
 @main
 struct CoreApp: App {    
     private let appComposer: AppComposer
     @Injected(\.userDataRepository) private var userDataRepository
+    
+    @State private var path = NavigationPath()
     
     // MARK: - Init
     init() {
@@ -45,9 +48,55 @@ struct CoreApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                appComposer.view()
+            NavigationStack(path: $path) {
+                appComposer.view(path: $path)
+                    .navigationDestination(for: NavigationState.self) { state in
+                        view(forNavigationState: state)
+                    }
             }
+            .onOpenURL { incomingURL in
+                Log.info("App was opened via URL: \(incomingURL)")
+                handleIncomingURL(incomingURL)
+            }
+        }
+    }
+    
+    // MARK: - Private
+    private func handleIncomingURL(_ url: URL) {
+        guard url.scheme == "localocapp" else {
+            Log.error("Deeplink has incorrect scheme: \(url.scheme ?? "")")
+            return
+        }
+        
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            Log.error("Invalid url: \(url.absoluteString)")
+            return
+        }
+        
+        guard let action = components.host, action == "channel" else {
+            Log.error("Unknown URL: \(url.absoluteString)")
+            return
+        }
+        
+        guard let identifier = components.queryItems?.first(where: { $0.name == "identifier" })?.value else {
+            Log.error("Identifier not found, URL: \(url.absoluteString)")
+            return
+        }
+        
+        InMemoryDeeplinkHolder.channelDeepLink = ChannelDeeplinkModel(channelId: identifier)
+    }
+    
+    @ViewBuilder
+    private func view(forNavigationState state: NavigationState) -> some View {
+        switch state {
+        case .createNewChannel:
+            ChannelCreationView(viewModel: ChannelCreationViewModel())
+        case .map(let channel):
+            let mapContainerViewModel = MapContainerViewModel(channel: channel)
+            MapContainerView(viewModel: mapContainerViewModel)
+        case .privateChannel(let privateChannelModel):
+            let privateChannelViewModel = PrivateChannelViewModel(channelModel: privateChannelModel)
+            PrivateChannelView(viewModel: privateChannelViewModel)
         }
     }
 }
