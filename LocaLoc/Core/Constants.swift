@@ -28,4 +28,7 @@ struct Constants {
     // Point constants
     static let pointAdressMaxCharactersLimit: Int = 300
     static let pointDescriptionMaxCharactersLimit: Int = 255
+    
+    // Invitation constants
+    static let invitationLifeTime: TimeInterval = 60 * 60 * 12 // 12h
 }

@@ -5,8 +5,10 @@
 //  Created by Volodymyr Kotsiubenko on 5/7/24.
 //
 
-import Foundation
 import Factory
+import Foundation
+import LocaLocClient
+import K_Logger
 
 struct SelectedPointData: Equatable {
     let point: ChannelPoint
@@ -16,6 +18,12 @@ struct SelectedPointData: Equatable {
 enum SelectedPointSingType {
     case `default`
     case emoji
+}
+
+fileprivate enum SubscriptionRequestError: Error {
+    case invitationExpired
+    case invitationUsed
+    case invitationIsMissed
 }
 
 @Observable final class MapContainerViewModel {
@@ -34,12 +42,25 @@ enum SelectedPointSingType {
     @ObservationIgnored
     @Injected(\.userIdProvider) private var userIdProvider
     
+    @ObservationIgnored
+    @Injected(\.channelsRepository) private var channelsRepository
+    
+    @ObservationIgnored
+    @Injected(\.invitationClient) private var invitationClient
+    
+    @ObservationIgnored
+    @Injected(\.channelsClient) private var channelsClient
+    
     var dismiss = false
     var showAddPointView = false
     var showPointEditingView = false
     var showSynchronizationIndicator = false
     var pointCreationRequestInProgress = false
+    var showSubscriptionRequestIndicator = false
     
+    var showInvitationUsedPopUp = false
+    var showInvitationExpiredPopUp = false
+
     // New point properties
     var showPoint: Bool = false
     var description: String = ""
@@ -53,7 +74,8 @@ enum SelectedPointSingType {
     private(set) var pointEditingViewModel: PointEditingViewModel?
 
     private(set) var channel: Channel
-    
+    private(set) var userSubscriptionRelationType: UserChannelSubscriptionRelationType
+
     private var currentUserId: String = ""
     
     var mapTopSafeAreaInset: CGFloat {
@@ -61,9 +83,10 @@ enum SelectedPointSingType {
     }
 
     // MARK: - Init
-    init(channel: Channel) {
+    init(channel: Channel, userSubscriptionRelationType: UserChannelSubscriptionRelationType) {
         self.channel = channel
-        
+        self.userSubscriptionRelationType = userSubscriptionRelationType
+
         let mapController = MapController()
         self.mapController = mapController
         
@@ -122,6 +145,40 @@ enum SelectedPointSingType {
         let updatedPoints = channelPointsRepository.points
         mapController.updateMarkersIfNeeded(points: updatedPoints)
     }
+    
+    private func validate(invitation: Invitation) async throws {
+        let currentInvitationModel = try await invitationClient.invitation(withId: invitation.id)
+        
+        guard let currentInvitationModel else {
+            throw SubscriptionRequestError.invitationIsMissed
+        }
+        
+        // Check if invitation expired
+        let current = Date.timeZoneIndependentCurrentDate.timeIntervalSince1970
+        let invitationExistenceTime = current - currentInvitationModel.createdAt.timeIntervalSince1970
+        
+        guard invitationExistenceTime < Constants.invitationLifeTime else {
+            throw SubscriptionRequestError.invitationExpired
+        }
+        
+        // Check if invitation was used
+        guard currentInvitationModel.usedAt == nil else {
+            throw SubscriptionRequestError.invitationUsed
+        }
+    }
+    
+    private func subscriptionRequest() async throws {
+        let userId = try userIdProvider.userId()
+        
+        let participantModel = ChannelParticipantClientModel(
+            userId: userId,
+            channelId: channel.id,
+            createdAt: Date.timeZoneIndependentCurrentDate,
+            updatedAt: Date.timeZoneIndependentCurrentDate
+        )
+        
+        try await channelsClient.createChannelParticipant(channelParticipantClientModel: participantModel)
+    }
 
     // MARK: - Public
     func backButtonTapped() {
@@ -134,6 +191,39 @@ enum SelectedPointSingType {
     
     func recenterButtonTapped() {
         mapController.goToMyLocation()
+    }
+    
+    func subscribe() {
+        showSubscriptionRequestIndicator = true
+        
+        Task { @MainActor in
+            do {                
+                if let invitation = userSubscriptionRelationType.invitation {
+                    try await validate(invitation: invitation)
+                }
+                
+                try await subscriptionRequest()
+                try await channelsRepository.synchronizeUserChannelsList()
+                
+                userSubscriptionRelationType = .subscribed
+                // Add subscriber number
+            } catch {
+                if let error = error as? SubscriptionRequestError {
+                    switch error {
+                    case .invitationExpired:
+                        showInvitationExpiredPopUp = true
+                    case .invitationUsed:
+                        showInvitationUsedPopUp = true
+                    case .invitationIsMissed:
+                        Log.error("Try to subscribe but invitation in nil", module: "MapContainerViewModel")
+                    }
+                } else {
+                    Log.error("Subscription error: \(error)", module: "MapContainerViewModel")
+                }
+            }
+            
+            showSubscriptionRequestIndicator = false
+        }
     }
     
     func newPointApproved() {

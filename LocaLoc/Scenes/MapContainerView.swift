@@ -69,6 +69,11 @@ struct MapContainerView: View {
                         }
                     }
                 }
+                .safeAreaInset(edge: .bottom) {
+                    if viewModel.userSubscriptionRelationType.subscriptionAvailable {
+                        subscriptionButton()
+                    }
+                }
             VStack() {
                 Spacer()
                 if viewModel.showSynchronizationIndicator {
@@ -251,6 +256,31 @@ struct MapContainerView: View {
             PointEditingView(viewModel: pointEditingViewModel)
         }
     }
+    
+    @ViewBuilder
+    private func subscriptionButton() -> some View {
+        HStack(alignment: .center) {
+            Button(action: viewModel.subscribe) {
+                HStack {
+                    if viewModel.showSubscriptionRequestIndicator {
+                        ProgressView()
+                    } else {
+                        Image(systemName: "hand.point.up")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundStyle(Color.brand)
+                        
+                        Text("Subscribe")
+                            .foregroundStyle(Color.Text.main)
+                    }
+                }
+                .padding()
+                .background(Color.mapBackground)
+                .clipShape(Capsule())
+                .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2)
+            }
+        }
+    }
 }
 
 fileprivate extension Image {
@@ -259,5 +289,16 @@ fileprivate extension Image {
             .frame(width: 32, height: 32)
             .foregroundStyle(Color.Text.main)
             .shadow(color: .black, radius: 10, y: 4)
+    }
+}
+
+fileprivate extension UserChannelSubscriptionRelationType {
+    var subscriptionAvailable: Bool {
+        switch self {
+        case .subscribed:
+            return false
+        case .invited, .notSubscribed:
+            return true
+        }
     }
 }

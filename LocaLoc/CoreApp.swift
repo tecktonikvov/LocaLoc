@@ -83,7 +83,7 @@ struct CoreApp: App {
             return
         }
         
-        InMemoryDeeplinkHolder.channelDeepLink = ChannelDeeplinkModel(channelId: identifier)
+        InMemoryDeeplinkHolder.channelDeepLink = ChannelDeeplinkModel(channelId: identifier, invitationId: nil)
     }
     
     @ViewBuilder
@@ -91,8 +91,8 @@ struct CoreApp: App {
         switch state {
         case .createNewChannel:
             ChannelCreationView(viewModel: ChannelCreationViewModel())
-        case .map(let channel):
-            let mapContainerViewModel = MapContainerViewModel(channel: channel)
+        case let .map(channel, relation):
+            let mapContainerViewModel = MapContainerViewModel(channel: channel, userSubscriptionRelationType: relation)
             MapContainerView(viewModel: mapContainerViewModel)
         case .privateChannel(let privateChannelModel):
             let privateChannelViewModel = PrivateChannelViewModel(channelModel: privateChannelModel)

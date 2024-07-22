@@ -146,4 +146,8 @@ extension Container {
     var channelsClient: Factory<ChannelsClient> {
         Factory(self) { ChannelsClient() }
     }
+    
+    var invitationClient: Factory<InvitationClient> {
+        Factory(self) { InvitationClient() }
+    }
 }

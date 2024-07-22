@@ -9,4 +9,5 @@ import Foundation
 
 struct ChannelDeeplinkModel {
     let channelId: String
+    let invitationId: String?
 }

@@ -38,7 +38,7 @@ struct ChannelsView: View {
                     ForEach(viewModel.channelsRepository.channels, id: \.self) { channel in
                         Button {
                             Log.user("User selected channel with id: \(channel.id)")
-                            path.append(NavigationState.map(channel: channel))
+                            path.append(NavigationState.map(channel: channel, relationType: .subscribed))
                         } label: {
                             ChannelsRow(channel: channel)
                         }

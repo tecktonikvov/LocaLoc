@@ -44,6 +44,12 @@ struct HomeModel {
         channelsRepository.channels.contains(channel)
     }
     
+    private func invitation() async throws -> Invitation? {
+        let invitation = Invitation.mock
+        guard invitation.usedAt == nil else { return nil }
+        return invitation
+    }
+    
     private func handleChannelDeepLink(channelDeeplink: ChannelDeeplinkModel) {
         let channelId = channelDeeplink.channelId
         
@@ -58,13 +64,21 @@ struct HomeModel {
                     return
                 }
                 
+                // If user already subscribed show channel.
+                guard !doesUserSubscribed(on: channel) else {
+                    self.deeplinkChannel = .accessAllowed(channel, relationType: .subscribed)
+                    return
+                }
+                
                 switch channel.channelSettings.invitationMode {
                 case .open:
-                    self.deeplinkChannel = .openChannel(channel)
+                    self.deeplinkChannel = .accessAllowed(channel, relationType: .notSubscribed)
                 case .byInvitation:
-                    if doesUserSubscribed(on: channel) {
-                        self.deeplinkChannel = .openChannel(channel)
+                    // If user has an invitation show channel with ability to subscribe with invitation.
+                    if let invitation = try await invitation() {
+                        self.deeplinkChannel = .accessAllowed(channel, relationType: .invited(invitation))
                     } else {
+                        // If user has no invitation limit access.
                         async let participantsNumber = try channelsClient.channelParticipantsNumber(channelId: channel.id)
                         async let pointsNumber = try channelPointsClient.channelPointsNumber(channelId: channel.id)
                         
@@ -73,7 +87,7 @@ struct HomeModel {
                             pointsNumber: try await pointsNumber,
                             participantsNumber: try await participantsNumber
                         )
-                        self.deeplinkChannel = .privateChannel(privateChannelModel)
+                        self.deeplinkChannel = .accessDenied(privateChannelModel)
                     }
                 }
             } catch {

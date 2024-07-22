@@ -36,9 +36,9 @@ struct HomeView: View {
             guard let deeplinkChannel else { return }
             
             switch deeplinkChannel {
-            case .openChannel(let channel):
-                path.append(NavigationState.map(channel: channel))
-            case .privateChannel(let privateChannelModel):
+            case let .accessAllowed(channel, relation):
+                path.append(NavigationState.map(channel: channel, relationType: relation))
+            case .accessDenied(let privateChannelModel):
                 path.append(NavigationState.privateChannel(privateChannelModel: privateChannelModel))
             }
         }

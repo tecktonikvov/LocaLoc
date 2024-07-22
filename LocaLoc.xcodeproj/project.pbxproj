@@ -146,6 +146,10 @@
 		04F624232C4A989E003CCE0F /* ChannelDeeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624222C4A989E003CCE0F /* ChannelDeeplink.swift */; };
 		04F624252C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624242C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift */; };
 		04F624272C4A9936003CCE0F /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624262C4A9936003CCE0F /* NavigationState.swift */; };
+		04F6242B2C4E409B003CCE0F /* InvitationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6242A2C4E409B003CCE0F /* InvitationClient.swift */; };
+		04F6242D2C4E40F2003CCE0F /* InvitationClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6242C2C4E40F2003CCE0F /* InvitationClientModel.swift */; };
+		04F6242F2C4E4424003CCE0F /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6242E2C4E4424003CCE0F /* Invitation.swift */; };
+		04F624312C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624302C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift */; };
 		04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAE9022C0BB77C00200ADC /* CrashlyticsService.swift */; };
 		04FAE9082C0C55A200200ADC /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAE9072C0C55A200200ADC /* DefaultBackground.swift */; };
 		04FAE9232C0C5BFC00200ADC /* LocaLocClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE91C2C0C5BFC00200ADC /* LocaLocClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -354,6 +358,10 @@
 		04F624222C4A989E003CCE0F /* ChannelDeeplink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDeeplink.swift; sourceTree = "<group>"; };
 		04F624242C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryDeeplinkHolder.swift; sourceTree = "<group>"; };
 		04F624262C4A9936003CCE0F /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		04F6242A2C4E409B003CCE0F /* InvitationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationClient.swift; sourceTree = "<group>"; };
+		04F6242C2C4E40F2003CCE0F /* InvitationClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationClientModel.swift; sourceTree = "<group>"; };
+		04F6242E2C4E4424003CCE0F /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
+		04F624302C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChannelSubscriptionRelation.swift; sourceTree = "<group>"; };
 		04FAE9022C0BB77C00200ADC /* CrashlyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsService.swift; sourceTree = "<group>"; };
 		04FAE9072C0C55A200200ADC /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		04FAE90F2C0C5A0700200ADC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -471,10 +479,10 @@
 		040B9ECB2BFE6FD0005E3930 /* Child */ = {
 			isa = PBXGroup;
 			children = (
-				04F624182C49A52C003CCE0F /* PrivateChannelView */,
-				042B9B352C372D6300DE7CB0 /* MapContainer */,
 				040E4EC62C02631F00056856 /* ChannelCreation */,
 				047ECA142BFA91DC0065837C /* Channels */,
+				042B9B352C372D6300DE7CB0 /* MapContainer */,
+				04F624182C49A52C003CCE0F /* PrivateChannelView */,
 				047ECA1F2BFA92C00065837C /* Settings */,
 			);
 			name = Child;
@@ -507,10 +515,12 @@
 				044D62212C31C60300D130FA /* Channel.swift */,
 				04F624222C4A989E003CCE0F /* ChannelDeeplink.swift */,
 				0459F7EA2C3DB58A00B48A6D /* ChannelPoint.swift */,
+				04F6242E2C4E4424003CCE0F /* Invitation.swift */,
+				04F624262C4A9936003CCE0F /* NavigationState.swift */,
 				040D85872C008F97000F8F52 /* Profile.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
 				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
-				04F624262C4A9936003CCE0F /* NavigationState.swift */,
+				04F624302C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -840,6 +850,7 @@
 				044D62462C33404800D130FA /* ChannelClientModel.swift */,
 				042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */,
 				042B9B4E2C388D3C00DE7CB0 /* ChannelPointClientModel.swift */,
+				04F6242C2C4E40F2003CCE0F /* InvitationClientModel.swift */,
 				04AA9BFF2C15D68300459E00 /* UserClientModel.swift */,
 			);
 			path = Models;
@@ -960,6 +971,7 @@
 				044D62442C333D6900D130FA /* ChannelsClient.swift */,
 				04FAE90F2C0C5A0700200ADC /* Client.swift */,
 				0438C45F2C2C3DCC000665D0 /* FilesUploaderClient.swift */,
+				04F6242A2C4E409B003CCE0F /* InvitationClient.swift */,
 				04CDAF802C0F152800A28C93 /* UserDataClient.swift */,
 				04FCC0322C0F2ED70008880F /* UserNameClient.swift */,
 				04FAE9522C0C704A00200ADC /* Configs */,
@@ -1410,6 +1422,7 @@
 				042B9B652C3BFA5800DE7CB0 /* UserPersistencyModel.swift in Sources */,
 				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
 				04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */,
+				04F6242F2C4E4424003CCE0F /* Invitation.swift in Sources */,
 				04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				042B9B4D2C384C7F00DE7CB0 /* Address.swift in Sources */,
@@ -1422,6 +1435,7 @@
 				042B9B222C36AAE700DE7CB0 /* UserIdProvider.swift in Sources */,
 				04FD11F52C03B3DA0020B7EA /* ProfileEditingViewModel.swift in Sources */,
 				042B9B412C38001E00DE7CB0 /* MapController.swift in Sources */,
+				04F624312C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift in Sources */,
 				042B9B3B2C37D9C700DE7CB0 /* MapContainerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1454,7 +1468,9 @@
 				044D62082C2F1D6900D130FA /* ChannelIdentifierClient.swift in Sources */,
 				04FCC0332C0F2ED70008880F /* UserNameClient.swift in Sources */,
 				04AA9C002C15D68300459E00 /* UserClientModel.swift in Sources */,
+				04F6242D2C4E40F2003CCE0F /* InvitationClientModel.swift in Sources */,
 				0438C4602C2C3DCC000665D0 /* FilesUploaderClient.swift in Sources */,
+				04F6242B2C4E409B003CCE0F /* InvitationClient.swift in Sources */,
 				04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */,
 				042B9B512C388D5500DE7CB0 /* ChannelPointsClient.swift in Sources */,
 				042B9B4F2C388D3C00DE7CB0 /* ChannelPointClientModel.swift in Sources */,
