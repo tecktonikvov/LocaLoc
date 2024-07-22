@@ -20,16 +20,17 @@ fileprivate struct PointInfoViewAnimationConfig {
 }
 
 struct MapContainerView: View {
-    @Environment(\.dismiss) private var dismiss
-
     @State private var viewModel: MapContainerViewModel
     @State private var isPointsAdded = false
     @State private var showPointInfoView = false
     @State private var showPointInfoViewContent = false
     @State private var pointInfoViewSize: CGSize = .zero
+    
+    @Binding private var path: NavigationPath
 
     // MARK: - Init
-    init(viewModel: MapContainerViewModel) {
+    init(viewModel: MapContainerViewModel, path: Binding<NavigationPath>) {
+        self._path = path
         self.viewModel = viewModel
     }
     
@@ -40,10 +41,7 @@ struct MapContainerView: View {
                 .navigationBarBackButtonHidden()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: viewModel.backButtonTapped) {
-                            Image(systemName: "chevron.backward")
-                                .navBarStyled()
-                        }
+                        NavBarBackButton(action: viewModel.backButtonTapped)
                     }
                     
                     ToolbarItem(placement: .navigation) {
@@ -58,6 +56,10 @@ struct MapContainerView: View {
                                     .foregroundStyle(Color.Text.subtitle)
                             }
                             .shadow(color: .black, radius: 10, y: 4)
+                        }
+                        .onTapGesture {
+                            let model = viewModel.channelDetailsModel()
+                            path.append(NavigationState.channelDetails(channelDetailsModel: model))
                         }
                     }
                     
@@ -104,10 +106,8 @@ struct MapContainerView: View {
                 showPointInfoViewContent = data != nil
             }
         }
-        .onChange(of: viewModel.dismiss) { _, shouldDismiss in
-            if shouldDismiss {
-                dismiss()
-            }
+        .onChange(of: viewModel.dismiss) { _, _ in
+            path.removeLast()
         }
         .popup(isPresented: $viewModel.showPointEditingView) {
             pointEditingView()
@@ -280,15 +280,6 @@ struct MapContainerView: View {
                 .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 2)
             }
         }
-    }
-}
-
-fileprivate extension Image {
-    func navBarStyled() -> some View {
-        self
-            .frame(width: 32, height: 32)
-            .foregroundStyle(Color.Text.main)
-            .shadow(color: .black, radius: 10, y: 4)
     }
 }
 

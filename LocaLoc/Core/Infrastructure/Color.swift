@@ -23,7 +23,7 @@ extension Color {
         private init() {}
         
         static let main = Color("text_main")
-        static let subtitle = Color("text_main")
+        static let subtitle = Color("text_subtitle")
         static let attention = Color("attention")
     }
     

@@ -90,13 +90,20 @@ struct CoreApp: App {
     private func view(forNavigationState state: NavigationState) -> some View {
         switch state {
         case .createNewChannel:
-            ChannelCreationView(viewModel: ChannelCreationViewModel())
+            let channelCreationViewModel = ChannelCreationViewModel()
+            ChannelCreationView(viewModel: channelCreationViewModel, path: $path)
         case let .map(channel, relation):
             let mapContainerViewModel = MapContainerViewModel(channel: channel, userSubscriptionRelationType: relation)
-            MapContainerView(viewModel: mapContainerViewModel)
+            MapContainerView(viewModel: mapContainerViewModel, path: $path)
         case .privateChannel(let privateChannelModel):
             let privateChannelViewModel = PrivateChannelViewModel(channelModel: privateChannelModel)
             PrivateChannelView(viewModel: privateChannelViewModel)
+        case .channelDetails(channelDetailsModel: let channelDetailsModel):
+            let channelDetailsViewModel = ChannelDetailsViewModel(channelDetailsModel: channelDetailsModel)
+            ChannelDetailsView(viewModel: channelDetailsViewModel, path: $path)
+        case .profileEditing:
+            let profileEditingViewModel = ProfileEditingViewModel()
+            ProfileEditingView(viewModel: profileEditingViewModel, path: $path)
         }
     }
 }

@@ -81,6 +81,12 @@ fileprivate enum SubscriptionRequestError: Error {
     var mapTopSafeAreaInset: CGFloat {
         mapController.mapView.safeAreaInsets.top
     }
+    
+    private var isChannelOwner: Bool {
+        channel.ownerId == currentUserId
+    }
+    
+    private let membersNumber = 12
 
     // MARK: - Init
     init(channel: Channel, userSubscriptionRelationType: UserChannelSubscriptionRelationType) {
@@ -178,6 +184,19 @@ fileprivate enum SubscriptionRequestError: Error {
         )
         
         try await channelsClient.createChannelParticipant(channelParticipantClientModel: participantModel)
+    }
+    
+    private func pointsCount() -> Int {
+        if isChannelOwner {
+            return mapController
+                .markers
+                .count
+        } else {
+            return mapController
+                .markers
+                .filter { !$0.isHidden }
+                .count
+        }
     }
 
     // MARK: - Public
@@ -299,6 +318,14 @@ fileprivate enum SubscriptionRequestError: Error {
             return false
         }
         return currentUserId == channel.ownerId
+    }
+    
+    func channelDetailsModel() -> ChannelDetailsModel {
+        ChannelDetailsModel(
+            channel: channel,
+            pointsNumber: pointsCount(),
+            participantsNumber: 12
+        )
     }
     
     // MARK: - Public

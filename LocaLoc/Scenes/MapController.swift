@@ -29,8 +29,7 @@ final class MapController: NSObject {
     private var isInitialLocationSet = false
     private var lastUserLocation: CLLocation?
     
-    private var markers = [Marker]()
-    
+    private(set) var markers = [Marker]()
     private(set) var newSelectedMarker: Marker?
     
     weak var delegate: MapControllerDelegate?

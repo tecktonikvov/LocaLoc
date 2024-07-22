@@ -9,10 +9,12 @@ import SwiftUI
 
 struct ChannelCreationView: View {
     @Bindable private var viewModel: ChannelCreationViewModel
-    @Environment(\.dismiss) var dismiss
     
+    @Binding private var path: NavigationPath
+
     // MARK: - Init
-    init(viewModel: ChannelCreationViewModel) {
+    init(viewModel: ChannelCreationViewModel, path: Binding<NavigationPath>) {
+        self._path = path
         self.viewModel = viewModel
     }
     
@@ -49,18 +51,8 @@ struct ChannelCreationView: View {
                     ChannelSettingsView(viewModel: viewModel)
                 }
             }
-            .scrollContentBackground(.hidden)
-            .navigationTitle("Create new channel")
-            .toolbarBackground(Color.background, for: .navigationBar)
-            .toolbar {
-                if viewModel.isLoading {
-                    ProgressView()
-                } else {
-                    Button("Create", action: viewModel.createChannel)
-                        .disabled(viewModel.identifier.count < Constants.channelIdentifierMinCharactersLimit)
-                }
-            }
             .disabled(viewModel.isLoading)
+            .scrollContentBackground(.hidden)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(
                     title: Text(viewModel.identifierErrorText),
@@ -68,11 +60,31 @@ struct ChannelCreationView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
-            .onChange(of: viewModel.dismiss) { _, shouldDismiss in
-                if shouldDismiss {
-                    dismiss()
+        }
+        .navigationTitle("Create new channel")
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavBarBackButton {
+                    path.removeLast()
                 }
             }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    let disabled = viewModel.identifier.count < Constants.channelIdentifierMinCharactersLimit
+                    || viewModel.name.isEmpty
+                    
+                    Button("Create", action: viewModel.createChannel)
+                        .disabled(disabled)
+                        .foregroundColor(disabled ? Color.Text.subtitle : Color.Text.main)
+                }
+            }
+        }
+        .onChange(of: viewModel.dismiss) { _, _ in
+            path.removeLast()
         }
     }
 }

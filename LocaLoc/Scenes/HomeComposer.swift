@@ -11,7 +11,7 @@ import Factory
 final class HomeComposer: SceneComposer {
     @ViewBuilder static func view(userDataRepository: UserDataRepository, path: Binding<NavigationPath>) -> some View {
         let channelsScene = ChannelsComposer.compose(path: path)
-        let settingsScene = settingsScene(userDataRepository: userDataRepository)
+        let settingsScene = settingsScene(userDataRepository: userDataRepository, path: path)
         
         let scenes = [channelsScene, settingsScene].compactMap { $0 }
         let model = HomeModel(tabScenes: scenes)
@@ -21,9 +21,9 @@ final class HomeComposer: SceneComposer {
         HomeView(viewModel: viewModel, path: path)
     }
     
-    private static func settingsScene(userDataRepository: UserDataRepository) -> TabScene<AnyView>? {
+    private static func settingsScene(userDataRepository: UserDataRepository, path: Binding<NavigationPath>) -> TabScene<AnyView>? {
         if let currentUser = userDataRepository.currentUser {
-            return SettingsComposer.compose(user: currentUser)
+            return SettingsComposer.compose(user: currentUser, path: path)
         } else {
             return nil
         }

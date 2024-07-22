@@ -150,6 +150,10 @@
 		04F6242D2C4E40F2003CCE0F /* InvitationClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6242C2C4E40F2003CCE0F /* InvitationClientModel.swift */; };
 		04F6242F2C4E4424003CCE0F /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6242E2C4E4424003CCE0F /* Invitation.swift */; };
 		04F624312C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624302C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift */; };
+		04F624342C4E5F5F003CCE0F /* ChannelDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624332C4E5F5F003CCE0F /* ChannelDetailsView.swift */; };
+		04F624362C4E5F68003CCE0F /* ChannelDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624352C4E5F68003CCE0F /* ChannelDetailsViewModel.swift */; };
+		04F624382C4E63D6003CCE0F /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624372C4E63D6003CCE0F /* Image+Extension.swift */; };
+		04F6243A2C4E643D003CCE0F /* NavBarBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F624392C4E643D003CCE0F /* NavBarBackButton.swift */; };
 		04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAE9022C0BB77C00200ADC /* CrashlyticsService.swift */; };
 		04FAE9082C0C55A200200ADC /* DefaultBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FAE9072C0C55A200200ADC /* DefaultBackground.swift */; };
 		04FAE9232C0C5BFC00200ADC /* LocaLocClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04FAE91C2C0C5BFC00200ADC /* LocaLocClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -362,6 +366,10 @@
 		04F6242C2C4E40F2003CCE0F /* InvitationClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationClientModel.swift; sourceTree = "<group>"; };
 		04F6242E2C4E4424003CCE0F /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		04F624302C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChannelSubscriptionRelation.swift; sourceTree = "<group>"; };
+		04F624332C4E5F5F003CCE0F /* ChannelDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailsView.swift; sourceTree = "<group>"; };
+		04F624352C4E5F68003CCE0F /* ChannelDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailsViewModel.swift; sourceTree = "<group>"; };
+		04F624372C4E63D6003CCE0F /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		04F624392C4E643D003CCE0F /* NavBarBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarBackButton.swift; sourceTree = "<group>"; };
 		04FAE9022C0BB77C00200ADC /* CrashlyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsService.swift; sourceTree = "<group>"; };
 		04FAE9072C0C55A200200ADC /* DefaultBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBackground.swift; sourceTree = "<group>"; };
 		04FAE90F2C0C5A0700200ADC /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -480,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				040E4EC62C02631F00056856 /* ChannelCreation */,
+				04F624322C4E5F50003CCE0F /* ChannelDetails */,
 				047ECA142BFA91DC0065837C /* Channels */,
 				042B9B352C372D6300DE7CB0 /* MapContainer */,
 				04F624182C49A52C003CCE0F /* PrivateChannelView */,
@@ -651,6 +660,7 @@
 				04FAE9072C0C55A200200ADC /* DefaultBackground.swift */,
 				044D62042C2F12A500D130FA /* LimitedTextField.swift */,
 				042B9B442C383BBD00DE7CB0 /* PointAnimationView.swift */,
+				04F624392C4E643D003CCE0F /* NavBarBackButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -691,6 +701,7 @@
 				047A03F52C46BA55000EDA80 /* Prefix.swift */,
 				044D62122C31BEEC00D130FA /* UIImage+Extension.swift */,
 				0459F7FF2C40331C00B48A6D /* View+Extension.swift */,
+				04F624372C4E63D6003CCE0F /* Image+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -823,12 +834,12 @@
 		047ECA142BFA91DC0065837C /* Channels */ = {
 			isa = PBXGroup;
 			children = (
-				04F6241B2C49AB98003CCE0F /* Models */,
 				04261ADE2BFCD9A200FBAFC3 /* ChannelAvatarView.swift */,
 				047ECA192BFA92060065837C /* ChannelsComposer.swift */,
 				04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */,
 				047ECA152BFA91F40065837C /* ChannelsView.swift */,
 				047ECA172BFA91FD0065837C /* ChannelsViewModel.swift */,
+				04F6241B2C49AB98003CCE0F /* Models */,
 			);
 			name = Channels;
 			sourceTree = "<group>";
@@ -944,6 +955,15 @@
 				04F6241C2C49AB9C003CCE0F /* DeeplinkChannel.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		04F624322C4E5F50003CCE0F /* ChannelDetails */ = {
+			isa = PBXGroup;
+			children = (
+				04F624332C4E5F5F003CCE0F /* ChannelDetailsView.swift */,
+				04F624352C4E5F68003CCE0F /* ChannelDetailsViewModel.swift */,
+			);
+			name = ChannelDetails;
 			sourceTree = "<group>";
 		};
 		04FAE9012C0BB75D00200ADC /* Crashlytics */ = {
@@ -1327,6 +1347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0459F7F92C3F06C800B48A6D /* Haptic.swift in Sources */,
+				04F624362C4E5F68003CCE0F /* ChannelDetailsViewModel.swift in Sources */,
 				0438C4A92C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift in Sources */,
 				0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */,
 				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,
@@ -1403,6 +1424,7 @@
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatarView.swift in Sources */,
 				04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */,
 				04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */,
+				04F624342C4E5F5F003CCE0F /* ChannelDetailsView.swift in Sources */,
 				04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */,
 				04BA854B2C0B7274004F76B3 /* AuthenticationProviderType.swift in Sources */,
 				04F624212C49ACD3003CCE0F /* PrivateChannelViewModel.swift in Sources */,
@@ -1419,10 +1441,12 @@
 				04F6241D2C49AB9C003CCE0F /* DeeplinkChannel.swift in Sources */,
 				047ECA132BFA88B50065837C /* HomeViewModel.swift in Sources */,
 				04BA84E32C0B0D09004F76B3 /* AuthenticationServiceError.swift in Sources */,
+				04F624382C4E63D6003CCE0F /* Image+Extension.swift in Sources */,
 				042B9B652C3BFA5800DE7CB0 /* UserPersistencyModel.swift in Sources */,
 				040E4ECA2C02633C00056856 /* ChannelCreationView.swift in Sources */,
 				04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */,
 				04F6242F2C4E4424003CCE0F /* Invitation.swift in Sources */,
+				04F6243A2C4E643D003CCE0F /* NavBarBackButton.swift in Sources */,
 				04FAE9032C0BB77C00200ADC /* CrashlyticsService.swift in Sources */,
 				047ECA212BFA92CE0065837C /* SettingsView.swift in Sources */,
 				042B9B4D2C384C7F00DE7CB0 /* Address.swift in Sources */,

@@ -35,7 +35,13 @@ import Factory
     // MARK: - Init
     init() {
         if let profile = userDataRepository.currentUser?.profile {
-            self.profile = profile
+            self.profile = Profile(
+                firstName: profile.firstName,
+                lastName: profile.lastName,
+                email: profile.email,
+                imageUrl: profile.imageUrl,
+                username: profile.username
+            )
             self.initialUserName = profile.username
         }
     }
@@ -43,9 +49,18 @@ import Factory
     // MARK: - Private
     private func setInitialData() {
         guard let profile = userDataRepository.currentUser?.profile else { return }
-        self.profile = profile
+        
+        self.profile = Profile(
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            email: profile.email,
+            imageUrl: profile.imageUrl,
+            username: profile.username
+        )
+        
         self.errorText = nil
         self.isLoading = false
+        self.dismiss = false
     }
     
     private func validateUsername() async -> UsernameValidationResult {
@@ -133,17 +148,17 @@ import Factory
                 }
                 
                 try await saveUser()
+                isLoading = false
                 dismiss = true
             } catch {
                 print("🔴Error", error)
                 // TODO: Pass to error presenter
+                isLoading = false
             }
-            
-            isLoading = false
         }
     }
         
-    func onDisappear() {
+    func cancelRequestAndSetInitialData() {
         setInitialData()
         
         saveRequest?.cancel()

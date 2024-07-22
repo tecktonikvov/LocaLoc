@@ -10,15 +10,17 @@ import SwiftUI
 import PopupView
 
 struct ProfileEditingView: View {
-    @Bindable private var viewModel: ProfileEditingViewModel
+    @State private var viewModel: ProfileEditingViewModel
     
-    @Environment(\.dismiss) var dismiss
-    
+    @Binding private var path: NavigationPath
+
     @State private var showCamera = false
     @State private var showPhotosPicker = false
     @State private var doesImageWasChanged = false
     
-    init(viewModel: ProfileEditingViewModel) {
+    // MARK: - Init
+    init(viewModel: ProfileEditingViewModel, path: Binding<NavigationPath>) {
+        self._path = path
         self.viewModel = viewModel
     }
     
@@ -30,11 +32,22 @@ struct ProfileEditingView: View {
             showPhotosPicker: $showPhotosPicker
         )
         .navigationTitle("Edit profile")
+        .navigationBarBackButtonHidden()
         .toolbar {
-            if viewModel.isLoading {
-                ProgressView()
-            } else {
-                Button("Done", action: viewModel.saveChanges)
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavBarBackButton {
+                    viewModel.cancelRequestAndSetInitialData()
+                    path.removeLast()
+                }
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    Button("Done", action: viewModel.saveChanges)
+                        .foregroundColor(Color.Text.main)
+                }
             }
         }
         
@@ -54,17 +67,12 @@ struct ProfileEditingView: View {
         .onChange(of: viewModel.selectedUIImage) { _, _ in
             doesImageWasChanged = true
         }
-        .onChange(of: viewModel.dismiss) { _, shouldDismiss in
-            if shouldDismiss {
-                dismiss()
-            }
+        .onChange(of: viewModel.dismiss) { _, _ in
+            path.removeLast()
         }
         
         // Regular
         .disabled(viewModel.isLoading)
-        .onDisappear {
-            viewModel.onDisappear()
-        }
     }
 }
 

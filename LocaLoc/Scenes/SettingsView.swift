@@ -10,7 +10,11 @@ import SwiftUI
 struct SettingsView: View {
     @Bindable var viewModel: SettingsViewModel
     
-    init(viewModel: SettingsViewModel) {
+    @Binding private var path: NavigationPath
+    
+    // MARK: - Init
+    init(viewModel: SettingsViewModel, path: Binding<NavigationPath>) {
+        self._path = path
         self.viewModel = viewModel
     }
     
@@ -20,8 +24,8 @@ struct SettingsView: View {
             
             List {
                 Section {
-                    NavigationLink() {
-                        ProfileEditingView(viewModel: viewModel.profileEditingViewModel)
+                    Button {
+                        path.append(NavigationState.profileEditing)
                     } label: {
                         HStack(alignment: .center) {
                             CachedCenteredImage(

@@ -83,6 +83,8 @@ import Factory
         
         channelCreationTask = Task { @MainActor in
             do {
+                try await Task.sleep(nanoseconds: 222.0.nanoseconds)
+
                 guard try await isIdentifierFree() else {
                     isLoading = false
                     identifierErrorText = "Identifier is busy"
