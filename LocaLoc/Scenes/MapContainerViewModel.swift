@@ -86,7 +86,8 @@ fileprivate enum SubscriptionRequestError: Error {
         channel.ownerId == currentUserId
     }
     
-    private let membersNumber = 12
+    private(set) var pointsNumber: Int?
+    private(set) var membersNumber: Int?
 
     // MARK: - Init
     init(channel: Channel, userSubscriptionRelationType: UserChannelSubscriptionRelationType) {
@@ -103,6 +104,8 @@ fileprivate enum SubscriptionRequestError: Error {
         
         Task {
             currentUserId = try userIdProvider.userId()
+            setPointsNumber()
+            setParticipantsNumber()
         }
     }
     
@@ -131,12 +134,14 @@ fileprivate enum SubscriptionRequestError: Error {
         viewModel.onSuccess = { [weak self] in
             self?.updateMarkersOnMap()
             self?.showPointEditingView = false
+            self?.setPointsNumber()
         }
         
         viewModel.onDeleted = { [weak self] in
             self?.updateMarkersOnMap()
             self?.clearSelectedPoint()
             self?.showPointEditingView = false
+            self?.setPointsNumber()
         }
         
         return viewModel
@@ -186,16 +191,27 @@ fileprivate enum SubscriptionRequestError: Error {
         try await channelsClient.createChannelParticipant(channelParticipantClientModel: participantModel)
     }
     
-    private func pointsCount() -> Int {
+    private func setPointsNumber() {
         if isChannelOwner {
-            return mapController
+            pointsNumber = mapController
                 .markers
                 .count
         } else {
-            return mapController
+            pointsNumber = mapController
                 .markers
                 .filter { !$0.isHidden }
                 .count
+        }
+    }
+    
+    private func setParticipantsNumber() {
+        Task { @MainActor in
+            do {
+                let participantsNumber = try await channelsClient.channelParticipantsNumber(channelId: channel.id)
+                self.membersNumber = participantsNumber
+            } catch {
+                Log.error("Participants number request error: \(error)", module: "MapContainerViewModel")
+            }
         }
     }
 
@@ -297,6 +313,7 @@ fileprivate enum SubscriptionRequestError: Error {
     func addChannelPoints() {
         let points = channelPointsRepository.points
         mapController.addMarkers(forPoints: points)
+        setPointsNumber()
     }
     
     func pointEditButtonTaped() {
@@ -323,8 +340,9 @@ fileprivate enum SubscriptionRequestError: Error {
     func channelDetailsModel() -> ChannelDetailsModel {
         ChannelDetailsModel(
             channel: channel,
-            pointsNumber: pointsCount(),
-            participantsNumber: 12
+            pointsNumber: pointsNumber ?? 0,
+            participantsNumber: membersNumber ?? 0,
+            isChannelOwner: isChannelOwner
         )
     }
     

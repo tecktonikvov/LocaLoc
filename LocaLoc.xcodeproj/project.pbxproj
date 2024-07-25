@@ -17,6 +17,7 @@
 		04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */; };
 		04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */; };
 		04261AEA2BFCEA3400FBAFC3 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */; };
+		042A8B742C5250440077371C /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A8B732C5250440077371C /* ShareItem.swift */; };
 		042B9B1C2C35D7EA00DE7CB0 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */; };
 		042B9B1E2C35D7FC00DE7CB0 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 042B9B1D2C35D7FC00DE7CB0 /* Factory */; };
 		042B9B222C36AAE700DE7CB0 /* UserIdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */; };
@@ -244,6 +245,7 @@
 		04261AE02BFCD9E100FBAFC3 /* ChannelsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRow.swift; sourceTree = "<group>"; };
 		04261AE72BFCE9FF00FBAFC3 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		04261AE92BFCEA3400FBAFC3 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		042A8B732C5250440077371C /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		042B9B212C36AAE700DE7CB0 /* UserIdProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdProvider.swift; sourceTree = "<group>"; };
 		042B9B2E2C36EBFB00DE7CB0 /* ChannelParticipantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelParticipantModel.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				04F6242E2C4E4424003CCE0F /* Invitation.swift */,
 				04F624262C4A9936003CCE0F /* NavigationState.swift */,
 				040D85872C008F97000F8F52 /* Profile.swift */,
+				042A8B732C5250440077371C /* ShareItem.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
 				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
 				04F624302C4E5BDE003CCE0F /* UserChannelSubscriptionRelation.swift */,
@@ -1400,6 +1403,7 @@
 				04F624252C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift in Sources */,
 				044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */,
 				044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */,
+				042A8B742C5250440077371C /* ShareItem.swift in Sources */,
 				047A03F62C46BA55000EDA80 /* Prefix.swift in Sources */,
 				042B9B672C3BFC2C00DE7CB0 /* User+Bridges.swift in Sources */,
 				042B9B472C38403700DE7CB0 /* PointAddView.swift in Sources */,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChannelDetailsView: View {
     private let viewModel: ChannelDetailsViewModel
-    
+
     @Binding private var path: NavigationPath
         
     // MARK: - Init
@@ -36,19 +36,24 @@ struct ChannelDetailsView: View {
                 if !description.isEmpty {
                     Text(description)
                         .font(.title3)
-                        .foregroundStyle(Color.Text.subtitle)
                         .padding(.top, 0)
                 }
                 
                 HStack {
-                    Text("\(viewModel.channelModel.pointsNumber) points")
+                    Text("\(viewModel.channelModel.participantsNumber) subscribers")
                     Divider()
                         .frame(maxHeight: 20)
-                    Text("\(viewModel.channelModel.participantsNumber) subscribers")
+                    Text("\(viewModel.channelModel.pointsNumber) points")
                 }
                 .foregroundStyle(Color.Text.subtitle)
                 .padding(.top, 8)
                 
+                Divider()
+                    .padding(.top, 8)
+                
+                buttons()
+                    .padding(.top, 20)
+
                 Spacer()
             }
             .padding(.top, 24)
@@ -70,6 +75,103 @@ struct ChannelDetailsView: View {
                     Spacer()
                 }
             }
+        }
+    }
+    
+    // MARK: - Private
+    @ViewBuilder
+    private func shareLinkButton(shareItem: ShareItem, isInvite: Bool) -> some View {
+        var shareItem = shareItem
+        
+        if isInvite {
+            ShareLink(item: shareItem.link,
+                      preview: shareItem.sharePreview) {
+                VStack {
+                    Image(systemName: "person.badge.plus")
+                        .font(.system(size: 22))
+                    Text("Invite")
+                        .font(.system(size: 18))
+                        .padding(.top, 4)
+                        .foregroundColor(Color.Text.main)
+                        .fontWeight(.semibold)
+                }
+                .frame(width: 60, height: 80)
+            }
+        } else {
+            ShareLink(item: shareItem.link,
+                      preview: shareItem.sharePreview) {
+                VStack {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.system(size: 22))
+                    Text("Share")
+                        .font(.system(size: 18))
+                        .padding(.top, 4)
+                        .foregroundColor(Color.Text.main)
+                        .fontWeight(.semibold)
+                }
+                .frame(width: 60, height: 80)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func buttons() -> some View {
+        VStack {
+            HStack(spacing: 16) {
+                if let shareItemType = viewModel.shareItemType {
+                    switch shareItemType {
+                    case .free(let shareItem):
+                        shareLinkButton(shareItem: shareItem, isInvite: false)
+                    case .invitation(let shareItem):
+                        shareLinkButton(shareItem: shareItem, isInvite: true)
+                    }
+                }
+                
+                if viewModel.channelModel.isChannelOwner {
+                    BottomButton(
+                        systemImage: "pencil",
+                        text: "Edit",
+                        foregroundColor: Color.Text.main
+                    ) {
+                        viewModel.userTappedEditButton()
+                    }
+                }
+               
+                BottomButton(
+                    systemImage: "arrow.backward.square",
+                    text: "Leave",
+                    foregroundColor: Color.Text.attention
+                ) {
+                    viewModel.userTappedLeaveButton()
+                }
+            }
+            .foregroundColor(Color.Text.main)
+            .tint(Color.background)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle)
+        }
+    }
+}
+
+fileprivate struct BottomButton: View {
+    let systemImage: String
+    let text: String
+    let foregroundColor: Color
+    
+    var action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack {
+                Image(systemName: systemImage)
+                    .font(.system(size: 22))
+                Text(text)
+                    .font(.system(size: 18))
+                    .padding(.top, 4)
+                    .foregroundColor(foregroundColor)
+                    .fontWeight(.semibold)
+            }
+            .frame(width: 60, height: 80)
         }
     }
 }

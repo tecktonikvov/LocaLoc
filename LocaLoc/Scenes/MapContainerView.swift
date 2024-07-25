@@ -47,13 +47,21 @@ struct MapContainerView: View {
                     ToolbarItem(placement: .navigation) {
                         HStack {
                             CachedCenteredImage(url: viewModel.channel.imageUrl, placeholderImageName: "channel_placeholder")
-                                .frame(width: 50, height: 50)
+                                .frame(width: 45, height: 45)
                                 .clipShape(Circle())
                                 .shadow(color: .black.opacity(0.5), radius: 10, y: 4)
                             VStack(alignment: .leading) {
                                 Text(viewModel.channel.name)
-                                Text("222 Members, 23 points")
-                                    .foregroundStyle(Color.Text.subtitle)
+                                HStack {
+                                    if let membersNumber = viewModel.membersNumber {
+                                        Text("\(membersNumber) subscribers")
+                                    }
+                                    
+                                    if let pointsNumber = viewModel.pointsNumber {
+                                        Text("\(pointsNumber) points")
+                                    }
+                                }
+                                .foregroundStyle(Color.Text.subtitle)
                             }
                             .shadow(color: .black, radius: 10, y: 4)
                         }
