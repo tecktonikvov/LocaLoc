@@ -40,10 +40,10 @@ struct ChannelDetailsView: View {
                 }
                 
                 HStack {
-                    Text("\(viewModel.channelModel.participantsNumber) subscribers")
+                    Text("\(viewModel.channelModel.participantsNumber) subscriber(s)")
                     Divider()
                         .frame(maxHeight: 20)
-                    Text("\(viewModel.channelModel.pointsNumber) points")
+                    Text("\(viewModel.channelModel.pointsNumber) point(s)")
                 }
                 .foregroundStyle(Color.Text.subtitle)
                 .padding(.top, 8)
@@ -86,38 +86,39 @@ struct ChannelDetailsView: View {
         if isInvite {
             ShareLink(item: shareItem.link,
                       preview: shareItem.sharePreview) {
-                VStack {
+                HStack {
                     Image(systemName: "person.badge.plus")
                         .font(.system(size: 22))
                     Text("Invite")
                         .font(.system(size: 18))
-                        .padding(.top, 4)
                         .foregroundColor(Color.Text.main)
                         .fontWeight(.semibold)
+                        .minimumScaleFactor(0.01)
+                    Spacer()
                 }
-                .frame(width: 60, height: 80)
+                .padding(6)
             }
         } else {
             ShareLink(item: shareItem.link,
                       preview: shareItem.sharePreview) {
-                VStack {
+                HStack {
                     Image(systemName: "square.and.arrow.up")
                         .font(.system(size: 22))
                     Text("Share")
                         .font(.system(size: 18))
-                        .padding(.top, 4)
                         .foregroundColor(Color.Text.main)
                         .fontWeight(.semibold)
+                        .minimumScaleFactor(0.01)
+                    Spacer()
                 }
-                .frame(width: 60, height: 80)
+                .padding(6)
             }
         }
     }
     
     @ViewBuilder
     private func buttons() -> some View {
-        VStack {
-            HStack(spacing: 16) {
+        VStack(spacing: 16) {
                 if let shareItemType = viewModel.shareItemType {
                     switch shareItemType {
                     case .free(let shareItem):
@@ -136,7 +137,7 @@ struct ChannelDetailsView: View {
                         viewModel.userTappedEditButton()
                     }
                 }
-               
+               Spacer()
                 BottomButton(
                     systemImage: "arrow.backward.square",
                     text: "Leave",
@@ -149,29 +150,29 @@ struct ChannelDetailsView: View {
             .tint(Color.background)
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.roundedRectangle)
+            .padding(.horizontal)
         }
     }
-}
 
 fileprivate struct BottomButton: View {
     let systemImage: String
-    let text: String
+    let text: LocalizedStringKey
     let foregroundColor: Color
     
     var action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            VStack {
+            HStack {
                 Image(systemName: systemImage)
                     .font(.system(size: 22))
                 Text(text)
                     .font(.system(size: 18))
-                    .padding(.top, 4)
                     .foregroundColor(foregroundColor)
                     .fontWeight(.semibold)
+                Spacer()
             }
-            .frame(width: 60, height: 80)
+            .padding(6)
         }
     }
 }

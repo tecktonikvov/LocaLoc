@@ -36,10 +36,10 @@ struct PrivateChannelView: View {
                 }
                 
                 HStack {
-                    Text("\(viewModel.channelModel.pointsNumber) points")
+                    Text("\(viewModel.channelModel.pointsNumber) point(s)")
                     Divider()
                         .frame(maxHeight: 20)
-                    Text("\(viewModel.channelModel.participantsNumber) subscribers")
+                    Text("\(viewModel.channelModel.participantsNumber) subscriber(s)")
                 }
                 .foregroundStyle(Color.Text.subtitle)
                 

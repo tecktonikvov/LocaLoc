@@ -63,7 +63,7 @@ struct PointInfoView: View {
 }
 
 fileprivate extension Date {
-    func timeAgo() -> String {
+    func timeAgo() -> LocalizedStringKey {
         let daysAgo = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
         let dateFormatter = DateFormatter()
         

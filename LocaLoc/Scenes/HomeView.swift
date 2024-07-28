@@ -66,7 +66,7 @@ fileprivate extension TabScene<AnyView> {
         }
     }
     
-    var title: String {
+    var title: LocalizedStringKey {
         switch type {
         case .channels:
             return "Channels"

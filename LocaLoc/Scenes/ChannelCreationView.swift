@@ -94,7 +94,7 @@ struct ChannelCreationView: View {
 //}
 
 fileprivate extension ChannelInvitationMode {
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
         case .open:
             return "Open"
@@ -148,7 +148,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 
 fileprivate struct TextEditorWithPlaceholder: View {
     @Binding var text: String
-    var placeholder: String
+    var placeholder: LocalizedStringKey
     
     var body: some View {
         ZStack(alignment: .leading) {

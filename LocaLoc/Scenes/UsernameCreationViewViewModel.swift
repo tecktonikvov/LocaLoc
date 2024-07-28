@@ -8,6 +8,7 @@
 import Foundation
 import K_Logger
 import Factory
+import SwiftUI
 
 enum UsernameValidationResult {
     case requestError(Error)
@@ -21,7 +22,7 @@ enum UsernameValidationResult {
     @Injected(\.usernameManager) private var usernameManager
     
     var username = ""
-    var errorText: String?
+    var errorText: LocalizedStringKey?
     var isLoading: Bool = false
     
     // MARK: - Private

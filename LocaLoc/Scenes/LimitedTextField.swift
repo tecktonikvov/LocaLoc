@@ -13,12 +13,12 @@ struct LimitedTextField: View {
 
     private let max: Int
     private let min: Int
-    private let title: String
+    private let title: LocalizedStringKey
     
     @Binding private var output: String
 
     // MARK: - Init
-    init(max: Int, min: Int, title: String, output: Binding<String>) {
+    init(max: Int, min: Int, title: LocalizedStringKey, output: Binding<String>) {
         self.max = max
         self.min = min
         self.title = title

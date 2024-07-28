@@ -54,11 +54,11 @@ struct MapContainerView: View {
                                 Text(viewModel.channel.name)
                                 HStack {
                                     if let membersNumber = viewModel.membersNumber {
-                                        Text("\(membersNumber) subscribers")
+                                        Text("\(membersNumber) subscriber(s)")
                                     }
                                     
                                     if let pointsNumber = viewModel.pointsNumber {
-                                        Text("\(pointsNumber) points")
+                                        Text("\(0) point(s)")
                                     }
                                 }
                                 .foregroundStyle(Color.Text.subtitle)
