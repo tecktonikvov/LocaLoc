@@ -39,8 +39,7 @@ struct PointInfoView: View {
             }
             
             if isEditingAllowed {
-                HStack {
-                    Spacer()
+                VStack(alignment: .trailing) {
                     Button {
                         onEditButtonTapped?()
                     } label: {

@@ -182,6 +182,7 @@ struct PointEditingView: View {
                 .isOpaque(true)
                 .closeOnTap(false)
                 .backgroundColor(Color.black.opacity(0.5))
+                .animation(.bouncy(duration: 0.2))
         }
     }
     
