@@ -96,7 +96,7 @@ struct ChannelDetailsView: View {
                         .minimumScaleFactor(0.01)
                     Spacer()
                 }
-                .padding(6)
+                .padding(4)
             }
         } else {
             ShareLink(item: shareItem.link,
@@ -111,7 +111,7 @@ struct ChannelDetailsView: View {
                         .minimumScaleFactor(0.01)
                     Spacer()
                 }
-                .padding(6)
+                .padding(4)
             }
         }
     }
