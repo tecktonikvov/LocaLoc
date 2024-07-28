@@ -13,7 +13,7 @@ struct ShareItem: Transferable {
     }
 
     let image: Image
-    let title: String
+    let title: LocalizedStringKey
     let link: URL
     
     lazy var sharePreview = SharePreview(title, image: image)

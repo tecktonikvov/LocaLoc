@@ -304,7 +304,39 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відмінити"
+            "value" : "Скасувати"
+          }
+        }
+      }
+    },
+    "Channel invite" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приглашение в канал"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запрошення до каналу"
+          }
+        }
+      }
+    },
+    "Channel link" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ссылка на канал"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Посилання на канал"
           }
         }
       }

@@ -46,7 +46,7 @@ final class ChannelDetailsViewModel {
         case .open:
             let item = ShareItem(
                 image: Image("share_sheet_icon"),
-                title: "Share channel link",
+                title: "Channel link",
                 link: url)
             
             shareItemType = .free(shareItem: item)
@@ -54,14 +54,14 @@ final class ChannelDetailsViewModel {
             if channelModel.isChannelOwner {
                 let item = ShareItem(
                     image: Image("share_sheet_icon"),
-                    title: "Share invitation link",
+                    title: "Channel invite",
                     link: url)
                 
                 shareItemType = .invitation(shareItem: item)
             } else {
                 let item = ShareItem(
                     image: Image("share_sheet_icon"),
-                    title: "Share channel link",
+                    title: "Channel link",
                     link: url)
                 
                 shareItemType = .free(shareItem: item)
