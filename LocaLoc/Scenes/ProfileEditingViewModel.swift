@@ -109,6 +109,7 @@ import Factory
         
         switch usernameValidationResult {
         case .requestError(let error):
+            print("🔴", error)
             return ("Something wrong")
             // TODO: Pass to error presenter
         case .tooShort:

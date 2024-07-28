@@ -23,5 +23,12 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return result
     }
+    
+    convenience init?(url: URL) {
+        if let cachedResponse = URLCache.shared.cachedResponse(for: .init(url: url)) {
+            self.init(data: cachedResponse.data)
+        } else {
+            return nil
+        }
+    }
 }
-

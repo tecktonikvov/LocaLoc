@@ -28,11 +28,12 @@ struct SettingsView: View {
                         path.append(NavigationState.profileEditing)
                     } label: {
                         HStack(alignment: .center) {
-                            CachedCenteredImage(
-                                url: URL(string: viewModel.user.profile.imageUrl),
-                                placeholderImageName: "person.circle.fill")
-                            .frame(width: 80, height: 80)
-                            .clipShape(Circle())
+                            let url = URL(string: viewModel.user.profile.imageUrl) ?? URL(fileURLWithPath: "")
+                            let placeholder = Image(systemName: "person.circle.fill")
+                            
+                            CachedCenteredImage(type: .url(url, placeholder))
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
                             
                             VStack(alignment: .leading) {
                                 Text(viewModel.user.profile.fullName)

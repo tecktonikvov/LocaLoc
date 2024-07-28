@@ -70,7 +70,7 @@ struct HomeModel {
                     return
                 }
                 
-                switch channel.channelSettings.invitationMode {
+                switch channel.invitationMode {
                 case .open:
                     self.deeplinkChannel = .accessAllowed(channel, relationType: .notSubscribed)
                 case .byInvitation:
@@ -99,7 +99,7 @@ struct HomeModel {
     // MARK: - Public
     func checkForDeepLinks(delay: TimeInterval) {
         guard let channelDeepLink = InMemoryDeeplinkHolder.channelDeepLink else { return }
-        Log.info("Home appeared, deeplink detected, processing..", module: "HomeViewModel")
+        Log.info("Home screen appeared, deeplink detected, processing..", module: "HomeViewModel")
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             self?.handleChannelDeepLink(channelDeeplink: channelDeepLink)
         }

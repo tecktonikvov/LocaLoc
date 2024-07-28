@@ -261,6 +261,22 @@
         }
       }
     },
+    "At least %lld characters" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не мене %lld символов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не менше ніж %lld символи"
+          }
+        }
+      }
+    },
     "By invitation" : {
       "localizations" : {
         "ru" : {
@@ -501,6 +517,22 @@
         }
       }
     },
+    "Delete and leave" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить и покинуть"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити та покинути"
+          }
+        }
+      }
+    },
     "Delete Point" : {
       "localizations" : {
         "ru" : {
@@ -577,6 +609,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Редагувати"
+          }
+        }
+      }
+    },
+    "Edit channel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактировать канал"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редагувати канал"
           }
         }
       }

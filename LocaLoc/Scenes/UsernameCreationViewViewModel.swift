@@ -65,6 +65,7 @@ enum UsernameValidationResult {
             
             switch validationResult {
             case .requestError(let error):
+                print("🔴", error)
                 errorText = "Something wrong"
                 // TODO: Pass to error presenter
             case .tooShort:

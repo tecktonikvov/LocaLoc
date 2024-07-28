@@ -27,7 +27,7 @@ import LocaLocLocalStore
         self.channel = channel
 
         try loadLocalStorePoints()
-#warning("Debug code")
+        
         //deleteAllLocalCachedChannels()
     }
     

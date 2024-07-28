@@ -46,7 +46,10 @@ struct MapContainerView: View {
                     
                     ToolbarItem(placement: .navigation) {
                         HStack {
-                            CachedCenteredImage(url: viewModel.channel.imageUrl, placeholderImageName: "channel_placeholder")
+                            let url = viewModel.channel.imageUrl ?? URL(fileURLWithPath: "")
+                            let placeholder = Image("channel_placeholder")
+                            
+                            CachedCenteredImage(type: .url(url, placeholder))
                                 .frame(width: 45, height: 45)
                                 .clipShape(Circle())
                                 .shadow(color: .black.opacity(0.5), radius: 10, y: 4)
@@ -58,7 +61,7 @@ struct MapContainerView: View {
                                     }
                                     
                                     if let pointsNumber = viewModel.pointsNumber {
-                                        Text("\(0) point(s)")
+                                        Text("\(pointsNumber) point(s)")
                                     }
                                 }
                                 .foregroundStyle(Color.Text.subtitle)

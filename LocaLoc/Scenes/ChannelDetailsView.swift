@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ChannelDetailsView: View {
     private let viewModel: ChannelDetailsViewModel
-
+    
     @Binding private var path: NavigationPath
-        
+    
     // MARK: - Init
     init(viewModel: ChannelDetailsViewModel, path: Binding<NavigationPath>) {
         self._path = path
@@ -53,7 +53,7 @@ struct ChannelDetailsView: View {
                 
                 buttons()
                     .padding(.top, 20)
-
+                
                 Spacer()
             }
             .padding(.top, 24)
@@ -119,25 +119,38 @@ struct ChannelDetailsView: View {
     @ViewBuilder
     private func buttons() -> some View {
         VStack(spacing: 16) {
-                if let shareItemType = viewModel.shareItemType {
-                    switch shareItemType {
-                    case .free(let shareItem):
-                        shareLinkButton(shareItem: shareItem, isInvite: false)
-                    case .invitation(let shareItem):
-                        shareLinkButton(shareItem: shareItem, isInvite: true)
-                    }
+            // Share or invite button
+            if let shareItemType = viewModel.shareItemType {
+                switch shareItemType {
+                case .free(let shareItem):
+                    shareLinkButton(shareItem: shareItem, isInvite: false)
+                case .invitation(let shareItem):
+                    shareLinkButton(shareItem: shareItem, isInvite: true)
                 }
-                
-                if viewModel.channelModel.isChannelOwner {
-                    BottomButton(
-                        systemImage: "pencil",
-                        text: "Edit",
-                        foregroundColor: Color.Text.main
-                    ) {
-                        viewModel.userTappedEditButton()
-                    }
+            }
+            
+            // Edit button
+            if viewModel.channelModel.isChannelOwner {
+                BottomButton(
+                    systemImage: "pencil",
+                    text: "Edit",
+                    foregroundColor: Color.Text.main
+                ) {
+                    path.append(NavigationState.channelEditing(channel: viewModel.channelModel.channel))
                 }
-               Spacer()
+            }
+            Spacer()
+            
+            // Leave button
+            if viewModel.channelModel.isChannelOwner {
+                BottomButton(
+                    systemImage: "trash",
+                    text: "Delete and leave",
+                    foregroundColor: Color.Text.attention
+                ) {
+                    viewModel.userTappedDeleteLeaveButton()
+                }
+            } else {
                 BottomButton(
                     systemImage: "arrow.backward.square",
                     text: "Leave",
@@ -146,13 +159,15 @@ struct ChannelDetailsView: View {
                     viewModel.userTappedLeaveButton()
                 }
             }
-            .foregroundColor(Color.Text.main)
-            .tint(Color.background)
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle)
-            .padding(.horizontal)
+            
         }
+        .foregroundColor(Color.Text.main)
+        .tint(Color.background)
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(.roundedRectangle)
+        .padding(.horizontal)
     }
+}
 
 fileprivate struct BottomButton: View {
     let systemImage: String
@@ -160,7 +175,7 @@ fileprivate struct BottomButton: View {
     let foregroundColor: Color
     
     var action: () -> Void
-
+    
     var body: some View {
         Button(action: action) {
             HStack {

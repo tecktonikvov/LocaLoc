@@ -1,19 +1,19 @@
 //
-//  ChannelCreationView.swift
+//  ChannelEditingView.swift
 //  LocaLoc
 //
-//  Created by Volodymyr Kotsiubenko on 25/5/24.
+//  Created by Volodymyr Kotsiubenko on 28/7/24.
 //
 
 import SwiftUI
 
-struct ChannelCreationView: View {
-    @Bindable private var viewModel: ChannelCreationViewModel
+struct ChannelEditingView: View {
+    @State private var viewModel: ChannelEditingViewModel
     
     @Binding private var path: NavigationPath
 
     // MARK: - Init
-    init(viewModel: ChannelCreationViewModel, path: Binding<NavigationPath>) {
+    init(viewModel: ChannelEditingViewModel, path: Binding<NavigationPath>) {
         self._path = path
         self.viewModel = viewModel
     }
@@ -64,7 +64,7 @@ struct ChannelCreationView: View {
                 )
             }
         }
-        .navigationTitle("Create new channel")
+        .navigationTitle("Edit channel")
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -80,7 +80,7 @@ struct ChannelCreationView: View {
                     let disabled = viewModel.identifier.count < Constants.channelIdentifierMinCharactersLimit
                     || viewModel.name.isEmpty
                     
-                    Button("Create", action: viewModel.saveChannel)
+                    Button("Save", action: viewModel.createChannel)
                         .disabled(disabled)
                         .foregroundColor(disabled ? Color.Text.subtitle : Color.Text.main)
                 }

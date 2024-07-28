@@ -16,15 +16,9 @@ public final class ChannelPersistencyModel {
     public var name: String
     public var channelDescription: String
     public var imageUrl: URL?
-    public var missedUpdatesNumber: Int
     public var creationDate: Date?
     public var lastUpdateTime: Date?
-    
-    @Relationship(deleteRule: .cascade)
-    public var channelSettings: ChannelSettingsPersistencyModel?
-    
-    @Relationship(deleteRule: .cascade)
-    public var channelUserSettings: ChannelUserSettingsPersistencyModel?
+    public var invitationMode: String
     
     public init(
         channelId: String,
@@ -33,11 +27,9 @@ public final class ChannelPersistencyModel {
         name: String,
         channelDescription: String,
         imageUrl: URL?,
-        missedUpdatesNumber: Int,
         creationDate: Date?,
         lastUpdateDate: Date?,
-        channelSettings: ChannelSettingsPersistencyModel?,
-        channelUserSettings: ChannelUserSettingsPersistencyModel?
+        invitationMode: String
     ) {
         self.channelId = channelId
         self.identifier = identifier
@@ -45,10 +37,8 @@ public final class ChannelPersistencyModel {
         self.name = name
         self.channelDescription = channelDescription
         self.imageUrl = imageUrl
-        self.missedUpdatesNumber = missedUpdatesNumber
         self.creationDate = creationDate
         self.lastUpdateTime = lastUpdateDate
-        self.channelSettings = channelSettings
-        self.channelUserSettings = channelUserSettings
+        self.invitationMode = invitationMode
     }
 }

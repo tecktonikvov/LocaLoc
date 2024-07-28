@@ -31,7 +31,7 @@ enum ChannelsDataRepositoryError: Error {
         self.localStorage = localStorage
         
         try loadLocalStoreChannels()
-        #warning("Debug code")
+        
         //deleteAllLocalCachedChannels()
     }
     
@@ -65,25 +65,10 @@ enum ChannelsDataRepositoryError: Error {
             name: channel.name,
             channelDescription: channel.description,
             imageUrl: channel.imageUrl,
-            missedUpdatesNumber: channel.missedUpdatesNumber,
             creationDate: channel.creationDate,
             lastUpdateDate: channel.lastUpdateDate,
-            channelSettings: nil,
-            channelUserSettings: nil
+            invitationMode: channel.invitationMode.rawValue
         )
-        
-        let channelSettingsPersistencyModel = ChannelSettingsPersistencyModel(
-            invitationMode: channel.channelSettings.invitationMode.rawValue,
-            channel: channelPersistencyModel
-        )
-        
-        let channelUserSettings = ChannelUserSettingsPersistencyModel(
-            channelUserSettingsModel: channel.userSettings,
-            channel: channelPersistencyModel
-        )
-        
-        channelPersistencyModel.channelUserSettings = channelUserSettings
-        channelPersistencyModel.channelSettings = channelSettingsPersistencyModel
         
         return channelPersistencyModel
     }
@@ -93,7 +78,7 @@ enum ChannelsDataRepositoryError: Error {
         localStorage.addModel(model: storageModel)
     }
     
-    private func existingClientChannel(_ channel: Channel) async throws -> ChannelClientModel? {
+    private func existingClientChannelModel(_ channel: Channel) async throws -> ChannelClientModel? {
         let id = channel.id
         
         guard !id.isEmpty else { return nil }
@@ -105,14 +90,22 @@ enum ChannelsDataRepositoryError: Error {
         let updatedClientModel = ChannelClientModel(channelModel: update)
         try await channelsClient.updateChannel(withId: update.id, channelClientModel: updatedClientModel)
         
-        if let channelLocalStoreModel = try localStorageChannelModel(channelId: update.id) {
-            localStorage.delete(model: channelLocalStoreModel)
-            
-            let newChannelLocalStoreModel = makeChannelLocalStorageModel(update)
-            localStorage.addModel(model: newChannelLocalStoreModel)
-        }
+        try updateLocalModel(with: update)
         
         return update
+    }
+    
+    private func updateLocalModel(with channelModel: Channel) throws {
+        guard let channelLocalStoreModel = try localStorageChannelModel(channelId: channelModel.id) else { return }
+        
+        channelLocalStoreModel.channelDescription = channelModel.description
+        channelLocalStoreModel.identifier = channelModel.identifier
+        channelLocalStoreModel.imageUrl = channelModel.imageUrl
+        channelLocalStoreModel.lastUpdateTime = channelModel.lastUpdateDate
+        channelLocalStoreModel.name = channelModel.name
+        channelLocalStoreModel.ownerId = channelModel.ownerId
+        channelLocalStoreModel.channelId = channelModel.id
+        channelLocalStoreModel.invitationMode = channelModel.invitationMode.rawValue
     }
     
     private func localStorageChannelModel(channelId id: String) throws -> ChannelPersistencyModel? {
@@ -155,19 +148,10 @@ enum ChannelsDataRepositoryError: Error {
             name: clientModel.name,
             channelDescription: clientModel.description,
             imageUrl: clientModel.imageUrl,
-            missedUpdatesNumber: clientModel.missedUpdatesNumber,
             creationDate: clientModel.createdAt,
-            lastUpdateDate: clientModel.updatedAt,
-            channelSettings: nil,
-            channelUserSettings: nil
+            lastUpdateDate: clientModel.updatedAt, 
+            invitationMode: clientModel.channelInvitationMode
         )
-        
-        let channelSettingsLocalStoreModel = ChannelSettingsPersistencyModel(
-            invitationMode: clientModel.channelInvitationMode,
-            channel: channelLocalStorageModel
-        )
-
-        channelLocalStorageModel.channelSettings = channelSettingsLocalStoreModel
         
         return channelLocalStorageModel
     }
@@ -210,7 +194,7 @@ extension ChannelsDataRepository: ChannelsRepository {
         
         channel.lastUpdateDate = Date.timeZoneIndependentCurrentDate
         
-        let isChannelExists = try await existingClientChannel(channel) != nil
+        let isChannelExists = try await existingClientChannelModel(channel) != nil
         
         if isChannelExists {
             guard !channel.id.isEmpty else {

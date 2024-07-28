@@ -15,9 +15,10 @@ struct ChannelAvatarView: View {
     }
     
     var body: some View {
-        CachedCenteredImage(
-            url: url,
-            placeholderImageName: "channel_placeholder")
+        let url = url ?? URL(fileURLWithPath: "")
+        let placeholder = Image("channel_placeholder")
+
+        CachedCenteredImage(type: .url(url, placeholder))
             .clipShape(Circle())
     }
 }

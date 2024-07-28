@@ -165,6 +165,7 @@ public final class Client {
         _ = try await reference.putDataAsync(data, metadata: metadata)
 
         let url = try await reference.downloadURL()
+        Log.info("File: \(fileName), successfully uploaded. URL: \(url.absoluteString)", module: "Client")
 
         return url
     }

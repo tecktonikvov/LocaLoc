@@ -10,11 +10,10 @@ import K_Logger
 import Factory
 
 @Observable final class ChannelCreationViewModel {
-    var image = UIImage() {
+    var image: UIImage? {
         didSet {
-            DispatchQueue.main.async {
-                self.isImageSelected = true
-            }
+            guard image != nil else { return }
+            isImageSelected = true
         }
     }
     
@@ -30,8 +29,8 @@ import Factory
     var identifier: String = ""
     var invitationMode: ChannelInvitationMode = .open
     
-    let availableInvitationModes: [ChannelInvitationMode] = [.open, .byInvitation]
-    
+    let availableInvitationModes = ChannelInvitationMode.allCases
+
     private var channelCreationTask: Task<(), Never>?
     
     // Dependencies
@@ -63,12 +62,9 @@ import Factory
             name: name,
             description: description,
             imageUrl: nil,
-            missedUpdatesNumber: 0,
             creationDate: Date.timeZoneIndependentCurrentDate,
             lastUpdateDate: Date.timeZoneIndependentCurrentDate,
-            channelSettings: ChannelSettings(invitationMode: invitationMode),
-            userSettings: .default, 
-            channelPoints: []
+            invitationMode: .open
         )
     }
     
@@ -78,7 +74,7 @@ import Factory
     }
     
     // MARK: - Public
-    func createChannel() {
+    func saveChannel() {
         isLoading = true
         
         channelCreationTask = Task { @MainActor in
@@ -96,7 +92,7 @@ import Factory
                 
                 guard !Task.isCancelled else { return }
                                                 
-                if isImageSelected {
+                if let image, isImageSelected {
                     let imageUrl = try await uploadChannelPhoto(image, channelId: newChannel.id)
                     newChannel.imageUrl = imageUrl
                 }

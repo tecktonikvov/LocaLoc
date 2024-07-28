@@ -37,7 +37,7 @@ final class ChannelDetailsViewModel {
     
     // MARK: - Private
     private func setShareItem() {
-        let invitationMode = channelModel.channel.channelSettings.invitationMode
+        let invitationMode = channelModel.channel.invitationMode
         guard let url = URL(string: "localocapp://channel?identifier=QEqgSzGPu5Kk2kcQcRBA") else {
             return
         }
@@ -76,5 +76,9 @@ final class ChannelDetailsViewModel {
     
     func userTappedLeaveButton() {
         
+    }
+    
+    func userTappedDeleteLeaveButton() {
+        guard channelModel.isChannelOwner else { return }
     }
 }

@@ -291,7 +291,6 @@ fileprivate enum SubscriptionRequestError: Error {
                 let pointWithId = try await channelPointsRepository.saveChannelPoint(point)
                 mapController.replaceNewSelectedPoint(by: pointWithId)
                 
-                self.channel.channelPoints.append(pointWithId)
                 Haptic.perform(.success)
                 
                 clearCurrentPointData()

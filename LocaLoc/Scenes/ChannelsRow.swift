@@ -10,6 +10,10 @@ import SwiftUI
 struct ChannelsRow: View {
     private let channel: Channel
     
+    let missedUpdatesNumber = 0
+    let isMuted = false
+    
+    // MARK: - Init
     init(channel: Channel) {
         self.channel = channel
     }
@@ -47,15 +51,13 @@ struct ChannelsRow: View {
                
                 Spacer()
                 
-                if channel.missedUpdatesNumber > 0 {
+                if missedUpdatesNumber > 0 {
                     ZStack {
                         Circle()
-                            .fill(channel.userSettings.isMuted
-                                  ? Color.Extra.silver
-                                  : Color.Text.attention)
+                            .fill(isMuted ? Color.Extra.silver : Color.Text.attention)
                            
-                        let text = channel.missedUpdatesNumber > 99 ? "99+" : String(channel.missedUpdatesNumber)
-                        let size = channel.missedUpdatesNumber > 99 ? 11 : 13
+                        let text = missedUpdatesNumber > 99 ? "99+" : String(missedUpdatesNumber)
+                        let size = missedUpdatesNumber > 99 ? 11 : 13
                         Text(text)
                             .font(.system(size: CGFloat(size)))
                             .foregroundStyle(Color.Extra.taupe)

@@ -92,18 +92,26 @@ struct CoreApp: App {
         case .createNewChannel:
             let channelCreationViewModel = ChannelCreationViewModel()
             ChannelCreationView(viewModel: channelCreationViewModel, path: $path)
+            
         case let .map(channel, relation):
             let mapContainerViewModel = MapContainerViewModel(channel: channel, userSubscriptionRelationType: relation)
             MapContainerView(viewModel: mapContainerViewModel, path: $path)
-        case .privateChannel(let privateChannelModel):
+            
+        case let .privateChannel(privateChannelModel):
             let privateChannelViewModel = PrivateChannelViewModel(channelModel: privateChannelModel)
             PrivateChannelView(viewModel: privateChannelViewModel)
-        case .channelDetails(channelDetailsModel: let channelDetailsModel):
+            
+        case let .channelDetails(channelDetailsModel):
             let channelDetailsViewModel = ChannelDetailsViewModel(channelDetailsModel: channelDetailsModel)
             ChannelDetailsView(viewModel: channelDetailsViewModel, path: $path)
+            
         case .profileEditing:
             let profileEditingViewModel = ProfileEditingViewModel()
             ProfileEditingView(viewModel: profileEditingViewModel, path: $path)
+            
+        case let .channelEditing(channel):
+            let channelEditingViewModel = ChannelEditingViewModel(channel: channel)
+            ChannelEditingView(viewModel: channelEditingViewModel, path: $path)
         }
     }
 }

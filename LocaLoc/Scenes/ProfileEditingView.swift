@@ -104,15 +104,14 @@ fileprivate struct ProfileEditingListView: View {
                 Section {
                     HStack(alignment: .center) {
                         ZStack {
-                            if !doesImageWasChanged {
-                                CachedCenteredImage(
-                                    url: URL(string: viewModel.profile.imageUrl),
-                                    placeholderImageName: "person.circle.fill")
-                                .frame(width: 80, height: 80)
-                                .clipShape(Circle())
+                            if !doesImageWasChanged, let url = URL(string: viewModel.profile.imageUrl) {
+                                let placeholder = Image(systemName: "person.circle.fill")
                                 
+                                CachedCenteredImage(type: .url(url, placeholder))
+                                    .frame(width: 80, height: 80)
+                                    .clipShape(Circle())
                             } else {
-                                CachedCenteredImage(uiImage: viewModel.selectedUIImage ?? UIImage())
+                                CachedCenteredImage(type: .uIImage(viewModel.selectedUIImage ?? UIImage()))
                                     .frame(width: 80, height: 80)
                             }
                         }

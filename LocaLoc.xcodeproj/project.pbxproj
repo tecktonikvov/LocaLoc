@@ -88,8 +88,6 @@
 		0459F7E52C3DB01A00B48A6D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */; };
 		0459F7EB2C3DB58A00B48A6D /* ChannelPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7EA2C3DB58A00B48A6D /* ChannelPoint.swift */; };
 		0459F7ED2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7EC2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift */; };
-		0459F7EF2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7EE2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift */; };
-		0459F7F12C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */; };
 		0459F7F52C3E90E700B48A6D /* ChannelPointsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */; };
 		0459F7F72C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */; };
 		0459F7F92C3F06C800B48A6D /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459F7F82C3F06C800B48A6D /* Haptic.swift */; };
@@ -123,6 +121,13 @@
 		047ECA302BFB84460065837C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047ECA2F2BFB84460065837C /* Colors.xcassets */; };
 		0485D8272BFF47C600729C34 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D8262BFF47C600729C34 /* UserDefaults.swift */; };
 		048914772C563EF5006B362B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 048914762C563EF5006B362B /* Localizable.xcstrings */; };
+		0489147A2C568DA2006B362B /* ChannelEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048914792C568DA2006B362B /* ChannelEditingView.swift */; };
+		0489147C2C568DB2006B362B /* ChannelEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489147B2C568DB2006B362B /* ChannelEditingViewModel.swift */; };
+		0489147F2C568EEB006B362B /* ChannelSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489147E2C568EEB006B362B /* ChannelSettingsView.swift */; };
+		048914812C568F6C006B362B /* ChannelImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048914802C568F6C006B362B /* ChannelImagePickerView.swift */; };
+		048914832C569058006B362B /* TextEditorWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048914822C569058006B362B /* TextEditorWithPlaceholder.swift */; };
+		048914852C569224006B362B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048914842C569224006B362B /* ImagePicker.swift */; };
+		048914882C56C72D006B362B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 048914872C56C72D006B362B /* SDWebImageSwiftUI */; };
 		04AA61912C0CDAE400AD6D93 /* AuthorizationUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */; };
 		04AA61932C0CE22C00AD6D93 /* CollectionsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */; };
 		04AA61952C0CE45A00AD6D93 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04AA61942C0CE45A00AD6D93 /* K-Logger */; };
@@ -308,8 +313,6 @@
 		0459F7E42C3DB01A00B48A6D /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		0459F7EA2C3DB58A00B48A6D /* ChannelPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPoint.swift; sourceTree = "<group>"; };
 		0459F7EC2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointPersistencyModel.swift; sourceTree = "<group>"; };
-		0459F7EE2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingsPersistencyModel.swift; sourceTree = "<group>"; };
-		0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUserSettingsPersistencyModel.swift; sourceTree = "<group>"; };
 		0459F7F42C3E90E700B48A6D /* ChannelPointsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPointsRepository.swift; sourceTree = "<group>"; };
 		0459F7F62C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChannelPointsDataRepository+ChannelPointsRepository.swift"; sourceTree = "<group>"; };
 		0459F7F82C3F06C800B48A6D /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
@@ -347,6 +350,12 @@
 		047ECA2F2BFB84460065837C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		0485D8262BFF47C600729C34 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		048914762C563EF5006B362B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		048914792C568DA2006B362B /* ChannelEditingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEditingView.swift; sourceTree = "<group>"; };
+		0489147B2C568DB2006B362B /* ChannelEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEditingViewModel.swift; sourceTree = "<group>"; };
+		0489147E2C568EEB006B362B /* ChannelSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingsView.swift; sourceTree = "<group>"; };
+		048914802C568F6C006B362B /* ChannelImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelImagePickerView.swift; sourceTree = "<group>"; };
+		048914822C569058006B362B /* TextEditorWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorWithPlaceholder.swift; sourceTree = "<group>"; };
+		048914842C569224006B362B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		04AA61902C0CDAE400AD6D93 /* AuthorizationUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationUserData.swift; sourceTree = "<group>"; };
 		04AA61922C0CE22C00AD6D93 /* CollectionsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsKeys.swift; sourceTree = "<group>"; };
 		04AA9BFA2C15AD6F00459E00 /* UsernameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameManager.swift; sourceTree = "<group>"; };
@@ -400,6 +409,7 @@
 				0459F7B72C3C773B00B48A6D /* FirebaseCrashlytics in Frameworks */,
 				040B9EC12BFE4C17005E3930 /* GoogleSignIn in Frameworks */,
 				0459F7B92C3C773B00B48A6D /* FirebaseFirestore in Frameworks */,
+				048914882C56C72D006B362B /* SDWebImageSwiftUI in Frameworks */,
 				042B9B322C372C4900DE7CB0 /* GoogleMaps in Frameworks */,
 				04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */,
 			);
@@ -492,6 +502,7 @@
 		040B9ECB2BFE6FD0005E3930 /* Child */ = {
 			isa = PBXGroup;
 			children = (
+				048914782C568D84006B362B /* ChannelEditing */,
 				040E4EC62C02631F00056856 /* ChannelCreation */,
 				04F624322C4E5F50003CCE0F /* ChannelDetails */,
 				047ECA142BFA91DC0065837C /* Channels */,
@@ -507,6 +518,7 @@
 			children = (
 				042B9B422C38312B00DE7CB0 /* AddressProvider.swift */,
 				042B9B1B2C35D7EA00DE7CB0 /* Dependencies.swift */,
+				048914842C569224006B362B /* ImagePicker.swift */,
 				04F624242C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift */,
 				0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */,
 				04BA84E42C0B0EAC004F76B3 /* Previewer.swift */,
@@ -613,8 +625,6 @@
 				042B9B5D2C3BFA5800DE7CB0 /* AuthenticationProviderTypePersistencyModel.swift */,
 				042B9B5E2C3BFA5800DE7CB0 /* ChannelPersistencyModel.swift */,
 				0459F7EC2C3DB63900B48A6D /* ChannelPointPersistencyModel.swift */,
-				0459F7EE2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift */,
-				0459F7F02C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift */,
 				042B9B5F2C3BFA5800DE7CB0 /* ProfilePersistencyModel.swift */,
 				042B9B602C3BFA5800DE7CB0 /* UserPersistencyModel.swift */,
 			);
@@ -665,8 +675,9 @@
 				0438C4AB2C2D6907000665D0 /* CachedCenteredImage.swift */,
 				04FAE9072C0C55A200200ADC /* DefaultBackground.swift */,
 				044D62042C2F12A500D130FA /* LimitedTextField.swift */,
-				042B9B442C383BBD00DE7CB0 /* PointAnimationView.swift */,
 				04F624392C4E643D003CCE0F /* NavBarBackButton.swift */,
+				042B9B442C383BBD00DE7CB0 /* PointAnimationView.swift */,
+				048914822C569058006B362B /* TextEditorWithPlaceholder.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -831,6 +842,7 @@
 		047ECA0D2BFA865D0065837C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0489147D2C568ED3006B362B /* ReusableViews */,
 				040B9ECB2BFE6FD0005E3930 /* Child */,
 				040B9ECA2BFE6FC9005E3930 /* Main */,
 			);
@@ -859,6 +871,24 @@
 				047ECA222BFA92E00065837C /* SettingsViewModel.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		048914782C568D84006B362B /* ChannelEditing */ = {
+			isa = PBXGroup;
+			children = (
+				048914792C568DA2006B362B /* ChannelEditingView.swift */,
+				0489147B2C568DB2006B362B /* ChannelEditingViewModel.swift */,
+			);
+			name = ChannelEditing;
+			sourceTree = "<group>";
+		};
+		0489147D2C568ED3006B362B /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				0489147E2C568EEB006B362B /* ChannelSettingsView.swift */,
+				048914802C568F6C006B362B /* ChannelImagePickerView.swift */,
+			);
+			name = ReusableViews;
 			sourceTree = "<group>";
 		};
 		04AA9BFE2C15D67E00459E00 /* Models */ = {
@@ -1108,6 +1138,7 @@
 				0459F7B82C3C773B00B48A6D /* FirebaseFirestore */,
 				0459F7BA2C3C773B00B48A6D /* FirebaseStorage */,
 				0459F80A2C42A2B000B48A6D /* MCEmojiPicker */,
+				048914872C56C72D006B362B /* SDWebImageSwiftUI */,
 			);
 			productName = LocaLoc;
 			productReference = 046C3E9F2BE917E800BBFF47 /* LocaLoc.app */;
@@ -1245,6 +1276,7 @@
 				042B9B302C372C1D00DE7CB0 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				0459F7AC2C3C76EA00B48A6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0459F8092C42A2A300B48A6D /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
+				048914862C56C720006B362B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 046C3EA02BE917E800BBFF47 /* Products */;
 			projectDirPath = "";
@@ -1356,6 +1388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0459F7F92C3F06C800B48A6D /* Haptic.swift in Sources */,
+				0489147A2C568DA2006B362B /* ChannelEditingView.swift in Sources */,
 				04F624362C4E5F68003CCE0F /* ChannelDetailsViewModel.swift in Sources */,
 				0438C4A92C2C713E000665D0 /* KeychainDataStore+TokenSecureStorage.swift in Sources */,
 				0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */,
@@ -1379,7 +1412,6 @@
 				04BA85422C0B710D004F76B3 /* UserDataRepository.swift in Sources */,
 				0459F8112C45AB7E00B48A6D /* PointEditingViewModel.swift in Sources */,
 				044D62222C31C60300D130FA /* Channel.swift in Sources */,
-				0459F7F12C3DB72B00B48A6D /* ChannelUserSettingsPersistencyModel.swift in Sources */,
 				04F6241A2C49A53C003CCE0F /* PrivateChannelView.swift in Sources */,
 				047ECA252BFA92E80065837C /* SettingsComposer.swift in Sources */,
 				04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */,
@@ -1389,6 +1421,7 @@
 				044D620A2C31BC8600D130FA /* ChannelInvitationMode.swift in Sources */,
 				043F4CB22C3C52310084F065 /* UserDataDataRepositoryImpl+UserIdProvider.swift in Sources */,
 				04F624232C4A989E003CCE0F /* ChannelDeeplink.swift in Sources */,
+				0489147F2C568EEB006B362B /* ChannelSettingsView.swift in Sources */,
 				0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */,
 				0438C4A72C2C7129000665D0 /* TokenSecureStorage.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
@@ -1400,6 +1433,7 @@
 				0459F7F52C3E90E700B48A6D /* ChannelPointsRepository.swift in Sources */,
 				04F624272C4A9936003CCE0F /* NavigationState.swift in Sources */,
 				042B9B3E2C37E72A00DE7CB0 /* MapViewControllerBridge.swift in Sources */,
+				048914852C569224006B362B /* ImagePicker.swift in Sources */,
 				046C3EA32BE917E800BBFF47 /* CoreApp.swift in Sources */,
 				044D62132C31BEEC00D130FA /* UIImage+Extension.swift in Sources */,
 				0443BFA02C0F492A00D7CAE7 /* Constants.swift in Sources */,
@@ -1413,6 +1447,7 @@
 				047A03F62C46BA55000EDA80 /* Prefix.swift in Sources */,
 				042B9B672C3BFC2C00DE7CB0 /* User+Bridges.swift in Sources */,
 				042B9B472C38403700DE7CB0 /* PointAddView.swift in Sources */,
+				048914812C568F6C006B362B /* ChannelImagePickerView.swift in Sources */,
 				044D620C2C31BC9A00D130FA /* ChannelIdentifierChecker.swift in Sources */,
 				0438C4A52C2C6FD1000665D0 /* KeychainDataStore.swift in Sources */,
 				0459F7F72C3E917600B48A6D /* ChannelPointsDataRepository+ChannelPointsRepository.swift in Sources */,
@@ -1422,9 +1457,9 @@
 				044D62202C31C56600D130FA /* ChannelsRepository.swift in Sources */,
 				040D85832C008D2F000F8F52 /* AuthenticationService.swift in Sources */,
 				04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */,
-				0459F7EF2C3DB71800B48A6D /* ChannelSettingsPersistencyModel.swift in Sources */,
 				042B9B432C38312B00DE7CB0 /* AddressProvider.swift in Sources */,
 				042B9B452C383BBD00DE7CB0 /* PointAnimationView.swift in Sources */,
+				0489147C2C568DB2006B362B /* ChannelEditingViewModel.swift in Sources */,
 				0459F80F2C45AB3600B48A6D /* PointEditingView.swift in Sources */,
 				0438C4AC2C2D6907000665D0 /* CachedCenteredImage.swift in Sources */,
 				044D62112C31BEC800D130FA /* Binding+Extension.swift in Sources */,
@@ -1433,6 +1468,7 @@
 				0438C4682C2C58A1000665D0 /* FilesUploadingService+UserPhotoUploader.swift in Sources */,
 				04261ADF2BFCD9A200FBAFC3 /* ChannelAvatarView.swift in Sources */,
 				04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */,
+				048914832C569058006B362B /* TextEditorWithPlaceholder.swift in Sources */,
 				04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */,
 				04F624342C4E5F5F003CCE0F /* ChannelDetailsView.swift in Sources */,
 				04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */,
@@ -1707,7 +1743,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(LL_APP_VERSION)";
 				OTHER_LDFLAGS = "-ObjC";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=150 -Xfrontend -warn-long-expression-type-checking=150";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(LL_APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(LL_APP_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1753,7 +1789,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = "$(LL_APP_VERSION)";
 				OTHER_LDFLAGS = "-ObjC";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=150 -Xfrontend -warn-long-expression-type-checking=150";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(LL_APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(LL_APP_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -2124,6 +2160,14 @@
 				minimumVersion = 1.2.3;
 			};
 		};
+		048914862C56C720006B362B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
 		04BA85512C0B83A8004F76B3 /* XCRemoteSwiftPackageReference "K-Logger" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tecktonikvov/K-Logger";
@@ -2199,6 +2243,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0459F8092C42A2A300B48A6D /* XCRemoteSwiftPackageReference "MCEmojiPicker" */;
 			productName = MCEmojiPicker;
+		};
+		048914872C56C72D006B362B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048914862C56C720006B362B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		04AA61942C0CE45A00AD6D93 /* K-Logger */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -48,7 +48,7 @@ struct LimitedTextField: View {
         }
         .onChange(of: output) { _, _ in
             if output.count < min {
-                errorText = "At least \(min) characters"
+                errorText = String(localized: "At least \(min) characters")
             } else {
                 errorText = ""
             }

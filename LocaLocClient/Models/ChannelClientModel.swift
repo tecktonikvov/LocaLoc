@@ -8,13 +8,12 @@
 import Foundation
 
 public struct ChannelClientModel: Codable {
-    public init(identifier: String, ownerId: String, name: String, description: String, imageUrl: URL?, missedUpdatesNumber: Int, creationDate: Date?, lastUpdateDate: Date?, channelInvitationMode: String) {
+    public init(identifier: String, ownerId: String, name: String, description: String, imageUrl: URL?, creationDate: Date?, lastUpdateDate: Date?, channelInvitationMode: String) {
         self.identifier = identifier.lowercased()
         self.ownerId = ownerId
         self.name = name
         self.description = description
         self.imageUrl = imageUrl
-        self.missedUpdatesNumber = missedUpdatesNumber
         self.createdAt = creationDate
         self.updatedAt = lastUpdateDate
         self.channelInvitationMode = channelInvitationMode
@@ -25,7 +24,6 @@ public struct ChannelClientModel: Codable {
     public let name: String
     public let description: String
     public let imageUrl: URL?
-    public let missedUpdatesNumber: Int
     public let createdAt: Date?
     public let updatedAt: Date?
     public let channelInvitationMode: String

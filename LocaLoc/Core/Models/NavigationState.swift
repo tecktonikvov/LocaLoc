@@ -13,4 +13,5 @@ enum NavigationState: Hashable {
     case privateChannel(privateChannelModel: PrivateChannelModel)
     case channelDetails(channelDetailsModel: ChannelDetailsModel)
     case profileEditing
+    case channelEditing(channel: Channel)
 }

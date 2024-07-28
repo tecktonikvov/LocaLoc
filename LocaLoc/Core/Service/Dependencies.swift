@@ -30,8 +30,6 @@ extension Container {
                 return try AppLocalStorage(with: UserPersistencyModel.self,
                                            ProfilePersistencyModel.self,
                                            ChannelPersistencyModel.self,
-                                           ChannelUserSettingsPersistencyModel.self,
-                                           ChannelSettingsPersistencyModel.self,
                                            ChannelPointPersistencyModel.self)
             } catch {
                 let errorString = "LocalStorage initialization error: \(error)"
