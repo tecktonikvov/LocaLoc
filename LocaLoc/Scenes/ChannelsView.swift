@@ -64,7 +64,7 @@ struct ChannelsView: View {
                     Image(systemName: "plus.circle")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 32, height: 32)
+                        .frame(width: 24, height: 24)
                         .foregroundStyle(Color.Text.main)
                 }
             }
@@ -72,7 +72,7 @@ struct ChannelsView: View {
             if viewModel.showLoadingIndicator {
                 ToolbarItem(placement: .topBarLeading) {
                     PointAnimationView()
-                        .frame(width: 32, height: 32)
+                        .frame(width: 24, height: 24)
                 }
             }
         }
