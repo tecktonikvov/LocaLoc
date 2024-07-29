@@ -33,13 +33,13 @@ struct PointAddView: View {
     @FocusState private var focusedField: Field?
     
     @State private var isEmojiPickerPresented: Bool = false
-
+    
     private let coordinates: Coordinates
     
     // MARK: - Output
     var onCreateApproved: () -> Void
     var onClose: () -> Void
-
+    
     // MARK: - Init
     init(
         coordinates: Coordinates,
@@ -66,10 +66,11 @@ struct PointAddView: View {
         self._heading = heading
         self._selectedPointSingType = selectedPointSingType
     }
-
+    
     var body: some View {
-        VStack {
-            Spacer()
+        Spacer()
+        
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Text("Create new point")
@@ -86,140 +87,165 @@ struct PointAddView: View {
                     }
                     .padding(.trailing, 4)
                 }
+                .padding(.top)
                 
-                HStack {
-                    Text("Point sign")
-                        .font(.title3)
-                    
-                    Spacer()
-                    
-                    Button {
-                        selectedPointSingType = .default
-                    } label: {
-                        Image("marker_default")
-                            .resizable()
-                            .frame(width: 32, height: 48)
-                    }
-                    .padding(8)
-                    .background((selectedPointSingType == .default ? Color.gray : Color.clear))
-                    .cornerRadius(8)
-                    
-                    Button {
-                        selectedPointSingType = .emoji
-                        isEmojiPickerPresented.toggle()
-                    } label: {
-                        ZStack(alignment: .top) {
-                            Image("marker_with_placeholder")
-                                .resizable()
-                                .frame(width: 32, height: 48)
-                            Text(emojiCode)
-                                .font(.system(size: 32))
-                        }
-                    }
-                    .padding(8)
-                    .background((selectedPointSingType == .emoji ? Color.gray : Color.clear))
-                    .cornerRadius(8)
-                    .emojiPicker(
-                        isPresented: $isEmojiPickerPresented,
-                        selectedEmoji: $emojiCode
-                    )
-                }
+                pointSignView()
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    VStack(alignment: .leading) {
-                        Text("Address")
-                            .font(.title3)
-                        TextField("", text: $addressString.max(Constants.pointAdressMaxCharactersLimit), axis: .vertical)
-                            .padding(8)
-                            .background(Color.clear)
-                            .focused($focusedField, equals: .address)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                            )
-                            .onChange(of: addressString) { _, newValue in
-                                if newValue.contains("\n") {
-                                    addressString = newValue.replacingOccurrences(of: "\n", with: "")
-                                    focusedField = .description
-                                }
-                            }
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Description")
-                            .font(.title3)
-                        TextField("", text: $description.max(Constants.pointDescriptionMaxCharactersLimit), axis: .vertical)
-                            .padding(8)
-                            .background(Color.clear)
-                            .focused($focusedField, equals: .description)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                            )
-                            .onChange(of: description) { _, newValue in
-                                if newValue.contains("\n") {
-                                    description = newValue.replacingOccurrences(of: "\n", with: "")
-                                    focusedField = nil
-                                }
-                            }
-                    }
+                    fieldsView()
                     
                     Toggle("Show point to users", isOn: $showPoint)
                         .tint(Color.brand)
                 }
-       
-                if isLoading {
-                    VStack(alignment: .center) {
-                        PointAnimationView()
-                            .frame(width: 32, height: 32)
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: 50)
-                    .padding(.bottom)
-                } else {
-                    Button {
-                        focusedField = nil
-                        onCreateApproved()
-                    } label: {
-                        Spacer()
-                        if isApproveButtonLoading {
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle(tint: .black))
-                        } else {
-                            Text("Create")
-                                .foregroundColor(Color.Extra.taupe)
-                        }
-                        Spacer()
-                    }
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color.brand)
-                    )
-                    .padding(.bottom)
-                }
+                
+                bottomButtonsView()
+                    .padding(.bottom, 24)
             }
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(Color.background)
+        }
+        .padding(.top, 1)
+        .padding(.horizontal)
+        .frame(maxHeight: focusedField == nil ? 500 : 430)
+        .background(Color.background)
+        .clipShape(
+            .rect(
+                topLeadingRadius: 24,
+                bottomLeadingRadius: 0,
+                bottomTrailingRadius: 0,
+                topTrailingRadius: 24
             )
-            .task {
-                do {
-                    let address = try await addressProvider.address(by: coordinates)
+        )
+        .disabled(isApproveButtonLoading)
+        .task {
+            do {
+                let address = try await addressProvider.address(by: coordinates)
+                isLoading = false
+                
+                withAnimation {
+                    self.addressString = address.line
+                }
+            } catch {
+                Log.error("Address request error: \(error)", module: "PointAddView")
+                withAnimation {
                     isLoading = false
-
-                    withAnimation {
-                        self.addressString = address.line
-                    }
-                } catch {
-                    Log.error("Address request error: \(error)", module: "PointAddView")
-                    withAnimation {
-                        isLoading = false
-                    }
                 }
             }
         }
-        .disabled(isApproveButtonLoading)
+    }
+    
+    // MARK: - Private
+    @ViewBuilder
+    private func pointSignView() -> some View {
+        HStack {
+            Text("Point sign")
+                .font(.title3)
+            
+            Spacer()
+            
+            Button {
+                selectedPointSingType = .default
+            } label: {
+                Image("marker_default")
+                    .resizable()
+                    .frame(width: 32, height: 48)
+            }
+            .padding(8)
+            .background((selectedPointSingType == .default ? Color.gray : Color.clear))
+            .cornerRadius(8)
+            
+            Button {
+                selectedPointSingType = .emoji
+                isEmojiPickerPresented.toggle()
+            } label: {
+                ZStack(alignment: .top) {
+                    Image("marker_with_placeholder")
+                        .resizable()
+                        .frame(width: 32, height: 48)
+                    Text(emojiCode)
+                        .font(.system(size: 32))
+                }
+            }
+            .padding(8)
+            .background((selectedPointSingType == .emoji ? Color.gray : Color.clear))
+            .cornerRadius(8)
+            .emojiPicker(
+                isPresented: $isEmojiPickerPresented,
+                selectedEmoji: $emojiCode
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private func fieldsView() -> some View {
+        VStack(alignment: .leading) {
+            Text("Address")
+                .font(.title3)
+            TextField("", text: $addressString.max(Constants.pointAdressMaxCharactersLimit), axis: .vertical)
+                .padding(8)
+                .background(Color.clear)
+                .focused($focusedField, equals: .address)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                )
+                .onChange(of: addressString) { _, newValue in
+                    if newValue.contains("\n") {
+                        addressString = newValue.replacingOccurrences(of: "\n", with: "")
+                        focusedField = .description
+                    }
+                }
+        }
+        
+        VStack(alignment: .leading) {
+            Text("Description")
+                .font(.title3)
+            TextField("", text: $description.max(Constants.pointDescriptionMaxCharactersLimit), axis: .vertical)
+                .padding(8)
+                .background(Color.clear)
+                .focused($focusedField, equals: .description)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+                )
+                .onChange(of: description) { _, newValue in
+                    if newValue.contains("\n") {
+                        description = newValue.replacingOccurrences(of: "\n", with: "")
+                        focusedField = nil
+                    }
+                }
+        }
+    }
+    
+    @ViewBuilder
+    private func bottomButtonsView() -> some View {
+        if isLoading {
+            VStack(alignment: .center) {
+                PointAnimationView()
+                    .frame(width: 32, height: 32)
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: 50)
+            .padding(.bottom)
+        } else {
+            Button {
+                focusedField = nil
+                onCreateApproved()
+            } label: {
+                Spacer()
+                if isApproveButtonLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                } else {
+                    Text("Create")
+                        .foregroundColor(Color.Extra.taupe)
+                }
+                Spacer()
+            }
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color.brand)
+            )
+            .padding(.bottom)
+        }
     }
 }
 
@@ -233,7 +259,7 @@ struct PointEmojiSignView: View {
     init(emojiCode: Binding<String>) {
         self._emojiCode = emojiCode
     }
-
+    
     var body: some View {
         ZStack(alignment: .top) {
             Image("marker_with_placeholder")
