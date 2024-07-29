@@ -148,9 +148,3 @@ enum ShareItemType {
         showLeaveConfirmationPopUp = false
     }
 }
-
-extension NavigationPath {
-    mutating func popToRoot() {
-        self = NavigationPath()
-    }
-}

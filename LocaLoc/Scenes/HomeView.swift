@@ -55,6 +55,7 @@ fileprivate extension TabScene<AnyView> {
             image.renderingMode(.template)
             Text(title)
         }
+        .navigationBarHidden(true)
     }
     
     var image: Image {
