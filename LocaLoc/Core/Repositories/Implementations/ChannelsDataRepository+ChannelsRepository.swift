@@ -240,4 +240,29 @@ extension ChannelsDataRepository: ChannelsRepository {
         
         return channelModel
     }
+    
+    func subscribersNumber(channelId: String) -> Int? {
+        guard let channelsSubscribersNumbers = UserDefaults.standard.value(forKey: .channelsSubscribersNumbers),
+              var dictionary = channelsSubscribersNumbers as? [String: Int] else {
+            return nil
+        }
+        
+        return dictionary[channelId]
+    }
+    
+    func saveSubscribersNumber(forChannelWithId channelId: String, number: Int) {
+        if let channelsSubscribersNumbers = UserDefaults.standard.value(forKey: .channelsSubscribersNumbers),
+           var dictionary = channelsSubscribersNumbers as? [String: Int] {
+            dictionary[channelId] = number
+            UserDefaults.standard.setValue(dictionary, forKey: .channelsSubscribersNumbers)
+        } else {
+            let dictionary = [channelId: number]
+            UserDefaults.standard.setValue(dictionary, forKey: .channelsSubscribersNumbers)
+        }
+    }
+}
+
+// MARK: String+currentUserIdKey
+fileprivate extension String {
+    static let channelsSubscribersNumbers = "channelsSubscribersNumbers"
 }

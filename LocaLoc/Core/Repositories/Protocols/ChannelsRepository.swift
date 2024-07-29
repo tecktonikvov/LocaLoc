@@ -15,4 +15,6 @@ protocol ChannelsRepository {
     func fetchChannel(withId: String) async throws -> Channel?
     func synchronizeUserChannelsList() async throws
     func cleanChannelsList()
+    func subscribersNumber(channelId: String) -> Int?
+    func saveSubscribersNumber(forChannelWithId channelId: String, number: Int)
 }

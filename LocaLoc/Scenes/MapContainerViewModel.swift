@@ -205,10 +205,16 @@ fileprivate enum SubscriptionRequestError: Error {
     }
     
     private func setParticipantsNumber() {
+        let channelId = channel.id
+        let cachedSubscribersNumber = channelsRepository.subscribersNumber(channelId: channelId)
+        membersNumber = cachedSubscribersNumber
+        
         Task { @MainActor in
             do {
-                let participantsNumber = try await channelsClient.channelParticipantsNumber(channelId: channel.id)
+                let participantsNumber = try await channelsClient.channelParticipantsNumber(channelId: channelId)
+                
                 self.membersNumber = participantsNumber
+                self.channelsRepository.saveSubscribersNumber(forChannelWithId: channelId, number: participantsNumber)
             } catch {
                 Log.error("Participants number request error: \(error)", module: "MapContainerViewModel")
             }
