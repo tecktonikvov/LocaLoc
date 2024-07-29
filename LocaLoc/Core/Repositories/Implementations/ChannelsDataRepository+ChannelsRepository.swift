@@ -243,7 +243,7 @@ extension ChannelsDataRepository: ChannelsRepository {
     
     func subscribersNumber(channelId: String) -> Int? {
         guard let channelsSubscribersNumbers = UserDefaults.standard.value(forKey: .channelsSubscribersNumbers),
-              var dictionary = channelsSubscribersNumbers as? [String: Int] else {
+              let dictionary = channelsSubscribersNumbers as? [String: Int] else {
             return nil
         }
         

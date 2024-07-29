@@ -53,4 +53,31 @@ public final class ChannelPointsClient {
     public func delete(pointWithId id: String) async throws {
         try await client.delete(documentId: id, collectionName: channelsPointsCollection)
     }
+    
+    public func deleteChannelPoints(channelId: String) async throws {
+        let filter: Filter = .whereField(
+            channelsPointModelChannelIdFieldName,
+            isEqualTo: channelId
+        )
+        
+        let pointsDocuments = try await client.documents(
+            filter: filter,
+            collectionName: channelsPointsCollection
+        )
+        
+        try await withThrowingTaskGroup(of: Void.self) { taskGroup in    
+            let channelsPointsCollection = channelsPointsCollection
+            
+            for pointDocument in pointsDocuments {
+                taskGroup.addTask { [weak self] in
+                    try await self?.client.delete(
+                        documentId: pointDocument.documentID,
+                        collectionName: channelsPointsCollection
+                    )
+                }
+            }
+            
+            try await taskGroup.waitForAll()
+        }
+    }
 }

@@ -51,6 +51,59 @@ public final class ChannelsClient {
         return try await client.count(filter: filter, collectionName: channelsParticipantsCollection)
     }
     
+    public func deleteChannelParticipants(channelId: String) async throws {
+        let filter: Filter = .whereField(
+            channelsParticipantsModelChannelIdFieldName,
+            isEqualTo: channelId
+        )
+        
+        let participantsDocuments = try await client.documents(
+            filter: filter,
+            collectionName: channelsParticipantsCollection
+        )
+        
+        try await withThrowingTaskGroup(of: Void.self) { taskGroup in   
+            let channelsParticipantsCollection = channelsParticipantsCollection
+            
+            for participantsDocument in participantsDocuments {
+                taskGroup.addTask { [weak self] in
+                    try await self?.client.delete(
+                        documentId: participantsDocument.documentID,
+                        collectionName: channelsParticipantsCollection
+                    )
+                }
+            }
+            
+            try await taskGroup.waitForAll()
+        }
+    }
+    
+    public func deleteChannelParticipant(channelId: String, participantId: String) async throws {
+        let channelIdFilter: Filter = .whereField(
+            channelsParticipantsModelChannelIdFieldName,
+            isEqualTo: channelId
+        )
+        
+        let participantIdFilter: Filter = .whereField(
+            channelsParticipantsModelUserIdFieldName,
+            isEqualTo: participantId
+        )
+        
+        let filter: Filter = .andFilter([channelIdFilter, participantIdFilter])
+        
+        let participantDocument = try await client.documents(
+            filter: filter,
+            collectionName: channelsParticipantsCollection
+        ).first
+        
+        if let participantDocument {
+            try await client.delete(
+                documentId: participantDocument.documentID,
+                collectionName: channelsParticipantsCollection
+            )
+        }
+    }
+    
     public func userChannelsIds(userId: String) async throws -> [String] {
         let filter: Filter = .whereField(channelsParticipantsModelUserIdFieldName, isEqualTo: userId)
         
@@ -62,5 +115,9 @@ public final class ChannelsClient {
         return documents.compactMap {
             $0.data()[channelsParticipantsModelChannelIdFieldName] as? String
         }
+    }
+    
+    public func deleteChannel(channelId: String) async throws {
+        try await client.delete(documentId: channelId, collectionName: channelsCollection)
     }
 }

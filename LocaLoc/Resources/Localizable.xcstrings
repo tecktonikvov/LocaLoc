@@ -245,6 +245,22 @@
         }
       }
     },
+    "Are you sure you want to delete this channel?\nThis action cannot be undone." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены что хотите удалить этот канал? Это действие не может быть отменено."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви впевнені що ви хочете видалити цей канал? Ця дія не може бути скасована"
+          }
+        }
+      }
+    },
     "Are you sure you want to delete this point?\nThis action cannot be undone." : {
       "localizations" : {
         "ru" : {
@@ -257,6 +273,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ви впевнені що ви хочете видалити цю точку? Ця дія не може бути скасована"
+          }
+        }
+      }
+    },
+    "Are you sure you want to leave this channel?" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уверены что хотите покинуть этот канал?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ви впевнені що ви хочете покинути цей канал?"
           }
         }
       }
@@ -533,6 +565,22 @@
         }
       }
     },
+    "Delete Channel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить канал"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Видалити канал"
+          }
+        }
+      }
+    },
     "Delete Point" : {
       "localizations" : {
         "ru" : {
@@ -757,6 +805,22 @@
         }
       }
     },
+    "Leave from channel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Покинуть канал"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Покинути канал"
+          }
+        }
+      }
+    },
     "LocaLoc" : {
       "localizations" : {
         "ru" : {
@@ -768,7 +832,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "LocaLoc"
           }
         }
       }
@@ -993,6 +1057,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Щось пішло не так"
+          }
+        }
+      }
+    },
+    "Stay" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Остаться"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Залишитись"
           }
         }
       }

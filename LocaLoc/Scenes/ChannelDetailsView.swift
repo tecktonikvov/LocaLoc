@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import PopupView
 
 struct ChannelDetailsView: View {
-    private let viewModel: ChannelDetailsViewModel
+    @Bindable private var viewModel: ChannelDetailsViewModel
     
     @Binding private var path: NavigationPath
     
+    @State private var isDeleteButtonLoading = false
+    @State private var isLeaveButtonLoading = false
+
     // MARK: - Init
     init(viewModel: ChannelDetailsViewModel, path: Binding<NavigationPath>) {
         self._path = path
@@ -75,6 +79,27 @@ struct ChannelDetailsView: View {
                     Spacer()
                 }
             }
+        }
+        .popup(isPresented: $viewModel.showDeleteConfirmationPopUp) {
+            deletingConfirmationView()
+        } customize: {
+            $0
+                .appearFrom(.centerScale)
+                .isOpaque(true)
+                .closeOnTap(false)
+                .backgroundColor(Color.black.opacity(0.5))
+                .animation(.bouncy(duration: 0.2))
+        }
+        
+        .popup(isPresented: $viewModel.showLeaveConfirmationPopUp) {
+            leaveConfirmationView()
+        } customize: {
+             $0
+                .appearFrom(.centerScale)
+                .isOpaque(true)
+                .closeOnTap(false)
+                .backgroundColor(Color.black.opacity(0.5))
+                .animation(.bouncy(duration: 0.2))
         }
     }
     
@@ -159,13 +184,136 @@ struct ChannelDetailsView: View {
                     viewModel.userTappedLeaveButton()
                 }
             }
-            
         }
         .foregroundColor(Color.Text.main)
         .tint(Color.background)
         .buttonStyle(.borderedProminent)
         .buttonBorderShape(.roundedRectangle)
         .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    private func deletingConfirmationView() -> some View {
+        VStack(spacing: 16) {
+            Text("Delete Channel")
+                .font(.title)
+            
+            Text("Are you sure you want to delete this channel?\nThis action cannot be undone.")
+                .multilineTextAlignment(.center)
+            
+            HStack(spacing: 16) {
+                Button {
+                    Task { @MainActor in
+                        isDeleteButtonLoading = true
+
+                        do {
+                            try await viewModel.deleteChannel()
+                            viewModel.showDeleteConfirmationPopUp = false
+                            path.popToRoot()
+                        }
+                        
+                        isDeleteButtonLoading = false
+                    }
+                } label: {
+                    Spacer()
+                    if isDeleteButtonLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                    } else {
+                        Text("Delete")
+                            .foregroundColor(Color.Text.attention)
+                            .fontWeight(.semibold)
+                    }
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.Extra.isabelline)
+                )
+                
+                Button {
+                    viewModel.deleteChannelCanceled()
+                } label: {
+                    Spacer()
+                    Text("Cancel")
+                        .foregroundColor(Color.Extra.taupe)
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.brand)
+                )
+            }
+            .padding(.bottom)
+        }
+        .padding()
+        .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+            .fill(Color.background)
+        )
+        .padding(.horizontal)
+        .disabled(isDeleteButtonLoading)
+    }
+    
+    @ViewBuilder
+    private func leaveConfirmationView() -> some View {
+        VStack(spacing: 16) {
+            Text("Leave from channel")
+                .font(.title)
+            
+            Text("Are you sure you want to leave this channel?")
+                .multilineTextAlignment(.center)
+            
+            HStack(spacing: 16) {
+                Button {
+                    Task { @MainActor in
+                        isLeaveButtonLoading = true
+
+                        do {
+                            try await viewModel.leaveChannel()
+                            viewModel.showLeaveConfirmationPopUp = false
+                            path.popToRoot()
+                        }
+                        
+                        isLeaveButtonLoading = false
+                    }
+                } label: {
+                    Spacer()
+                    if isLeaveButtonLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .black))
+                    } else {
+                        Text("Leave")
+                            .foregroundColor(Color.Text.attention)
+                            .fontWeight(.semibold)
+                    }
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.Extra.isabelline)
+                )
+                
+                Button {
+                    viewModel.leaveChannelCanceled()
+                } label: {
+                    Spacer()
+                    Text("Stay")
+                        .foregroundColor(Color.Extra.taupe)
+                    Spacer()
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.brand)
+                )
+            }
+            .padding(.bottom)
+        }
+        .padding()
+        .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+            .fill(Color.background)
+        )
+        .padding(.horizontal)
+        .disabled(isLeaveButtonLoading)
     }
 }
 

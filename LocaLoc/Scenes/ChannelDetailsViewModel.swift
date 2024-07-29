@@ -8,6 +8,11 @@
 import Foundation
 import Factory
 import SwiftUI
+import K_Logger
+
+enum ChannelDetailsViewModelError: Error {
+    case noPermission
+}
 
 struct ChannelDetailsModel: Equatable, Hashable {
     let channel: Channel
@@ -21,14 +26,25 @@ enum ShareItemType {
     case invitation(shareItem: ShareItem)
 }
 
-final class ChannelDetailsViewModel {
-    private(set) var channelModel: ChannelDetailsModel
-    
+@Observable final class ChannelDetailsViewModel {
     @ObservationIgnored
     @Injected(\.userIdProvider) private var userIdProvider
     
-    private(set) var shareItemType: ShareItemType?
+    @ObservationIgnored
+    @Injected(\.channelsClient) private var channelsClient
     
+    @ObservationIgnored
+    @Injected(\.channelPointsClient) private var channelPointsClient
+    
+    @ObservationIgnored
+    @Injected(\.channelsRepository) private var channelsRepository
+    
+    private(set) var shareItemType: ShareItemType?
+    private(set) var channelModel: ChannelDetailsModel
+    
+    var showDeleteConfirmationPopUp = false
+    var showLeaveConfirmationPopUp = false
+
     // MARK: - Init
     init(channelDetailsModel: ChannelDetailsModel) {
         self.channelModel = channelDetailsModel
@@ -69,16 +85,72 @@ final class ChannelDetailsViewModel {
         }
     }
     
+    private func deleteClientChannelMembersModels() async throws {
+        try await channelsClient.deleteChannelParticipants(channelId: channelModel.channel.id)
+    }
+    
+    private func deleteClientChannelPointsModels() async throws {
+        try await channelPointsClient.deleteChannelPoints(channelId: channelModel.channel.id)
+    }
+    
+    private func deleteClientChannelModel() async throws {
+        try await channelsClient.deleteChannel(channelId: channelModel.channel.id)
+    }
+    
+    private func deleteMemberFormClientModels() async throws {
+        let userId = try userIdProvider.userId()
+        try await channelsClient.deleteChannelParticipant(channelId: channelModel.channel.id, participantId: userId)
+    }
+    
     // MARK: - Public
-    func userTappedEditButton() {
-        
+    func userTappedDeleteLeaveButton() {
+        guard channelModel.isChannelOwner else { return }
+        showDeleteConfirmationPopUp = true
+    }
+    
+    func deleteChannel() async throws {
+        do {
+            guard channelModel.isChannelOwner else {
+                throw ChannelDetailsViewModelError.noPermission
+            }
+            
+            try await deleteClientChannelModel()
+            try await deleteClientChannelMembersModels()
+            try await deleteClientChannelPointsModels()
+            try await channelsRepository.synchronizeUserChannelsList()
+        } catch {
+            print("🔴", error)
+            Log.error("Channel deleting error occurred:\(error)", module: "ChannelDetailsViewModel")
+            throw error
+        }
+    }
+    
+    func deleteChannelCanceled() {
+        showDeleteConfirmationPopUp = false
     }
     
     func userTappedLeaveButton() {
-        
+        showLeaveConfirmationPopUp = true
     }
     
-    func userTappedDeleteLeaveButton() {
-        guard channelModel.isChannelOwner else { return }
+    func leaveChannel() async throws {
+        do {
+            try await deleteMemberFormClientModels()
+            try await channelsRepository.synchronizeUserChannelsList()
+        } catch {
+            print("🔴", error)
+            Log.error("Leaving error occurred:\(error)", module: "ChannelDetailsViewModel")
+            throw error
+        }
+    }
+    
+    func leaveChannelCanceled() {
+        showLeaveConfirmationPopUp = false
+    }
+}
+
+extension NavigationPath {
+    mutating func popToRoot() {
+        self = NavigationPath()
     }
 }
