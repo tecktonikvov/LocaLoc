@@ -175,7 +175,7 @@ struct ChannelDetailsView: View {
                 ) {
                     viewModel.userTappedDeleteLeaveButton()
                 }
-            } else {
+            } else if viewModel.channelModel.isSubscribed {
                 BottomButton(
                     systemImage: "arrow.backward.square",
                     text: "Leave",
