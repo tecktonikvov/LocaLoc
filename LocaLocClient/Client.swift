@@ -117,18 +117,18 @@ public final class Client {
         return nil
     }
     
-    func objects<T: Decodable>(from collectionName: String, filter: Filter, type: T.Type) async throws -> [T] {
+    func objects<T: Decodable>(collectionName: String, filter: Filter, type: T.Type) async throws -> [String: T] {
         let docRef = database.collection(collectionName).whereFilter(filter)
         let query = try await docRef.getDocuments()
         
-        var result = [T]()
+        var result = [String: T]()
         
         for document in query.documents {
             let dictionary = document.data()
             let json = try JSONSerialization.data(withJSONObject: dictionary)
             let object = try JSONDecoder().decode(type.self, from: json)
             
-            result.append(object)
+            result[document.documentID] = object
         }
         
         return result

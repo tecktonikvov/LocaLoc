@@ -19,6 +19,7 @@ struct ChannelDetailsModel: Equatable, Hashable {
     let pointsNumber: Int
     let participantsNumber: Int
     let isChannelOwner: Bool
+    let isSubscribed: Bool
 }
 
 enum ShareItemType {

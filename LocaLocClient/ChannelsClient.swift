@@ -13,6 +13,7 @@ public final class ChannelsClient {
     private let channelsParticipantsCollection = CollectionsKeys.channelsParticipants
     private let channelsParticipantsModelUserIdFieldName = "userId"
     private let channelsParticipantsModelChannelIdFieldName = "channelId"
+    private let channelsModelSegmentsFieldName = "searchSegments"
 
     // MARK: - Init
     public init() {
@@ -120,4 +121,59 @@ public final class ChannelsClient {
     public func deleteChannel(channelId: String) async throws {
         try await client.delete(documentId: channelId, collectionName: channelsCollection)
     }
+    
+    public func channels(searchString: String) async throws -> [String: ChannelClientModel] {
+        let filter: Filter = .whereField(
+            channelsModelSegmentsFieldName,
+            arrayContains: searchString.lowercased()
+        )
+                
+        let dictionary = try await client.objects(
+            collectionName: channelsCollection,
+            filter: filter,
+            type: ChannelClientModel.self
+        )
+        
+       return dictionary
+    }
+    
+    /// Legacy
+//    public func channels(searchString: String) async throws -> [String: ChannelClientModel] {
+//        let strEnd = "\(searchString.lowercased())\u{f7ff}"
+//        let setStart = searchString.lowercased()
+//
+//        let nameSubFilter1: Filter = .whereField(
+//            channelsModelSearchableChannelNameFieldName,
+//            isGreaterOrEqualTo: setStart
+//        )
+//
+//        let nameSubFilter2: Filter = .whereField(
+//            channelsModelSearchableChannelNameFieldName,
+//            isLessThan: strEnd
+//        )
+//
+//        let nameFilter: Filter = .andFilter([nameSubFilter1, nameSubFilter2])
+//
+//        let descriptionSubFilter1: Filter = .whereField(
+//            channelsModelSearchableChannelDescriptionFieldName,
+//            isGreaterOrEqualTo: setStart
+//        )
+//
+//        let descriptionSubFilter2: Filter = .whereField(
+//            channelsModelSearchableChannelDescriptionFieldName,
+//            isLessThan: strEnd
+//        )
+//
+//        let descriptionFilter: Filter = .andFilter([descriptionSubFilter1, descriptionSubFilter2])
+//
+//        let filter: Filter = .orFilter([nameFilter, descriptionFilter])
+//
+//        let dictionary = try await client.objects(
+//            collectionName: channelsCollection,
+//            filter: filter,
+//            type: ChannelClientModel.self
+//        )
+//
+//       return dictionary
+//    }
 }

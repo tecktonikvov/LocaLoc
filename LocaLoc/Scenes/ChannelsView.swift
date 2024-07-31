@@ -9,11 +9,10 @@ import SwiftUI
 import K_Logger
 
 struct ChannelsView: View {
-    private var viewModel: ChannelsViewModel
+    @Bindable private var viewModel: ChannelsViewModel
     
     @Binding private var path: NavigationPath
-    @State private var isLoaded = false
-    
+
     // MARK: - Init
     init(viewModel: ChannelsViewModel, path: Binding<NavigationPath>) {
         self._path = path
@@ -24,35 +23,44 @@ struct ChannelsView: View {
         ZStack {
             DefaultBackground()
             
-            if viewModel.channelsRepository.channels.isEmpty {
-                VStack(alignment: .center) {
-                    Spacer()
-                    Image(systemName: "list.bullet")
-                        .resizable()
-                        .frame(width: 32, height: 32)
-                    Text("No channels")
-                    Spacer()
-                }
-            } else {
-                List {
-                    ForEach(viewModel.channelsRepository.channels, id: \.self) { channel in
-                        Button {
-                            Log.user("User selected channel with id: \(channel.id)")
-                            path.append(NavigationState.map(channel: channel, relationType: .subscribed))
-                        } label: {
-                            ChannelsRow(channel: channel)
+            VStack(alignment: .center) {
+                Spacer()
+                Image(systemName: "list.bullet")
+                    .resizable()
+                    .frame(width: 32, height: 32)
+                Text("No channels")
+                Spacer()
+            }
+            .opacity(viewModel.channels.isEmpty ? 1 : 0)
+            
+            List {
+                ForEach(viewModel.channels, id: \.self) { channel in
+                    Button {
+                        Log.user("User selected channel with id: \(channel.id)")
+                        
+                        Task { @MainActor in
+                            if let relation = await viewModel.channelSubscriptionRelation(channelId: channel.id) {
+                                path.append(NavigationState.map(channel: channel, relationType: relation))
+                            }
                         }
-                        .frame(height: 70)
-                        .listRowBackground(
-                            Color(UIColor.clear)
-                        )
+                    } label: {
+                        ChannelsRow(channel: channel)
                     }
-                }
-                .listStyle(PlainListStyle())
-                .refreshable {
-                    viewModel.synchronizeUserChannelsList(showLoadingIndicator: false)
+                    .frame(height: 70)
+                    .listRowBackground(
+                        Color(UIColor.clear)
+                    )
                 }
             }
+            .listStyle(PlainListStyle())
+            .refreshable {
+                viewModel.synchronizeUserChannelsList(showLoadingIndicator: false)
+            }
+            .searchable(
+                text: $viewModel.searchText,
+                placement: .navigationBarDrawer(displayMode: .automatic)
+            )
+            .opacity(viewModel.channels.isEmpty ? 0 : 1)
         }
         .navigationTitle("Channels")
         .toolbar {
@@ -77,8 +85,7 @@ struct ChannelsView: View {
             }
         }
         .onAppear {
-            viewModel.synchronizeUserChannelsList(showLoadingIndicator: !isLoaded)
-            isLoaded = true
+            viewModel.synchronizeUserChannelsList(showLoadingIndicator: true)
         }
     }
 }

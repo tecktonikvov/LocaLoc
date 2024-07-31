@@ -347,7 +347,8 @@ fileprivate enum SubscriptionRequestError: Error {
             channel: channel,
             pointsNumber: pointsNumber ?? 0,
             participantsNumber: membersNumber ?? 0,
-            isChannelOwner: isChannelOwner
+            isChannelOwner: isChannelOwner, 
+            isSubscribed: userSubscriptionRelationType == .subscribed
         )
     }
     
