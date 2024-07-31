@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>760676391740-k1lt29u8ctqnm6jdpk4nj121rhdp6ab4.apps.googleusercontent.com</string>
+	<string>760676391740-6krhtn0dch51obe0qt0oln7llc4krj74.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.760676391740-k1lt29u8ctqnm6jdpk4nj121rhdp6ab4</string>
+	<string>com.googleusercontent.apps.760676391740-6krhtn0dch51obe0qt0oln7llc4krj74</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBK2QW5foIV1jbMZw1YJDIvPu42uUkGGv8</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>VolodymyrKotsiubenko.LocaLoc</string>
+	<string>com.locaLoc.app.apple</string>
 	<key>PROJECT_ID</key>
 	<string>localoc-552d5</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:760676391740:ios:635cd8c68c82f35fcfdc39</string>
+	<string>1:760676391740:ios:f472ea45a3d4c07bcfdc39</string>
 </dict>
 </plist>

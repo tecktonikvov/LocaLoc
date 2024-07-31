@@ -4,14 +4,18 @@
 <dict>
 	<key>BASE_URL</key>
 	<string>$(BASE_URL)</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.352041457722-77svgfvjt17oh30o0khneo8116hb49t3</string>
+				<string>com.googleusercontent.apps.352041457722-n0t39rh18fgueesdmlegtt6nrpomhq6k</string>
 			</array>
 		</dict>
 		<dict>
@@ -19,17 +23,17 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.760676391740-k1lt29u8ctqnm6jdpk4nj121rhdp6ab4</string>
+				<string>com.googleusercontent.apps.760676391740-6krhtn0dch51obe0qt0oln7llc4krj74</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>VolodymyrKotsiubenko.LocaLoc</string>
+			<string>universalLinks</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>localocapp</string>
+				<string>$(LL_APP_URL_SCHEME)</string>
 			</array>
 		</dict>
 	</array>

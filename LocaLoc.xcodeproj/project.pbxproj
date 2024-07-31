@@ -238,8 +238,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		040B9EBA2BFE480B005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		040B9EBC2BFE4810005E3930 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		040D85822C008D2F000F8F52 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		040D85872C008F97000F8F52 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		040D85892C008FA5000F8F52 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -366,6 +364,8 @@
 		04BA84E42C0B0EAC004F76B3 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		04BA85042C0B6590004F76B3 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
 		04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UserDataRepository.swift"; sourceTree = "<group>"; };
+		04BB37F32C5AB56C009826A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04BB37F42C5AB5C8009826A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04CDAF802C0F152800A28C93 /* UserDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClient.swift; sourceTree = "<group>"; };
 		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationProvider.swift; sourceTree = "<group>"; };
@@ -466,7 +466,7 @@
 		040B9EB82BFE47FD005E3930 /* Dev */ = {
 			isa = PBXGroup;
 			children = (
-				040B9EBC2BFE4810005E3930 /* GoogleService-Info.plist */,
+				04BB37F42C5AB5C8009826A5 /* GoogleService-Info.plist */,
 			);
 			path = Dev;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 		040B9EB92BFE4802005E3930 /* Prod */ = {
 			isa = PBXGroup;
 			children = (
-				040B9EBA2BFE480B005E3930 /* GoogleService-Info.plist */,
+				04BB37F32C5AB56C009826A5 /* GoogleService-Info.plist */,
 			);
 			path = Prod;
 			sourceTree = "<group>";
@@ -482,7 +482,6 @@
 		040B9EC72BFE6C45005E3930 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
 				047ECA2F2BFB84460065837C /* Colors.xcassets */,
 				047ECA2B2BFB82520065837C /* Icons.xcassets */,
 				0459F7E22C3DA09800B48A6D /* splash_point_image.png */,
@@ -788,6 +787,7 @@
 		046C3EA12BE917E800BBFF47 /* LocaLoc */ = {
 			isa = PBXGroup;
 			children = (
+				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
 				044D62012C2DC2EE00D130FA /* LocaLoc.entitlements */,
 				0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */,
 				047ECA0A2BFA85FD0065837C /* AppComposer.swift */,
@@ -1720,12 +1720,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = LocaLoc/LocaLoc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Resources\"";
-				DEVELOPMENT_TEAM = 8G2FD9CAB9;
+				DEVELOPMENT_TEAM = QF7DU38WYZ;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";
@@ -1767,11 +1768,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = LocaLoc/LocaLoc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
 				DEVELOPMENT_ASSET_PATHS = "\"LocaLoc/Resources\"";
-				DEVELOPMENT_TEAM = 8G2FD9CAB9;
+				DEVELOPMENT_TEAM = QF7DU38WYZ;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				EXCLUDED_ARCHS = "";

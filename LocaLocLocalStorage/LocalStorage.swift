@@ -48,6 +48,7 @@ extension AppLocalStorage: LocalStorage {
     
     public func deleteAllModels(withTypes types: any PersistentModel.Type...) throws {
         for type in types {
+            print(modelContext.insertedModelsArray) // Do not remove. Crash fix
             try modelContext.delete(model: type)
         }
     }
