@@ -21,15 +21,15 @@ final class LocaLocUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample1() throws {
-        let app = XCUIApplication()
-        app.launch()
-    }
-    
-    func testExample2() throws {
-        let app = XCUIApplication()
-        app.launch()
-    }
+//    func testExample1() throws {
+//        let app = XCUIApplication()
+//        app.launch()
+//    }
+//    
+//    func testExample2() throws {
+//        let app = XCUIApplication()
+//        app.launch()
+//    }
     
 //    func testExample3() throws {
 //        let app = XCUIApplication()
