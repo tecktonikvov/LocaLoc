@@ -221,10 +221,11 @@ struct PointEditingView: View {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .stroke(Color.gray.opacity(0.3), lineWidth: 1)
             )
-            .onChange(of: viewModel.channelPoint.description) { _, newValue in
-                if newValue.contains("\n") {
-                    viewModel.channelPoint.description = newValue.replacingOccurrences(of: "\n", with: "")
-                    focusedField = nil
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Button("Done") {
+                        focusedField = nil
+                    }
                 }
             }
         }
