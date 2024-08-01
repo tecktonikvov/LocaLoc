@@ -142,7 +142,7 @@ struct MapContainerView: View {
         }
         .onAppear {
             if !isPointsAdded {
-                viewModel.addChannelPoints()
+                viewModel.setChannelPoints()
                 isPointsAdded = true
                 viewModel.synchronizeChannelsPoints()
             }

@@ -315,7 +315,7 @@ fileprivate enum SubscriptionRequestError: Error {
         showAddPointView = false
     }
     
-    func addChannelPoints() {
+    func setChannelPoints() {
         let points = channelPointsRepository.points
         mapController.addMarkers(forPoints: points)
         setPointsNumber()
@@ -359,8 +359,7 @@ fileprivate enum SubscriptionRequestError: Error {
         Task { @MainActor in
             do {
                 try await channelPointsRepository.synchronizeUserChannelPointsList()
-                mapController.clearMarkers()
-                addChannelPoints()
+                setChannelPoints()
             } catch {
                 print("🔴", error)
             }
