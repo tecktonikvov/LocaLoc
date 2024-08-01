@@ -73,7 +73,7 @@ struct ChannelsView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
-                        .foregroundStyle(Color.Text.main)
+                        .foregroundStyle(Color("text_main"))
                 }
             }
             

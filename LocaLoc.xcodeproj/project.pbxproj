@@ -482,10 +482,6 @@
 		040B9EC72BFE6C45005E3930 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				047ECA2F2BFB84460065837C /* Colors.xcassets */,
-				047ECA2B2BFB82520065837C /* Icons.xcassets */,
-				0459F7E22C3DA09800B48A6D /* splash_point_image.png */,
-				048914762C563EF5006B362B /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -787,11 +783,15 @@
 		046C3EA12BE917E800BBFF47 /* LocaLoc */ = {
 			isa = PBXGroup;
 			children = (
-				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
 				044D62012C2DC2EE00D130FA /* LocaLoc.entitlements */,
+				0459F7E22C3DA09800B48A6D /* splash_point_image.png */,
 				0459F7DE2C3D9A2F00B48A6D /* Launch Screen.storyboard */,
 				047ECA0A2BFA85FD0065837C /* AppComposer.swift */,
 				046C3EA22BE917E800BBFF47 /* CoreApp.swift */,
+				046C3EA62BE917E900BBFF47 /* Assets.xcassets */,
+				047ECA2F2BFB84460065837C /* Colors.xcassets */,
+				047ECA2B2BFB82520065837C /* Icons.xcassets */,
+				048914762C563EF5006B362B /* Localizable.xcstrings */,
 				04BA84DC2C0A0FC6004F76B3 /* Configs */,
 				040E4EBD2C024B1600056856 /* Core */,
 				044D620F2C31BEB600D130FA /* Extensions */,
@@ -1721,6 +1721,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_WARNINGS = NO;
 				CODE_SIGN_ENTITLEMENTS = LocaLoc/LocaLoc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";
@@ -1769,6 +1770,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_WARNINGS = NO;
 				CODE_SIGN_ENTITLEMENTS = LocaLoc/LocaLoc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(LL_APP_BUILD)";

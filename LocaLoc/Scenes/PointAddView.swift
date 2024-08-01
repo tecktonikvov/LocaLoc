@@ -70,39 +70,41 @@ struct PointAddView: View {
     var body: some View {
         Spacer()
         
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    Text("Create new point")
-                        .font(.title)
-                    Spacer()
-                    Button {
-                        focusedField = nil
-                        onClose()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundStyle(Color.Text.main)
-                    }
-                    .padding(.trailing, 4)
+        VStack {
+            HStack {
+                Text("Create new point")
+                    .font(.title)
+                Spacer()
+                Button {
+                    focusedField = nil
+                    onClose()
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(Color.Text.main)
                 }
-                .padding(.top)
-                
-                pointSignView()
-                
+                .padding(.trailing, 4)
+            }
+            .padding(.top)
+            
+            Divider()
+            
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 16) {
+                    pointSignView()
+                    
                     fieldsView()
                     
                     Toggle("Show point to users", isOn: $showPoint)
                         .tint(Color.brand)
+                    
+                    bottomButtonsView()
+                        .padding(.bottom, 24)
                 }
-                
-                bottomButtonsView()
-                    .padding(.bottom, 24)
             }
+            .padding(.top, -6)
         }
-        .padding(.top, 1)
         .padding(.horizontal)
         .frame(maxHeight: focusedField == nil ? 500 : 430)
         .background(Color.background)
@@ -164,7 +166,6 @@ struct PointAddView: View {
                         .font(.system(size: 32))
                 }
             }
-            .padding(8)
             .background((selectedPointSingType == .emoji ? Color.gray : Color.clear))
             .cornerRadius(8)
             .emojiPicker(

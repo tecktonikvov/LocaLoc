@@ -43,7 +43,7 @@ struct CoreApp: App {
     }
     
     private static func setupGMaps() {
-        GMSServices.provideAPIKey("AIzaSyAtazBNVQVn-DE7QPmojFf7ClPiR9gEfbI")
+        GMSServices.provideAPIKey("AIzaSyCL2DoMrwpq80doFw42RKxAeTJGnL7xj2Y")
     }
     
     var body: some Scene {

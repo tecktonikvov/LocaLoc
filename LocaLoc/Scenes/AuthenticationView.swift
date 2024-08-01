@@ -92,17 +92,3 @@ struct AuthenticationView: View {
 //    AuthenticationView()
 //        .environmentObject(AuthenticationViewModel())
 //}
-
-extension View {
-    func rootViewController() -> UIViewController {
-        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-            return .init()
-        }
-        
-        guard let root = screen.windows.first?.rootViewController else {
-            return .init()
-        }
-        
-        return root
-    }
-}

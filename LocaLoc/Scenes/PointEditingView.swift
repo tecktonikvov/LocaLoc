@@ -27,40 +27,42 @@ struct PointEditingView: View {
     var body: some View {
         Spacer()
         
-        ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 20) {
-                    HStack {
-                        Text("Edit point")
-                            .font(.title)
-                        Spacer()
-                        Button {
-                            focusedField = nil
-                            viewModel.userTappedCloseButton()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundStyle(Color.Text.main)
-                        }
-                        .padding(.trailing, 4)
-                    }
-                    .padding(.top)
-                    
+        VStack {
+            HStack {
+                Text("Edit point")
+                    .font(.title)
+                Spacer()
+                Button {
+                    focusedField = nil
+                    viewModel.userTappedCloseButton()
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(Color.Text.main)
+                }
+                .padding(.trailing, 4)
+            }
+            .padding(.top)
+            
+            Divider()
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 16) {
                     pointSignView()
                     
-                    VStack(alignment: .leading, spacing: 16) {
-                        fieldsView()
-                        
-                        Toggle("Show point to users", isOn: !$viewModel.channelPoint.isHidden)
-                            .tint(Color.brand)
-                            .padding(.trailing)
-                    }
+                    fieldsView()
+                    
+                    Toggle("Show point to users", isOn: !$viewModel.channelPoint.isHidden)
+                        .tint(Color.brand)
+                        .padding(.trailing)
                     
                     bottomButtonsView()
                         .padding(.bottom, 24)
                 }
+            }
+            .padding(.top, -6)
         }
-        .padding(.top, 1)
         .padding(.horizontal)
         .frame(maxHeight: focusedField == nil ? 480 : 430)
         .background(Color.background)
@@ -174,7 +176,6 @@ struct PointEditingView: View {
                         .font(.system(size: 32))
                 }
             }
-            .padding(8)
             .background((viewModel.selectedPointSingType == .emoji ? Color.gray : Color.clear))
             .cornerRadius(8)
             .emojiPicker(

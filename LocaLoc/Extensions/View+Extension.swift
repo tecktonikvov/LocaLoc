@@ -17,18 +17,28 @@ extension View {
         )
         .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
     }
-}
-
-struct SizePreferenceKey: PreferenceKey {
-  static var defaultValue: CGSize = .zero
-  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
-}
-
-extension View {
+    
     @MainActor
     func snapshot(scale: CGFloat? = nil) -> UIImage? {
         let renderer = ImageRenderer(content: self)
         renderer.scale = scale ?? UIScreen.main.scale
         return renderer.uiImage
     }
+    
+    func rootViewController() -> UIViewController {
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return .init()
+        }
+        
+        guard let root = screen.windows.first?.rootViewController else {
+            return .init()
+        }
+        
+        return root
+    }
+}
+
+struct SizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }

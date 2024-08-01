@@ -62,7 +62,7 @@ enum ShareItemType {
         switch invitationMode {
         case .open:
             let item = ShareItem(
-                image: Image("share_sheet_icon"),
+                image: Image("share_sheet_icon_1"),
                 title: "Channel link",
                 link: url)
             
@@ -70,14 +70,14 @@ enum ShareItemType {
         case .byInvitation:
             if channelModel.isChannelOwner {
                 let item = ShareItem(
-                    image: Image("share_sheet_icon"),
+                    image: Image("share_sheet_icon_1"),
                     title: "Channel invite",
                     link: url)
                 
                 shareItemType = .invitation(shareItem: item)
             } else {
                 let item = ShareItem(
-                    image: Image("share_sheet_icon"),
+                    image: Image("share_sheet_icon_1"),
                     title: "Channel link",
                     link: url)
                 
