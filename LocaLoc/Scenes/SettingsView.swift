@@ -41,6 +41,7 @@ struct SettingsView: View {
                                     .fontWeight(.bold)
                                     .lineLimit(2)
                                     .foregroundStyle(Color.Text.main)
+                                
                                 Text("@" + (viewModel.user.profile.username))
                                     .font(.system(size: 16))
                                     .lineLimit(2)
@@ -49,6 +50,15 @@ struct SettingsView: View {
                             .padding()
                         }
                         .accentColor(Color.Text.main)
+                    }
+                }
+                
+                Section {
+                    HStack {
+                        Text("Email:")
+                        Spacer()
+                        Text(viewModel.user.profile.email)
+                            .minimumScaleFactor(0.5)
                     }
                 }
                 
@@ -75,7 +85,3 @@ fileprivate extension Profile {
         firstName + " " + lastName
     }
 }
-//
-//#Preview {
-//    SettingsView(viewModel: SettingsViewModel(user: <#User#>, authenticationService: AuthenticationService(userDataRepository: .shared), userDataRepository: .shared))
-//}

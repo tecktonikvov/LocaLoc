@@ -709,6 +709,22 @@
         }
       }
     },
+    "Email:" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email:"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email:"
+          }
+        }
+      }
+    },
     "First name" : {
       "localizations" : {
         "ru" : {

@@ -8,8 +8,8 @@
 LL_BASE_URL = google.com
 LL_URL_SCHEME = localocapp
 
-LL_APP_VERSION = 1.1.0
-LL_APP_BUILD = 10
+LL_APP_VERSION = 1.1.1
+LL_APP_BUILD = 11
 
 LL_APP_BUNDLE_ID = com.locaLoc.app.apple
 LL_APP_NAME = LocaLoc
