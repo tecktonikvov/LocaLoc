@@ -143,6 +143,7 @@
 		04BA854D2C0B7295004F76B3 /* UserAuthenticationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */; };
 		04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */; };
 		04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04BA85522C0B83E1004F76B3 /* K-Logger */; };
+		04BB37F62C5CC4AA009826A5 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */; };
 		04CDAF812C0F152800A28C93 /* UserDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAF802C0F152800A28C93 /* UserDataClient.swift */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
 		04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */; };
@@ -366,6 +367,7 @@
 		04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataDataRepository+UserDataRepository.swift"; sourceTree = "<group>"; };
 		04BB37F32C5AB56C009826A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04BB37F42C5AB5C8009826A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		04CDAF802C0F152800A28C93 /* UserDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClient.swift; sourceTree = "<group>"; };
 		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationProvider.swift; sourceTree = "<group>"; };
@@ -829,6 +831,7 @@
 				047ECA272BFB81F00065837C /* TabScene.swift */,
 				047ECA292BFB82000065837C /* TabSceneType.swift */,
 				040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */,
+				04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -1397,6 +1400,7 @@
 				0438C4642C2C57AC000665D0 /* FilesUploadingService.swift in Sources */,
 				04261AE82BFCE9FF00FBAFC3 /* AuthenticationView.swift in Sources */,
 				0459F7FB2C3FF42400B48A6D /* PointInfoView.swift in Sources */,
+				04BB37F62C5CC4AA009826A5 /* AppEnvironment.swift in Sources */,
 				04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */,
 				0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */,
 				0459F80D2C459C3400B48A6D /* MarkerConfig.swift in Sources */,

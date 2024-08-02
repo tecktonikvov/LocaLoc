@@ -14,10 +14,12 @@ import K_Logger
 @main
 struct CoreApp: App {    
     private let appComposer: AppComposer
+    
     @Injected(\.userDataRepository) private var userDataRepository
-    
+    @Injected(\.authenticationService) private var authenticationService
+
     @State private var path = NavigationPath()
-    
+        
     // MARK: - Init
     init() {
         CoreApp.setupFirebaseApp()
@@ -25,6 +27,12 @@ struct CoreApp: App {
         
         let appComposer = AppComposer()
         self.appComposer = appComposer
+        
+        if let isAppEnvironmentWasChanged = AppEnvironment.isAppEnvironmentWasChanged, isAppEnvironmentWasChanged {
+            authenticationService.signOut()
+        }
+
+        AppEnvironment.saveCurrentAppEnvironment()
         
         if let user = userDataRepository.currentUser {
             setCrashlyticsData(user: user)

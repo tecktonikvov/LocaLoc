@@ -13,9 +13,7 @@ import Factory
     
     @ObservationIgnored
     @Injected(\.authenticationService) private var authenticationService
-    
-//    let profileEditingViewModel = ProfileEditingViewModel()
-    
+        
     // MARK: - Init
     init(user: User) {
         self.user = user
