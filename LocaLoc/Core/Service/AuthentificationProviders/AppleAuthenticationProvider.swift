@@ -71,7 +71,6 @@ final class AppleAuthenticationProvider: NSObject {
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
-       // authorizationController.presentationContextProvider = presenter as? ASAuthorizationControllerPresentationContextProviding
         authorizationController.performRequests()
     }
 }
@@ -101,25 +100,30 @@ extension AppleAuthenticationProvider: ASAuthorizationControllerDelegate {
             // Sign in with Firebase.
             Task {
                 do {
-                    try await Auth.auth().signIn(with: credential)
+                    let firebaseSignInResult = try await Auth.auth().signIn(with: credential)
+                    
+                    guard let userID = Auth.auth().currentUser?.uid else {
+                        throw AuthenticationServiceError.userIdIsNil
+                    }
                     
                     let profile = Profile(
-                        firstName: "",
-                        lastName: "",
-                        email: "",
-                        imageUrl: "",
+                        firstName: (firebaseSignInResult.additionalUserInfo?.profile?["given_name"] as? String) ?? "",
+                        lastName: (firebaseSignInResult.additionalUserInfo?.profile?["family_name"] as? String) ?? "",
+                        email: firebaseSignInResult.user.email ?? "",
+                        imageUrl: firebaseSignInResult.user.photoURL?.absoluteString ?? "",
                         username: ""
                     )
                     
                     let user = User(
-                        id: "ID",
+                        id: userID,
                         authenticationProviderType: .apple,
                         profile: profile,
                         createdAt: Date.timeZoneIndependentCurrentDate,
                         updatedAt: Date.timeZoneIndependentCurrentDate
                     )
                     
-                    let data = AuthorizationUserData(isNewUser: true, user: user)
+                    let isNewUser = (firebaseSignInResult.additionalUserInfo?.isNewUser as? Bool) ?? true
+                    let data = AuthorizationUserData(isNewUser: isNewUser, user: user)
                     
                     completion?(.success(data))
                 } catch {
