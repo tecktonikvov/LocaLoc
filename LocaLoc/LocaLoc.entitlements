@@ -8,5 +8,9 @@
 	<array>
 		<string>Default</string>
 	</array>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>$(LL_APP_LINKS)</string>
+	</array>
 </dict>
 </plist>

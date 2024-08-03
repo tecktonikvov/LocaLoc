@@ -144,6 +144,10 @@
 		04BA854F2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA854E2C0B7DB6004F76B3 /* UserDataDataRepository+UserDataRepository.swift */; };
 		04BA85532C0B83E1004F76B3 /* K-Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 04BA85522C0B83E1004F76B3 /* K-Logger */; };
 		04BB37F62C5CC4AA009826A5 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */; };
+		04BB37F82C5E2195009826A5 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB37F72C5E2195009826A5 /* EnvironmentVariables.swift */; };
+		04BB37FA2C5E22B6009826A5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB37F92C5E22B6009826A5 /* UIApplication+Extension.swift */; };
+		04BB37FC2C5E2B20009826A5 /* ShareSheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB37FB2C5E2B20009826A5 /* ShareSheetPresenter.swift */; };
+		04BB37FE2C5E2B44009826A5 /* ShareableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB37FD2C5E2B44009826A5 /* ShareableItem.swift */; };
 		04CDAF812C0F152800A28C93 /* UserDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDAF802C0F152800A28C93 /* UserDataClient.swift */; };
 		04D3DDDC2C09093C002FF3DC /* GoogleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */; };
 		04D3DDE32C090C36002FF3DC /* AppleAuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */; };
@@ -368,6 +372,10 @@
 		04BB37F32C5AB56C009826A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04BB37F42C5AB5C8009826A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		04BB37F72C5E2195009826A5 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
+		04BB37F92C5E22B6009826A5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		04BB37FB2C5E2B20009826A5 /* ShareSheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetPresenter.swift; sourceTree = "<group>"; };
+		04BB37FD2C5E2B44009826A5 /* ShareableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableItem.swift; sourceTree = "<group>"; };
 		04CDAF802C0F152800A28C93 /* UserDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClient.swift; sourceTree = "<group>"; };
 		04D3DDDB2C09093C002FF3DC /* GoogleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticationProvider.swift; sourceTree = "<group>"; };
 		04D3DDE22C090C36002FF3DC /* AppleAuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthenticationProvider.swift; sourceTree = "<group>"; };
@@ -521,6 +529,7 @@
 				04F624242C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift */,
 				0438C4A42C2C6FD1000665D0 /* KeychainDataStore.swift */,
 				04BA84E42C0B0EAC004F76B3 /* Previewer.swift */,
+				04BB37FB2C5E2B20009826A5 /* ShareSheetPresenter.swift */,
 				0438C4A62C2C7129000665D0 /* TokenSecureStorage.swift */,
 				0485D8262BFF47C600729C34 /* UserDefaults.swift */,
 				04BA84E12C0B0CF8004F76B3 /* AuthenticationService */,
@@ -543,6 +552,7 @@
 				04F6242E2C4E4424003CCE0F /* Invitation.swift */,
 				04F624262C4A9936003CCE0F /* NavigationState.swift */,
 				040D85872C008F97000F8F52 /* Profile.swift */,
+				04BB37FD2C5E2B44009826A5 /* ShareableItem.swift */,
 				042A8B732C5250440077371C /* ShareItem.swift */,
 				040D85892C008FA5000F8F52 /* User.swift */,
 				040E4EBB2C0095D100056856 /* UserAuthenticationStatus.swift */,
@@ -717,6 +727,7 @@
 				04F624372C4E63D6003CCE0F /* Image+Extension.swift */,
 				048914892C57E45D006B362B /* NavigationPath+Extension.swift */,
 				047A03F52C46BA55000EDA80 /* Prefix.swift */,
+				04BB37F92C5E22B6009826A5 /* UIApplication+Extension.swift */,
 				044D62122C31BEEC00D130FA /* UIImage+Extension.swift */,
 				0459F7FF2C40331C00B48A6D /* View+Extension.swift */,
 			);
@@ -824,14 +835,15 @@
 		047ECA062BFA85CB0065837C /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */,
 				047ECA2D2BFB83B90065837C /* Color.swift */,
 				04D3DDE42C090C99002FF3DC /* CustomError.swift */,
+				04BB37F72C5E2195009826A5 /* EnvironmentVariables.swift */,
 				0459F7F82C3F06C800B48A6D /* Haptic.swift */,
 				047ECA1D2BFA925F0065837C /* SceneComposer.swift */,
 				047ECA272BFB81F00065837C /* TabScene.swift */,
 				047ECA292BFB82000065837C /* TabSceneType.swift */,
 				040E4EC42C025FF200056856 /* UserDefaultsKeys.swift */,
-				04BB37F52C5CC4AA009826A5 /* AppEnvironment.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -1404,6 +1416,7 @@
 				04AA9BFB2C15AD6F00459E00 /* UsernameManager.swift in Sources */,
 				0438C4662C2C5882000665D0 /* UserPhotoUploader.swift in Sources */,
 				0459F80D2C459C3400B48A6D /* MarkerConfig.swift in Sources */,
+				04BB37F82C5E2195009826A5 /* EnvironmentVariables.swift in Sources */,
 				04261AE12BFCD9E100FBAFC3 /* ChannelsRow.swift in Sources */,
 				047ECA112BFA88AC0065837C /* HomeView.swift in Sources */,
 				0459F7EB2C3DB58A00B48A6D /* ChannelPoint.swift in Sources */,
@@ -1430,6 +1443,7 @@
 				04F624232C4A989E003CCE0F /* ChannelDeeplink.swift in Sources */,
 				0489147F2C568EEB006B362B /* ChannelSettingsView.swift in Sources */,
 				0443BF9E2C0F490B00D7CAE7 /* UsernameCreationView.swift in Sources */,
+				04BB37FE2C5E2B44009826A5 /* ShareableItem.swift in Sources */,
 				0438C4A72C2C7129000665D0 /* TokenSecureStorage.swift in Sources */,
 				047ECA2A2BFB82000065837C /* TabSceneType.swift in Sources */,
 				047ECA162BFA91F40065837C /* ChannelsView.swift in Sources */,
@@ -1450,6 +1464,7 @@
 				0489148A2C57E45D006B362B /* NavigationPath+Extension.swift in Sources */,
 				04F624252C4A98B3003CCE0F /* InMemoryDeeplinkHolder.swift in Sources */,
 				044D62052C2F12A500D130FA /* LimitedTextField.swift in Sources */,
+				04BB37FA2C5E22B6009826A5 /* UIApplication+Extension.swift in Sources */,
 				044D621A2C31C16F00D130FA /* ChannelPhotoUploader.swift in Sources */,
 				042A8B742C5250440077371C /* ShareItem.swift in Sources */,
 				047A03F62C46BA55000EDA80 /* Prefix.swift in Sources */,
@@ -1481,6 +1496,7 @@
 				04F624342C4E5F5F003CCE0F /* ChannelDetailsView.swift in Sources */,
 				04BA854A2C0B7274004F76B3 /* Profile.swift in Sources */,
 				04BA854B2C0B7274004F76B3 /* AuthenticationProviderType.swift in Sources */,
+				04BB37FC2C5E2B20009826A5 /* ShareSheetPresenter.swift in Sources */,
 				04F624212C49ACD3003CCE0F /* PrivateChannelViewModel.swift in Sources */,
 				04BA854C2C0B7274004F76B3 /* User.swift in Sources */,
 				044D624E2C33463E00D130FA /* Channel+Bridges.swift in Sources */,
@@ -1737,6 +1753,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Configs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(LL_APP_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc requires access to your phone’s camera.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use location";
@@ -1785,6 +1802,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocaLoc/Configs/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(LL_APP_NAME)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSCameraUsageDescription = "LocaLoc requires access to your phone’s camera.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use location";

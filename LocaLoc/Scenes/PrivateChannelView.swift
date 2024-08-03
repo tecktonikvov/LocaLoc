@@ -9,9 +9,12 @@ import SwiftUI
 
 struct PrivateChannelView: View {
     private var viewModel: PrivateChannelViewModel
+    
+    @Binding private var path: NavigationPath
 
     // MARK: - Init
-    init(viewModel: PrivateChannelViewModel) {
+    init(viewModel: PrivateChannelViewModel, path: Binding<NavigationPath>) {
+        self._path = path
         self.viewModel = viewModel
     }
         
@@ -21,18 +24,20 @@ struct PrivateChannelView: View {
             
             VStack(alignment: .center, spacing: 24) {
                 ChannelAvatarView(url: viewModel.channelModel.channel.imageUrl)
-                    .frame(width: 100.0, height: 100.0)
+                    .frame(width: 150.0, height: 150.0)
                     .clipShape(Circle())
                     .padding(.trailing, 8)
                 
                 Text(viewModel.channelModel.channel.name)
                     .font(.title)
+                    .padding(.horizontal)
                 
                 let description = viewModel.channelModel.channel.description
                 
                 if !description.isEmpty {
                     Text(description)
                         .font(.subheadline)
+                        .padding(.horizontal)
                 }
                 
                 HStack {
@@ -48,6 +53,14 @@ struct PrivateChannelView: View {
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                 Spacer()
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavBarBackButton {
+                    path.removeLast()
+                }
             }
         }
     }

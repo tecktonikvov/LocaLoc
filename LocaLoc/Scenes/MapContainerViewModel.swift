@@ -20,7 +20,7 @@ enum SelectedPointSingType {
     case emoji
 }
 
-fileprivate enum SubscriptionRequestError: Error {
+enum InvitationValidationError: Error {
     case invitationExpired
     case invitationUsed
     case invitationIsMissed
@@ -161,7 +161,7 @@ fileprivate enum SubscriptionRequestError: Error {
         let currentInvitationModel = try await invitationClient.invitation(withId: invitation.id)
         
         guard let currentInvitationModel else {
-            throw SubscriptionRequestError.invitationIsMissed
+            throw InvitationValidationError.invitationIsMissed
         }
         
         // Check if invitation expired
@@ -169,12 +169,12 @@ fileprivate enum SubscriptionRequestError: Error {
         let invitationExistenceTime = current - currentInvitationModel.createdAt.timeIntervalSince1970
         
         guard invitationExistenceTime < Constants.invitationLifeTime else {
-            throw SubscriptionRequestError.invitationExpired
+            throw InvitationValidationError.invitationExpired
         }
         
         // Check if invitation was used
         guard currentInvitationModel.usedAt == nil else {
-            throw SubscriptionRequestError.invitationUsed
+            throw InvitationValidationError.invitationUsed
         }
     }
     
@@ -220,6 +220,29 @@ fileprivate enum SubscriptionRequestError: Error {
             }
         }
     }
+    
+    private func makeInvitaionInvalid(_ invitation: Invitation) async throws {
+        let invitationClientModel = InvitationClientModel(
+            createdAt: invitation.createdAt,
+            usedAt: Date.timeZoneIndependentCurrentDate,
+            creatorId: invitation.creatorId,
+            channelId: invitation.channelId
+        )
+        
+        try await invitationClient.updateInvitation(
+            id: invitation.id,
+            invitationClientModel: invitationClientModel
+        )
+
+    }
+    
+    private func incrementSubscriberNumber() {
+        if membersNumber != nil {
+            membersNumber! += 1
+        } else {
+            membersNumber = 1
+        }
+    }
 
     // MARK: - Public
     func backButtonTapped() {
@@ -246,10 +269,15 @@ fileprivate enum SubscriptionRequestError: Error {
                 try await subscriptionRequest()
                 try await channelsRepository.synchronizeUserChannelsList()
                 
+                if let invitation = userSubscriptionRelationType.invitation {
+                    try await makeInvitaionInvalid(invitation)
+                }
+                
                 userSubscriptionRelationType = .subscribed
-                // Add subscriber number
+
+                incrementSubscriberNumber()
             } catch {
-                if let error = error as? SubscriptionRequestError {
+                if let error = error as? InvitationValidationError {
                     switch error {
                     case .invitationExpired:
                         showInvitationExpiredPopUp = true

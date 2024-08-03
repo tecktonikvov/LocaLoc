@@ -51,7 +51,7 @@ struct CoreApp: App {
     }
     
     private static func setupGMaps() {
-        GMSServices.provideAPIKey("AIzaSyCL2DoMrwpq80doFw42RKxAeTJGnL7xj2Y")
+        GMSServices.provideAPIKey(EnvironmentVariables.gMapsApiKey)
     }
     
     var body: some Scene {
@@ -71,7 +71,7 @@ struct CoreApp: App {
     
     // MARK: - Private
     private func handleIncomingURL(_ url: URL) {
-        guard url.scheme == "localocapp" else {
+        guard url.scheme == "https" else {
             Log.error("Deeplink has incorrect scheme: \(url.scheme ?? "")")
             return
         }
@@ -80,18 +80,38 @@ struct CoreApp: App {
             Log.error("Invalid url: \(url.absoluteString)")
             return
         }
-        
-        guard let action = components.host, action == "channel" else {
-            Log.error("Unknown URL: \(url.absoluteString)")
+                
+        guard let host = components.host, host == EnvironmentVariables.hostUrl else {
+            Log.error("Unknown host: \(components.host ?? "nil")")
             return
         }
         
-        guard let identifier = components.queryItems?.first(where: { $0.name == "identifier" })?.value else {
-            Log.error("Identifier not found, URL: \(url.absoluteString)")
-            return
-        }
+        let path = components.path
         
-        InMemoryDeeplinkHolder.channelDeepLink = ChannelDeeplinkModel(channelId: identifier, invitationId: nil)
+        switch path {
+        case "/channel":
+            guard let id = components.queryItems?.first(where: { $0.name == "id" })?.value else {
+                Log.error("Channel id not found in url, URL: \(url.absoluteString)")
+                return
+            }
+            
+            InMemoryDeeplinkHolder.channelDeepLink = ChannelDeeplinkModel(channelId: id, invitationId: nil)
+            
+        case "/channel_invitation":
+            guard let id = components.queryItems?.first(where: { $0.name == "id" })?.value else {
+                Log.error("Invitation id not found in url, URL: \(url.absoluteString)")
+                return
+            }
+            
+            guard let channelId = components.queryItems?.first(where: { $0.name == "channel_id" })?.value else {
+                Log.error("Channel id not found in url, URL: \(url.absoluteString)")
+                return
+            }
+            
+            InMemoryDeeplinkHolder.channelDeepLink = ChannelDeeplinkModel(channelId: channelId, invitationId: id)
+        default:
+            break
+        }
     }
     
     @ViewBuilder
@@ -107,7 +127,7 @@ struct CoreApp: App {
             
         case let .privateChannel(privateChannelModel):
             let privateChannelViewModel = PrivateChannelViewModel(channelModel: privateChannelModel)
-            PrivateChannelView(viewModel: privateChannelViewModel)
+            PrivateChannelView(viewModel: privateChannelViewModel, path: $path)
             
         case let .channelDetails(channelDetailsModel):
             let channelDetailsViewModel = ChannelDetailsViewModel(channelDetailsModel: channelDetailsModel)

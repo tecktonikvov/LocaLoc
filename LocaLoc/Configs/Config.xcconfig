@@ -5,13 +5,20 @@
 //  Created by Volodymyr Kotsiubenko on 6/5/24.
 //
 
-LL_BASE_URL = google.com
-LL_URL_SCHEME = localocapp
+// Build info
+LL_APP_BUILD = 13
+LL_APP_VERSION = 1.1.3
 
-LL_APP_VERSION = 1.1.2
-LL_APP_BUILD = 12
-
-LL_APP_BUNDLE_ID = com.locaLoc.app.apple
+// Main info
 LL_APP_NAME = LocaLoc
+LL_APP_BUNDLE_ID = com.locaLoc.app.apple
 
+// URL Settings
+LL_HOST_URL = localoc.github.io
+LL_APP_LINKS = applinks:$(LL_HOST_URL)
+
+// Deploymet versions
 LL_IPHONE_MINIMUM_DEPLOYMENT_TARGET = 17.0
+
+// API Keys
+LL_GMAPS_API_KEY = AIzaSyCL2DoMrwpq80doFw42RKxAeTJGnL7xj2Y

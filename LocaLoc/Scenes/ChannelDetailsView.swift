@@ -15,6 +15,7 @@ struct ChannelDetailsView: View {
     
     @State private var isDeleteButtonLoading = false
     @State private var isLeaveButtonLoading = false
+    @State private var isInviteButtonLoading = false
 
     // MARK: - Init
     init(viewModel: ChannelDetailsViewModel, path: Binding<NavigationPath>) {
@@ -28,7 +29,7 @@ struct ChannelDetailsView: View {
             
             VStack(alignment: .center) {
                 ChannelAvatarView(url: viewModel.channelModel.channel.imageUrl)
-                    .frame(width: 120.0, height: 120.0)
+                    .frame(width: 160.0, height: 160.0)
                     .clipShape(Circle())
                     .padding(.trailing, 8)
                 
@@ -60,7 +61,8 @@ struct ChannelDetailsView: View {
                 
                 Spacer()
             }
-            .padding(.top, 24)
+            .padding(.top)
+            .padding(.horizontal)
         }
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -103,14 +105,35 @@ struct ChannelDetailsView: View {
         }
     }
     
+    func showShareSheet(url: URL) {
+        ShareSheetPresenter.show(
+            withType: .url(url),
+            title: "Invitation link",
+            subtitle: "Share invitation link",
+            previewImage: UIImage(named: "share_sheet_icon")
+        )
+    }
+    
     // MARK: - Private
     @ViewBuilder
     private func shareLinkButton(shareItem: ShareItem, isInvite: Bool) -> some View {
         var shareItem = shareItem
         
         if isInvite {
-            ShareLink(item: shareItem.link,
-                      preview: shareItem.sharePreview) {
+            Button {
+                Task { @MainActor in
+                    isInviteButtonLoading = true
+                    
+                    do {
+                        let invitation = try await viewModel.createInvitation()
+                        showShareSheet(url: invitation.link)
+                    } catch {
+                        print("🔴", error)
+                    }
+                    
+                    isInviteButtonLoading = false
+                }
+            } label: {
                 HStack {
                     Image(systemName: "person.badge.plus")
                         .font(.system(size: 22))
@@ -120,8 +143,14 @@ struct ChannelDetailsView: View {
                         .fontWeight(.semibold)
                         .minimumScaleFactor(0.01)
                     Spacer()
+                    
+                    if isInviteButtonLoading {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    }
                 }
                 .padding(4)
+                .disabled(isInviteButtonLoading)
             }
         } else {
             ShareLink(item: shareItem.link,
@@ -189,7 +218,6 @@ struct ChannelDetailsView: View {
         .tint(Color.background)
         .buttonStyle(.borderedProminent)
         .buttonBorderShape(.roundedRectangle)
-        .padding(.horizontal)
     }
     
     @ViewBuilder

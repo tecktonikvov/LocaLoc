@@ -9,6 +9,7 @@ import Foundation
 import Factory
 import SwiftUI
 import K_Logger
+import LocaLocClient
 
 enum ChannelDetailsViewModelError: Error {
     case noPermission
@@ -40,6 +41,9 @@ enum ShareItemType {
     @ObservationIgnored
     @Injected(\.channelsRepository) private var channelsRepository
     
+    @ObservationIgnored
+    @Injected(\.invitationClient) private var invitationClient
+    
     private(set) var shareItemType: ShareItemType?
     private(set) var channelModel: ChannelDetailsModel
     
@@ -55,14 +59,15 @@ enum ShareItemType {
     // MARK: - Private
     private func setShareItem() {
         let invitationMode = channelModel.channel.invitationMode
-        guard let url = URL(string: "localocapp://channel?identifier=QEqgSzGPu5Kk2kcQcRBA") else {
+        
+        guard let url = URL(string: "https://\(EnvironmentVariables.hostUrl)/channel?id=\(channelModel.channel.id)") else {
             return
         }
         
         switch invitationMode {
         case .open:
             let item = ShareItem(
-                image: Image("share_sheet_icon_1"),
+                image: Image("share_sheet_icon"),
                 title: "Channel link",
                 link: url)
             
@@ -70,14 +75,14 @@ enum ShareItemType {
         case .byInvitation:
             if channelModel.isChannelOwner {
                 let item = ShareItem(
-                    image: Image("share_sheet_icon_1"),
+                    image: Image("share_sheet_icon"),
                     title: "Channel invite",
                     link: url)
                 
                 shareItemType = .invitation(shareItem: item)
             } else {
                 let item = ShareItem(
-                    image: Image("share_sheet_icon_1"),
+                    image: Image("share_sheet_icon"),
                     title: "Channel link",
                     link: url)
                 
@@ -147,5 +152,24 @@ enum ShareItemType {
     
     func leaveChannelCanceled() {
         showLeaveConfirmationPopUp = false
+    }
+    
+    func createInvitation() async throws -> Invitation {
+        let clientModel = InvitationClientModel(
+            createdAt: Date.timeZoneIndependentCurrentDate,
+            usedAt: nil,
+            creatorId: try userIdProvider.userId(),
+            channelId: channelModel.channel.id
+        )
+        
+        let id = try await invitationClient.saveInvitation(clientModel)
+        
+        return Invitation(
+            id: id,
+            createdAt: clientModel.createdAt,
+            usedAt: clientModel.usedAt,
+            creatorId: clientModel.channelId,
+            channelId: clientModel.channelId
+        )
     }
 }

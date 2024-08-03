@@ -40,7 +40,26 @@ struct ChannelsView: View {
                         
                         Task { @MainActor in
                             if let relation = await viewModel.channelSubscriptionRelation(channelId: channel.id) {
-                                path.append(NavigationState.map(channel: channel, relationType: relation))
+                                switch relation {
+                                case .subscribed, .invited:
+                                    path.append(NavigationState.map(channel: channel, relationType: relation))
+                                case .notSubscribed:
+                                    switch channel.invitationMode {
+                                    case .open:
+                                        path.append(NavigationState.map(channel: channel, relationType: relation))
+                                    case .byInvitation:
+                                        async let participantsNumber = viewModel.channelSubscribersNumber(channelId: channel.id)
+                                        async let pointsNumber = viewModel.channelPointsNumber(channelId: channel.id)
+                                        
+                                        let privateChannelModel = PrivateChannelModel(
+                                            channel: channel,
+                                            pointsNumber: await pointsNumber,
+                                            participantsNumber: await participantsNumber
+                                        )
+                                        
+                                        path.append(NavigationState.privateChannel(privateChannelModel: privateChannelModel))
+                                    }
+                                }
                             }
                         }
                     } label: {

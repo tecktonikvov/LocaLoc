@@ -23,6 +23,9 @@ struct HomeModel {
     @ObservationIgnored
     @Injected(\.channelPointsClient) var channelPointsClient
     
+    @ObservationIgnored
+    @Injected(\.invitationClient) private var invitationClient
+    
     private(set) var model: HomeModel
     private(set) var deeplinkChannel: DeeplinkChannel?
 
@@ -44,10 +47,33 @@ struct HomeModel {
         channelsRepository.channels.contains(channel)
     }
     
-    private func invitation() async throws -> Invitation? {
-        let invitation = Invitation.mock
-        guard invitation.usedAt == nil else { return nil }
-        return invitation
+    private func invitation(withId id: String) async throws -> Invitation? {
+        guard let clientModel = try await invitationClient.invitation(withId: id) else {
+            return nil
+        }
+        
+        return Invitation(
+            id: id,
+            createdAt: clientModel.createdAt,
+            usedAt: clientModel.usedAt,
+            creatorId: clientModel.creatorId,
+            channelId: clientModel.channelId
+        )
+    }
+    
+    private func validate(invitation: Invitation) throws {
+        // Check if invitation expired
+        let current = Date.timeZoneIndependentCurrentDate.timeIntervalSince1970
+        let invitationExistenceTime = current - invitation.createdAt.timeIntervalSince1970
+        
+        guard invitationExistenceTime < Constants.invitationLifeTime else {
+            throw InvitationValidationError.invitationExpired
+        }
+        
+        // Check if invitation was used
+        guard invitation.usedAt == nil else {
+            throw InvitationValidationError.invitationUsed
+        }
     }
     
     private func handleChannelDeepLink(channelDeeplink: ChannelDeeplinkModel) {
@@ -61,6 +87,7 @@ struct HomeModel {
         Task { @MainActor in
             do {
                 guard let channel = try await channelsRepository.fetchChannel(withId: channelId) else {
+                    Log.error("Channel with id: \"\(channelId)\" was not found", module: "HomeViewModel")
                     return
                 }
                 
@@ -75,7 +102,9 @@ struct HomeModel {
                     self.deeplinkChannel = .accessAllowed(channel, relationType: .notSubscribed)
                 case .byInvitation:
                     // If user has an invitation show channel with ability to subscribe with invitation.
-                    if let invitation = try await invitation() {
+                    if let invitationId = channelDeeplink.invitationId,
+                        let invitation = try await invitation(withId: invitationId) {
+                        try validate(invitation: invitation)
                         self.deeplinkChannel = .accessAllowed(channel, relationType: .invited(invitation))
                     } else {
                         // If user has no invitation limit access.
@@ -91,6 +120,7 @@ struct HomeModel {
                     }
                 }
             } catch {
+                // Todo show if invitation errors
                 Log.error("Channel request error: \(error)", module: "HomeViewModel")
             }
         }

@@ -14,5 +14,10 @@ struct Invitation: Hashable {
     let creatorId: String
     let channelId: String
     
+    var link: URL {
+        URL(string: "https://\(EnvironmentVariables.hostUrl)/channel_invitation?id=\(id)&channel_id=\(channelId)")
+        ?? URL(fileURLWithPath: "")
+    }
+    
     static let mock = Invitation(id: UUID().uuidString, createdAt: Date(), usedAt: nil, creatorId: "", channelId: "")
 }

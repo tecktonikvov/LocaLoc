@@ -17,6 +17,9 @@ import K_Logger
     @Injected(\.channelsClient) private var channelsClient
     
     @ObservationIgnored
+    @Injected(\.channelPointsClient) private var channelPointsClient
+    
+    @ObservationIgnored
     @Injected(\.userIdProvider) private var userIdProvider
     
     @ObservationIgnored
@@ -121,5 +124,13 @@ import K_Logger
                 return nil
             }
         }
+    }
+    
+    func channelSubscribersNumber(channelId: String) async -> Int {
+        (try? await channelsClient.channelParticipantsNumber(channelId: channelId)) ?? 0
+    }
+    
+    func channelPointsNumber(channelId: String) async -> Int {
+        (try? await channelPointsClient.channelPointsNumber(channelId: channelId)) ?? 0
     }
 }
