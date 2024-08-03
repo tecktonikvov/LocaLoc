@@ -9,11 +9,10 @@
 import Foundation
 
 class Fastfile: LaneFile {
-	func testsLane() {
-        desc("UI and Unit tests lane")
-        
-        scan(
-            devices: .userDefined(["iPhone X"])
-        )
+	func betaLane() {
+	desc("Push a new beta build to TestFlight")
+		incrementBuildNumber(xcodeproj: "LocaLoc.xcodeproj")
+		buildApp(scheme: "LocaLoc")
+		uploadToTestflight(username: "localocdeveloper@gmail.com")
 	}
 }
